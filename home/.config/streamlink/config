@@ -1,0 +1,5 @@
+player=mpv
+player-http
+player-no-close
+title="{title}"
+mux-subtitles

@@ -1,0 +1,138 @@
+! special
+!*.foreground:   #c5c8c6
+!*.background:   #1d1f21
+!*.cursorColor:  #c5c8c6
+
+! special
+!*.foreground:   #eaeaea
+!*.background:   #000000
+!*.cursorColor:  #eaeaea
+!
+!! black
+!*.color0:       #000000
+!*.color8:       #1c1c1c
+!
+!! red
+!*.color1:       #00005f
+!*.color9:       #005fff
+!
+!! green
+!*.color2:       #00d700
+!*.color10:      #5ce792
+!
+!! yellow
+!*.color3:       #2d93a4
+!*.color11:      #00d7ff
+!
+!! blue
+!*.color4:       #5f0000
+!*.color12:      #d70000
+!
+!! magenta
+!*.color5:       #5f005f
+!*.color13:      #a400a4
+!
+!! cyan
+!*.color6:       #d75f05
+!*.color14:      #d7ff00
+!
+!! white
+!*.color7:       #444444
+!*.color15:      #ececec
+
+
+!! special
+!*.foreground:   #eaeaea
+!*.background:   #000000
+!*.cursorColor:  #eaeaea
+!
+!! black
+!*.color0:       #000000
+!*.color8:       #1f1f1f
+!
+!! red
+!*.color1:       #0000ab
+!*.color9:       #005fff
+!
+!! green
+!*.color2:       #00d700
+!*.color10:      #5ce792
+!
+!! yellow
+!*.color3:       #2d93a4
+!*.color11:      #00d7ff
+!
+!! blue
+!*.color4:       #950000
+!*.color12:      #d70000
+!
+!! magenta
+!*.color5:       #7c007c
+!*.color13:      #a400a4
+!
+!! cyan
+!*.color6:       #d75f05
+!*.color14:      #d7ff00
+!
+!! white
+!*.color7:       #515151
+!*.color15:      #ececec
+
+
+! special
+*.foreground:   #c6e7e5
+*.background:   #000000
+*.cursorColor:  #98d1ce
+
+! black
+*.color0:       #000000
+*.color8:       #1f1f1f
+
+! red
+*.color1:       #951212
+*.color9:       #d71616
+
+! green
+*.color2:       #17d717
+*.color10:      #5ce792
+
+! yellow
+*.color3:       #d76917
+*.color11:      #dbff1b
+
+! blue
+*.color4:       #1111ab
+*.color12:      #1c70ff
+
+! magenta
+*.color5:       #830f83
+*.color13:      #a410a4
+
+! cyan
+*.color6:       #2792a4
+*.color14:      #18dbff
+
+! white
+*.color7:       #515151
+*.color15:      #ececec
+
+*.font: xft:Iosevka:style=Regular:size=11
+*.boldFont: xft:Iosevka:style=Bold:size=11
+*.italicFont: xft:Iosevka:style=Italic:size=11
+*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=11
+URxvt.letterSpace: -1
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.internalBorder: 24
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 2048
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+
+URxvt*transparent: true
+URxvt*shading: 20
+
