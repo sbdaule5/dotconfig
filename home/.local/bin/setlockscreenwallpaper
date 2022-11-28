@@ -1,0 +1,6 @@
+if [ -z $1 ]
+then
+	feh ~/.lock.png
+else
+	convert $1 -resize 1366x768^ ~/.lock.png	
+fi

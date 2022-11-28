@@ -1,0 +1,32 @@
+#!/bin/sh
+# This is a script that will contain all shutdown options
+
+shutdown() {\
+	sudo shutdown now
+	}
+
+restart1() {\
+	sudo shutdown -r now
+	}
+
+logout1() {\
+	i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'
+
+	}
+
+sleep1() {\
+	systemctl suspend
+	}
+hibernate1(){\
+	systemctl hibernate
+}
+
+#initial prompt at none to avoid accedental shutdowns
+choice="$(printf " \\nShutdown\\nRestart\\nLogout\\nSleep" | dmenu -i)" || exit 1
+case $choice in 
+	Shutdown) shutdown;;
+	Restart) restart1;;
+	Logout) logout1;;
+	Sleep) sleep1;;
+	Hibernate) hibernate1;;
+esac

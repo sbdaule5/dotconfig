@@ -1,0 +1,15 @@
+
+asknetwork(){\
+	echo "check"	
+}
+
+
+networks="$(nmcli device wifi | grep Infra | sed 's/ [ ]*/ /g' | sed 's/^\*//' | sed 's/[^ ]*/(&)/3' | sed 's/[^(]*(\([^)]*\)).*/\1/' | sort -t: -u -k1,1)"
+
+if [ -z "$networks" ]; then
+	echo "No networks found" && exit	
+else
+	choice="$(echo "$networks" | dmenu -i -p "Select wifi network")" || exit 1
+	echo "$choice"
+	nmcli connection up $choice
+fi

@@ -1,0 +1,8 @@
+
+# Proper formatting of defination is needed
+
+clip="$(xsel -b)"
+word="$(printf "$clip" | dmenu -i -p "Enter word")" || exit 1
+meaning="$(dict $word)"
+echo $meaning
+notify-send "`dict $word`"

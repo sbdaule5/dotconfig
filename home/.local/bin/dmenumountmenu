@@ -1,0 +1,12 @@
+# script is not needed currently 
+mount(){\
+	~/.local/bin/dmenumount
+}
+unmount(){\
+	~/.local/bin/dmenuumount
+}
+action="$(printf "Mount\\nUnmount\\nSSH" |dmenu -i)" || exit 1
+case $action in
+	Mount) mount;;
+	Unmount) unmount;;
+esac
