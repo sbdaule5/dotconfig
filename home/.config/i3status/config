@@ -1,0 +1,110 @@
+
+general {
+        output_format = "i3bar"
+        colors = true
+        separator = "  "
+        interval = 5
+}
+
+order += "ipv6"
+# order += "run_watch DHCP"
+# order += "run_watch VPNC"
+# order += "path_exists VPN"
+order += "wireless wlp1s0"
+order += "ethernet eth0"
+order += "disk /"
+# order += "cpu_temperature 0"
+order += "memory"
+order += "load"
+order += "volume master"
+order += "tztime date"
+order += "tztime time"
+order += "battery 0"
+# order += "tztime berlin"
+
+ipv6{
+        format_up = "%ip"
+        format_down = ""
+}
+wireless wlp1s0 {
+        format_up = "W: %quality at %essid %ip"
+
+        format_down = "W: down"
+}
+
+volume master {
+        format = "🔈%volume"
+        format_muted = "🔇%volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+ethernet eth0 {
+        format_up = "🖧: %ip (%speed)"
+        format_down = "🚫"
+
+}
+
+battery 0 {
+        format = "%status %percentage"
+        format_down = "No battery"
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_unk = "🔋?"
+        status_full = "🔋 FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+# run_watch DHCP {
+#         pidfile = "/var/run/dhclient*.pid"
+# }
+
+# run_watch VPNC {
+#         # file containing the PID of a vpnc process
+#         pidfile = "/var/run/vpnc/pid"
+# }
+
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+tztime date{
+        # format = "%Y-%m-%d %H:%M:%S"
+        format = "%a, %d %b %Y"
+        # hide_if_equals_localtime = true
+}
+tztime time{
+        format = "%I:%M:%S %p"
+}
+
+tztime berlin {
+        format = "%Y-%m-%d %H:%M:%S %Z"
+        timezone = "Europe/Berlin"
+}
+
+load {
+        format = "%5min"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/temp1_input"
+}
+
+memory {
+        format = "%used"
+        threshold_degraded = "30%"
+        format_degraded = "MEMORY: %free"
+}
+
+disk "/" {
+        format = "🖴%free"
+
+}
+
+read_file uptime {
+        path = "/proc/uptime"
+}

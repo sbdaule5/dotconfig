@@ -3,6 +3,7 @@ set encoding=UTF-8
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set fdm=syntax
 set number
 syntax on
 
@@ -50,12 +51,15 @@ endfunction
 command Rename call RenameFile()
 
 " use leader key bindings
+nnoremap <Leader>r :Rename<CR>
 nnoremap <Leader>i i <ESC>r
-nnoremap <Leader><CR> i<CR><ESC>
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 nnoremap <Leader>s :buffer #<CR>
+nnoremap <Leader>p :r! xsel<CR>
 " insert a blank line 
-nnoremap ,o o<ESC>
+nnoremap <Leader><CR> i<CR><ESC>
+nnoremap <Leader>o o<ESC>
+nnoremap <Leader>O O<ESC>
 
 " adding configurations for nerdtree
 " autocmd VimEnter * NERDTree

@@ -51,11 +51,12 @@ set -o vi
 
 export LIBVA_DRIVER_NAME=iHD
 export PATH=$PATH:~/.local/bin
+export CDPATH=:~/Projects:~
 
 alias ls='ls --color=auto'
 alias cls='clear'
 PS1='[\u@\h \W]\$ '
 
-#screenfetch
+clear && neofetch --gap 10
 
 export QSYS_ROOTDIR="/home/arch/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
