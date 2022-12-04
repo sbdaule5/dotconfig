@@ -2,6 +2,8 @@
 
 # Setting the variables
 font pango:monospace 8
+focus_follows_mouse no
+floating_modifier $mod
 set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
 set $ws-right "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + 1))"
@@ -28,6 +30,14 @@ exec --no-startup-id touchegg
 
 # Keybindings
 
+# Extra keyboard keys
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +01% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -01% && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -1 && $refresh_i3status
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +1 && $refresh_i3status
+
 # F keys
 # bindsym Mod4+F1
 # bindsym Mod4+Shift+F1
@@ -38,7 +48,7 @@ exec --no-startup-id touchegg
 # bindsym Mod4+F3
 # bindsym Mod4+Shift+F3
 
-# bindsym Mod4+F4
+bindsym Mod4+F4 exec ~/.local/bin/dmenushutdown --no-startup-id
 # bindsym Mod4+Shift+F4
 
 # bindsym Mod4+F5
@@ -166,7 +176,7 @@ bindsym Mod4+p exec --no-startup-id i3-msg workspace $ws-left
 # bindsym Mod4+Shift+\
 
 # Home row
- 
+
 # bindsym Mod4+CapsLock
 # bindsym Mod4+Shift+CapsLock
 
@@ -181,7 +191,7 @@ bindsym Mod4+s split v
 # bindsym Mod4+Shift+d
 
 bindsym Mod4+f fullscreen toggle
-# bindsym Mod4+Shift+f
+bindsym Mod4+Shift+f exec nautilus
 
 # bindsym Mod4+g
 # bindsym Mod4+Shift+g
@@ -205,7 +215,7 @@ bindsym Mod4+Shift+l move right
 # bindsym Mod4+Shift+'
 
 bindsym Mod4+Return exec urxvt
-# bindsym Mod4+Shift+Return
+bindsym Mod4+Shift+Return exec urxvt -b 0
 
 # Bottom row
 
@@ -223,7 +233,7 @@ bindsym Mod4+v split h
 # bindsym Mod4+Shift+v
 
 # bindsym Mod4+b
-# bindsym Mod4+Shift+b
+bindsym Mod4+Shift+b exec brave
 
 bindsym Mod4+n exec --no-startup-id i3-msg workspace $ws-right
 # bindsym Mod4+Shift+n
@@ -240,6 +250,27 @@ bindsym Mod4+Shift+m exec --no-startup-id ~/.local/bin/dmenuumount
 
 # bindsym Mod4+/
 # bindsym Mod4+Shift+/
+
+# The space key
+bindsym Mod4+Space workspace number $ws10
+
+# Shortcuts for common usage
+bindsym Mod1+Control+t exec urxvt
+bindsym Mod1+Control+k exec ~/.local/bin/dmenushutdown --no-startup-id
+bindsym Mod1+F4 kill
+
+# Arrow keys
+bindsym Mod4+Up floating toggle
+bindsym Mod4+Shift+Up focus parent
+
+bindsym Mod4+Down focus mode_toggle
+# bindsym Mod4+Shift+Down 
+
+bindsym Mod4+Left exec --no-startup-id i3-msg workspace $ws-left
+bindsym Mod4+Shift+Left exec --no-startup-id i3-msg move container to workspace $ws-left; exec i3-msg workspace $ws-left
+
+bindsym Mod4+Right exec --no-startup-id i3-msg workspace $ws-right
+bindsym Mod4+Shift+Right exec --no-startup-id i3-msg move container to workspace $ws-right; exec i3-msg workspace $ws-right
 
 # Adding a status bar
 bar {
