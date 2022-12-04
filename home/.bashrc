@@ -20,14 +20,8 @@ HISTFILESIZE=2000
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
     
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
+# set a fancy prompt 
+color_prompt=yes
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -42,10 +36,12 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+PS1="\n\033[0;35m\342\224\214\033[1;35m($(if [[ ${EUID} == 0 ]]; then echo '\033[01;31m\h'; else echo '\033[32m\u@\h'; fi)\033[1;35m)\342\224\200(\e[1;30m\w\e[1;35m)\n\342\224\224\342\224\200(\e[1;33m\W\e[1;35m)\342\224\200] $ \033[0m"
+
 unset color_prompt force_color_prompt
 set -o vi
 
@@ -55,7 +51,6 @@ export CDPATH=:~/Projects:~
 
 alias ls='ls --color=auto'
 alias cls='clear'
-PS1='[\u@\h \W]\$ '
 
 clear && neofetch --gap 10
 
