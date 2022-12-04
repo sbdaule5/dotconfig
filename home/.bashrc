@@ -53,5 +53,6 @@ alias ls='ls --color=auto'
 alias cls='clear'
 
 clear && neofetch --gap 10
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 export QSYS_ROOTDIR="/home/arch/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
