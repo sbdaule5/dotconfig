@@ -163,7 +163,7 @@ bindsym Mod4+Shift+r restart
 # bindsym Mod4+o
 # bindsym Mod4+Shift+o
 
-bindsym Mod4+p exec --no-startup-id i3-msg workspace $ws-left
+# bindsym Mod4+p 
 # bindsym Mod4+Shift+p
 
 # bindsym Mod4+[
@@ -235,17 +235,17 @@ bindsym Mod4+v split h
 # bindsym Mod4+b
 bindsym Mod4+Shift+b exec brave
 
-bindsym Mod4+n exec --no-startup-id i3-msg workspace $ws-right
+# bindsym Mod4+n 
 # bindsym Mod4+Shift+n
 
 # # Mount drives using dmenu
 bindsym Mod4+m exec --no-startup-id ~/.local/bin/dmenumount
 bindsym Mod4+Shift+m exec --no-startup-id ~/.local/bin/dmenuumount
 
-# bindsym Mod4+,
+bindsym Mod4+comma exec --no-startup-id i3-msg workspace $ws-left
 # bindsym Mod4+Shift+,
 
-# bindsym Mod4+.
+bindsym Mod4+period exec --no-startup-id i3-msg workspace $ws-right
 # bindsym Mod4+Shift+.
 
 # bindsym Mod4+/
