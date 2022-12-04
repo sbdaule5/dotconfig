@@ -166,10 +166,10 @@ bindsym Mod4+9 workspace number $ws9
 bindsym $mod+space workspace number $ws10
 
 bindsym Mod4+Left exec --no-startup-id i3-msg workspace $ws-left
-bindsym Mod4+p exec --no-startup-id i3-msg workspace $ws-left
+bindsym Mod4+comma exec --no-startup-id i3-msg workspace $ws-left
 #workspace number $ws1 #Prev
 bindsym Mod4+Right exec --no-startup-id i3-msg workspace $ws-right
-bindsym Mod4+n exec --no-startup-id i3-msg workspace $ws-right
+bindsym Mod4+period exec --no-startup-id i3-msg workspace $ws-right
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
