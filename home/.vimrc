@@ -176,6 +176,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'triglav/vim-visual-increment'
+Plug 'vim-scripts/DrawIt'
 
 
 call plug#end()
