@@ -1,12 +1,14 @@
-#
 # ~/.bashrc
 #
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+###############################################################################
+#                              History Settings                               #
+###############################################################################
+
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
@@ -19,6 +21,10 @@ HISTFILESIZE=2000
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
+
+###############################################################################
+#                           Setting Bash Prompt                               #
+###############################################################################
     
 # set a fancy prompt 
 color_prompt=yes
@@ -40,12 +46,16 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/' -e 's/[^(]*(\([^)]*\).*/\1/'
+}
+
 # single line prompt
 # PS1="\n\[\033[0;35m\]\342\224\243\[\033[1;35m\]($(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h'; else echo '\[\033[32m\]\u@\h'; fi)\[\033[1;35m\])\342\224\201(\[\e[1;33m\]\W\[\e[1;35m\])\342\224\253 \[\033[1;34m\]$ \[\033[0m\]"
 # Multiline prompt
-PS1="\n\[\e[0;35m\]\342\224\214\[\e[1;35m\](\[\e[32m\]\u@\h\[\e[1;35m\])\342\224\200(\[\e[1;30m\]\w\[\e[1;35m\])\n\[\e[0;35m\]\342\224\224\342\224\200\[\e[1;35m\](\[\e[1;33m\]\W\[\e[1;35m\])\342\224\200] $ \[\e[0m\]"
+PS1="\n\[\e[0;35m\]\342\224\214\[\e[1;35m\](\[\e[32m\]\u@\h\[\e[1;35m\])\342\224\200(\[\e[1;30m\]\w\[\e[1;35m\])\342\224\200(\[\e[1;36m\]\$(parse_git_branch)\[\e[1;35m\])\n\[\e[0;35m\]\342\224\224\342\224\200\[\e[1;35m\](\[\e[1;33m\]\W\[\e[1;35m\])\342\224\200] $ \[\e[0m\]"
 
-unset color_prompt force_color_prompt
 set -o vi
 
 export LIBVA_DRIVER_NAME=iHD
@@ -55,7 +65,7 @@ export CDPATH=:~/Projects:~
 alias ls='ls --color=auto'
 alias cls='clear'
 
-clear && neofetch --gap 10
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-
 export QSYS_ROOTDIR="/home/arch/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
+
+clear && neofetch --gap 10
