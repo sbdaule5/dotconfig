@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# This script is the SUDO_ASKPASS variable, meaning that it will be used as a
+# password prompt if needed.
+
+dmenu -nb black -nf black -p "$1" <&-
+# dmenu -p "$1" <&-
+
+# prompt="$1"
+# answer=$(st -o "-" -g 100x5 -c st-prompt sh -c "echo -n '$prompt: '; read -s ANSWER; echo \$ANSWER")
+# echo "${answer#*: }" | tr -d '\r'
