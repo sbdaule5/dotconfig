@@ -59,7 +59,7 @@ PS1="\n\[\e[0;35m\]\342\224\214\[\e[1;35m\](\[\e[32m\]\u@\h\[\e[1;35m\])\342\224
 set -o vi
 
 export LIBVA_DRIVER_NAME=iHD
-export PATH=$PATH:~/.local/bin:~/.local/flutter/bin
+export PATH=$PATH:~/.local/bin:~/.local/share/flutter/bin
 export CDPATH=:~/Projects:~
 
 alias ls='ls --color=auto'
