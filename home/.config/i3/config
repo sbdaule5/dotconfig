@@ -67,7 +67,7 @@ bindsym Mod4+F4 exec ~/.local/bin/dmenushutdown --no-startup-id
 bindsym Mod4+F9 exec --no-startup-id ~/.local/bin/dmenudict
 # bindsym Mod4+Shift+F9
 
-# bindsym Mod4+F10
+bindsym Mod4+F10 exec --no-startup-id ~/.local/bin/dmenuwifi
 # bindsym Mod4+Shift+F10
 
 # bindsym Mod4+F11
