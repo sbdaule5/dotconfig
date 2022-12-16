@@ -181,7 +181,7 @@ bindsym Mod4+Shift+r restart
 # bindsym Mod4+Shift+CapsLock
 
 bindsym Mod4+a exec --no-startup-id i3-dmenu-desktop
-# bindsym Mod4+Shift+a
+bindsym Mod4+Shift+a exec --no-startup-id dmenu_run
 
 # # split in vertical orientation
 bindsym Mod4+s split v
