@@ -1,0 +1,9 @@
+[submodule "home/.config/ranger/plugins/ranger-fzf-marks"]
+	path = home/.config/ranger/plugins/ranger-fzf-marks
+	url = https://github.com/laggardkernel/ranger-fzf-marks.git
+[submodule "home/.config/ranger/plugins/ranger-archives"]
+	path = home/.config/ranger/plugins/ranger-archives
+	url = https://github.com/maximtrp/ranger-archives.git
+[submodule "home/.config/ranger/plugins/ranger_devicons"]
+	path = home/.config/ranger/plugins/ranger_devicons
+	url = https://github.com/alexanderjeurissen/ranger_devicons
