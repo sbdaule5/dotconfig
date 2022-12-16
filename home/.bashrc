@@ -68,4 +68,5 @@ alias cls='clear'
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export QSYS_ROOTDIR="/home/arch/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
 
+export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 clear && neofetch --gap 10
