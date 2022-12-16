@@ -17,7 +17,6 @@ augroup END
 
 let mapleader = ","
 
-noremap w <C-w>
 noremap e <C-E>
 noremap y <C-Y>
 
@@ -59,11 +58,12 @@ endfunction
 command Rename call RenameFile()
 
 " use leader key bindings
+noremap <Leader>w <C-w>
 nnoremap <Leader>r :Rename<CR>
 nnoremap <Leader>i i <ESC>r
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 nnoremap <Leader>s :buffer #<CR>
-nnoremap <Leader>p :r! xsel<CR>
+nnoremap <Leader>p :r! xsel -o -b<CR>
 " insert a blank line 
 nnoremap <Leader><CR> i<CR><ESC>
 nnoremap <Leader>o o<ESC>
