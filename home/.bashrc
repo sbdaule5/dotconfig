@@ -18,6 +18,15 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Save history as soon as command is typed
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+
+# Keep bash history of different tmux sessions seperate
+if [[ $TERM == "tmux-256color" ]]
+then
+    export HISTFILE=/home/$USER/.tmux-bash-history/$(tmux display-message -p '#S')
+fi
+
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
