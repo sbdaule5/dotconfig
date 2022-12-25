@@ -73,6 +73,11 @@ nnoremap <Leader>p :r! xsel -o -b<CR>
 nnoremap <Leader><CR> i<CR><ESC>
 nnoremap <Leader>o o<ESC>
 nnoremap <Leader>O O<ESC>
+" Run will change based on project and will be retained due to Session.vim
+" x as in execute
+nnoremap <Leader>x Run
+nnoremap <Leader>X RunAlt
+nnoremap <Leader>z Build
 
 " adding configurations for nerdtree
 " autocmd VimEnter * NERDTree
