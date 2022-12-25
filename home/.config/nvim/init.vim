@@ -16,6 +16,7 @@ autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
 
 let mapleader = ","
+nmap <space> <Leader>
 
 noremap e <C-E>
 noremap y <C-Y>
@@ -82,6 +83,7 @@ nnoremap <Leader>z Build
 " adding configurations for nerdtree
 " autocmd VimEnter * NERDTree
 " autocmd BufEnter * NERDTreeMirror 
+"
 " Ranger in vim
 function RangerExplorer()
   exec "silent !ranger --choosefile=/tmp/vim_ranger_current_file " . expand("%:p:h")
@@ -91,7 +93,7 @@ function RangerExplorer()
   endif
   redraw!
 endfun
-map <Leader>x :call RangerExplorer()<CR>
+" map <Leader>x :call RangerExplorer()<CR>
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
