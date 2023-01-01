@@ -5,6 +5,8 @@ set softtabstop=4
 set shiftwidth=4
 set fdm=syntax
 set number
+set splitright
+set splitbelow
 syntax on
 " Setting cursor style based on mode
 let &t_SI = "\e[5 q"
@@ -170,12 +172,12 @@ let g:context_filetype#filetypes.svelte =
 let g:ft = ''
 
 call plug#begin()
-Plug('preservim/nerdtree')
+Plug 'preservim/nerdtree' 
 Plug 'preservim/nerdcommenter'
 Plug 'Shougo/context_filetype.vim'
-Plug('pangloss/vim-javascript')
-Plug('evanleck/vim-svelte')
-Plug('leafgarland/typescript-vim')
+Plug 'pangloss/vim-javascript' 
+Plug 'evanleck/vim-svelte' 
+Plug 'leafgarland/typescript-vim' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'codechips/coc-svelte', {'do': 'npm install'}
 Plug 'ryanoasis/vim-devicons'
@@ -192,8 +194,6 @@ Plug 'vim-scripts/DrawIt'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
-
-
 call plug#end()
 
 let g:lsc_auto_map = v:true
