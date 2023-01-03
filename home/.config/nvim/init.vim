@@ -8,6 +8,8 @@ set number
 set splitright
 set splitbelow
 syntax on
+set nocompatible
+filetype plugin on
 " Setting cursor style based on mode
 let &t_SI = "\e[5 q"
 let &t_EI = "\e[2 q"
@@ -67,6 +69,12 @@ command Rename call RenameFile()
 
 " use leader key bindings
 noremap <Leader>w <C-w>
+
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+
 nnoremap <Leader>r :Rename<CR>
 nnoremap <Leader>i i <ESC>r
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
@@ -78,9 +86,9 @@ nnoremap <Leader>o o<ESC>
 nnoremap <Leader>O O<ESC>
 " Run will change based on project and will be retained due to Session.vim
 " x as in execute
-nnoremap <Leader>x Run
-nnoremap <Leader>X RunAlt
-nnoremap <Leader>z Build
+nnoremap <Leader>x :Run<CR>
+nnoremap <Leader>X :RunAlt<CR>
+nnoremap <Leader>z :Build<CR>
 
 " adding configurations for nerdtree
 " autocmd VimEnter * NERDTree
@@ -96,6 +104,12 @@ function RangerExplorer()
   redraw!
 endfun
 " map <Leader>x :call RangerExplorer()<CR>
+
+
+let g:vimwiki_list = [{'path': '~/notes/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:vimwiki_global_ext = 0
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
@@ -117,7 +131,6 @@ let g:user_emmet_settings = {
 \ }
 
 " NerdCommenter
-filetype plugin on
 " NERDCommenter settings
 "
 let g:NERDSpaceDelims = 1
@@ -194,6 +207,7 @@ Plug 'vim-scripts/DrawIt'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 let g:lsc_auto_map = v:true
