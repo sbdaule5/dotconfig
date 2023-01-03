@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+# This script will check for existing socket in /tmp/ directory with tmux instance name, if it does not exist then it will launch nvim listining to that socket else it will open the file in existing instance
+
+if [ $TERM == 'tmux-256color' ]
+then
+	if [ -z $(ls /tmp | grep nvim-$(tmux display-message -p '#S')) ]
+	then
+		nvim --listen /tmp/nvim-$(tmux display-message -p '#S') "$@"
+	else
+		nvr --servername /tmp/nvim-$(tmux display-message -p '#S') --remote "$@"
+	fi
+else
+	nvim "$@"
+fi
+

@@ -104,7 +104,10 @@ export PATH=$PATH:~/.local/bin:~/.local/share/flutter/bin
 export CDPATH=:~/Projects:~
 
 alias ls='ls --color=auto'
+alias lsa='ls -a'
 alias cls='clear'
+alias nvim='tnvim'
+alias vi='/usr/bin/nvim'
 
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export QSYS_ROOTDIR="/home/arch/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
