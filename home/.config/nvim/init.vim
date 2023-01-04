@@ -76,6 +76,11 @@ nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
+nnoremap <Leader>H <C-w>H
+nnoremap <Leader>J <C-w>J
+nnoremap <Leader>K <C-w>K
+nnoremap <Leader>L <C-w>L
+
 nnoremap <Leader>r :Rename<CR>
 nnoremap <Leader>i i <ESC>r
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
@@ -91,6 +96,19 @@ nnoremap <Leader>x :Run<CR>
 nnoremap <Leader>X :RunAlt<CR>
 nnoremap <Leader>z :Build<CR>
 
+" enclose commands in visual mode using <Leader>e
+vnoremap <Leader>e( c()<ESC>P
+vnoremap <Leader>e) c()<ESC>P
+vnoremap <Leader>e[ c[]<ESC>P
+vnoremap <Leader>e] c[]<ESC>P
+vnoremap <Leader>e{ c{}<ESC>P
+vnoremap <Leader>e} c{}<ESC>P
+vnoremap <Leader>e< c<><ESC>P
+vnoremap <Leader>e> c<><ESC>P
+vnoremap <Leader>e" c""<ESC>P
+vnoremap <Leader>e' c''<ESC>P
+vnoremap <Leader>e` c``<ESC>P
+ 
 " adding configurations for nerdtree
 " autocmd VimEnter * NERDTree
 " autocmd BufEnter * NERDTreeMirror 
