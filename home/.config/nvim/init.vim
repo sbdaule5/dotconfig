@@ -10,6 +10,7 @@ set splitbelow
 syntax on
 set nocompatible
 filetype plugin on
+
 " Setting cursor style based on mode
 let &t_SI = "\e[5 q"
 let &t_EI = "\e[2 q"
@@ -19,8 +20,8 @@ au!
 autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
 
-let mapleader = ","
-nmap <space> <Leader>
+let mapleader = " "
+nmap , <Space>
 
 noremap e <C-E>
 noremap y <C-Y>
