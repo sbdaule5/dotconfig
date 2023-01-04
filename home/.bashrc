@@ -101,7 +101,6 @@ set -o vi
 
 export LIBVA_DRIVER_NAME=iHD
 export PATH=$PATH:~/.local/bin:~/.local/share/flutter/bin
-export CDPATH=:~/Projects:~
 
 alias ls='ls --color=auto'
 alias lsa='ls -a'
