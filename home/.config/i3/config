@@ -1,20 +1,15 @@
 # My i3 config file
 #
-# Includes
-include ~/.config/i3/gaps
-include ~/.config/i3/i3bar
-include ~/.config/i3/keybindings
-
 # Setting the variables
-font pango:monospace 8
+font pango:monospace 9
 focus_follows_mouse no
 floating_modifier Mod4
 set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
-set $ws-right "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + 1))"
-set $ws-left "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) - 1))"
+set $ws-right "$(i3-workspace next)"
+set $ws-left "$(i3-workspace prev)"
 # Setting modes
-set $mode_gaps Gaps
+set $mode_gaps             Gaps
 set $mode_gaps_outer       Outer Gaps
 set $mode_gaps_inner       Inner Gaps
 set $mode_gaps_vertical    Vertical Gaps
@@ -27,16 +22,16 @@ set $mode_gaps_right       Right Gaps
 # setting terminal emulator
 set $my_term termite
 # Define names for default workspaces
-set $ws1 "1"
-set $ws0 "0:🌐"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6:🎵"
-set $ws7 "7:🗒️"
-set $ws8 "8"
-set $ws9 "9"
+set $ws1 "1:💼 Projects"
+set $ws0 "0:🌐 Web"
+set $ws2 "2:🖊️ Temp"
+set $ws3 "3:🎮 Games"
+set $ws4 "4:📚 Academics"
+set $ws5 "5:⚙️ Config"
+set $ws6 "6:🎵 Music"
+set $ws7 "7:🗒️ Notes"
+set $ws8 "8:💬 Chat"
+set $ws9 "9:🖥️ Top"
 set $ws10 "10"
 
 # Programs to run on startup
@@ -47,11 +42,23 @@ exec --no-startup-id touchegg
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --not-startup-id picom -b
 
-gaps inner 5px
-gaps outer 5px
-gaps outer 5px
+gaps inner 6px
+# gaps outer 3px
 
+# for_window [class="Brave"] border pixel 2
+# for_window [title="gtop"] border pixel 2
+# for_window [title="irssi"] border pixel 2
+default_border pixel 2
+assign [class="Brave"] $ws0
+assign [title="gtop"] $ws9
+assign [title="irssi"] $ws8
 # exec "powerline-lemonbar --height 20 -- -t -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'"
+
+# Includes
+include ~/.config/i3/keybindings
+include ~/.config/i3/gaps
+include ~/.config/i3/i3bar
+
 
 # Resize mode
 mode "resize" {

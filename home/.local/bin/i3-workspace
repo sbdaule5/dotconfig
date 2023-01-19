@@ -1,0 +1,41 @@
+#!/usr/bin/bash
+
+# ws-right="$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + 1))"
+# ws-left="$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) - 1))"
+workspace_list=(
+"0:🌐 Web"
+"1:💼 Projects"
+"2:🖊️ Temp"
+"3:🎮 Games"
+"4:📚 Academics"
+"5:⚙️ Config"
+"6:🎵 Music"
+"7:🗒️ Notes"
+"8:💬 Chat"
+"9:🖥️ Top"
+"10"
+	)
+
+next(){
+	ws_current="$( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' )"
+	ws_right="$(echo $ws_current + 1 | bc)"
+	echo "${workspace_list[$ws_right]}"
+}
+prev(){
+	ws_current="$( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' )"
+	if [[ ws_current -eq 0 ]]
+	then
+		ws_left="$ws_current"
+	else
+		ws_left="$(echo $ws_current - 1 | bc)"
+	fi
+	echo "${workspace_list[$ws_left]}"
+}
+
+if [ $1 == "next" ]
+then
+	next
+elif [ $1 == "prev" ]
+then
+	prev
+fi
