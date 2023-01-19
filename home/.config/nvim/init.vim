@@ -7,6 +7,8 @@ set fdm=syntax
 set number
 set splitright
 set splitbelow
+set laststatus=3
+set smartcase
 syntax on
 set nocompatible
 filetype plugin on
@@ -95,6 +97,8 @@ nnoremap <Leader>O O<ESC>
 nnoremap <Leader>x :Run<CR>
 nnoremap <Leader>X :RunAlt<CR>
 nnoremap <Leader>z :Build<CR>
+" use leader / to stop highlighting
+nnoremap <Leader>/ :noh<CR>
 
 " enclose commands in visual mode using <Leader>e
 vnoremap <Leader>e( c()<ESC>P
@@ -129,6 +133,7 @@ let g:vimwiki_list = [{'path': '~/notes/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:vimwiki_global_ext = 0
+
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
