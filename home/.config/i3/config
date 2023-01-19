@@ -1,29 +1,40 @@
 # My i3 config file
+#
+# Includes
+include ~/.config/i3/gaps
+include ~/.config/i3/i3bar
+include ~/.config/i3/keybindings
 
 # Setting the variables
 font pango:monospace 8
 focus_follows_mouse no
-floating_modifier $mod
+floating_modifier Mod4
 set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
 set $ws-right "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + 1))"
 set $ws-left "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) - 1))"
 # Setting modes
 set $mode_gaps Gaps
-set $mode_gaps_outer Outer Gaps
-set $mode_gaps_inner Inner Gaps
+set $mode_gaps_outer       Outer Gaps
+set $mode_gaps_inner       Inner Gaps
+set $mode_gaps_vertical    Vertical Gaps
+set $mode_gaps_horizontal  Horizontal Gaps
+set $mode_gaps_top         Top Gaps
+set $mode_gaps_bottom      Bottom Gaps
+set $mode_gaps_left        Left Gaps
+set $mode_gaps_right       Right Gaps
 
 # setting terminal emulator
 set $my_term termite
 # Define names for default workspaces
 set $ws1 "1"
-set $ws0 "0"
+set $ws0 "0:🌐"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
+set $ws6 "6:🎵"
+set $ws7 "7:🗒️"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
@@ -36,271 +47,9 @@ exec --no-startup-id touchegg
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --not-startup-id picom -b
 
-
-# Keybindings
-
-# Extra keyboard keys
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +01% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -01% && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -1 && $refresh_i3status
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +1 && $refresh_i3status
-bindsym Print exec --no-startup-id scrot ~/Pictures/screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png && notify-send "Screenshot captured"
-bindsym --release Shift+Print exec scrot -s 'screenshot-%Y-%m-%d-%H-%M-%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
-
-# F keys
-# bindsym Mod4+F1
-# bindsym Mod4+Shift+F1
-
-# bindsym Mod4+F2
-# bindsym Mod4+Shift+F2
-
-# bindsym Mod4+F3
-# bindsym Mod4+Shift+F3
-
-bindsym Mod4+F4 exec ~/.local/bin/dmenushutdown --no-startup-id
-# bindsym Mod4+Shift+F4
-
-# bindsym Mod4+F5
-# bindsym Mod4+Shift+F5
-
-# bindsym Mod4+F6
-# bindsym Mod4+Shift+F6
-
-# bindsym Mod4+F7
-# bindsym Mod4+Shift+F7
-
-# bindsym Mod4+F8
-# bindsym Mod4+Shift+F8
-
-# Finding word meaning using dmenu
-bindsym Mod4+F9 exec --no-startup-id ~/.local/bin/dmenudict
-# bindsym Mod4+Shift+F9
-
-bindsym Mod4+F10 exec --no-startup-id ~/.local/bin/dmenuwifi
-# bindsym Mod4+Shift+F10
-
-# bindsym Mod4+F11
-# bindsym Mod4+Shift+F11
-
-# bindsym Mod4+F12
-# bindsym Mod4+Shift+F12
-
-# Inserting emojies and unicode characters
-bindsym Mod4+Insert exec --no-startup-id ~/.local/bin/dmenuunicode
-bindsym Mod4+Shift+Insert exec --no-startup-id ~/.local/bin/dmenuunicode a
-
-# bindsym Mod4+Home
-# bindsym Mod4+Shift+Home
-
-# bindsym Mod4+End
-# bindsym Mod4+Shift+End
-
-# bindsym Mod4+Delete
-# bindsym Mod4+Shift+Delete
-
-
-# Number key row
-# bindsym Mod4+`
-# bindsym Mod4+Shift+`
-
-bindsym Mod4+1 workspace number $ws1
-bindsym Mod4+Shift+1 move container to workspace number $ws1
-
-bindsym Mod4+2 workspace number $ws2
-bindsym Mod4+Shift+2 move container to workspace number $ws2
-
-bindsym Mod4+3 workspace number $ws3
-bindsym Mod4+Shift+3 move container to workspace number $ws3
-
-bindsym Mod4+4 workspace number $ws4
-bindsym Mod4+Shift+4 move container to workspace number $ws4
-
-bindsym Mod4+5 workspace number $ws5
-bindsym Mod4+Shift+5 move container to workspace number $ws5
-
-bindsym Mod4+6 workspace number $ws6
-bindsym Mod4+Shift+6 move container to workspace number $ws6
-
-bindsym Mod4+7 workspace number $ws7
-bindsym Mod4+Shift+7 move container to workspace number $ws7
-
-bindsym Mod4+8 workspace number $ws8
-bindsym Mod4+Shift+8 move container to workspace number $ws8
-
-bindsym Mod4+9 workspace number $ws9
-bindsym Mod4+Shift+9 move container to workspace number $ws9
-
-bindsym Mod4+0 workspace number $ws0
-bindsym Mod4+Shift+0 move container to workspace number $ws0
-
-# bindsym Mod4+-
-# bindsym Mod4+Shift+-
-
-# bindsym Mod4+Backspace
-# bindsym Mod4+Shift+Backspace
-
-# Upper row
-
-# bindsym Mod4+Tab
-# bindsym Mod4+Shift+Tab
-
-bindsym Mod4+q layout stacking
-# bindsym Mod4+Shift+q
-
-bindsym Mod4+w layout tabbed
-# bindsym Mod4+Shift+w
-
-bindsym Mod4+e layout toggle split
-bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-
-bindsym Mod4+r mode "resize"
-bindsym Mod4+Shift+r restart
-
-# bindsym Mod4+t
-bindsym Mod4+Shift+t exec $my_term -e gtop
-
-# bindsym Mod4+y
-# bindsym Mod4+Shift+y
-
-# bindsym Mod4+u
-# bindsym Mod4+Shift+u
-
-# bindsym Mod4+i
-bindsym Mod4+Shift+i exec $my_term -e irssi
-
-# bindsym Mod4+o
-# bindsym Mod4+Shift+o
-
-# bindsym Mod4+p
-# bindsym Mod4+Shift+p
-
-# bindsym Mod4+[
-# bindsym Mod4+Shift+[
-
-# bindsym Mod4+]
-# bindsym Mod4+Shift+]
-
-# bindsym Mod4+\
-# bindsym Mod4+Shift+\
-
-# Home row
-
-# bindsym Mod4+CapsLock
-# bindsym Mod4+Shift+CapsLock
-
-bindsym Mod4+a exec --no-startup-id i3-dmenu-desktop
-bindsym Mod4+Shift+a exec --no-startup-id dmenu_run
-
-# # split in vertical orientation
-bindsym Mod4+s split v
-# bindsym Mod4+Shift+s
-
-# bindsym Mod4+d
-# bindsym Mod4+Shift+d
-
-bindsym Mod4+f fullscreen toggle
-bindsym Mod4+Shift+f exec nautilus
-
-bindsym Mod4+g mode "$mode_gaps"
-# bindsym Mod4+Shift+g
-
-bindsym Mod4+h focus left
-bindsym Mod4+Shift+h move left
-
-bindsym Mod4+j focus down
-bindsym Mod4+Shift+j move down
-
-bindsym Mod4+k focus up
-bindsym Mod4+Shift+k move up
-
-bindsym Mod4+l focus right
-bindsym Mod4+Shift+l move right
-
-# bindsym Mod4+;
-# bindsym Mod4+Shift+;
-
-# bindsym Mod4+'
-# bindsym Mod4+Shift+'
-
-bindsym Mod4+Return exec $my_term
-bindsym Mod4+Shift+Return exec $my_term
-
-# Bottom row
-
-# bindsym Mod4+z
-# bindsym Mod4+Shift+z
-
-# bindsym Mod4+x
-bindsym Mod4+Shift+x exec $my_term -e ranger
-
-# bindsym Mod4+c
-bindsym Mod4+Shift+c reload
-
-# # split in vertical orientation
-bindsym Mod4+v split h
-# bindsym Mod4+Shift+v
-
-# bindsym Mod4+b
-bindsym Mod4+Shift+b exec brave
-
-# bindsym Mod4+n
-# bindsym Mod4+Shift+n
-
-# # Mount drives using dmenu
-bindsym Mod4+m exec --no-startup-id ~/.local/bin/dmenumount
-bindsym Mod4+Shift+m exec --no-startup-id ~/.local/bin/dmenuumount
-
-bindsym Mod4+comma exec --no-startup-id i3-msg workspace $ws-left
-bindsym Mod4+Shift+comma exec --no-startup-id i3-msg move container to workspace $ws-left; exec i3-msg workspace $ws-left
-
-bindsym Mod4+period exec --no-startup-id i3-msg workspace $ws-right
-bindsym Mod4+Shift+period exec --no-startup-id i3-msg move container to workspace $ws-right; exec i3-msg workspace $ws-right
-
-# bindsym Mod4+/
-# bindsym Mod4+Shift+/
-
-# The space key
-bindsym Mod4+Space workspace number $ws10
-
-# Shortcuts for common usage
-bindsym Mod1+Control+t exec urxvt
-bindsym Mod1+Control+k exec ~/.local/bin/dmenushutdown --no-startup-id
-bindsym Mod1+F4 kill
-
-# Arrow keys
-bindsym Mod4+Up floating toggle
-bindsym Mod4+Shift+Up focus parent
-
-bindsym Mod4+Down focus mode_toggle
-# bindsym Mod4+Shift+Down
-
-bindsym Mod4+Left exec --no-startup-id i3-msg workspace $ws-left
-bindsym Mod4+Shift+Left exec --no-startup-id i3-msg move container to workspace $ws-left; exec i3-msg workspace $ws-left
-
-bindsym Mod4+Right exec --no-startup-id i3-msg workspace $ws-right
-bindsym Mod4+Shift+Right exec --no-startup-id i3-msg move container to workspace $ws-right; exec i3-msg workspace $ws-right
-
-# Adding a status bar
-bar {
-    i3bar_command i3bar --transparency
-    status_command i3status
-    position top
-    strip_workspace_numbers yes
-    colors{
-        background #000000AA
-        
-        focused_workspace #000000AA #333333FF #FFFFFFFF
-        active_workspace #000000AA #333333FF #FFFFFFFF
-        inactive_workspace #000000AA #000000AA #AAAAAAFF
-    }
-}
-
 gaps inner 5px
 gaps outer 5px
-gaps bottom 0px
+gaps outer 5px
 
 # exec "powerline-lemonbar --height 20 -- -t -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'"
 
@@ -334,124 +83,4 @@ mode "resize" {
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 
-}
-
-mode "$mode_gaps" {
-    bindsym o      mode "$mode_gaps_outer"
-    bindsym i      mode "$mode_gaps_inner"
-    bindsym h      mode "Horizontal gaps"
-    bindsym v      mode "Vertical gaps"
-    bindsym t      mode "Top gaps"
-    bindsym b      mode "Bottom gaps"
-    bindsym l      mode "Left gaps"
-    bindsym r      mode "Right gaps"
-
-    bindsym Mod4+g mode "default"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-    bindsym plus  gaps inner current plus 5
-    bindsym minus gaps inner current minus 5
-    bindsym 0     gaps inner current set 0
-
-    bindsym Shift+plus  gaps inner all plus 5
-    bindsym Shift+minus gaps inner all minus 5
-    bindsym Shift+0     gaps inner all set 0
-
-    bindsym Mod4+g mode "$mode_gaps"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-
-}
-mode "$mode_gaps_outer" {
-    bindsym plus  gaps outer current plus 5
-    bindsym minus gaps outer current minus 5
-    bindsym 0     gaps outer current set 0
-
-    bindsym Shift+plus  gaps outer all plus 5
-    bindsym Shift+minus gaps outer all minus 5
-    bindsym Shift+0     gaps outer all set 0
-
-    bindsym Mod4+g mode "$mode_gaps"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-mode "Horizontal gaps" {
-    bindsym plus  gaps horizontal current plus 5
-    bindsym minus gaps horizontal current minus 5
-    bindsym 0     gaps horizontal current set 0
-
-    bindsym Shift+plus  gaps horizontal all plus 5
-    bindsym Shift+minus gaps horizontal all minus 5
-    bindsym Shift+0     gaps horizontal all set 0
-
-    bindsym Mod4+g mode "$mode_gaps"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-mode "Vertical gaps" {
-    bindsym plus  gaps vertical current plus 5
-    bindsym minus gaps vertical current minus 5
-    bindsym 0     gaps vertical current set 0
-
-    bindsym Shift+plus  gaps vertical all plus 5
-    bindsym Shift+minus gaps vertical all minus 5
-    bindsym Shift+0     gaps vertical all set 0
-
-    bindsym Mod4+g mode "$mode_gaps"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-mode "Top gaps" {
-    bindsym plus  gaps top current plus 5
-    bindsym minus gaps top current minus 5
-    bindsym 0     gaps top current set 0
-
-    bindsym Shift+plus  gaps top all plus 5
-    bindsym Shift+minus gaps top all minus 5
-    bindsym Shift+0     gaps top all set 0
-
-    bindsym Mod4+g mode "$mode_gaps"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-mode "Bottom gaps" {
-    bindsym plus  gaps bottom current plus 5
-    bindsym minus gaps bottom current minus 5
-    bindsym 0     gaps bottom current set 0
-
-    bindsym Shift+plus  gaps bottom all plus 5
-    bindsym Shift+minus gaps bottom all minus 5
-    bindsym Shift+0     gaps bottom all set 0
-
-    bindsym Mod4+g mode "$mode_gaps"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-mode "Left gaps" {
-    bindsym plus  gaps left current plus 5
-    bindsym minus gaps left current minus 5
-    bindsym 0     gaps left current set 0
-
-    bindsym Shift+plus  gaps left all plus 5
-    bindsym Shift+minus gaps left all minus 5
-    bindsym Shift+0     gaps left all set 0
-
-    bindsym Mod4+g mode "$mode_gaps"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-mode "Right gaps" {
-    bindsym plus  gaps right current plus 5
-    bindsym minus gaps right current minus 5
-    bindsym 0     gaps right current set 0
-
-    bindsym Shift+plus  gaps right all plus 5
-    bindsym Shift+minus gaps right all minus 5
-    bindsym Shift+0     gaps right all set 0
-
-    bindsym Mod4+g mode "$mode_gaps"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
 }

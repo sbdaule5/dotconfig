@@ -1,0 +1,14 @@
+# config for i3bar
+bar {
+    i3bar_command i3bar --transparency
+    status_command i3status
+    position top
+    strip_workspace_numbers yes
+    colors{
+        background #000000AA
+
+        focused_workspace #000000AA #333333FF #FFFFFFFF
+        active_workspace #000000AA #333333FF #FFFFFFFF
+        inactive_workspace #000000AA #000000AA #AAAAAAFF
+    }
+}
