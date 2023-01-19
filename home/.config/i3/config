@@ -9,9 +9,9 @@ set $refresh_i3status killall -SIGUSR1 i3status
 set $ws-right "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + 1))"
 set $ws-left "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) - 1))"
 # Setting modes
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps Gaps
+set $mode_gaps_outer Outer Gaps
+set $mode_gaps_inner Inner Gaps
 
 # setting terminal emulator
 set $my_term termite
@@ -285,69 +285,173 @@ bindsym Mod4+Shift+Right exec --no-startup-id i3-msg move container to workspace
 
 # Adding a status bar
 bar {
-        status_command i3status
+    i3bar_command i3bar --transparency
+    status_command i3status
+    position top
+    strip_workspace_numbers yes
+    colors{
+        background #000000AA
+        
+        focused_workspace #000000AA #333333FF #FFFFFFFF
+        active_workspace #000000AA #333333FF #FFFFFFFF
+        inactive_workspace #000000AA #000000AA #AAAAAAFF
+    }
 }
+
+gaps inner 5px
+gaps outer 5px
+gaps bottom 0px
+
 # exec "powerline-lemonbar --height 20 -- -t -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'"
 
 # Resize mode
 mode "resize" {
-        bindsym h resize shrink width 1 px or 1 ppt
-        bindsym j resize grow height 1 px or 1 ppt
-        bindsym k resize shrink height 1 px or 1 ppt
-        bindsym l resize grow width 1 px or 1 ppt
+    bindsym h resize shrink width 1 px or 1 ppt
+    bindsym j resize grow height 1 px or 1 ppt
+    bindsym k resize shrink height 1 px or 1 ppt
+    bindsym l resize grow width 1 px or 1 ppt
 
-        bindsym Mod4+h focus left
-        bindsym Mod4+Shift+h move left
+    bindsym Mod4+h focus left
+    bindsym Mod4+Shift+h move left
 
-        bindsym Mod4+j focus down
-        bindsym Mod4+Shift+j move down
+    bindsym Mod4+j focus down
+    bindsym Mod4+Shift+j move down
 
-        bindsym Mod4+k focus up
-        bindsym Mod4+Shift+k move up
+    bindsym Mod4+k focus up
+    bindsym Mod4+Shift+k move up
 
-        bindsym Mod4+l focus right
-        bindsym Mod4+Shift+l move right
+    bindsym Mod4+l focus right
+    bindsym Mod4+Shift+l move right
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 
 }
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym h      mode "Horizontal gaps"
+    bindsym v      mode "Vertical gaps"
+    bindsym t      mode "Top gaps"
+    bindsym b      mode "Bottom gaps"
+    bindsym l      mode "Left gaps"
+    bindsym r      mode "Right gaps"
+
+    bindsym Mod4+g mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Mod4+g mode "$mode_gaps"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Mod4+g mode "$mode_gaps"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+mode "Horizontal gaps" {
+    bindsym plus  gaps horizontal current plus 5
+    bindsym minus gaps horizontal current minus 5
+    bindsym 0     gaps horizontal current set 0
+
+    bindsym Shift+plus  gaps horizontal all plus 5
+    bindsym Shift+minus gaps horizontal all minus 5
+    bindsym Shift+0     gaps horizontal all set 0
+
+    bindsym Mod4+g mode "$mode_gaps"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+mode "Vertical gaps" {
+    bindsym plus  gaps vertical current plus 5
+    bindsym minus gaps vertical current minus 5
+    bindsym 0     gaps vertical current set 0
+
+    bindsym Shift+plus  gaps vertical all plus 5
+    bindsym Shift+minus gaps vertical all minus 5
+    bindsym Shift+0     gaps vertical all set 0
+
+    bindsym Mod4+g mode "$mode_gaps"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+mode "Top gaps" {
+    bindsym plus  gaps top current plus 5
+    bindsym minus gaps top current minus 5
+    bindsym 0     gaps top current set 0
+
+    bindsym Shift+plus  gaps top all plus 5
+    bindsym Shift+minus gaps top all minus 5
+    bindsym Shift+0     gaps top all set 0
+
+    bindsym Mod4+g mode "$mode_gaps"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+mode "Bottom gaps" {
+    bindsym plus  gaps bottom current plus 5
+    bindsym minus gaps bottom current minus 5
+    bindsym 0     gaps bottom current set 0
+
+    bindsym Shift+plus  gaps bottom all plus 5
+    bindsym Shift+minus gaps bottom all minus 5
+    bindsym Shift+0     gaps bottom all set 0
+
+    bindsym Mod4+g mode "$mode_gaps"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+mode "Left gaps" {
+    bindsym plus  gaps left current plus 5
+    bindsym minus gaps left current minus 5
+    bindsym 0     gaps left current set 0
+
+    bindsym Shift+plus  gaps left all plus 5
+    bindsym Shift+minus gaps left all minus 5
+    bindsym Shift+0     gaps left all set 0
+
+    bindsym Mod4+g mode "$mode_gaps"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+mode "Right gaps" {
+    bindsym plus  gaps right current plus 5
+    bindsym minus gaps right current minus 5
+    bindsym 0     gaps right current set 0
+
+    bindsym Shift+plus  gaps right all plus 5
+    bindsym Shift+minus gaps right all minus 5
+    bindsym Shift+0     gaps right all set 0
+
+    bindsym Mod4+g mode "$mode_gaps"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
