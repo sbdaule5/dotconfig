@@ -1,4 +1,4 @@
-# My i3 config file 
+# My i3 config file
 
 # Setting the variables
 font pango:monospace 8
@@ -8,6 +8,13 @@ set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
 set $ws-right "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + 1))"
 set $ws-left "$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) - 1))"
+# Setting modes
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+# setting terminal emulator
+set $my_term termite
 # Define names for default workspaces
 set $ws1 "1"
 set $ws0 "0"
@@ -27,6 +34,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -e -p def
 exec --no-startup-id nm-applet
 exec --no-startup-id touchegg
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --not-startup-id picom -b
 
 
 # Keybindings
@@ -152,7 +160,7 @@ bindsym Mod4+r mode "resize"
 bindsym Mod4+Shift+r restart
 
 # bindsym Mod4+t
-# bindsym Mod4+Shift+t
+bindsym Mod4+Shift+t exec $my_term -e gtop
 
 # bindsym Mod4+y
 # bindsym Mod4+Shift+y
@@ -161,12 +169,12 @@ bindsym Mod4+Shift+r restart
 # bindsym Mod4+Shift+u
 
 # bindsym Mod4+i
-# bindsym Mod4+Shift+i
+bindsym Mod4+Shift+i exec $my_term -e irssi
 
 # bindsym Mod4+o
 # bindsym Mod4+Shift+o
 
-# bindsym Mod4+p 
+# bindsym Mod4+p
 # bindsym Mod4+Shift+p
 
 # bindsym Mod4+[
@@ -196,7 +204,7 @@ bindsym Mod4+s split v
 bindsym Mod4+f fullscreen toggle
 bindsym Mod4+Shift+f exec nautilus
 
-# bindsym Mod4+g
+bindsym Mod4+g mode "$mode_gaps"
 # bindsym Mod4+Shift+g
 
 bindsym Mod4+h focus left
@@ -217,8 +225,8 @@ bindsym Mod4+Shift+l move right
 # bindsym Mod4+'
 # bindsym Mod4+Shift+'
 
-bindsym Mod4+Return exec urxvt
-bindsym Mod4+Shift+Return exec urxvt -b 0
+bindsym Mod4+Return exec $my_term
+bindsym Mod4+Shift+Return exec $my_term
 
 # Bottom row
 
@@ -226,7 +234,7 @@ bindsym Mod4+Shift+Return exec urxvt -b 0
 # bindsym Mod4+Shift+z
 
 # bindsym Mod4+x
-# bindsym Mod4+Shift+x
+bindsym Mod4+Shift+x exec $my_term -e ranger
 
 # bindsym Mod4+c
 bindsym Mod4+Shift+c reload
@@ -238,7 +246,7 @@ bindsym Mod4+v split h
 # bindsym Mod4+b
 bindsym Mod4+Shift+b exec brave
 
-# bindsym Mod4+n 
+# bindsym Mod4+n
 # bindsym Mod4+Shift+n
 
 # # Mount drives using dmenu
@@ -267,7 +275,7 @@ bindsym Mod4+Up floating toggle
 bindsym Mod4+Shift+Up focus parent
 
 bindsym Mod4+Down focus mode_toggle
-# bindsym Mod4+Shift+Down 
+# bindsym Mod4+Shift+Down
 
 bindsym Mod4+Left exec --no-startup-id i3-msg workspace $ws-left
 bindsym Mod4+Shift+Left exec --no-startup-id i3-msg move container to workspace $ws-left; exec i3-msg workspace $ws-left
@@ -279,6 +287,7 @@ bindsym Mod4+Shift+Right exec --no-startup-id i3-msg move container to workspace
 bar {
         status_command i3status
 }
+# exec "powerline-lemonbar --height 20 -- -t -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'"
 
 # Resize mode
 mode "resize" {
@@ -310,4 +319,35 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 
+}
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
