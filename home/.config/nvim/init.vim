@@ -98,7 +98,7 @@ nnoremap <Leader>x :Run<CR>
 nnoremap <Leader>X :RunAlt<CR>
 nnoremap <Leader>z :Build<CR>
 " use leader / to stop highlighting
-nnoremap <Leader>/ :noh<CR>
+nnoremap <silent> <Leader>/ :noh<CR>
 
 " enclose commands in visual mode using <Leader>e
 vnoremap <Leader>e( c()<ESC>P
@@ -164,33 +164,6 @@ let g:NERDCustomDelimiters = { 'html': { 'left': '' } }
 " Align comment delimiters to the left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
 
-"fu! NERDCommenter_before()
-  "if (&ft == 'html') || (&ft == 'svelte')
-    "let g:ft = &ft
-    "let cfts = context_filetype#get_filetypes()
-    "if len(cfts) > 0
-      "if cfts[0] == 'svelte'
-        "let cft = 'html'
-      "elseif cfts[0] == 'scss'
-        "let cft = 'css'
-      "else
-        "let cft = cfts[0]
-      "endif
-      "exe
-      "'setf '
-      ". cft
-    "endif
-  "endif
-"endfu
-
-"fu!
-  "NERDCommenter_after()
-  "if(g:ft == 'html') || (g:ft == 'svelte') 
-    "exec 'setf' . g:ft
-    "let g:ft = ''
-  "endif
-"endfu
-
 if !exists('g:context_filetype#same_filetypes')
     let g:context_filetype#filetypes = {}
 endif
@@ -232,6 +205,7 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
 Plug 'vimwiki/vimwiki'
+Plug 'lilydjwg/colorizer'
 call plug#end()
 
 let g:lsc_auto_map = v:true
