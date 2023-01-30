@@ -34,10 +34,12 @@ fi
 ###############################################################################
 #                           Setting Bash Prompt                               #
 ###############################################################################
-    
-# set a fancy prompt 
+
+# set a fancy prompt
 color_prompt=yes
 force_color_prompt=yes
+prompt_style=full
+export prompt_dir_style
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -62,9 +64,26 @@ parse_git_branch() {
 
 echo_if_git() {
     if [[ -n $(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/' -e 's/[^(]*(\([^)]*\).*/\1/') ]]; then echo -n "$1"; else echo -n ""; fi
-#  
+# 
 }
-
+echo_if_venv(){
+    if [[ -n $VIRTUAL_ENV ]]; then echo -n "$1"; else echo -n ""; fi
+}
+parse_venv() {
+    echo $VIRTUAL_ENV | awk -F '/' '{print $NF}'
+}
+parse_pwd(){
+    case $prompt_style in
+        full)
+            case $PWD/ in
+                /home/*) echo -n $(pwd | sed -e 's/^\/home\/arch/~/' -e 's/\//  /g');;
+                *) pwd;;
+            esac;;
+        short) echo -n `pwd | awk -F '/' '{print $NF}'`;;
+    esac
+}
+# 
+# 
 export emulator_shell_prompt="powerline"
 export tty_shell_prompt="multiline"
 if [ -n "$DISPLAY" ];
@@ -77,7 +96,7 @@ then
         "multiline") PS1="\n\[\e[0;35m\]\342\224\214\[\e[1;35m\](\[\e[32m\]\u@\h\[\e[1;35m\])\342\224\200(\[\e[1;30m\]\w\[\e[1;35m\])\$(echo_if_git '\342\224\200(' )\[\e[1;36m\]\$(parse_git_branch)\[\e[1;35m\]\$(echo_if_git ')')\n\[\e[0;35m\]\342\224\224\342\224\200\[\e[1;35m\](\[\e[1;33m\]\W\[\e[1;35m\])\342\224\200] $ \[\e[0m\]"
             ;;
         # Powerline Prompt
-        "powerline") PS1="\[\e[1;103;30m\] \u \[\e[47;33m\]\[\e[47;30;7m\]\[\e[0;1;34;100m\] \h \[\e[7;100;92m\]\[\e[0;1;30;102m\]\$(echo_if_git '  ')\$(parse_git_branch)\$(echo_if_git ' ')\[\e[7;30m\]\[\e[0;1;100;35m\] \w \[\e[0;1;30;104m\] \[\e[30m\]$ \[\e[49;34m\] \[\e[0m\] "
+        "powerline") PS1="\[\e[1;103;30m\] \u \[\e[47;33m\]\[\e[0;1;33;47m\] \h \[\e[7;47;92m\]\[\e[0;1;30;102m\]\$(echo_if_git '  ')\$(parse_git_branch)\$(echo_if_git ' ')\[\e[7;34m\]\[\e[0;1;30;104m\]\$(echo_if_venv '   ')\$(parse_venv)\$(echo_if_venv ' ')\[\e[7;30m\]\[\e[0;1;100;35m\] \$(parse_pwd) \[\e[0;1;30;104m\] \[\e[30m\]$ \[\e[49;34m\] \[\e[0m\] "
             ;;
     esac
 else
@@ -89,7 +108,7 @@ else
         "multiline") PS1="\n\[\e[0;35m\]\342\224\214\[\e[1;35m\](\[\e[32m\]\u@\h\[\e[1;35m\])\342\224\200(\[\e[1;30m\]\w\[\e[1;35m\])\$(echo_if_git '\342\224\200(' )\[\e[1;36m\]\$(parse_git_branch)\[\e[1;35m\]\$(echo_if_git ')')\n\[\e[0;35m\]\342\224\224\342\224\200\[\e[1;35m\](\[\e[1;33m\]\W\[\e[1;35m\])\342\224\200] $ \[\e[0m\]"
             ;;
         # Powerline Prompt
-        "powerline") PS1="\[\e[1;103;30m\] \u \[\e[47;33m\]\[\e[47;30;7m\]\[\e[0;1;34;100m\] \h \[\e[7;100;92m\]\[\e[0;1;30;102m\]\$(echo_if_git '  ')\$(parse_git_branch)\$(echo_if_git ' ')\[\e[7;30m\]\[\e[0;1;100;35m\] \w \[\e[0;1;30;104m\] \[\e[30m\]$ \[\e[49;38;5;4m\] \[\e[0m\] "
+        "powerline") PS1="\[\e[1;103;30m\] \u \[\e[47;33m\]\[\e[0;1;33;47m\] \h \[\e[7;47;92m\]\[\e[0;1;30;102m\]\$(echo_if_git '  ')\$(parse_git_branch)\$(echo_if_git ' ')\[\e[7;34m\]\[\e[0;1;30;104m\]\$(echo_if_venv '   ')\$(parse_venv)\$(echo_if_venv ' ')\[\e[7;30m\]\[\e[0;1;100;35m\] \$(parse_pwd) \[\e[0;1;30;104m\] \[\e[30m\]$ \[\e[49;34m\] \[\e[0m\] "
             ;;
     esac
 fi
@@ -105,7 +124,7 @@ export EDITOR=tnvim
 export VISUAL=tnvim
 
 alias ls='ls --color=auto'
-alias lsa='ls -a'
+alias lsa='ls -la'
 alias cls='clear'
 alias nvim='tnvim'
 alias vi='/usr/bin/nvim'
