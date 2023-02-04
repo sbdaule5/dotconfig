@@ -23,7 +23,7 @@ scrollback_lines = 10000
 #urgent_on_bell = true
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
-browser = brave
+browser = qutebrowser
 
 # "system", "on" or "off"
 #cursor_blink = system
@@ -54,42 +54,42 @@ foreground = #c6e7e5
 foreground_bold = #bbc5ff
 cursor = #98d1ce
 # background transparency (requires a compositor)
-background = rgba(0, 0, 0, 0.70)
+background = rgba(10, 5, 20, 0.70)
 
 # if unset, will reverse foreground and background
 #highlight = #839496
 
 # colors from color0 to color254 can be set
-color0 =  #000000
-color8 =  #1f1f1f
-                 
-color1 =  #951212
-color9 =  #d71616
-                 
+color0 =  #101010
+color8 =  #202020
+
+color1 =  #a54242
+color9 =  #cc6666
+
 color2 =  #17d717
 color10 = #5ce792
-                 
+
 color3 =  #d76917
-color11 = #dbff1b
-                 
+color11 = #F5BD4F
+
 color4 =  #1111ab
 color12 = #1c70ff
-                 
-color5 =  #830f83
-color13 = #a410a4
-                 
+
+color5 =  #622d74
+color13 = #87419F
+
 color6 =  #2792a4
 color14 = #18dbff
-                 
+
 color7 =  #515151
-color15 = #ececec
+color15 = #acacac
 
 [hints]
 #font = Monospace 12
 #foreground = #dcdccc
 background = #000000
-#active_foreground = #e68080
-#active_background = #3f3f3f
+active_foreground = #e68080
+active_background = #3f3f3f
 #padding = 2
 #border = #3f3f3f
 #border_width = 0.5

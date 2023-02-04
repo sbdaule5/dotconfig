@@ -49,11 +49,21 @@ gaps inner 6px
 # for_window [class="Brave"] border pixel 2
 # for_window [title="gtop"] border pixel 2
 # for_window [title="irssi"] border pixel 2
-default_border pixel 2
+default_border pixel 4
 assign [class="Brave"] $ws0
 assign [title="gtop"] $ws9
 assign [title="irssi"] $ws8
 # exec "powerline-lemonbar --height 20 -- -t -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'"
+
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #111111   #000000ee
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #00000044
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
 
 # Includes
 include ~/.config/i3/keybindings
