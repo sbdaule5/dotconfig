@@ -9,6 +9,7 @@ set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
 set $ws-right "$(i3-workspace next)"
 set $ws-left "$(i3-workspace prev)"
+set $ws-curr "$(i3-workspace curr)"
 # Setting modes
 set $mode_gaps             Gaps
 set $mode_gaps_outer       Outer Gaps

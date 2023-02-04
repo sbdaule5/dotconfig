@@ -21,6 +21,10 @@ next(){
 	ws_right="$(echo $ws_current + 1 | bc)"
 	echo "${workspace_list[$ws_right]}"
 }
+curr(){
+	ws_current="$( i3-msg -t get_workspaces | jq '.[] | select(.focused).name' )"
+	echo "$ws_current"
+}
 prev(){
 	ws_current="$( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' )"
 	if [[ ws_current -eq 0 ]]
@@ -38,4 +42,7 @@ then
 elif [ $1 == "prev" ]
 then
 	prev
+elif [ $1 == "curr" ]
+then
+	curr
 fi
