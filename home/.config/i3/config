@@ -22,7 +22,7 @@ set $mode_gaps_left        Left Gaps
 set $mode_gaps_right       Right Gaps
 
 # setting terminal emulator
-set $my_term termite
+set $my_term alacritty
 # Define names for default workspaces
 set $ws1 "1:💼 Projects"
 set $ws0 "0:🌐 Web"
