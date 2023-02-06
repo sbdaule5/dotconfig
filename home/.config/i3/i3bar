@@ -5,10 +5,10 @@ bar {
     position top
     strip_workspace_numbers yes
     colors{
-        background #100520AA
+        background #100520D8
         # Class             border    backgr    text
         focused_workspace   #301560FF #301560FF #FFFFFFFF
-        active_workspace    #100520AA #201040FF #FFFFFFFF
-        inactive_workspace  #100520AA #100520AA #AAAAAAFF
+        active_workspace    #100520D8 #201040FF #FFFFFFFF
+        inactive_workspace  #100520D8 #100520D8 #AAAAAAFF
     }
 }

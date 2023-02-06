@@ -50,18 +50,18 @@ browser = qutebrowser
 #cursor_foreground = #dcdccc
 
 [colors]
-foreground = #c6e7e5
+foreground = #ffffff
 foreground_bold = #bbc5ff
-cursor = #98d1ce
+cursor = #ffff44
 # background transparency (requires a compositor)
-background = rgba(10, 5, 20, 0.70)
+background = rgba(10, 5, 20, 0.85)
 
 # if unset, will reverse foreground and background
 #highlight = #839496
 
 # colors from color0 to color254 can be set
-color0 =  #101010
-color8 =  #202020
+color0 =  #202020
+color8 =  #404040
 
 color1 =  #a54242
 color9 =  #cc6666
@@ -81,12 +81,12 @@ color13 = #87419F
 color6 =  #2792a4
 color14 = #18dbff
 
-color7 =  #515151
-color15 = #acacac
+color7 =  #909090
+color15 = #ffffff
 
 [hints]
-#font = Monospace 12
-#foreground = #dcdccc
+# font = Monospace 12
+# foreground = #dcdccc
 background = #000000
 active_foreground = #e68080
 active_background = #3f3f3f
