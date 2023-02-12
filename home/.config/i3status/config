@@ -27,32 +27,31 @@ ipv6{
         format_down = ""
 }
 wireless wlp1s0 {
-        format_up = "W: %quality at %essid %ip"
-
-        format_down = "W: down"
+        # format_up = "󰖩 %quality: %essid %ip"
+        format_up = "󰖩 %quality %essid"
+        format_down = "󰖪 "
 }
 
 volume master {
-        format = "🔈%volume"
-        format_muted = "🔇%volume"
+        format = "󰕾 %volume"
+        format_muted = "󰖁 %volume"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
 }
 
 ethernet eth0 {
-        format_up = "🖧: %ip (%speed)"
-        format_down = "🚫"
-
+        format_up = "󰌗 %ip (%speed)"
+        format_down = "󰌙 "
 }
 
 battery 0 {
         format = "%status %percentage"
         format_down = "No battery"
-        status_chr = "⚡"
-        status_bat = "🔋"
-        status_unk = "🔋?"
-        status_full = "🔋 FULL"
+        status_chr = "󰂄"
+        status_bat = "󰁾"
+        status_unk = "󰂃"
+        status_full = "󰁹"
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
 }
@@ -95,13 +94,12 @@ cpu_temperature 0 {
 }
 
 memory {
-        format = "%used"
+        format = "󰍛 %used/%total"
         threshold_degraded = "30%"
-        format_degraded = "MEMORY: %free"
 }
 
 disk "/" {
-        format = "🖴%free"
+        format = "󰋊 %free"
 
 }
 

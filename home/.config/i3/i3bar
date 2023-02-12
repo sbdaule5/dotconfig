@@ -1,14 +1,20 @@
 # config for i3bar
 bar {
+    font xft:Iosevka Nerd Font 10
     i3bar_command i3bar --transparency
     status_command i3status
     position top
+    padding 0 0 0 4px
+    tray_output primary
+    tray_padding 4
     strip_workspace_numbers yes
+    workspace_min_width 45
     colors{
         background #100520D8
         # Class             border    backgr    text
-        focused_workspace   #301560FF #301560FF #FFFFFFFF
+        focused_workspace   #301560FF #e7a927FF #301560FF
         active_workspace    #100520D8 #201040FF #FFFFFFFF
-        inactive_workspace  #100520D8 #100520D8 #AAAAAAFF
+        inactive_workspace  #100520D8 #100520D8 #FFFFFFFF
+        urgent_workspace    #100520D8 #100520D8 #FF0000FF
     }
 }

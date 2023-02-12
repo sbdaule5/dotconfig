@@ -1,7 +1,8 @@
 # My i3 config file
 #
 # Setting the variables
-font pango:monospace 9
+# font pango:monospace 9
+font xft:Iosevka Nerd Font 9
 focus_follows_mouse no
 floating_modifier Mod4
 workspace_auto_back_and_forth yes
@@ -24,16 +25,16 @@ set $mode_gaps_right       Right Gaps
 # setting terminal emulator
 set $my_term alacritty
 # Define names for default workspaces
-set $ws1 "1:💼 Projects"
-set $ws0 "0:🌐 Web"
-set $ws2 "2:🖊️ Temp"
-set $ws3 "3:🎮 Games"
-set $ws4 "4:📚 Academics"
-set $ws5 "5:⚙️ Config"
-set $ws6 "6:🎵 Music"
-set $ws7 "7:🗒️ Notes"
-set $ws8 "8:💬 Chat"
-set $ws9 "9:🖥️ Top"
+set $ws1 "1: "
+set $ws0 "0: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4:󱉟"
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
+set $ws9 "9: "
 set $ws10 "10"
 
 # Programs to run on startup
@@ -45,12 +46,13 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --not-startup-id picom -b
 
 gaps inner 6px
+hide_edge_borders smart_no_gaps
 # gaps outer 3px
 
 # for_window [class="Brave"] border pixel 2
 # for_window [title="gtop"] border pixel 2
 # for_window [title="irssi"] border pixel 2
-default_border pixel 4
+default_border pixel 2
 assign [class="Brave"] $ws0
 assign [title="gtop"] $ws9
 assign [title="irssi"] $ws8
@@ -58,8 +60,8 @@ assign [title="irssi"] $ws8
 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #111111   #000000ee
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #00000044
+client.focused          #4c7899 #285577 #ffffff #111111   #3333aa
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #100520
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c

@@ -3,18 +3,18 @@
 # ws-right="$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) + 1))"
 # ws-left="$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) - 1))"
 workspace_list=(
-"0:🌐 Web"
-"1:💼 Projects"
-"2:🖊️ Temp"
-"3:🎮 Games"
-"4:📚 Academics"
-"5:⚙️ Config"
-"6:🎵 Music"
-"7:🗒️ Notes"
-"8:💬 Chat"
-"9:🖥️ Top"
+"0: "
+"1: "
+"2: "
+"3: "
+"4:󱉟"
+"5: "
+"6: "
+"7: "
+"8: "
+"9: "
 "10"
-	)
+)
 
 next(){
 	ws_current="$( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' )"

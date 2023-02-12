@@ -121,7 +121,7 @@ bindsym Mod4+r mode "resize"
 bindsym Mod4+Shift+r restart
 
 # bindsym Mod4+t
-bindsym Mod4+Shift+t exec $my_term -e gtop
+bindsym Mod4+Shift+t exec $my_term -e btop
 
 # bindsym Mod4+y
 # bindsym Mod4+Shift+y
@@ -129,7 +129,7 @@ bindsym Mod4+Shift+t exec $my_term -e gtop
 # bindsym Mod4+u
 # bindsym Mod4+Shift+u
 
-# bindsym Mod4+i
+bindsym Mod4+i focus parent
 bindsym Mod4+Shift+i exec $my_term -e irssi
 
 # bindsym Mod4+o
@@ -214,11 +214,11 @@ bindsym Mod4+Shift+b exec brave
 bindsym Mod4+m exec --no-startup-id ~/.local/bin/dmenumount
 bindsym Mod4+Shift+m exec --no-startup-id ~/.local/bin/dmenuumount
 
-bindsym Mod4+comma exec --no-startup-id i3-msg workspace $ws-left
-bindsym Mod4+Shift+comma exec --no-startup-id i3-msg move container to workspace $ws-left; exec i3-msg workspace $ws-left
+bindsym Mod4+comma exec --no-startup-id i3-msg workspace"$ws-left"
+bindsym Mod4+Shift+comma exec --no-startup-id i3-msg move container to workspace"$ws-left"; exec i3-msg workspace"$ws-left"
 
-bindsym Mod4+period exec --no-startup-id i3-msg workspace $ws-right
-bindsym Mod4+Shift+period exec --no-startup-id i3-msg move container to workspace $ws-right; exec i3-msg workspace $ws-right
+bindsym Mod4+period exec --no-startup-id i3-msg workspace"$ws-right"
+bindsym Mod4+Shift+period exec --no-startup-id i3-msg move container to workspace"$ws-right"; exec i3-msg workspace"$ws-right"
 
 # bindsym Mod4+/
 # bindsym Mod4+Shift+/
@@ -238,12 +238,12 @@ bindsym Mod4+Shift+Up focus parent
 bindsym Mod4+Down focus mode_toggle
 # bindsym Mod4+Shift+Down
 
-bindsym Mod4+Left exec --no-startup-id i3-msg workspace $ws-left
-bindsym Mod4+Shift+Left exec --no-startup-id i3-msg move container to workspace $ws-left; exec i3-msg workspace $ws-left
+bindsym Mod4+Left exec --no-startup-id i3-msg workspace "$ws-left"
+bindsym Mod4+Shift+Left exec --no-startup-id i3-msg move container to workspace"$ws-left"; exec i3-msg workspace"$ws-left"
 
-bindsym Mod4+Right exec --no-startup-id i3-msg workspace $ws-right
-bindsym Mod4+Shift+Right exec --no-startup-id i3-msg move container to workspace $ws-right; exec i3-msg workspace $ws-right
+bindsym Mod4+Right exec --no-startup-id i3-msg workspace "$ws-right"
+bindsym Mod4+Shift+Right exec --no-startup-id i3-msg move container to workspace"$ws-right"; exec i3-msg workspace"$ws-right"
 
 # Mouse key bindings
-bindsym Mod4+button4 --whole-window exec --no-startup-id i3-msg workspace $ws-left
-bindsym Mod4+button5 --whole-window exec --no-startup-id i3-msg workspace $ws-right
+bindsym Mod4+button4 --whole-window exec --no-startup-id i3-msg workspace"$ws-left"
+bindsym Mod4+button5 --whole-window exec --no-startup-id i3-msg workspace"$ws-right"
