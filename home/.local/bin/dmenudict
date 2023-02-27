@@ -1,8 +1,8 @@
 
 # Proper formatting of defination is needed
 
-clip="$(xsel -b)"
-word=$(printf "$clip" | dmenu -i -p "Enter word") || exit 1
-meaning="$(dict $word)"
-echo $meaning
-notify-send "`dict $word`"
+clip="$(xsel -ob)"
+sel_primary="$(xsel -op)"
+sel_secondary="$(xsel -os)"
+word=$(printf "$clip\\n$sel_primary\\n$sel_secondary" | dmenu -l 3 -i -p "Enter word") || exit 1
+dict $word | rpp
