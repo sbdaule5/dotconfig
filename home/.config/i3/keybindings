@@ -99,12 +99,12 @@ bindsym Mod4+Shift+0 move container to workspace number $ws0
 # bindsym Mod4+-
 # bindsym Mod4+Shift+-
 
-# bindsym Mod4+Backspace
+bindsym Mod4+BackSpace [class="^Alacritty:Reading$"] scratchpad show
 # bindsym Mod4+Shift+Backspace
 
 # Upper row
 
-# bindsym Mod4+Tab
+bindsym Mod4+Tab exec --no-startup-id i3-msg workspace $ws-curr
 # bindsym Mod4+Shift+Tab
 
 bindsym Mod4+q layout stacking
@@ -163,7 +163,7 @@ bindsym Mod4+s split v
 # bindsym Mod4+Shift+d
 
 bindsym Mod4+f fullscreen toggle
-bindsym Mod4+Shift+f exec nautilus
+bindsym Mod4+Shift+f exec pcmanfm
 
 bindsym Mod4+g mode "$mode_gaps"
 # bindsym Mod4+Shift+g
@@ -207,7 +207,7 @@ bindsym Mod4+v split h
 # bindsym Mod4+b
 bindsym Mod4+Shift+b exec brave
 
-# bindsym Mod4+n
+bindsym Mod4+n [class="Alacritty:Notepad"] scratchpad show
 # bindsym Mod4+Shift+n
 
 # # Mount drives using dmenu
@@ -224,7 +224,8 @@ bindsym Mod4+Shift+period exec --no-startup-id i3-msg move container to workspac
 # bindsym Mod4+Shift+/
 
 # The space key
-bindsym Mod4+space exec --no-startup-id i3-msg workspace $ws-curr
+bindsym Mod4+space scratchpad show
+bindsym Mod4+Shift+space move scratchpad
 
 # Shortcuts for common usage
 bindsym Mod1+Control+t exec urxvt

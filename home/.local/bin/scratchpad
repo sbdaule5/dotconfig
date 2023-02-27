@@ -1,0 +1,40 @@
+#!/usr/bin/bash
+
+if [[ $1 == "start" ]]
+then
+	if [[ $2 == "reading" ]]
+	then
+
+		if [[ -a /tmp/readingpad ]]
+		then
+			rm /tmp/readingpad
+		fi
+		mkfifo /tmp/readingpad
+		chmod o-r /tmp/readingpad
+		notify-send "Reading panel created."
+		while(true); do sleep 1000; done > /tmp/readingpad &
+		# i3-msg exec 'alacritty --class="Alacritty:Reading" -e bat --style="plain" -l man < /tmp/readingpad'
+		i3-msg exec 'alacritty --class="Alacritty:Reading" -e less -f /tmp/readingpad'
+
+	elif [[ $2 == "notepad" ]]
+	then
+
+		notify-send "Notepad created."
+		while(true); do sleep 1000; done > /tmp/notepad &
+		i3-msg exec 'alacritty --class="Alacritty:Notepad" -o font.size=9.0 -e nvim'
+
+	fi
+elif [[ $1 == "print" ]]
+then
+	if [[ $2 == "reading" ]]
+	then
+
+		echo "$3" > /tmp/readingpad
+
+	elif [[ $2 == "notepad" ]]
+	then
+
+		notify-send "Can not print to notepad"
+
+	fi
+fi

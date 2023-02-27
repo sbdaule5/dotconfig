@@ -1,0 +1,40 @@
+#!/usr/bin/bash
+
+# rpp is Reading Panel Pager or Reading Panel Print
+# This script will print input argument or input stream to the reading panel
+
+# if it has argument then print it
+if [[ -n $1 ]]
+then
+	if [[ -e /tmp/readingpad ]]
+	then
+		i3-msg [class="^Alacritty:Reading"] scratchpad show > /dev/null 2> /dev/null
+		xdotool type F
+		xdotool key ctrl+c
+		echo "$1" >> /tmp/readingpad
+		echo "================================================================================" >> /tmp/scratchpad
+		xdotool type 18j
+		xdotool key ctrl+c
+	else
+		echo "$1" | less
+		notify-send "Reading panel not running"
+	fi
+else
+	if [[ -e /tmp/readingpad ]]
+	then
+		i3-msg [class="^Alacritty:Reading"] scratchpad show > /dev/null 2> /dev/null
+		xdotool type F
+		xdotool key ctrl+c
+		xdotool type mb
+		xdotool type F
+		cat >> /tmp/readingpad
+		echo "================================================================================" >> /tmp/readingpad
+		xdotool key ctrl+c
+		xdotool type \'b
+		xdotool type 38j
+		xdotool key ctrl+c
+	else
+		echo "$line"
+		notify-send "Reading panel not running"
+	fi
+fi

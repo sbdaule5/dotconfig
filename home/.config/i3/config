@@ -44,6 +44,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id touchegg
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --not-startup-id picom -b
+exec --not-startup-id ~/.local/bin/scratchpad start reading
 
 gaps inner 6px
 hide_edge_borders smart_no_gaps
@@ -61,6 +62,16 @@ assign [title="irssi"] $ws8
 for_window [class="Alacritty:Floating"] floating enable
 for_window [class="Alacritty:Floating"] move position 0px 568px
 for_window [class="Alacritty:Floating"] resize set 1366 200
+
+for_window [class="Alacritty:Reading"] floating enable
+for_window [class="Alacritty:Reading"] move scratchpad
+for_window [class="Alacritty:Reading"] move position 716px 0px
+for_window [class="Alacritty:Reading"] resize set 650 768
+
+for_window [class="Alacritty:Notepad"] floating enable
+for_window [class="Alacritty:Notepad"] move scratchpad
+for_window [class="Alacritty:Notepad"] move position 0px 518px
+for_window [class="Alacritty:Notepad"] resize set 1366 250
 
 # exec "powerline-lemonbar --height 20 -- -t -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'"
 
