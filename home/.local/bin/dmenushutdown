@@ -1,6 +1,10 @@
 #!/bin/sh
 # This is a script that will contain all shutdown options
 
+lock() {\
+	i3lock --nofork -e -p default -i ~/.lock.png
+	}
+
 shutdown() {\
 	sudo shutdown now
 	}
@@ -22,8 +26,9 @@ hibernate1(){\
 }
 
 #initial prompt at none to avoid accedental shutdowns
-choice="$(printf " \\nShutdown\\nRestart\\nLogout\\nSleep" | dmenu -i)" || exit 1
+choice="$(printf " \\nLock\\nShutdown\\nRestart\\nLogout\\nSleep" | dmenu -i)" || exit 1
 case $choice in 
+	Lock) lock;;
 	Shutdown) shutdown;;
 	Restart) restart1;;
 	Logout) logout1;;
