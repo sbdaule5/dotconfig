@@ -53,14 +53,20 @@ hide_edge_borders smart_no_gaps
 # for_window [title="gtop"] border pixel 2
 # for_window [title="irssi"] border pixel 2
 default_border pixel 2
+
 assign [class="Brave"] $ws0
 assign [title="gtop"] $ws9
 assign [title="irssi"] $ws8
+
+for_window [class="Alacritty:Floating"] floating enable
+for_window [class="Alacritty:Floating"] move position 0px 568px
+for_window [class="Alacritty:Floating"] resize set 1366 200
+
 # exec "powerline-lemonbar --height 20 -- -t -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'"
 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #111111   #3333aa
+client.focused          #4c7899 #285577 #ffffff #c78907   #e7a927
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #100520
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000

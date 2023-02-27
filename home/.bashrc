@@ -133,18 +133,21 @@ fi
 # move prompt up by 8 lines
 # PS1=$'\n\n\n\n\n\n\n\n\e[8A'"$PS1"
 
-set -o vi
+# Setting options
+
 
 export LIBVA_DRIVER_NAME=iHD
 export PATH=$PATH:~/.local/bin:~/.local/share/flutter/bin
 export EDITOR=tnvim
-export VISUAL=tnvim
+export VISUAL="alacritty --class \"Alacritty:Floating\" -e nvim"
 
+set -o vi
 alias ls='ls --color=auto'
 alias lsa='ls -la'
 alias cls='clear'
 alias nvim='tnvim'
 alias vi='/usr/bin/nvim'
+alias :e='/usr/bin/nvim'
 alias ..='cd ..'
 
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
@@ -152,3 +155,4 @@ export QSYS_ROOTDIR="/home/arch/.cache/yay/quartus-free/pkg/quartus-free-quartus
 
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 clear && neofetch --gap 10
+. "$HOME/.cargo/env"
