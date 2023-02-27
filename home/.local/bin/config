@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+
+BASE="$HOME"
+config=(
+	'i3:.config/i3/'
+	'neovim:.config/nvim/'
+	'bash:.bashrc'
+	'alacritty:.config/alacritty/alacritty.yml'
+	'i3status:.config/i3status/config'
+	'picom:.config/picom/picom.config'
+	'ranger:.config/ranger'
+	'tmux:.config/tmux/tmux.config'
+	'qutebrowser:.config/qutebrowser/config.py'
+)
+if [[ -z $1 ]]
+then
+	selected=$(echo ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fzf)
+else
+	selected=$1
+fi
+file=$(echo -n ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}'  | awk -F ':' -v val=$selected '{if($1==val){print $2}}')
+
+if [[ -n $file ]]
+then
+	nvim $BASE/$file
+else
+	echo "No such config"
+fi
