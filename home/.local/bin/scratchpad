@@ -14,7 +14,11 @@ then
 		notify-send "Reading panel created."
 		while(true); do sleep 1000; done > /tmp/readingpad &
 		# i3-msg exec 'alacritty --class="Alacritty:Reading" -e bat --style="plain" -l man < /tmp/readingpad'
-		i3-msg exec 'alacritty --class="Alacritty:Reading" -e less -f /tmp/readingpad'
+		i3-msg exec 'alacritty --class="Alacritty:Reading" -e less -r -f /tmp/readingpad'
+		if [[ -a "$HOME/.config/readingpanel/welcome" ]]
+		then
+			cat $HOME/.config/readingpanel/welcome > /tmp/readingpad
+		fi
 
 	elif [[ $2 == "notepad" ]]
 	then

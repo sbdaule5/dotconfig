@@ -1,0 +1,68 @@
+#!/usr/bin/bash
+
+# This dmenu script will display archwiki page(local), man page, web page, word
+# meaning and anything else I might think of later to reading panel
+# Dependancies: dmenu, curl, html2text, bat, dict, arch-wiki-docs
+
+archwiki(){
+    notify-send "Arch Wiki not implemented yet."
+}
+manpage(){
+    if [[ -z $1 ]]; then
+        page="$(printf '' | dmenu -i -p 'Manual')" || exit 1
+    else
+        page=$1
+    fi
+    man $page | rpp man
+}
+webpage(){
+    if [[ -z $1 ]]; then
+        clip="$(xsel -ob)"
+        site_no=$(cut -d ';' -f1 ~/.config/qutebrowser/bookmarks/urls | \
+            awk -v clip=$clip '
+                    BEGIN{print "0 " clip}
+                    {printf NR " ";for(i = 2; i<= NF; i++){printf $i" "}printf "\n"}
+                ' | \
+            dmenu -i -l 30 | awk '{print $1}')
+        if [[ $site_no -eq 0 ]]; then
+            site=$clip
+        else
+            site=$(cut -d ';' -f1 ~/.config/qutebrowser/bookmarks/urls | \
+                awk -v no=$site_no 'FNR==no{print $1}')
+        fi
+    else
+        site=$1
+    fi
+    # Check if string is url
+    if [[ -n "$(echo "$site" | grep -e "^.*://.*")" ]]; then
+        curl $site | html2text --images-to-alt --pad-tables | rpp markdown
+    elif [[ -a $site ]]; then
+        cat $site | html2text --images-to-alt --pad-tables | rpp markdown
+    fi
+}
+
+# if no first argument, then ask type via dmenu
+if [[ -z $1 ]]; then
+    choice="$(printf "Arch Wiki\\nMan\\nWeb Page\\nDictionary" | dmenu -i -p 'Read')" || exit 1
+else
+    choice=$1
+    case $1 in
+        man) choice=Man;;
+        arch) choice="Arch Wiki";;
+        web) choice="Web Page"
+    esac
+fi
+
+ARGV=("$@")
+ARGC=${#ARGV[@]}
+ARGS=("${ARGV[@]:1}")
+
+if [[ -z $2 ]]; then
+    search=""
+fi
+case $choice in 
+    "Arch Wiki") archwiki ${ARGS[@]};;
+    "Man") manpage ${ARGS[@]};;
+    "Web Page") webpage ${ARGS[@]};;
+    "Dictionary") dmenudict;;
+esac

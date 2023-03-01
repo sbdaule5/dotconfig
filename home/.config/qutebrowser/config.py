@@ -231,3 +231,4 @@ c.editor.command = ["alacritty", "--class", "Alacritty:Floating", "-o", "font.si
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
 config.bind(',e', 'edit-text')
+config.bind(',r', 'spawn dmenuread web {url}')

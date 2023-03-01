@@ -6,35 +6,29 @@
 # if it has argument then print it
 if [[ -n $1 ]]
 then
-	if [[ -e /tmp/readingpad ]]
-	then
-		i3-msg [class="^Alacritty:Reading"] scratchpad show > /dev/null 2> /dev/null
-		xdotool type F
-		xdotool key ctrl+c
-		echo "$1" >> /tmp/readingpad
-		echo "================================================================================" >> /tmp/scratchpad
-		xdotool type 18j
-		xdotool key ctrl+c
-	else
-		echo "$1" | less
-		notify-send "Reading panel not running"
-	fi
+	linter=$1
+	process_cmd="bat --color=always --terminal-width=80 --italic-text=always --style=plain -l $1 "
 else
-	if [[ -e /tmp/readingpad ]]
-	then
-		i3-msg [class="^Alacritty:Reading"] scratchpad show > /dev/null 2> /dev/null
-		xdotool type F
-		xdotool key ctrl+c
-		xdotool type mb
-		xdotool type F
-		cat >> /tmp/readingpad
-		echo "================================================================================" >> /tmp/readingpad
-		xdotool key ctrl+c
-		xdotool type \'b
-		xdotool type 38j
-		xdotool key ctrl+c
-	else
-		echo "$line"
-		notify-send "Reading panel not running"
-	fi
+	process_cmd="bat --color=always --terminal-width=80 --italic-text=always -p"
+fi
+
+if [[ -e /tmp/readingpad ]]
+then
+	# load text to a file
+	touch /tmp/readingpad_temp_buf
+	chmod 600 /tmp/readingpad_temp_buf
+	cat > /tmp/readingpad_temp_buf
+	i3-msg [class="^Alacritty:Reading"] scratchpad show > /dev/null 2> /dev/null
+	xdotool type F
+	xdotool key ctrl+c
+	xdotool type mb
+	xdotool type F
+	cat /tmp/readingpad_temp_buf | $process_cmd >> /tmp/readingpad
+	echo "────────────────────────────────────────────────────────────────────────────────" >> /tmp/readingpad
+	xdotool key ctrl+c
+	xdotool type \'b
+	xdotool type 38j
+	xdotool key ctrl+c
+else
+	notify-send "Reading panel not running"
 fi
