@@ -41,6 +41,9 @@ force_color_prompt=yes
 prompt_style=full
 export prompt_dir_style
 
+# pl_hs=""
+# pl_ss="\/"
+
 pl_hs=""
 pl_ss=""
 
@@ -147,11 +150,12 @@ alias lsa='ls -la'
 alias cls='clear'
 alias nvim='tnvim'
 alias vi='/usr/bin/nvim'
+alias prompt-short='prompt_style=short'
+alias prompt-full='prompt_style=full'
 alias :e='/usr/bin/nvim'
 alias ..='cd ..'
 
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-export QSYS_ROOTDIR="/home/arch/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
 
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 clear && neofetch --gap 10
