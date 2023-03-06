@@ -25,10 +25,10 @@ set $mode_gaps_right       Right Gaps
 # setting terminal emulator
 set $my_term alacritty
 # Define names for default workspaces
-set $ws1 "1: "
+set $ws1 "1:󰅩 "
 set $ws0 "0: "
-set $ws2 "2: "
-set $ws3 "3: "
+set $ws2 "2: " 
+set $ws3 "3: "
 set $ws4 "4:󱉟"
 set $ws5 "5: "
 set $ws6 "6: "
@@ -65,8 +65,8 @@ for_window [class="Alacritty:Floating"] resize set 1366 200
 
 for_window [class="Alacritty:Reading"] floating enable
 for_window [class="Alacritty:Reading"] move scratchpad
-for_window [class="Alacritty:Reading"] move position 716px 0px
-for_window [class="Alacritty:Reading"] resize set 650 768
+for_window [class="Alacritty:Reading"] move position 782px 0px
+for_window [class="Alacritty:Reading"] resize set 584 768
 
 for_window [class="Alacritty:Notepad"] floating enable
 for_window [class="Alacritty:Notepad"] move scratchpad

@@ -4,9 +4,9 @@
 # ws-left="$(( $( i3-msg -t get_workspaces | jq '.[] | select(.focused).num' ) - 1))"
 workspace_list=(
 "0: "
-"1: "
-"2: "
-"3: "
+"1:󰅩 "
+"2: " 
+"3: "
 "4:󱉟"
 "5: "
 "6: "
