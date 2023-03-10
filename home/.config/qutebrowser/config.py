@@ -219,6 +219,7 @@ c.colors.tabs.selected.odd.fg = '#301560'
 c.colors.tabs.selected.even.fg = '#301560'
 c.colors.tabs.selected.odd.bg = '#e7a927'
 c.colors.tabs.selected.even.bg = '#e7a927'
+c.tabs.padding = {"bottom": 2, "left": 5, "right": 5, "top":2}
 
 c.completion.scrollbar.padding = 1
 c.completion.scrollbar.width = 7
@@ -232,3 +233,7 @@ config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
 config.bind(',e', 'edit-text')
 config.bind(',r', 'spawn dmenuread web {url}')
+config.bind(',m', 'hint links spawn mpv --no-video {hint-url}')
+config.bind(',M', 'spawn mpv --no-video {url}')
+config.bind(',v', 'hint links spawn --detach mpv {hint-url}')
+config.bind(',V', 'spawn --detach mpv {url}')
