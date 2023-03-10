@@ -7,6 +7,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -1 && $refresh_i3status
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +1 && $refresh_i3status
+bindsym XF86PowerOff exec --no-startup-id dmenushutdown
 bindsym Print exec --no-startup-id scrot ~/Pictures/screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png && notify-send "Screenshot captured"
 bindsym --release Shift+Print exec scrot -s 'screenshot-%Y-%m-%d-%H-%M-%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
 
@@ -208,7 +209,7 @@ bindsym Mod4+v split h
 bindsym Mod4+Shift+b exec brave
 
 bindsym Mod4+n [class="Alacritty:Notepad"] scratchpad show
-# bindsym Mod4+Shift+n
+bindsym Mod4+Shift+n exec qutebrowser
 
 # # Mount drives using dmenu
 bindsym Mod4+m exec --no-startup-id ~/.local/bin/dmenumount
