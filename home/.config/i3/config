@@ -43,7 +43,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -e -p def
 exec --no-startup-id nm-applet
 exec --no-startup-id touchegg
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --not-startup-id picom -b
+exec --no-startup-id picom -b
+exec --no-startup-id systemd-inhibit --what=handle-power-key --who="i3-dmenushutdown" --why="Shutdown will be handled by i3wm" sleep infinity
 exec --not-startup-id ~/.local/bin/scratchpad start reading
 
 gaps inner 6px
