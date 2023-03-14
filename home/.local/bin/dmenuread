@@ -18,14 +18,17 @@ manpage(){
 webpage(){
     if [[ -z $1 ]]; then
         clip="$(xsel -ob)"
-        site_no=$(cut -d ';' -f1 ~/.config/qutebrowser/bookmarks/urls | \
+        site_info=$(cut -d ';' -f1 ~/.config/qutebrowser/bookmarks/urls | \
             awk -v clip=$clip '
                     BEGIN{print "0 " clip}
                     {printf NR " ";for(i = 2; i<= NF; i++){printf $i" "}printf "\n"}
                 ' | \
-            dmenu -i -l 30 | awk '{print $1}')
+                dmenu -i -l 30 | awk '{if(NF>1) print $1;else print "-1 " $1;}')
+        site_no=$(echo $site_info | awk '{print $1}')
         if [[ $site_no -eq 0 ]]; then
             site=$clip
+        elif [[ $site_no -eq -1 ]]; then
+            site=$(echo $site_info | awk '{print $2}')
         else
             site=$(cut -d ';' -f1 ~/.config/qutebrowser/bookmarks/urls | \
                 awk -v no=$site_no 'FNR==no{print $1}')
@@ -35,7 +38,7 @@ webpage(){
     fi
     # Check if string is url
     if [[ -n "$(echo "$site" | grep -e "^.*://.*")" ]]; then
-        curl $site | html2text --images-to-alt --pad-tables | rpp markdown
+        readable $site | html2text --images-to-alt --pad-tables | rpp markdown
     elif [[ -a $site ]]; then
         cat $site | html2text --images-to-alt --pad-tables | rpp markdown
     fi
