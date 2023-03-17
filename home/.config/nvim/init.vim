@@ -8,7 +8,7 @@ set number
 set splitright
 set splitbelow
 set laststatus=3
-set smartcase
+set ignorecase
 syntax on
 set nocompatible
 filetype plugin on
@@ -25,8 +25,8 @@ augroup END
 let mapleader = " "
 nmap , <Space>
 
-noremap e <C-E>
-noremap y <C-Y>
+" noremap e <C-E>
+" noremap y <C-Y>
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -55,8 +55,10 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 
 " use alt+. and alt+, to change tabs
-nnoremap < :tabprevious<CR> 
-nnoremap > :tabnext<CR> 
+" nnoremap < :tabprevious<CR>
+" nnoremap < :tabprevious<CR>
+nnoremap <leader>> :tabnext<CR>
+nnoremap <leader>< :tabprevious<CR>
 
 " Rename current file
 function! RenameFile()
@@ -88,7 +90,7 @@ nnoremap <Leader>i i <ESC>r
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 nnoremap <Leader>s :buffer #<CR>
 nnoremap <Leader>p :r! xsel -o -b<CR>
-" insert a blank line 
+" insert a blank line
 nnoremap <Leader><CR> i<CR><ESC>
 nnoremap <Leader>o o<ESC>
 nnoremap <Leader>O O<ESC>
@@ -112,10 +114,10 @@ vnoremap <Leader>e> c<><ESC>P
 vnoremap <Leader>e" c""<ESC>P
 vnoremap <Leader>e' c''<ESC>P
 vnoremap <Leader>e` c``<ESC>P
- 
+
 " adding configurations for nerdtree
 " autocmd VimEnter * NERDTree
-" autocmd BufEnter * NERDTreeMirror 
+" autocmd BufEnter * NERDTreeMirror
 "
 " Ranger in vim
 function RangerExplorer()
@@ -136,6 +138,7 @@ let g:vimwiki_global_ext = 0
 
 
 " airline
+let g:airline_theme='violet'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -143,7 +146,7 @@ let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 
 " emmet settings
@@ -156,7 +159,6 @@ let g:user_emmet_settings = {
 
 " NerdCommenter
 " NERDCommenter settings
-"
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDCustomDelimiters = { 'html': { 'left': '' } }
@@ -168,26 +170,28 @@ if !exists('g:context_filetype#same_filetypes')
     let g:context_filetype#filetypes = {}
 endif
 
-let g:context_filetype#filetypes.svelte =
-      \ [
-      \   {'filetype' : 'javascript', 'start' : '<script>', 'end' : '</script>'},
-      \   {
-      \     'filetype': 'typescript',
-      \     'start': '<script\%( [^>]*\)\? \%(ts\|lang="\%(ts\|typescript\)"\)\%( [^>]*\)\?>',
-      \     'end': '',
-      \   },
-      \   {'filetype' : 'css', 'start' : '<style \?.*>', 'end' : '</style>'},
-      \ ]
-
 let g:ft = ''
 
+" settings for vimtex
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_general_options
+    \ = '-reuse-instance -forward-search @tex @line @pdf'
+
+" Telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fl <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fg <cmd>Telescope git_files<cr>
+
 call plug#begin()
-Plug 'preservim/nerdtree' 
+Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'Shougo/context_filetype.vim'
-Plug 'pangloss/vim-javascript' 
-Plug 'evanleck/vim-svelte' 
-Plug 'leafgarland/typescript-vim' 
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte'
+Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'codechips/coc-svelte', {'do': 'npm install'}
 Plug 'ryanoasis/vim-devicons'
@@ -199,6 +203,7 @@ Plug 'sudar/vim-arduino-syntax'
 Plug 'edkolev/tmuxline.vim'
 Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'triglav/vim-visual-increment'
 Plug 'vim-scripts/DrawIt'
 Plug 'dart-lang/dart-vim-plugin'
@@ -206,6 +211,9 @@ Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
 Plug 'vimwiki/vimwiki'
 Plug 'lilydjwg/colorizer'
+Plug 'lervag/vimtex'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 call plug#end()
 
 let g:lsc_auto_map = v:true
