@@ -9,6 +9,7 @@ set splitright
 set splitbelow
 set laststatus=3
 set ignorecase
+set nrformats=alpha,hex,bin
 syntax on
 set nocompatible
 filetype plugin on
@@ -24,9 +25,6 @@ augroup END
 
 let mapleader = " "
 nmap , <Space>
-
-" noremap e <C-E>
-" noremap y <C-Y>
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -53,13 +51,6 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-
-" use alt+. and alt+, to change tabs
-" nnoremap < :tabprevious<CR>
-" nnoremap < :tabprevious<CR>
-nnoremap <leader>> :tabnext<CR>
-nnoremap <leader>< :tabprevious<CR>
-
 " Rename current file
 function! RenameFile()
   let old_name = expand('%')
@@ -73,6 +64,9 @@ endfunction
 command Rename call RenameFile()
 
 " use leader key bindings
+" Replacing Ctrl
+nnoremap <leader>> :tabnext<CR>
+nnoremap <leader>< :tabprevious<CR>
 noremap <Leader>w <C-w>
 
 nnoremap <Leader>h <C-w>h
@@ -204,7 +198,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'triglav/vim-visual-increment'
+" Plug 'triglav/vim-visual-increment'
 Plug 'vim-scripts/DrawIt'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
@@ -214,6 +208,7 @@ Plug 'lilydjwg/colorizer'
 Plug 'lervag/vimtex'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 let g:lsc_auto_map = v:true
