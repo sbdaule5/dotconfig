@@ -76,12 +76,7 @@ tztime date{
         # hide_if_equals_localtime = true
 }
 tztime time{
-        format = "%I:%M:%S %p"
-}
-
-tztime berlin {
-        format = "%Y-%m-%d %H:%M:%S %Z"
-        timezone = "Europe/Berlin"
+        format = "%H:%M:%S"
 }
 
 load {
