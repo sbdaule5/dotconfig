@@ -1,0 +1,58 @@
+# Layout mode
+mode $mode_layout {
+    # Resize
+    bindsym h resize shrink width  1 px or 1 ppt
+    bindsym j resize grow   height 1 px or 1 ppt
+    bindsym k resize shrink height 1 px or 1 ppt
+    bindsym l resize grow   width  1 px or 1 ppt
+
+    bindsym Control+h resize shrink width  5 px or 5 ppt
+    bindsym Control+j resize grow   height 5 px or 5 ppt
+    bindsym Control+k resize shrink height 5 px or 5 ppt
+    bindsym Control+l resize grow   width  5 px or 5 ppt
+
+    bindsym Left  resize shrink width  10 px or 10 ppt
+    bindsym Down  resize grow   height 10 px or 10 ppt
+    bindsym Up    resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow   width  10 px or 10 ppt
+
+    # Moving floating windows
+    bindsym Shift+h move window left  1px
+    bindsym Shift+j move window down  1px
+    bindsym Shift+k move window up    1px
+    bindsym Shift+l move window right 1px
+
+    bindsym Control+Shift+h move window left  5px
+    bindsym Control+Shift+j move window down  5px
+    bindsym Control+Shift+k move window up    5px
+    bindsym Control+Shift+l move window right 5px
+
+    bindsym Shift+Left  move window left  10px
+    bindsym Shift+Down  move window down  10px
+    bindsym Shift+Up    move window up    10px
+    bindsym Shift+Right move window right 10px
+
+    # Switching windows
+    bindsym Mod4+h focus left
+    bindsym Mod4+Shift+h move left
+
+    bindsym Mod4+j focus down
+    bindsym Mod4+Shift+j move down
+
+    bindsym Mod4+k focus up
+    bindsym Mod4+Shift+k move up
+
+    bindsym Mod4+l focus right
+    bindsym Mod4+Shift+l move right
+
+    bindsym Mod4+u focus    mode_toggle
+    bindsym Mod4+i floating toggle
+    bindsym Mod4+o focus    child
+    bindsym Mod4+p focus    parent
+
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Mod4+r mode "default"
+
+}

@@ -12,6 +12,7 @@ set $ws-right "$(i3-workspace next)"
 set $ws-left "$(i3-workspace prev)"
 set $ws-curr "$(i3-workspace curr)"
 # Setting modes
+set $mode_layout           Layout
 set $mode_gaps             Gaps
 set $mode_gaps_outer       Outer Gaps
 set $mode_gaps_inner       Inner Gaps
@@ -90,38 +91,8 @@ client.background       #ffffff
 
 # Includes
 include ~/.config/i3/keybindings
+include ~/.config/i3/layout
 include ~/.config/i3/gaps
 include ~/.config/i3/i3bar
 
 
-# Resize mode
-mode "resize" {
-    bindsym h resize shrink width 1 px or 1 ppt
-    bindsym j resize grow height 1 px or 1 ppt
-    bindsym k resize shrink height 1 px or 1 ppt
-    bindsym l resize grow width 1 px or 1 ppt
-
-    bindsym Mod4+h focus left
-    bindsym Mod4+Shift+h move left
-
-    bindsym Mod4+j focus down
-    bindsym Mod4+Shift+j move down
-
-    bindsym Mod4+k focus up
-    bindsym Mod4+Shift+k move up
-
-    bindsym Mod4+l focus right
-    bindsym Mod4+Shift+l move right
-
-    # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-
-    # back to normal: Enter or Escape or $mod+r
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
-
-}

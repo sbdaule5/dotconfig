@@ -118,7 +118,7 @@ bindsym Mod4+e layout toggle split
 bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 
-bindsym Mod4+r mode "resize"
+bindsym Mod4+r mode $mode_layout
 bindsym Mod4+Shift+r restart
 
 # bindsym Mod4+t
@@ -229,7 +229,7 @@ bindsym Mod4+space scratchpad show
 bindsym Mod4+Shift+space move scratchpad
 
 # Shortcuts for common usage
-bindsym Mod1+Control+t exec urxvt
+bindsym Mod1+Control+t exec $my_term
 bindsym Mod1+Control+k exec ~/.local/bin/dmenushutdown --no-startup-id
 bindsym Mod1+F4 kill
 
