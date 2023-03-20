@@ -9,7 +9,10 @@ archwiki(){
 }
 manpage(){
     if [[ -z $1 ]]; then
-        page="$(printf '' | dmenu -i -p 'Manual')" || exit 1
+        page_desc="$(man -k . | dmenu -i -l 20 -p 'Manual')" || exit 1
+        page="$(echo $page_desc | \
+            awk '{if(NF>1){print $1"."$2}else{print $0}}' |\
+            sed -e 's/(//g' -e 's/)//g')"
     else
         page=$1
     fi
