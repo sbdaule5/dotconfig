@@ -4,7 +4,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set fdm=syntax
-set number
+set relativenumber
 set splitright
 set splitbelow
 set laststatus=3
@@ -95,8 +95,6 @@ nnoremap <Leader>X :RunAlt<CR>
 nnoremap <Leader>z :Build<CR>
 " use leader / to stop highlighting
 nnoremap <silent> <Leader>/ :noh<CR>
-" Plugin keybindings
-nnoremap <silent> <Leader>u :GundoToggle<CR>
 
 " enclose commands in visual mode using <Leader>e
 vnoremap <Leader>e( c()<ESC>P
