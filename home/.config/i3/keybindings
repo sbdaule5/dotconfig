@@ -68,34 +68,34 @@ bindsym Mod4+Shift+Insert exec --no-startup-id ~/.local/bin/dmenuunicode a
 # bindsym Mod4+Shift+`
 
 bindsym Mod4+1 workspace number $ws1
-bindsym Mod4+Shift+1 move container to workspace number $ws1
+bindsym Mod4+Shift+1 move container to workspace number $ws1; workspace number $ws1
 
 bindsym Mod4+2 workspace number $ws2
-bindsym Mod4+Shift+2 move container to workspace number $ws2
+bindsym Mod4+Shift+2 move container to workspace number $ws2; workspace number $ws2
 
 bindsym Mod4+3 workspace number $ws3
-bindsym Mod4+Shift+3 move container to workspace number $ws3
+bindsym Mod4+Shift+3 move container to workspace number $ws3; workspace number $ws3
 
 bindsym Mod4+4 workspace number $ws4
-bindsym Mod4+Shift+4 move container to workspace number $ws4
+bindsym Mod4+Shift+4 move container to workspace number $ws4; workspace number $ws4
 
 bindsym Mod4+5 workspace number $ws5
-bindsym Mod4+Shift+5 move container to workspace number $ws5
+bindsym Mod4+Shift+5 move container to workspace number $ws5; workspace number $ws5
 
 bindsym Mod4+6 workspace number $ws6
-bindsym Mod4+Shift+6 move container to workspace number $ws6
+bindsym Mod4+Shift+6 move container to workspace number $ws6; workspace number $ws6
 
 bindsym Mod4+7 workspace number $ws7
-bindsym Mod4+Shift+7 move container to workspace number $ws7
+bindsym Mod4+Shift+7 move container to workspace number $ws7; workspace number $ws7
 
 bindsym Mod4+8 workspace number $ws8
-bindsym Mod4+Shift+8 move container to workspace number $ws8
+bindsym Mod4+Shift+8 move container to workspace number $ws8; workspace number $ws8
 
 bindsym Mod4+9 workspace number $ws9
-bindsym Mod4+Shift+9 move container to workspace number $ws9
+bindsym Mod4+Shift+9 move container to workspace number $ws9; workspace number $ws9
 
 bindsym Mod4+0 workspace number $ws0
-bindsym Mod4+Shift+0 move container to workspace number $ws0
+bindsym Mod4+Shift+0 move container to workspace number $ws0; workspace number $ws0
 
 # bindsym Mod4+-
 # bindsym Mod4+Shift+-
