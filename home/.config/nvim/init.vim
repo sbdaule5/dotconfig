@@ -95,6 +95,8 @@ nnoremap <Leader>X :RunAlt<CR>
 nnoremap <Leader>z :Build<CR>
 " use leader / to stop highlighting
 nnoremap <silent> <Leader>/ :noh<CR>
+" Plugin keybindings
+nnoremap <silent> <Leader>u :GundoToggle<CR>
 
 " enclose commands in visual mode using <Leader>e
 vnoremap <Leader>e( c()<ESC>P
@@ -179,6 +181,12 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 
+" Gundo.vim
+
+let g:gundo_width = 50
+let g:gundo_preview_height = 20
+let g:gundo_prefer_python3 = 1
+
 call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
@@ -209,6 +217,7 @@ Plug 'lervag/vimtex'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 Plug 'airblade/vim-gitgutter'
+Plug 'sjl/gundo.vim'
 call plug#end()
 
 let g:lsc_auto_map = v:true
