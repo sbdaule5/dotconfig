@@ -24,7 +24,6 @@ autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
 
 let mapleader = " "
-nmap , <Space>
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
