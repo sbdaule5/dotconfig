@@ -1,5 +1,17 @@
 #!/usr/bin/bash
 
+function fz1() {
+  local lines
+  lines=$(cat | fzf --filter="$1" --no-sort)
+  if [ -z "$lines" ]; then
+    return 1
+  elif [ $(wc -l <<< "$lines") -eq 1 ]; then
+    echo "$lines"
+  else
+    echo "$lines" | fzf --query="$1"
+  fi
+}
+
 BASE="$HOME"
 config=(
 	'i3:.config/i3/'
@@ -12,12 +24,14 @@ config=(
 	'tmux:.config/tmux/tmux.config'
 	'qutebrowser:.config/qutebrowser/config.py'
 )
+
 if [[ -z $1 ]]
 then
 	selected=$(echo ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fzf)
 else
-	selected=$1
+	selected=$(echo ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fz1 "$1")
 fi
+
 file=$(echo -n ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}'  | awk -F ':' -v val=$selected '{if($1==val){print $2}}')
 
 if [[ -n $file ]]
