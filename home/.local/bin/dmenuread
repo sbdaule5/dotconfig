@@ -41,9 +41,9 @@ webpage(){
     fi
     # Check if string is url
     if [[ -n "$(echo "$site" | grep -e "^.*://.*")" ]]; then
-        readable $site | html2text --images-to-alt --pad-tables | rpp markdown
+        readable $site | html2text --images-to-alt --pad-tables | fold -s -w 80 | rpp markdown
     elif [[ -a $site ]]; then
-        cat $site | html2text --images-to-alt --pad-tables | rpp markdown
+        cat $site | html2text --images-to-alt --pad-tables | fold -s -w 80 | rpp markdown
     fi
 }
 
