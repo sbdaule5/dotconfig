@@ -18,7 +18,7 @@ then
 	touch /tmp/readingpad_temp_buf
 	chmod 600 /tmp/readingpad_temp_buf
 	cat > /tmp/readingpad_temp_buf
-	i3-msg [class="^Alacritty:Reading"] scratchpad show > /dev/null 2> /dev/null
+	i3-msg '[class="^Alacritty:Reading"]' scratchpad show > /dev/null 2> /dev/null
 	xdotool type F
 	xdotool key ctrl+c
 	xdotool type mb
