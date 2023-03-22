@@ -21,6 +21,7 @@ config=(
 	'i3status:.config/i3status/config'
 	'picom:.config/picom/picom.config'
 	'ranger:.config/ranger'
+	'lf:.config/lf'
 	'tmux:.config/tmux/tmux.config'
 	'qutebrowser:.config/qutebrowser/config.py'
 )
@@ -40,3 +41,4 @@ then
 else
 	echo "No such config"
 fi
+
