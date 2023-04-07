@@ -1,0 +1,20 @@
+#! /usr/bin/bash
+
+# Links handler for mpd
+# Inspired from @bugswriter_
+
+if [[ -z $1 ]]; then
+	url=$(xsel -ob)
+else
+	url=$1
+fi
+
+case "$url" in
+	*youtube.com/watch*|*youtube.com/playlist*)
+		dmenuaddmusic -l $url
+		;;
+	*)
+		mpc insert $url
+		;;
+esac
+

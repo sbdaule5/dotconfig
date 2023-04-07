@@ -6,7 +6,8 @@ general {
         interval = 5
 }
 
-order += "ipv6"
+order += "tztime holder__music"
+# order += "ipv6"
 # order += "run_watch DHCP"
 # order += "run_watch VPNC"
 # order += "path_exists VPN"
@@ -72,8 +73,7 @@ path_exists VPN {
 
 tztime date{
         # format = "%Y-%m-%d %H:%M:%S"
-        format = "%a, %d %b %Y"
-        # hide_if_equals_localtime = true
+        format = "%a, %d %b %y"
 }
 tztime time{
         format = "%H:%M:%S"
@@ -89,8 +89,7 @@ cpu_temperature 0 {
 }
 
 memory {
-        format = "󰍛 %used/%total"
-        threshold_degraded = "30%"
+        format = "󰍛 %used"
 }
 
 disk "/" {
@@ -100,4 +99,7 @@ disk "/" {
 
 read_file uptime {
         path = "/proc/uptime"
+}
+tztime holder__music {
+       format = "holder__music"
 }

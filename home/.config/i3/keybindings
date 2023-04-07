@@ -5,8 +5,14 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +01% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -01% && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym XF86AudioNext             exec --no-startup-id mpc next && $refresh_i3status
+bindsym XF86AudioPrev             exec --no-startup-id mpc prev && $refresh_i3status
+bindsym XF86AudioPlay             exec --no-startup-id mpc toggle && $refresh_i3status
+
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -1 && $refresh_i3status
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +1 && $refresh_i3status
+
 bindsym XF86PowerOff exec --no-startup-id dmenushutdown
 bindsym Print exec --no-startup-id scrot ~/Pictures/screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png && notify-send "Screenshot captured"
 bindsym --release Shift+Print exec scrot -s 'screenshot-%Y-%m-%d-%H-%M-%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
@@ -97,8 +103,11 @@ bindsym Mod4+Shift+9 move container to workspace number $ws9; workspace number $
 bindsym Mod4+0 workspace number $ws0
 bindsym Mod4+Shift+0 move container to workspace number $ws0; workspace number $ws0
 
-# bindsym Mod4+-
-# bindsym Mod4+Shift+-
+# bindsym Mod4+minus
+# bindsym Mod4+Shift+minus
+
+# bindsym Mod4+equal
+# bindsym Mod4+Shift+equal
 
 bindsym Mod4+BackSpace [class="^Alacritty:Reading$"] scratchpad show
 # bindsym Mod4+Shift+Backspace
@@ -125,7 +134,7 @@ bindsym Mod4+Shift+r restart
 bindsym Mod4+Shift+t exec $my_term -e btop
 
 # bindsym Mod4+y
-# bindsym Mod4+Shift+y
+# bindsym Mod4+Shift+y //clipboard manager
 
 bindsym Mod4+u focus mode_toggle
 # bindsym Mod4+Shift+u
@@ -139,14 +148,14 @@ bindsym Mod4+o focus child
 bindsym Mod4+p focus parent
 # bindsym Mod4+Shift+p
 
-# bindsym Mod4+[
-# bindsym Mod4+Shift+[
+bindsym Mod4+bracketleft          exec --no-startup-id mpc seek -00:00:05 && $refresh_i3status
+bindsym Mod4+Shift+bracketleft    exec --no-startup-id mpc prev && $refresh_i3status
 
-# bindsym Mod4+]
-# bindsym Mod4+Shift+]
+bindsym Mod4+bracketright         exec --no-startup-id mpc seek +00:00:05 && $refresh_i3status
+bindsym Mod4+Shift+bracketright   exec --no-startup-id mpc next && $refresh_i3status
 
-# bindsym Mod4+\
-# bindsym Mod4+Shift+\
+bindsym Mod4+backslash            exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym Mod4+Shift+backslash      exec --no-startup-id mpc toggle && $refresh_i3status
 
 # Home row
 
@@ -160,8 +169,8 @@ bindsym Mod4+Shift+a exec --no-startup-id dmenu_run
 bindsym Mod4+s split v
 # bindsym Mod4+Shift+s
 
-# bindsym Mod4+d
-# bindsym Mod4+Shift+d
+bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
+bindsym Mod4+Shift+d exec --no-startup-id dmenu_run
 
 bindsym Mod4+f fullscreen toggle
 bindsym Mod4+Shift+f exec pcmanfm
@@ -181,11 +190,11 @@ bindsym Mod4+Shift+k move up
 bindsym Mod4+l focus right
 bindsym Mod4+Shift+l move right
 
-# bindsym Mod4+;
-# bindsym Mod4+Shift+;
+bindsym Mod4+semicolon            exec --no-startup-id xbacklight +1 && $refresh_i3status
+bindsym Mod4+Shift+semicolon      exec --no-startup-id xbacklight -1 && $refresh_i3status
 
-# bindsym Mod4+'
-# bindsym Mod4+Shift+'
+bindsym Mod4+apostrophe           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +01% && $refresh_i3status
+bindsym Mod4+Shift+apostrophe     exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -01% && $refresh_i3status
 
 bindsym Mod4+Return exec $my_term
 bindsym Mod4+Shift+Return exec $my_term
@@ -221,8 +230,8 @@ bindsym Mod4+Shift+comma exec --no-startup-id i3-msg move container to workspace
 bindsym Mod4+period exec --no-startup-id i3-msg workspace"$ws-right"
 bindsym Mod4+Shift+period exec --no-startup-id i3-msg move container to workspace"$ws-right"; exec i3-msg workspace"$ws-right"
 
-# bindsym Mod4+/
-# bindsym Mod4+Shift+/
+bindsym Mod4+slash exec --no-startup-id dmenuaddmusic
+# bindsym Mod4+Shift+slash
 
 # The space key
 bindsym Mod4+space scratchpad show
@@ -230,7 +239,6 @@ bindsym Mod4+Shift+space move scratchpad
 
 # Shortcuts for common usage
 bindsym Mod1+Control+t exec $my_term
-bindsym Mod1+Control+k exec ~/.local/bin/dmenushutdown --no-startup-id
 bindsym Mod1+F4 kill
 
 # Arrow keys

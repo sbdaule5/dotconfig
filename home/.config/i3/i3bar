@@ -2,7 +2,7 @@
 bar {
     font xft:Iosevka Nerd Font 10
     i3bar_command i3bar --transparency
-    status_command i3status
+    status_command $HOME/.config/i3status/status_script.sh
     position top
     padding 0 0 0 4px
     tray_output primary
