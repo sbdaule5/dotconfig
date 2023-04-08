@@ -14,16 +14,18 @@ function fz1() {
 
 BASE="$HOME"
 config=(
-	'i3:.config/i3/'
+	'i3wm:.config/i3/'
 	'neovim:.config/nvim/'
 	'bash:.bashrc'
 	'alacritty:.config/alacritty/alacritty.yml'
-	'i3status:.config/i3status/config'
+	'i3status:.config/i3status/'
 	'picom:.config/picom/picom.config'
 	'ranger:.config/ranger'
 	'lf:.config/lf'
-	'tmux:.config/tmux/tmux.config'
+	'tmux:.config/tmux/tmux.conf'
 	'qutebrowser:.config/qutebrowser/config.py'
+    'newsboat:.config/newsboat/'
+    'zathura:.config/zathura/zathurarc'
 )
 
 if [[ -z $1 ]]
