@@ -4,6 +4,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set fdm=syntax
+set number
 set relativenumber
 set splitright
 set splitbelow
@@ -83,6 +84,8 @@ nnoremap <Leader>i i <ESC>r
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 nnoremap <Leader>s :buffer #<CR>
 nnoremap <Leader>p :r! xsel -o -b<CR>
+nnoremap <Leader>y "+y
+nnoremap <Leader>Y "+Y
 " insert a blank line
 nnoremap <Leader><CR> i<CR><ESC>
 nnoremap <Leader>o o<ESC>
