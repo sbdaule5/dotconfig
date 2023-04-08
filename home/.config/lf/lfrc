@@ -16,6 +16,8 @@ set shellopts '-eu'
 # is newline. You need to consider the values of these options and create your
 # commands accordingly.
 set ifs "\n"
+set previewer pistol
+set icons
 
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
@@ -29,6 +31,8 @@ set scrolloff 10
 # execute current file (must be executable)
 map x $$f
 map X !$f
+
+map <enter> open
 
 # dedicated keys for file opener actions
 map o &mimeopen $f
@@ -103,3 +107,5 @@ cmd zip ${{
 map zx push
 map zz push :zip<space>
 map zt push :tar<space>
+
+map zi $~/.config/lf/draw_img.sh "$f"
