@@ -1,2 +1,5 @@
 __init__.py
 __pycache__/
+home/.config/newsboat/urls
+home/.config/qutebrowser/bookmarks/
+home/.config/qutebrowser/quickmarks
