@@ -16,7 +16,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=5000
 
 # Save history as soon as command is typed
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
@@ -158,5 +158,5 @@ alias ..='cd ..'
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
-clear && neofetch --gap 10
+clear && pfetch --gap 10
 . "$HOME/.cargo/env"
