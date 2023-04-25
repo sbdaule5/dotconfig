@@ -8,6 +8,8 @@ archwiki(){
     notify-send "Arch Wiki not implemented yet."
 }
 manpage(){
+    MANWIDTH=80
+    export MANWIDTH
     if [[ -z $1 ]]; then
         page_desc="$(man -k . | sort | dmenu -i -l 20 -p 'Manual')" || exit 1
         page="$(echo $page_desc | \

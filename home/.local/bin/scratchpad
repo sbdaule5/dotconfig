@@ -11,7 +11,7 @@ then
 		fi
 		mkfifo /tmp/readingpad
 		chmod o-r /tmp/readingpad
-		notify-send "Reading panel created."
+		notify-send "Reading panel created" -a Scratchpad
 		# i3-msg exec 'alacritty --class="Alacritty:Reading" -e bat --style="plain" -l man < /tmp/readingpad'
 		i3-msg exec 'alacritty --class="Alacritty:Reading" -e less -r -f /tmp/readingpad'
 		if [[ -a "$HOME/.config/readingpanel/welcome" ]]
@@ -22,7 +22,7 @@ then
 	elif [[ $2 == "notepad" ]]
 	then
 
-		notify-send "Notepad created."
+		notify-send "Notepad created" -a Scratchpad
 		i3-msg exec 'alacritty --class="Alacritty:Notepad" -o font.size=9.0 -e nvim'
 
 	fi
@@ -36,7 +36,7 @@ then
 	elif [[ $2 == "notepad" ]]
 	then
 
-		notify-send "Can not print to notepad"
+		notify-send "Can not print to notepad" -a Scratchpad
 
 	fi
 fi
