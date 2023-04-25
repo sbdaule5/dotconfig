@@ -47,8 +47,10 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id systemd-inhibit --what=handle-power-key --who="i3-dmenushutdown" --why="Shutdown will be handled by i3wm" sleep infinity
 exec --no-startup-id conky -c .config/conky/conky1.conf -d
 exec --no-startup-id picom --config ~/.config/picom/picom.config -b --experimental-backend
-exec --not-startup-id ~/.local/bin/scratchpad start reading
-exec --not-startup-id ~/.local/bin/scratchpad start notepad
+exec --no-startup-id ~/.local/bin/scratchpad start reading
+exec --no-startup-id ~/.local/bin/scratchpad start notepad
+exec --no-startup-id kdeconnect-indicator &
+exec --no-startup-id mpd
 
 gaps inner 6px
 hide_edge_borders smart_no_gaps
