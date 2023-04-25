@@ -14,8 +14,10 @@ bindsym XF86MonBrightnessDown     exec --no-startup-id xbacklight -1 && $refresh
 bindsym XF86MonBrightnessUp       exec --no-startup-id xbacklight +1 && $refresh_i3status
 
 bindsym XF86PowerOff              exec --no-startup-id dmenushutdown
-bindsym Print                     exec --no-startup-id scrot ~/Pictures/screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png && notify-send "Screenshot captured"
-bindsym --release Shift+Print     exec scrot -s 'screenshot-%Y-%m-%d-%H-%M-%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
+bindsym Print                     exec --no-startup-id screenshot screen
+bindsym Shift+Print               exec --no-startup-id screenshot select
+bindsym Control+Print             exec --no-startup-id screenshot window
+bindsym Control+Shift+Print       exec --no-startup-id screenshot select_window
 
 # F keys
 bindsym Mod4+F1                   exec --no-startup-id $HOME/.local/bin/dmenuread man
@@ -205,7 +207,7 @@ bindsym Mod4+z                    open
 # bindsym Mod4+Shift+z
 
 # bindsym Mod4+x
-bindsym Mod4+Shift+x              exec $my_term -e ranger
+bindsym Mod4+Shift+x              exec $my_term -e lf
 
 # bindsym Mod4+c
 bindsym Mod4+Shift+c              reload
