@@ -158,5 +158,5 @@ alias ..='cd ..'
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
-clear && pfetch --gap 10
+clear && pfetch --gap 10 | lolcat
 . "$HOME/.cargo/env"
