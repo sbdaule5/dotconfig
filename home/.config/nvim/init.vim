@@ -10,7 +10,10 @@ set splitright
 set splitbelow
 set laststatus=3
 set ignorecase
+set expandtab
 set nrformats=alpha,hex,bin
+set wildmenu
+set wildmode=list:longest,full
 syntax on
 set nocompatible
 filetype plugin on
@@ -81,7 +84,7 @@ nnoremap <Leader>L <C-w>L
 
 nnoremap <Leader>r :Rename<CR>
 nnoremap <Leader>i i <ESC>r
-nnoremap <Leader>b :buffers<CR>:buffer<Space>
+nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>s :buffer #<CR>
 nnoremap <Leader>p :r! xsel -o -b<CR>
 nnoremap <Leader>y "+y
@@ -98,6 +101,8 @@ nnoremap <Leader>z :Build<CR>
 " use leader / to stop highlighting
 nnoremap <silent> <Leader>/ :noh<CR>
 
+nnoremap g<C-]> :execute 'tab tag '.expand('<cword>')<CR>
+
 " enclose commands in visual mode using <Leader>e
 vnoremap <Leader>e( c()<ESC>P
 vnoremap <Leader>e) c()<ESC>P
@@ -110,6 +115,7 @@ vnoremap <Leader>e> c<><ESC>P
 vnoremap <Leader>e" c""<ESC>P
 vnoremap <Leader>e' c''<ESC>P
 vnoremap <Leader>e` c``<ESC>P
+
 
 " adding configurations for nerdtree
 " autocmd VimEnter * NERDTree
@@ -146,12 +152,12 @@ if !exists('g:airline_symbols')
 endif
 
 " emmet settings
-let g:user_emmet_leader_key='<TAB>'
-let g:user_emmet_settings = {
-    \   'javascript.jsx' : {
-        \'extends' : 'jsx',
-    \ },
-\ }
+" let g:user_emmet_leader_key='<TAB>'
+" let g:user_emmet_settings = {
+"     \   'javascript.jsx' : {
+"         \'extends' : 'jsx',
+"     \ },
+" \ }
 
 " NerdCommenter
 " NERDCommenter settings
@@ -177,7 +183,8 @@ let g:vimtex_view_general_options
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fl <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fb <cmd>Buffers<cr>
+nnoremap <leader>ft <cmd>Tags<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 
@@ -188,22 +195,24 @@ let g:gundo_preview_height = 20
 let g:gundo_prefer_python3 = 1
 
 call plug#begin()
-Plug 'preservim/nerdtree'
-Plug 'preservim/nerdcommenter'
+" Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdcommenter'
 Plug 'Shougo/context_filetype.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'codechips/coc-svelte', {'do': 'npm install'}
+" Plug 'codechips/coc-svelte', {'do': 'npm install'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'sudar/vim-arduino-syntax'
 Plug 'edkolev/tmuxline.vim'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'triglav/vim-visual-increment'
@@ -214,10 +223,11 @@ Plug 'natebosch/vim-lsc-dart'
 Plug 'vimwiki/vimwiki'
 Plug 'lilydjwg/colorizer'
 Plug 'lervag/vimtex'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 Plug 'airblade/vim-gitgutter'
 Plug 'sjl/gundo.vim'
+Plug 'junegunn/fzf.vim', { 'do' : { -> fzf#install() } }
 call plug#end()
 
 let g:lsc_auto_map = v:true
