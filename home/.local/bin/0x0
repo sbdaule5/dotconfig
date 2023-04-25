@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+	echo "Please give argument"
+elif [[ -a $1 ]]; then
+	url=$(curl -F"file=@$1" 0x0.st)
+	echo $url
+	echo $url | xsel -ib
+	notify-send -a 0x0 "File uploaded" "Your url is $url"
+else
+	echo "File not found"
+fi
