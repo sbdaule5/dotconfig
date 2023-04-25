@@ -221,6 +221,7 @@ config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
 config.bind(',e', 'edit-text')
 config.bind(',r', 'spawn dmenuread web {url}')
+config.bind(',R', 'hint links spawn dmenuread web {url}')
 config.bind(',m', 'hint links spawn linkhandler_mpd {hint-url}')
 config.bind(',M', 'spawn linkhandler_mpd {url}')
 #  config.bind(',v', 'hint links spawn --detach mpv {hint-url}')
@@ -228,3 +229,5 @@ config.bind(',M', 'spawn linkhandler_mpd {url}')
 #  Added temporarily till no audio bug is fixed
 config.bind(',v', 'hint links spawn --detach mpv --force-window=yes --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {hint-url}')
 config.bind(',V', 'spawn --detach mpv --ytdl=no --force-window=yes --script-opts=ytdl_hooks-all_formats="yes" {url}')
+
+config.bind('Ctrl+o', 'set-cmd-text -s :open -w')
