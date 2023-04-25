@@ -1,4 +1,4 @@
-auto-reload yes
+auto-reload no
 
 color background          default default
 color listnormal          default default
