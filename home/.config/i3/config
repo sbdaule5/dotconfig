@@ -1,5 +1,4 @@
 # My i3 config file
-#
 # Setting the variables
 # font pango:monospace 9
 font xft:Iosevka Nerd Font 9
@@ -38,6 +37,19 @@ set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10"
 
+set $pcol1    #e7a927
+set $pcol2    #2787e7
+set $bcol     #100520D8
+set $wcol     #e72727
+set $tcol     #FFFFFF
+
+# Includes
+include ~/.config/i3/colors
+include ~/.config/i3/keybindings
+include ~/.config/i3/layout
+include ~/.config/i3/gaps
+include ~/.config/i3/i3bar
+
 # Programs to run on startup
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -e -p default -i ~/.lock.png
@@ -49,8 +61,9 @@ exec --no-startup-id conky -c .config/conky/conky1.conf -d
 exec --no-startup-id picom --config ~/.config/picom/picom.config -b --experimental-backend
 exec --no-startup-id ~/.local/bin/scratchpad start reading
 exec --no-startup-id ~/.local/bin/scratchpad start notepad
-exec --no-startup-id kdeconnect-indicator &
+exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id mpd
+exec --no-startup-id mpd-mpris
 
 gaps inner 6px
 hide_edge_borders smart_no_gaps
@@ -83,18 +96,13 @@ for_window [class="Alacritty:Notepad"] resize set 1366 250
 
 
 # class                 border  backgr.   text    indicator child_border
-client.focused          #2787e7 #2787e7   #ffffff #c78907   #e7a927
-client.focused_inactive #333333 #100520D8 #ffffff #484e50   #100520
-client.unfocused        #333333 #100520D8 #ffffff #292d2e   #222222
-client.urgent           #2f343a #e72727   #ffffff #e72727   #e72727
-client.placeholder      #000000 #0c0c0c   #ffffff #000000   #0c0c0c
+client.focused          $pcol2  $pcol2    $tcol   "#c78907"   $pcol1
+client.focused_inactive $bcol   $bcol     $tcol   "#484e50"   $bcol
+client.unfocused        $bcol   $bcol     $tcol   "#292d2e"   $bcol
+client.urgent           $wcol   $wcol     $tcol   $wcol       $wcol  
+client.placeholder      $bcol   #0c0c0c   $tcol   "#000000"   #0c0c0c
 
-client.background       #ffffff
+client.background       $tcol
 
-# Includes
-include ~/.config/i3/keybindings
-include ~/.config/i3/layout
-include ~/.config/i3/gaps
-include ~/.config/i3/i3bar
 
 

@@ -11,10 +11,11 @@ bar {
     workspace_min_width 45
     colors{
         background #100520D8
+        separator  #100520D8
         # Class             border    backgr    text
-        focused_workspace   #301560FF #e7a927FF #301560FF
-        active_workspace    #100520D8 #201040FF #FFFFFFFF
-        inactive_workspace  #100520D8 #100520D8 #FFFFFFFF
-        urgent_workspace    #100520D8 #e72727D8 #FFFFFFFF
+        focused_workspace   $bcol     $pcol1    $bcol    
+        active_workspace    $bcol     $pcol2    $bcol    
+        inactive_workspace  $bcol     $bcol     $tcol
+        urgent_workspace    $bcol     $wcol     $tcol
     }
 }
