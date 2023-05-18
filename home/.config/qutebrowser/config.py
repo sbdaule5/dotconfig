@@ -191,7 +191,7 @@ c.tabs.max_width = 150
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}', 'ddg': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'g': 'https://www.google.com/search?hl=en&q={}', 'github': 'https://github.com/search?q={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'man': ' https://www.die.net/search/?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}', 'ddg': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'g': 'https://www.google.com/search?hl=en&q={}', 'github': 'https://github.com/search?q={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'man': ' https://www.die.net/search/?q={}', 'aur': 'https://aur.archlinux.org/packages?O=0&SeB=nd&K={}&outdated=&SB=p&SO=d&PP=50&submit=Go'}
 
 # Setting color scheme
 # Type: QssColor
@@ -230,4 +230,4 @@ config.bind(',M', 'spawn linkhandler_mpd {url}')
 config.bind(',v', 'hint links spawn --detach mpv --force-window=yes --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {hint-url}')
 config.bind(',V', 'spawn --detach mpv --ytdl=no --force-window=yes --script-opts=ytdl_hooks-all_formats="yes" {url}')
 
-config.bind('Ctrl+o', 'set-cmd-text -s :open -w')
+config.bind('<Ctrl+o>', 'set-cmd-text -s :open -w')
