@@ -1,0 +1,48 @@
+#! /bin/bash
+
+capture_screen(){
+    cd ~/Pictures/screenshots
+    scrot 'screenshot-%Y-%m-%d-%H-%M-%S.png'
+    xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
+    notify-send "Screen captured" -a "Scrot"
+}
+
+capture_window(){
+    cd ~/Pictures/screenshots
+    scrot -w $(xdotool getactivewindow) 'screenshot-%Y-%m-%d-%H-%M-%S.png'
+    xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
+    notify-send "Window captured" -a "Scrot"
+}
+
+capture_select_window(){
+    cd ~/Pictures/screenshots
+    scrot -w $(xdotool selectwindow) 'screenshot-%Y-%m-%d-%H-%M-%S.png'
+    xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
+    notify-send "Window captured" -a "Scrot"
+}
+
+capture_select(){
+    cd ~/Pictures/screenshots
+    scrot -s 'screenshot-%Y-%m-%d-%H-%M-%S.png'
+    xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
+    notify-send "Selection captured" -a "Scrot"
+}
+
+if ! [[ -d ~/Pictures/screenshots/ ]]; then
+    mkdir -p ~/Pictures/screenshots
+fi
+
+if [[ -z $1 ]]; then
+    capture_screen
+elif [[ $1 == "window" ]]; then
+    capture_window
+elif [[ $1 == "select" ]]; then
+    capture_select
+elif [[ $1 == "screen" ]]; then
+    capture_screen
+elif [[ $1 == "select_window" ]]; then
+    capture_select_window
+else 
+    echo hi
+    # echo usage
+fi
