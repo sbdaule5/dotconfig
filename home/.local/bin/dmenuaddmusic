@@ -5,11 +5,11 @@
 
 addmusic(){
     ytlink="$1"
-    youtube-dl -g -f bestaudio "$ytlink" | xargs mpc insert
-    title=$(youtube-dl -e "$ytlink")
-    thumbnail_url=$(youtube-dl --get-thumbnail "$ytlink")
+    yt-dlp -g -f bestaudio "$ytlink" | xargs mpc insert
+    title=$(yt-dlp -e "$ytlink")
+    thumbnail_url=$(yt-dlp --get-thumbnail "$ytlink")
     curl "$thumbnail_url" -o /tmp/mpc-thumbnail.webp
-    notify-send "$title" "Added to mpd playlist" -i /tmp/mpc-thumbnail.webp
+    notify-send -a "mpd" "$title" "Added to mpd playlist" -i /tmp/mpc-thumbnail.webp
 }
 
 if [[ -z $1 ]]; then
