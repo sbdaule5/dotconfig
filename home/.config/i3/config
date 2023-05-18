@@ -92,6 +92,14 @@ for_window [class="Alacritty:Notepad"] move scratchpad
 for_window [class="Alacritty:Notepad"] move position 0px 518px
 for_window [class="Alacritty:Notepad"] resize set 1366 250
 
+for_window [class="Alacritty:Mixer"] sticky enable
+for_window [class="Alacritty:Mixer"] floating enable
+for_window [class="Alacritty:Mixer"] move position 666 25
+for_window [class="Alacritty:Mixer"] resize set 700 255
+no_focus   [class="Alacritty:Mixer"]
+
+for_window [class="detached:*"]        floating enable
+
 # exec "powerline-lemonbar --height 20 -- -t -f 'DejaVu Sans Mono-11' -f 'PowerlineSymbols-12' -f 'FontAwesome-11'"
 
 

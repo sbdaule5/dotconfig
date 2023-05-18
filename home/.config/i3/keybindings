@@ -6,9 +6,9 @@ bindsym XF86AudioRaiseVolume      exec --no-startup-id pactl set-sink-volume @DE
 bindsym XF86AudioLowerVolume      exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -01%     && $refresh_i3status
 bindsym XF86AudioMicMute          exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym XF86AudioNext             exec --no-startup-id mpc next   && $refresh_i3status
-bindsym XF86AudioPrev             exec --no-startup-id mpc prev   && $refresh_i3status
-bindsym XF86AudioPlay             exec --no-startup-id mpc toggle && $refresh_i3status
+bindsym XF86AudioNext             exec --no-startup-id playerctl next       && $refresh_i3status
+bindsym XF86AudioPrev             exec --no-startup-id playerctl previous   && $refresh_i3status
+bindsym XF86AudioPlay             exec --no-startup-id playerctl play-pause && $refresh_i3status
 
 bindsym XF86MonBrightnessDown     exec --no-startup-id xbacklight -1 && $refresh_i3status
 bindsym XF86MonBrightnessUp       exec --no-startup-id xbacklight +1 && $refresh_i3status
@@ -150,14 +150,14 @@ bindsym Mod4+o                    focus child
 bindsym Mod4+p                    focus parent
 # bindsym Mod4+Shift+p
 
-bindsym Mod4+bracketleft          exec --no-startup-id mpc seek -00:00:05                        && $refresh_i3status
-bindsym Mod4+Shift+bracketleft    exec --no-startup-id mpc prev                                  && $refresh_i3status
+bindsym Mod4+bracketleft          exec --no-startup-id playerctl position 5-                     && $refresh_i3status
+bindsym Mod4+Shift+bracketleft    exec --no-startup-id playerctl previous                        && $refresh_i3status
 
-bindsym Mod4+bracketright         exec --no-startup-id mpc seek +00:00:05                        && $refresh_i3status
-bindsym Mod4+Shift+bracketright   exec --no-startup-id mpc next                                  && $refresh_i3status
+bindsym Mod4+bracketright         exec --no-startup-id playerctl position 5+                     && $refresh_i3status
+bindsym Mod4+Shift+bracketright   exec --no-startup-id playerctl next                            && $refresh_i3status
 
 bindsym Mod4+backslash            exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym Mod4+Shift+backslash      exec --no-startup-id mpc toggle                                && $refresh_i3status
+bindsym Mod4+Shift+backslash      exec --no-startup-id playerctl play-pause                      && $refresh_i3status
 
 # Home row
 
