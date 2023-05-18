@@ -26,7 +26,7 @@ set guioptions              "s"
 
 set font                    "inconsolata 15"
 set default-fg              "#000000"
-set default-bg              "rgba(16,5,32,0.8)"
+set default-bg              "rgba(16,5,32,0.7)"
 
 set statusbar-fg            "#FFFFFF"
 set statusbar-bg            "#000000"
