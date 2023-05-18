@@ -114,4 +114,8 @@ map zx push
 map zz push :zip<space>
 map zt push :tar<space>
 
+# Get disk usage info when pressing zd
+map zd %du -h $f
+map zD %du -hc $fs
+
 map zi $~/.config/lf/draw_img.sh "$f"
