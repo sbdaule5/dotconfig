@@ -62,6 +62,9 @@ cmd open &{{
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
 cmd trash $trash $fx
+cmd 0x0 ${{
+    curl -F"file=@$f" 0x0.st | xargs notify-send
+}}
 
 # define a custom 'delete' command
 # cmd delete ${{
