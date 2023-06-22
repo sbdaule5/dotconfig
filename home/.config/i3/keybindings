@@ -20,6 +20,9 @@ bindsym Control+Print             exec --no-startup-id screenshot window
 bindsym Control+Shift+Print       exec --no-startup-id screenshot select_window
 
 # F keys
+bindsym Mod4+Escape               [class="Alacritty:Notepad"] scratchpad show
+# bindsym Mod4+Shift+Escape         
+
 bindsym Mod4+F1                   exec --no-startup-id $HOME/.local/bin/dmenuread man
 bindsym Mod4+Shift+F1             exec --no-startup-id $HOME/.local/bin/dmenuread
 
@@ -111,7 +114,7 @@ bindsym Mod4+Shift+0              move container to workspace number $ws0; works
 # bindsym Mod4+equal
 # bindsym Mod4+Shift+equal
 
-bindsym Mod4+BackSpace            [class="^Alacritty:Reading$"] scratchpad show
+bindsym Mod4+BackSpace            [class="^Alacritty:Chat$"] scratchpad show
 # bindsym Mod4+Shift+Backspace
 
 # Upper row
@@ -209,7 +212,7 @@ bindsym Mod4+z                    open
 # bindsym Mod4+x
 bindsym Mod4+Shift+x              exec $my_term -e lf
 
-# bindsym Mod4+c
+bindsym Mod4+c                    exec clipmenu -l 10
 bindsym Mod4+Shift+c              reload
 
 # # split in vertical orientation

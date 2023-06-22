@@ -18,12 +18,17 @@ then
 		then
 			cat $HOME/.config/readingpanel/welcome > /tmp/readingpad
 		fi
-
 	elif [[ $2 == "notepad" ]]
 	then
 
 		notify-send "Notepad created" -a Scratchpad
 		i3-msg exec 'alacritty --class="Alacritty:Notepad" -o font.size=9.0 -e nvim'
+
+	elif [[ $2 == "tgpt" ]]
+	then
+
+		notify-send "Chat panel created" -a Scratchpad
+		i3-msg exec 'alacritty --class="Alacritty:Chat" -o font.size=9.0 -e tgpt -m'
 
 	fi
 elif [[ $1 == "print" ]]
