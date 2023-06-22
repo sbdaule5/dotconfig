@@ -13,30 +13,10 @@ au!
 autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
 
-" Use tab for trigger completion with characters ahead and navigate.
-" inoremap <silent><expr> <TAB>
-"       \ coc#pum#visible() ? coc#pum#next(1) :
-"       \ CheckBackspace() ? "\<Tab>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Rename current file
 function! RenameFile()
@@ -45,6 +25,7 @@ function! RenameFile()
   if new_name != '' && new_name != old_name
     exec ':saveas ' . new_name
     exec ':silent !rm ' . old_name
+    exec ':bd ' . old_name
     redraw!
   endif
 endfunction
@@ -56,19 +37,6 @@ let g:vimwiki_list = [{'path': '~/notes/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:vimwiki_global_ext = 0
-
-
-" airline
-let g:airline_theme='violet'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
 
 " NerdCommenter
 " NERDCommenter settings
@@ -110,20 +78,21 @@ Plug 'Shougo/context_filetype.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte'
 Plug 'leafgarland/typescript-vim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
+Plug 'svermeulen/vim-subversive'
 Plug 'sudar/vim-arduino-syntax'
 Plug 'edkolev/tmuxline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'triglav/vim-visual-increment'
-Plug 'vim-scripts/DrawIt'
+" Plug 'vim-scripts/DrawIt'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
@@ -135,18 +104,22 @@ Plug 'sjl/gundo.vim'
 Plug 'tanvirtin/monokai.nvim'
 Plug 'junegunn/fzf.vim', { 'do' : { -> fzf#install() } }
 Plug 'nvim-treesitter/nvim-treesitter' 
+Plug 'kana/vim-operator-user' 
 
 " LSP Support
-Plug 'neovim/nvim-lspconfig'                           " Required
 Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'} " Optional
 Plug 'williamboman/mason-lspconfig.nvim'               " Optional
+Plug 'neovim/nvim-lspconfig'                           " Required
 
 " Autocompletion
-Plug 'hrsh7th/nvim-cmp'     " Required
-Plug 'hrsh7th/cmp-nvim-lsp' " Required
-Plug 'L3MON4D3/LuaSnip'     " Required
+" Plug 'hrsh7th/nvim-cmp'     " Required
+" Plug 'hrsh7th/cmp-nvim-lsp' " Required
+" Plug 'L3MON4D3/LuaSnip'     " Required
 
-Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
+Plug 'cpiger/NeoDebug'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'ellisonleao/gruvbox.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 call plug#end()
 
 let g:lsc_auto_map = v:true
