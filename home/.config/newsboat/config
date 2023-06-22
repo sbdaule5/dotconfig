@@ -2,10 +2,10 @@ auto-reload no
 
 color background          default default
 color listnormal          default default
-color listfocus           color11 default reverse
+color listfocus           color10 default reverse
 color listnormal_unread   default default bold
-color listfocus_unread    color11 default reverse bold
-color info                color15 color12
+color listfocus_unread    color10 default reverse bold
+color info                color15 color4
 color article             default default
 
 bind-key j down

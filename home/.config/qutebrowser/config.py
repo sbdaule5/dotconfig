@@ -195,19 +195,34 @@ c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}', 'ddg':
 
 # Setting color scheme
 # Type: QssColor
-c.colors.completion.odd.bg = '#100520'
-c.colors.completion.even.bg = '#100520'
-c.colors.completion.item.selected.fg = '#100520'
-c.colors.completion.item.selected.bg = '#e7a927'
-c.colors.completion.category.bg = '#2787e7'
+pcol1  = "#98971a"
+pcol2  = "#458588"
+bcol   = "#282828"
+wcol   = "#cc241d"
+tcol   = "#FFFFFF"
+c.colors.completion.odd.bg = bcol
+c.colors.completion.even.bg = bcol
+c.colors.completion.item.selected.fg = bcol
+c.colors.completion.item.selected.bg = pcol1
+c.colors.completion.category.bg = pcol2
 
-c.colors.tabs.odd.bg = '#100520'
-c.colors.tabs.even.bg = '#100520'
-c.colors.tabs.selected.odd.fg = '#301560'
-c.colors.tabs.selected.even.fg = '#301560'
-c.colors.tabs.selected.odd.bg = '#e7a927'
-c.colors.tabs.selected.even.bg = '#e7a927'
+c.colors.tabs.odd.bg = bcol
+c.colors.tabs.even.bg = bcol
+c.colors.tabs.odd.fg = tcol
+c.colors.tabs.even.fg = tcol
+c.colors.tabs.selected.odd.fg = bcol
+c.colors.tabs.selected.even.fg = bcol
+c.colors.tabs.selected.odd.bg = pcol1
+c.colors.tabs.selected.even.bg = pcol1
+c.colors.tabs.indicator.error = wcol
+c.colors.tabs.indicator.start = pcol2
+c.colors.tabs.indicator.stop = pcol1
 c.tabs.padding = {"bottom": 2, "left": 5, "right": 5, "top":2}
+
+c.colors.contextmenu.menu.bg = bcol
+c.colors.contextmenu.menu.fg = tcol
+c.colors.contextmenu.selected.fg = bcol
+c.colors.contextmenu.selected.bg = pcol1
 
 c.completion.scrollbar.padding = 1
 c.completion.scrollbar.width = 7

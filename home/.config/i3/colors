@@ -1,5 +1,5 @@
-set $pcol1    #e7a927
-set $pcol2    #2787e7
-set $bcol     #100520D8
-set $wcol     #e72727
+set $pcol1    #98971a
+set $pcol2    #458588
+set $bcol     #282828B2
+set $wcol     #cc241d
 set $tcol     #FFFFFF

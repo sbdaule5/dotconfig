@@ -30,9 +30,9 @@ fi
 
 if [ "$SOUND_LEVEL" -lt 101 ]
 then
-    echo -e "<span color='#0a0515' bgcolor='#E7A927' bgalpha='90%'> $ICON<b>$SOUND_LEVEL%</b> </span>"
+    echo -e "<span color='#282828' bgcolor='#E7A927' bgalpha='90%'> $ICON<b>$SOUND_LEVEL%</b> </span>"
 else
-    echo -e "<span color='#0a0515' bgcolor='#E72727' bgalpha='90%'> $ICON<b>$SOUND_LEVEL%</b> </span>"
+    echo -e "<span color='#282828' bgcolor='#E72727' bgalpha='90%'> $ICON<b>$SOUND_LEVEL%</b> </span>"
 fi
 
 # Doing acitons when buttons are pressed

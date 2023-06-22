@@ -16,18 +16,18 @@ CHARGING="󰂆󰂇󰂈󰢝󰢝󰂉󰢞󰂊󰂋󰂅"
 case "$STATUS" in
     Full)
         ICON=󰁹
-        echo -e "<span color='#0a0515' bgcolor='#27e74a' bgalpha='90%'> <b>$ICON $BATTERY%</b> </span>"
+        echo -e "<span color='#282828' bgcolor='#98971a' bgalpha='90%'> <b>$ICON $BATTERY%</b> </span>"
         ;;
     Charging)
         ICON=${CHARGING:$BATTERY_CURR_FRAG:1}
-        echo -e "<span color='#0a0515' bgcolor='#E7A927' bgalpha='90%'> <b>$ICON $BATTERY%</b> </span>"
+        echo -e "<span color='#282828' bgcolor='#E7A927' bgalpha='90%'> <b>$ICON $BATTERY%</b> </span>"
         ;;
     Discharging)
         ICON=${DISCHARGING:$BATTERY_CURR_FRAG:1}
-        echo -e "<span color='#0a0515' bgcolor='#E72727' bgalpha='90%'> <b>$ICON $BATTERY%</b> </span>"
+        echo -e "<span color='#282828' bgcolor='#E72727' bgalpha='90%'> <b>$ICON $BATTERY%</b> </span>"
         ;;
     *)
         ICON=󱃌
-        echo -e "<span color='#0a0515' bgcolor='#E72727' bgalpha='90%'> <b>$ICON $BATTERY%</b> </span>"
+        echo -e "<span color='#282828' bgcolor='#E72727' bgalpha='90%'> <b>$ICON $BATTERY%</b> </span>"
         ;;
 esac

@@ -572,7 +572,7 @@ schemes:
   MyScheme: &MyScheme
      # Default colors
     primary:
-      background: '#0a0515'
+      background: '#382607'
       foreground: '#ffffff'
 
     # Colors the cursor will use if `custom_cursor_colors` is true
@@ -617,7 +617,7 @@ schemes:
 # *TomorrowNight
 # *MyScheme
 
-colors: *MyScheme
+colors: *GruvboxDark
 
 #######################################
 ##       END OF COLOR SCHEMES        ##

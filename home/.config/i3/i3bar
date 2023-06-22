@@ -11,8 +11,8 @@ bar {
     strip_workspace_numbers yes
     workspace_min_width 45
     colors{
-        background #100520D8
-        separator  #100520D8
+        background #282828B2
+        separator  #282828B2
         # Class             border    backgr    text
         focused_workspace   $bcol     $pcol1    $bcol    
         active_workspace    $bcol     $pcol2    $bcol    
