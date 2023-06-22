@@ -1,5 +1,8 @@
-require("sbdaule/settings")
-require("sbdaule/keybindings")
+require("sbdaule")
+
+function Reload()
+  require("sbdaule").reload()
+end
 
 vim.cmd([[
 "set guifont=DroidSansMono\ Nerd\ Font\ 11
