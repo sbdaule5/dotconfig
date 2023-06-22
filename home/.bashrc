@@ -44,8 +44,8 @@ export prompt_dir_style
 # pl_hs=""
 # pl_ss="\/"
 
-pl_hs=""
-pl_ss=""
+pl_hs=""
+pl_ss="\/"
 
 # pl_hs=" "
 # pl_ss=" "
@@ -116,7 +116,9 @@ then
         "multiline") PS1="\n\[\e[0;35m\]\342\224\214\[\e[1;35m\](\[\e[32m\]\u@\h\[\e[1;35m\])\342\224\200(\[\e[1;30m\]\w\[\e[1;35m\])\$(echo_if_git '\342\224\200(' )\[\e[1;36m\]\$(parse_git_branch)\[\e[1;35m\]\$(echo_if_git ')')\n\[\e[0;35m\]\342\224\224\342\224\200\[\e[1;35m\](\[\e[1;33m\]\W\[\e[1;35m\])\342\224\200] $ \[\e[0m\]"
             ;;
         # Powerline Prompt
-        "powerline") PS1="\[\e[1;103;30m\] \u \[\e[47;33m\]$pl_hs\[\e[0;1;33;47m\] \h \[\e[7;47;92m\]$pl_hs\[\e[0;1;30;102m\]\$(echo_if_git '  ')\$(parse_git_branch)\$(echo_if_git ' ')\[\e[7;34m\]$pl_hs\[\e[0;1;30;104m\]\$(echo_if_venv '   ')\$(parse_venv)\$(echo_if_venv ' ')\[\e[7;30m\]$pl_hs\[\e[0;1;100;35m\] \$(parse_pwd) \[\e[0;1;30;104m\]$pl_hs \[\e[30m\]$ \[\e[49;34m\]$pl_hs \[\e[0m\] "
+        "powerline") PS1="\[\e[1;44;92m\] \u \[\e[0;1;33;45m\] \h \[\e[0;1;32;41m\]\$(echo_if_git '  ')\$(parse_git_branch)\$(echo_if_git ' ')\[\e[0;1;30;104m\]\$(echo_if_venv '   ')\$(parse_venv)\$(echo_if_venv ' ')\[\e[0;1;7;32;40m\] \$(parse_pwd) \[\e[0;1;31m\] $\[\e[0m\] "
+            ;;
+        "bolckline") PS1="\[\e[1;103;30m\] \u \[\e[47;33m\]$pl_hs\[\e[0;1;33;47m\] \h \[\e[7;47;92m\]$pl_hs\[\e[0;1;40;102m\]\$(echo_if_git '  ')\$(parse_git_branch)\$(echo_if_git ' ')\[\e[7;34m\]$pl_hs\[\e[0;1;30;104m\]\$(echo_if_venv '   ')\$(parse_venv)\$(echo_if_venv ' ')\[\e[7;30m\]$pl_hs\[\e[0;1;100;35m\] \$(parse_pwd) \[\e[0;1;30;104m\]$pl_hs \[\e[30;40m\]$ \[\e[49;34m\]$pl_hs \[\e[0m\] "
             ;;
     esac
 else
@@ -154,6 +156,7 @@ alias nvim='tnvim'
 alias vi='/usr/bin/nvim'
 alias prompt-short='prompt_style=short'
 alias prompt-full='prompt_style=full'
+alias ncmpcpp='ncmpcpp -b ~/.config/ncmpcpp/bindings'
 alias :e='/usr/bin/nvim'
 alias ..='cd ..'
 
