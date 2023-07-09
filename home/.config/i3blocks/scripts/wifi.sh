@@ -22,6 +22,6 @@ then
     else
         ICON="$WIFI_LOW"
     fi
-    echo -e "<span color='#282828' bgcolor='#2787E7' bgalpha='90%'> <b>$ICON $WIFI_NAME $WIFI_STRENGTH%</b> </span>"
+    echo -e "<span color='#282828' bgcolor='#458588' bgalpha='90%'> <b>$ICON $WIFI_NAME $WIFI_STRENGTH%</b> </span>"
 fi
 
