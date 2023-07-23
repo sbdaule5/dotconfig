@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# There is a possibility to integrate this script into the other mpd script
+url=$(mpc | head -n 1)
+case $url in
+    https*)
+
+        if [ -z "$1" ]; then
+            FILE="Song-$(date  '+%Y-%m-%d-%H-%M-%S')"
+        else
+            FILE="$1"
+        fi
+
+        cd ~/Music/mpd-downloads
+        curl "$url" -o "${FILE}.webm"
+        notify-send "Song Downloaded" -a "MPD"
+        ffmpeg -i "${FILE}.webm" "${FILE}.mp3"
+        ;;
+    *)
+        notify-send "MPD-Currently playing file from disk." -a "MPD"
+        ;;
+esac
