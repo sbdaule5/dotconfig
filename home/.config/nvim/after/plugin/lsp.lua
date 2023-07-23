@@ -32,14 +32,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-Tab>", function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set("i", "<C-g>", function() vim.lsp.buf.signature_help() end, opts)
   end
 })
+
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local nvim_lsp = require('lspconfig')
-nvim_lsp.clangd.setup{ handlers = handlers}
-nvim_lsp.tsserver.setup{ handlers = handlers}
-nvim_lsp.cssls.setup{ handlers = handlers}
-nvim_lsp.emmet_ls.setup{ handlers = handlers}
-nvim_lsp.luau_lsp.setup{ handlers = handlers}
-nvim_lsp.rust_analyzer.setup{ handlers = handlers}
-nvim_lsp.tsserver.setup{ handlers = handlers}
+nvim_lsp.clangd.setup{ capabilities = lsp_capabilities, handlers = handlers, cmd = {"/usr/bin/clangd", "--background-index", "--header-insertion=never"}}
+nvim_lsp.tsserver.setup{ capabilities = lsp_capabilities, handlers = handlers}
+nvim_lsp.cssls.setup{ capabilities = lsp_capabilities, handlers = handlers}
+nvim_lsp.emmet_ls.setup{ capabilities = lsp_capabilities, handlers = handlers}
+nvim_lsp.luau_lsp.setup{ capabilities = lsp_capabilities, handlers = handlers}
+nvim_lsp.rust_analyzer.setup{ capabilities = lsp_capabilities, handlers = handlers}
+nvim_lsp.tsserver.setup{ capabilities = lsp_capabilities, handlers = handlers}
+nvim_lsp.jedi_language_server.setup{ capabilities = lsp_capabilities, handlers = handlers}

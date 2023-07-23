@@ -38,6 +38,8 @@ function ColorMyPencils(color)
 -- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = scheme.gray})
 -- 	vim.api.nvim_set_hl(0, "FloatBorder ", { bg = "none", fg=scheme.pro.black})
 	vim.cmd [[highlight NormalFloat guifg=#ebdbb2 guibg=#3c3836]]
+	vim.cmd [[highlight! link TreesitterContextLineNumber GruvboxOrangeBold]]
+	vim.cmd [[highlight! TreesitterContext guibg=none]]
 -- 	-- vim.cmd [[highlight FloatBorder guifg=white guibg=#1f2335]]
 -- 	vim.cmd [[highlight WinSeparator cterm=NONE ctermbg=None ctermbg=gray guibg=None guifg=gray]]
 

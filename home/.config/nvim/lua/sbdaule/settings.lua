@@ -1,14 +1,22 @@
 vim.opt.encoding = 'UTF-8'
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+vim.opt.scrolloff = 5
+
 vim.opt.fdm = 'syntax'
+vim.opt.foldexpr = "nvim_treesitter#flodexpr()"
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.local/share/nvim/undodir"
+vim.opt.undofile = true
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -23,3 +31,7 @@ vim.opt.wildmode = 'list:longest,full'
 vim.opt.compatible = false
 vim.cmd.syntax("on");
 vim.cmd.filetype("plugin", "on");
+
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.netrwPlugin = 1

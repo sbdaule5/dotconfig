@@ -2,11 +2,11 @@ function ChangeView(view)
     if (view == "UndoTree")
     then
         vim.cmd ":NvimTreeClose"
-        vim.cmd ":GundoToggle"
+        vim.cmd ":UndotreeToggle"
     end
     if (view == "FileTree")
     then
-        vim.cmd ":GundoHide"
+        vim.cmd ":UndotreeHide"
         vim.cmd ":NvimTreeToggle"
     end
     if (view == "Buffers")
