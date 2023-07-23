@@ -3,7 +3,7 @@
 # Links handler primarily made for use with newsboat
 # Inspired from @bugswriter_
 
-if [[ -z $1 ]]; then
+if [ -z "$1" ]; then
 	url=$(xsel -ob)
 else
 	url=$1
@@ -14,6 +14,8 @@ case "$url" in
 		setsid -f mpv --ytdl-format="bestaudio+bestvideo[height<=240]" "$url" > /dev/null 2>&1 ;;
 	*png|*jpg|*jpeg|*jpe)
 		feh "$url" ;;
+	*pdf)
+		zathura "$url" ;;
 	*)
 		readable -o /tmp/newsboat_article.html > /dev/null 2>&1 \
 		&& setsid -f qutebrowser /tmp/newsboat_article.html > /dev/null 2>&1 ;;
