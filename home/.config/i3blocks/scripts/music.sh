@@ -29,6 +29,8 @@ TITLE=$(playerctl metadata title | sed 's/&/&amp;/g')
 ARTIST=$(playerctl metadata artist | sed 's/&/&amp;/g')
 STATUS=$(playerctl status | sed 's/&/&amp;/g')
 
+PLAYER=$(echo "$PLAYER" | sed 's/\([^.]*\).*/\1/')
+
 if [ "$STATUS" == "Playing" ]; then
     if [ "$PLAYER" == "mpd" ]; then
         NAME=$(mpc status -f "[[%title%] - [%artist%]]"| awk '{if (NR==1) head=$0; if(NR==2){if($1 == "[playing]"){print head " " $3}}}' | sed -e 's/&/&amp;/g')
