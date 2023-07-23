@@ -14,8 +14,8 @@ bar {
         background #282828B2
         separator  #282828B2
         # Class             border    backgr    text
-        focused_workspace   $bcol     $pcol1    $bcol    
-        active_workspace    $bcol     $pcol2    $bcol    
+        focused_workspace   $bcol     $pcol1    $bcol
+        active_workspace    $bcol     $pcol2    $bcol
         inactive_workspace  $bcol     $bcol     $tcol
         urgent_workspace    $bcol     $wcol     $tcol
     }

@@ -25,17 +25,19 @@ set $mode_gaps_right       Right Gaps
 # setting terminal emulator
 set $my_term alacritty
 # Define names for default workspaces
-set $ws1 "1:󰅩 "
-set $ws0 "0: "
-set $ws2 "2: " 
-set $ws3 "3: "
-set $ws4 "4:󱉟"
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10"
+set $ws1   "1:󰅩 "
+set $ws0   "0: "
+set $ws2   "2:󰣇 " 
+set $ws3   "3: "
+set $ws4   "4:"
+set $ws5   "5: "
+set $ws6   "6: "
+set $ws7   "7: "
+set $ws8   "8: "
+set $ws9   "9: "
+set $ws10 "10: "
+set $ws11 "11"
+set $ws12 "12"
 
 set $pcol1    #98971a
 set $pcol2    #458588
@@ -63,7 +65,7 @@ exec --no-startup-id ~/.local/bin/scratchpad start reading
 exec --no-startup-id ~/.local/bin/scratchpad start notepad
 exec --no-startup-id ~/.local/bin/scratchpad start tgpt
 exec --no-startup-id kdeconnect-indicator
-exec --no-startup-id mpd
+# exec --no-startup-id mpd
 exec --no-startup-id clipmenud
 exec --no-startup-id playerctld
 exec --no-startup-id mpd-mpris
@@ -77,7 +79,7 @@ hide_edge_borders smart_no_gaps
 # for_window [title="irssi"] border pixel 2
 default_border pixel 2
 
-assign [class="Brave"] $ws0
+assign [class="Brave"] $ws10
 assign [title="gtop"] $ws9
 assign [title="irssi"] $ws8
 

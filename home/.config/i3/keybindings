@@ -13,7 +13,7 @@ bindsym XF86AudioPlay             exec --no-startup-id playerctl play-pause && $
 bindsym XF86MonBrightnessDown     exec --no-startup-id xbacklight -1 && $refresh_i3status
 bindsym XF86MonBrightnessUp       exec --no-startup-id xbacklight +1 && $refresh_i3status
 
-bindsym XF86PowerOff              exec --no-startup-id dmenushutdown
+bindsym XF86PowerOff              exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 bindsym Print                     exec --no-startup-id screenshot screen
 bindsym Shift+Print               exec --no-startup-id screenshot select
 bindsym Control+Print             exec --no-startup-id screenshot window
@@ -75,8 +75,8 @@ bindsym Mod4+Shift+Insert         exec --no-startup-id ~/.local/bin/dmenuunicode
 
 
 # Number key row
-# bindsym Mod4+`
-# bindsym Mod4+Shift+`
+bindsym Mod4+grave                workspace number $ws0
+bindsym Mod4+Shift+grave          move container to workspace number $ws0; workspace number $ws0
 
 bindsym Mod4+1                    workspace number $ws1
 bindsym Mod4+Shift+1              move container to workspace number $ws1; workspace number $ws1
@@ -105,8 +105,8 @@ bindsym Mod4+Shift+8              move container to workspace number $ws8; works
 bindsym Mod4+9                    workspace number $ws9
 bindsym Mod4+Shift+9              move container to workspace number $ws9; workspace number $ws9
 
-bindsym Mod4+0                    workspace number $ws0
-bindsym Mod4+Shift+0              move container to workspace number $ws0; workspace number $ws0
+bindsym Mod4+0                    workspace number $ws10
+bindsym Mod4+Shift+0              move container to workspace number $ws10; workspace number $ws10
 
 # bindsym Mod4+minus
 # bindsym Mod4+Shift+minus
@@ -115,7 +115,7 @@ bindsym Mod4+Shift+0              move container to workspace number $ws0; works
 # bindsym Mod4+Shift+equal
 
 bindsym Mod4+BackSpace            [class="^Alacritty:Chat$"] scratchpad show
-# bindsym Mod4+Shift+Backspace
+bindsym Mod4+Shift+BackSpace      [class="^Alacritty:Reading$"] scratchpad show
 
 # Upper row
 
@@ -167,8 +167,8 @@ bindsym Mod4+Shift+backslash      exec --no-startup-id playerctl play-pause     
 # bindsym Mod4+CapsLock
 # bindsym Mod4+Shift+CapsLock
 
-bindsym Mod4+a                    exec --no-startup-id i3-dmenu-desktop
-bindsym Mod4+Shift+a              exec --no-startup-id dmenu_run
+bindsym Mod4+a                    exec --no-startup-id ~/.config/rofi/launchers/type-3/launcher.sh
+bindsym Mod4+Shift+a              exec --no-startup-id rofi -show run
 
 # # split in vertical orientation
 bindsym Mod4+s split v
@@ -181,7 +181,7 @@ bindsym Mod4+f                    fullscreen toggle
 bindsym Mod4+Shift+f              exec pcmanfm
 
 bindsym Mod4+g                    mode "$mode_gaps"
-# bindsym Mod4+Shift+g
+bindsym Mod4+Shift+g              exec --no-startup-id $my_term --class="Alacritty:gomuks" -e gomuks
 
 bindsym Mod4+h                    focus left
 bindsym Mod4+Shift+h              move left
@@ -207,7 +207,7 @@ bindsym Mod4+Shift+Return         exec $my_term
 # Bottom row
 
 bindsym Mod4+z                    open
-# bindsym Mod4+Shift+z
+bindsym Mod4+Shift+z              exec $my_term -e ranger
 
 # bindsym Mod4+x
 bindsym Mod4+Shift+x              exec $my_term -e lf
@@ -226,8 +226,8 @@ bindsym Mod4+n                    [class="Alacritty:Notepad"] scratchpad show
 bindsym Mod4+Shift+n              exec qutebrowser
 
 # # Mount drives using dmenu
-bindsym Mod4+m                    exec --no-startup-id ~/.local/bin/dmenumount
-bindsym Mod4+Shift+m              exec --no-startup-id ~/.local/bin/dmenuumount
+# bindsym Mod4+m                    exec --no-startup-id ~/.local/bin/dmenumount
+bindsym Mod4+Shift+m              exec --no-startup-id $my_term --class="Alacritty:Music" -e ncmpcpp
 
 bindsym Mod4+comma                exec --no-startup-id i3-msg workspace"$ws-left"
 bindsym Mod4+Shift+comma          exec --no-startup-id i3-msg move container to workspace"$ws-left"; exec i3-msg workspace"$ws-left"
