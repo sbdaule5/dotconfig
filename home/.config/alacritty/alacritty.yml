@@ -117,7 +117,8 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: Source Code Pro
-    family: Iosevka Nerd Font
+    # family: Iosevka Nerd Font
+    family:  JetBrainsMono Nerd Font
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
@@ -191,12 +192,12 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 9.9
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: 0
+    x: -1
     y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
