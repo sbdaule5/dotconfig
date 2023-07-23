@@ -4,10 +4,142 @@ set abort_nosubject = no
 set mail_check = 60
 set timeout = 10
 set sort = "reverse-date-received"
-set signature = "~/.mutt/signature"
 set copy = no
+
+alternative_order text/plain text text/html
+auto_view text/html
 
 macro index gd "<change-folder>$postponed<enter>" "go to drafts"
 macro index gs "<change-folder>$record<enter>" "go to sent"
 macro index gi "<change-folder>$spoolfile<Enter>" "go to inbox"
 macro index gt "<change-folder>$trash<enter>" "go to trash""
+
+# colors
+color hdrdefault cyan default
+color attachment yellow default
+
+color header brightyellow default "From: "
+color header brightyellow default "Subject: "
+color header brightyellow default "Date: "
+
+color quoted green default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 cyan default
+
+color error     red             default         # error messages
+color message   yellow          default         # message  informational messages
+color indicator black           green           # indicator for the "current message"
+color status    brightwhite     blue            # status lines in the folder index sed for the mini-help line
+color tree      red             default         # the "tree" display of threads within the folder index
+color search    white           blue            # search matches found with search within the internal pager
+color markers   red             default         # The markers indicate a wrapped line hen showing messages with looong lines
+
+color index     brightyellow    default  '~O'
+color index     brightyellow    default  '~N'
+color index     brightred       default  '~F'   # Flagged Messages are important!
+color index     blue            default  '~D'   # Deleted Mails - use dark color as these are already "dealt with"
+
+# Keybindings and macros
+# ---------------------------
+
+# alias   - alias menu displaying suggested aliases
+# browser - file/directory browser
+# editor  - single line editor for `To:', `Subject:' prompts.
+# index   - the main menu showing messages in a folder
+# pager   - where the contents of the message are displayed
+# query   - menu displaying results of query command
+
+# Unbind some defaults.
+bind index <esc>V noop
+bind index <esc>v noop
+bind index \Cn noop
+bind index \Cp noop
+bind pager,index g noop
+
+bind alias,index,browser,query G last-entry
+bind pager G bottom
+
+bind alias,index,browser,query gg first-entry
+bind pager gg top
+
+bind pager h previous-entry
+bind pager j next-line
+bind pager k previous-line
+bind pager l next-entry
+
+# bind index h previous-entry
+# bind index j next-line
+# bind index k previous-line
+bind index l display-message
+
+bind alias,index,pager,browser,query \Cd half-down
+bind alias,index,pager,browser,query \Cu half-up
+
+bind index <esc><space> collapse-all
+bind index <space> collapse-thread
+
+bind index n search-next
+bind index p search-opposite
+
+bind index { previous-thread
+bind pager { half-up
+
+bind index } next-thread
+bind pager } half-down
+
+bind index,pager A create-alias
+bind index,pager a group-reply
+
+# Skip trash when deleting with the delete key.
+bind index,pager <delete> purge-message
+
+# Readline-like history browsing using up/down keys.
+bind editor <up> history-up
+bind editor <down> history-down
+bind editor \Cp history-up
+bind editor \Cn history-down
+
+# Convenient macros to switch between common folders.  Also tells me what other
+# folders have new mail once I make a switch.
+macro index,pager gd "<change-folder>$postponed<enter><buffy-list>" "open drafts"
+macro index,pager gi "<change-folder>$spoolfile<enter><buffy-list>" "open inbox"
+macro index,pager gj "<change-folder>+spam<enter><buffy-list>"      "open junk mail (spam)"
+macro index,pager gr "<change-folder>^<enter><buffy-list>"          "refresh folder"
+macro index,pager gs "<change-folder>$record<enter><buffy-list>"    "open sent mail"
+macro index,pager gt "<change-folder>$trash<enter><buffy-list>"     "open trash"
+
+# I use this whenever I know that a folder hook is acting and I just want the
+# message to go to the default save folder.
+macro index,pager I "<save-message><enter>" "save message to default folder without confirming"
+
+# Limit messages quickly using ' + key.
+macro index \'d  "<limit>~D<enter>"       "limit to deleted messages"
+macro index \'f  "<limit>~F<enter>"       "limit to flagged messages"
+macro index \'l  "<limit>~=<enter>"       "limit to duplicate messages"
+macro index \'n  "<limit>~N|~O<enter>"    "limit to new messages"
+macro index \'p  "<limit>~g|~G<enter>"    "limit to signed or encrypted messages"
+macro index \'u  "<limit>!~Q<enter>"      "limit to unreplied messages"
+macro index \'\' "<limit>~A<enter>"       "reset all limits"
+
+# If +spam doesn't exist, mutt will create it for us.
+macro index S "<save-message>+spam<enter>" "mark message as spam"
+
+# Toggle the mailbox list with "y".
+macro index,pager y "<change-folder>?<toggle-mailboxes>" "show incoming mailboxes list"
+bind browser y exit
+
+# Call urlview with Ctrl + B.
+macro index,pager,attach,compose \cb                                            \
+  "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<Enter>           \
+  <pipe-message>urlview<Enter>                                                  \
+  <enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
+  "call urlview to extract URLs out of a message"
+
+# Pipe message to pbcopy with Ctrl + Y.  pipe_decode will ensure that
+# unnecessary headers are removed and the message is processed.
+macro index,pager,attach,compose \cy                                            \
+  "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<Enter>           \
+  <pipe-message>pbcopy<Enter>                                                   \
+  <enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
+  "copy message to clipboard using mutt-pbcopy"
