@@ -18,6 +18,7 @@ config=(
 	'neovim:.config/nvim/'
 	'bash:.bashrc'
 	'alacritty:.config/alacritty/alacritty.yml'
+	'config:.local/bin/config'
 	'i3status:.config/i3status/'
 	'i3blocks:.config/i3blocks/'
 	'i3blocks-scripts:.config/i3blocks/scripts/'
@@ -28,13 +29,16 @@ config=(
 	'i3blocks-time:.config/i3blocks/scripts/time.sh'
 	'i3blocks-volume:.config/i3blocks/scripts/volume.sh'
 	'i3blocks-wifi:.config/i3blocks/scripts/wifi.sh'
+	'iamb:.config/iamb/config.json'
+	'mutt:.config/mutt/muttrc'
+	'ncmpcpp:.config/ncmpcpp'
 	'picom:.config/picom/picom.config'
 	'ranger:.config/ranger'
 	'lf:.config/lf'
 	'tmux:.config/tmux/tmux.conf'
 	'qutebrowser:.config/qutebrowser/config.py'
-    'newsboat:.config/newsboat/'
-    'zathura:.config/zathura/zathurarc'
+	'newsboat:.config/newsboat/'
+	'zathura:.config/zathura/zathurarc'
 )
 
 if [[ -z $1 ]]
