@@ -36,7 +36,7 @@
     text_icon_padding = 4
 
     frame_width = 2
-    frame_color = "#E7A927"
+    frame_color = "#98971a"
     gap_size = 6
 
     # Sort messages by urgency.
@@ -139,9 +139,9 @@
 
 
 [urgency_low]
-    background = "#0A0515"
+    background = "#282828"
     foreground = "#FFFFFF"
-    frame_color = "0A0515"
+    frame_color = "#98971a"
 
     # background = "#222222"
     # foreground = "#888888"
@@ -150,15 +150,15 @@
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#0F0515"
+    background = "#282828"
     foreground = "#FFFFFF"
-    frame_color = "#E7A927"
+    frame_color = "#98971a"
     timeout = 10
 
 [urgency_critical]
-    background = "#0F0515"
+    background = "#282828"
     foreground = "#FFFFFF"
-    frame_color = "#E72727"
+    frame_color = "#cc241d"
     timeout = 10
 
 # Every section that isn't one of the above is interpreted as a rules to
