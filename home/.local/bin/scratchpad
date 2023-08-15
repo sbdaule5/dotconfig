@@ -31,7 +31,7 @@ then
 		if [ "$DESKTOP_SESSION" == "i3" ]; then
 			i3-msg exec 'alacritty --class="Alacritty:Notepad" -o font.size=9.0 -e nvim notes/diary/`date +%Y-%m-%d`.md'
 		else
-			alacritty --class="Alacritty:Notepad" -o font.size=9.0 -e nvim notes/diary/`date +%Y-%m-%d`.md
+			alacritty --class="Alacritty:Notepad" -T "Notepad" -o font.size=9.0 -e nvim notes/diary/`date +%Y-%m-%d`.md
 		fi
 
 		notify-send "Notepad created" -a Scratchpad
