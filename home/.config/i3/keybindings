@@ -135,7 +135,7 @@ bindsym Mod4+Shift+e              exec "i3-nagbar -t warning -m 'You pressed the
 bindsym Mod4+r                    mode $mode_layout
 bindsym Mod4+Shift+r              restart
 
-# bindsym Mod4+t
+#bindsym Mod4+t                    exec --no-startup-id xdotool keydown Alt && xdotool key t && xdotool keyup Alt 
 bindsym Mod4+Shift+t              exec $my_term -e btop
 
 # bindsym Mod4+y
@@ -145,7 +145,7 @@ bindsym Mod4+u                    focus mode_toggle
 # bindsym Mod4+Shift+u
 
 bindsym Mod4+i                    floating toggle
-bindsym Mod4+Shift+i              exec $my_term -e irssi
+bindsym Mod4+Shift+i              exec $my_term  --class="Alacritty:matrix" -e bash
 
 bindsym Mod4+o                    focus child
 # bindsym Mod4+Shift+o
