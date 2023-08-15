@@ -37,6 +37,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- refer for the server names in lspconfig
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local nvim_lsp = require('lspconfig')
 nvim_lsp.clangd.setup{ capabilities = lsp_capabilities, handlers = handlers, cmd = {"/usr/bin/clangd", "--background-index", "--header-insertion=never"}}
 nvim_lsp.tsserver.setup{ capabilities = lsp_capabilities, handlers = handlers}
@@ -46,3 +48,4 @@ nvim_lsp.luau_lsp.setup{ capabilities = lsp_capabilities, handlers = handlers}
 nvim_lsp.rust_analyzer.setup{ capabilities = lsp_capabilities, handlers = handlers}
 nvim_lsp.tsserver.setup{ capabilities = lsp_capabilities, handlers = handlers}
 nvim_lsp.jedi_language_server.setup{ capabilities = lsp_capabilities, handlers = handlers}
+nvim_lsp.svelte.setup{ capabilities = lsp_capabilities, handlers = handlers}
