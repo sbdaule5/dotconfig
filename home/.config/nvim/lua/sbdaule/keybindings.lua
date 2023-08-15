@@ -36,6 +36,7 @@ vim.keymap.set("n", "<Leader>bv", ":lua ChangeView('Buffers')<CR>", {noremap = t
 vim.keymap.set("n", "<Leader>bn", ":bn<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>bp", ":bp<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>bs", ":buffer #<CR>", {noremap = true});
+vim.keymap.set("n", "<Leader>bh", ":ClangdSwitchSourceHeader<CR>", {noremap = true});
 
 vim.keymap.set("n", "<Leader>s", ":buffer #<CR>", {noremap = true});
 
@@ -48,6 +49,8 @@ vim.keymap.set("n", "<Leader>fm", ":Marks<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fj", ":Jumps<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fh", ":Helptags<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fo", ":History<CR>", {noremap = true});
+
+vim.keymap.set("n", "<Leader>fT", ":Tags \"<CR>", {noremap = true});
 
 vim.keymap.set("n", "<Leader>fgc", ":Commits<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fgb", ":BCommits<CR>", {noremap = true});
