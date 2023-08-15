@@ -219,10 +219,15 @@ c.colors.tabs.indicator.start = pcol2
 c.colors.tabs.indicator.stop = pcol1
 c.tabs.padding = {"bottom": 2, "left": 5, "right": 5, "top":2}
 
+c.colors.statusbar.normal.bg = bcol
+
 c.colors.contextmenu.menu.bg = bcol
 c.colors.contextmenu.menu.fg = tcol
 c.colors.contextmenu.selected.fg = bcol
 c.colors.contextmenu.selected.bg = pcol1
+
+c.colors.webpage.bg = bcol
+c.colors.webpage.preferred_color_scheme = "dark"
 
 c.completion.scrollbar.padding = 1
 c.completion.scrollbar.width = 7
@@ -242,7 +247,7 @@ config.bind(',M', 'spawn linkhandler_mpd {url}')
 #  config.bind(',v', 'hint links spawn --detach mpv {hint-url}')
 #  config.bind(',V', 'spawn --detach mpv {url}')
 #  Added temporarily till no audio bug is fixed
-config.bind(',v', 'hint links spawn --detach mpv --force-window=yes --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {hint-url}')
-config.bind(',V', 'spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=240]" --ytdl=no --force-window=yes --script-opts=ytdl_hooks-all_formats="yes" {url}')
+config.bind(',v', 'hint links spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=720]" --force-window=yes --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {hint-url}')
+config.bind(',V', 'spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=720]" --force-window=yes --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {url}')
 
 config.bind('<Ctrl+o>', 'set-cmd-text -s :open -w')
