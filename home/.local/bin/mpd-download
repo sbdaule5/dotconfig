@@ -13,8 +13,13 @@ case $url in
 
         cd ~/Music/mpd-downloads
         curl "$url" -o "${FILE}.webm"
-        notify-send "Song Downloaded" -a "MPD"
-        ffmpeg -i "${FILE}.webm" "${FILE}.mp3"
+        if [  "$?" -ne 0 ]; then
+            notify-send "Download failed" -a "MPD"
+            rm "${FILE}.webm"
+        else
+            notify-send "Song Downloaded" -a "MPD"
+            ffmpeg -i "${FILE}.webm" "${FILE}.mp3"
+        fi
         ;;
     *)
         notify-send "MPD-Currently playing file from disk." -a "MPD"
