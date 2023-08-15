@@ -1,1 +1,0 @@
-/home/arch/Projects/homesick/home/.config/nvim/init.vim
