@@ -1,43 +1,19 @@
-require("sbdaule")
+local myconfig = require("sbdaule")
 
 function Reload() vim.cmd [[luafile ~/.config/nvim/init.lua]]
-  vim.cmd [[luafile ~/.config/nvim/lua/sbdaule/init.lua]]
-  require("sbdaule").reload()
+  vim.cmd("luafile ~/.config/nvim/lua/sbdaule/init.lua")
+  myconfig.reload()
 end
 
 vim.cmd([[
 "set guifont=DroidSansMono\ Nerd\ Font\ 11
 set path+=**
 
-" Setting cursor style based on mode
-" let &t_SI = "\e[5 q"
-" let &t_EI = "\e[2 q"
-" reset the cursor on start (for older versions of vim, usually not required)
-" augroup myCmds
-" au!
-" autocmd VimEnter * silent !echo -ne "\e[2 q"
-" augroup END
-
 au BufRead,BufNewFile *.h set filetype=c
 " au FileType c,cpp setlocal foldmethod=marker
 " au FileType c,cpp setlocal foldmarker={,}
 
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" match ExtraWhitespace /\s\+$/
-" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-" autocmd BufWinLeave * call clearmatches()
 set list listchars=tab:\\x20\\x20,trail:-
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable
 
 " Indent text object
 function! IndTxtObj(inner)
@@ -66,19 +42,6 @@ function! IndTxtObj(inner)
   endif
 endfunction
 
-" Rename current file
-function! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'), 'file')
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    exec ':bd ' . old_name
-    redraw!
-  endif
-endfunction
-command! Rename call RenameFile()
-
 nnoremap g<C-]> :execute 'tab tag '.expand('<cword>')<CR>
 
 let g:vimwiki_list = [{'path': '~/notes/',
@@ -90,15 +53,6 @@ augroup VimwikiKeybinding
   autocmd!
   autocmd FileType vimwiki lua vimwikiKeybindings()
 augroup END
-
-" NerdCommenter
-" NERDCommenter settings
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDCustomDelimiters = { 'html': { 'left': '' } }
-
-" Align comment delimiters to the left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
 
 if !exists('g:context_filetype#same_filetypes')
     let g:context_filetype#filetypes = {}
@@ -117,10 +71,6 @@ let g:undotree_SplitWidth = 40
 let g:undotree_DiffpanelHeight = 20
 let g:undotree_SetFocusWhenToggle = 1
 
-let g:gundo_width = 50
-let g:gundo_preview_height = 20
-let g:gundo_prefer_python3 = 1
-
 call plug#begin()
 " Essential plugins
 Plug 'tpope/vim-fugitive'
@@ -132,6 +82,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-speeddating'
 Plug 'svermeulen/vim-subversive'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf.vim', { 'do' : { -> fzf#install() } }
 Plug 'mbbill/undotree'
@@ -160,6 +111,9 @@ Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-fuzzy-buffer'
 Plug 'romgrk/fzy-lua-native'
 
+Plug 'nvimdev/dashboard-nvim'
+Plug 'vijaymarupudi/nvim-fzf'
+
 " Autocompletion
 " Plug 'L3MON4D3/LuaSnip'     " Required
 "Plug 'cpiger/NeoDebug'
@@ -173,10 +127,7 @@ Plug 'romgrk/fzy-lua-native'
 "Plug 'natebosch/vim-lsc'
 "Plug 'natebosch/vim-lsc-dart'
 "Plug 'lervag/vimtex'
-"Plug 'sjl/gundo.vim'
-"Plug 'tanvirtin/monokai.nvim'
 "Plug 'kana/vim-operator-user'
-
 
 call plug#end()
 

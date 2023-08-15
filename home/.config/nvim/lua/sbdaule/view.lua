@@ -29,4 +29,10 @@ function ChangeView(view)
     then
         vim.cmd ":copen"
     end
+    if (view == "Dashboard")
+    then
+        vim.cmd ":NvimTreeClose"
+        vim.cmd ":UndotreeHide"
+        vim.cmd ":Dashboard"
+    end
 end

@@ -7,8 +7,9 @@ vim.opt.expandtab = true
 
 vim.opt.scrolloff = 5
 
-vim.opt.fdm = 'syntax'
+vim.opt.fdm = 'expr'
 vim.opt.foldexpr = "nvim_treesitter#flodexpr()"
+vim.opt.foldenable = false
 
 vim.opt.number = true
 vim.opt.relativenumber = true

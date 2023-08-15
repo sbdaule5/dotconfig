@@ -49,6 +49,7 @@ vim.keymap.set("n", "<Leader>fm", ":Marks<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fj", ":Jumps<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fh", ":Helptags<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fo", ":History<CR>", {noremap = true});
+vim.keymap.set("n", "<Leader>fd", ":lua dotfiles()<CR>", {noremap = true});
 
 vim.keymap.set("n", "<Leader>fT", ":Tags \"<CR>", {noremap = true});
 
@@ -91,8 +92,6 @@ vim.keymap.set("n", "sc", [["+s]])
 vim.keymap.set("n", "scc", [["+ss]])
 vim.keymap.set("n", "sC", [["+s]])
 
--- Easy 
-
 -- insert a blank line
 vim.keymap.set("n", "<Leader><CR>", "i<CR><ESC>", {noremap = true});
 vim.keymap.set("n", "<Leader>o", "o<ESC>", {noremap = true});
@@ -129,6 +128,12 @@ vim.keymap.set("n", "<Leader>vb", ":lua ChangeView('Buffers')<CR>", {noremap = t
 vim.keymap.set("n", "<Leader>vt", ":lua ChangeView('Tags')<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>vg", ":lua ChangeView('GitStatus')<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>vq", ":lua ChangeView('Quickfix')<CR>", {noremap = true});
+vim.keymap.set("n", "<Leader>vd", ":lua ChangeView('Dashboard')<CR>", {noremap = true});
+
+-- Tab keybindings
+vim.keymap.set("n", "<Leader>td", ":tabe | Dashboard<CR>", {noremap = true});
+vim.keymap.set("n", "<Leader>tn", ":tabe<CR>", {noremap = true});
+vim.keymap.set("n", "<Leader>tb", ":tabe %<CR>", {noremap = true});
 
 -- Center screen with regular command
 vim.keymap.set("n", "[[", "[[zz", {noremap = true});

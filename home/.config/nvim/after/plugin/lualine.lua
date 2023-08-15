@@ -60,6 +60,13 @@ require('lualine').setup {
         max_length = vim.o.columns, -- Maximum width of tabs component.
         mode = 2,
         use_mode_colors = false,
+        fmt =
+          function(str)
+            if str == "[No Name]" then
+              str = "Dashboard"
+            end
+            return str
+          end,
       }
     }
   },
