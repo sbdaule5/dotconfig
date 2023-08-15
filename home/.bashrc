@@ -22,7 +22,7 @@ HISTFILESIZE=50000
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 # Keep bash history of different tmux sessions seperate
-if [[ $TERM == "tmux-256color" ]]
+if [[ $TERM == "tmux-256color" ]] || [[ $TERM == "screen-256color" ]]
 then
     export HISTFILE=/home/$USER/.tmux-bash-history/$(tmux display-message -p '#S')
 fi
@@ -142,17 +142,16 @@ fi
 
 
 export LIBVA_DRIVER_NAME=iHD
-export PATH=$PATH:~/.local/bin:~/.local/share/flutter/bin
+export PATH=$PATH:~/.local/bin:~/.local/share/flutter/bin:~/.config/emacs/bin
 export EDITOR=tnvim
 export VISUAL="alacritty --class \"Alacritty:Floating\" -e nvim"
 export LD_LIBRARY_PATH=~/.local/lib:${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH}
 export CPLUS_INCLUDE_PATH=~/.local/include:$CPLUS_INCLUDE_PATH
 
-set -o vi
+# set -o vi
 alias ls='ls --color=auto'
 alias lsa='ls -la'
 alias cls='clear'
-alias nvim='tnvim'
 alias vi='/usr/bin/nvim'
 alias prompt-short='prompt_style=short'
 alias prompt-full='prompt_style=full'
@@ -163,5 +162,5 @@ alias ..='cd ..'
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
-clear && pfetch --gap 10 | lolcat
+clear && pfetch --gap 10
 . "$HOME/.cargo/env"
