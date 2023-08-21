@@ -70,6 +70,7 @@ static const Rule rules[] = {
 	{ "Alacritty:Music", NULL,    NULL,       1 << 5,          0,           -1 ,    0,          0,   0,   0,   0,   2 },
 	{ "Alacritty:Mixer", NULL,    NULL,       ~0,              1,           -1 ,    0,        666,  25, 700, 255,   2 },
 	{ "Alacritty:nvim",  NULL,    NULL,       1 << 6,          0,           -1,     0,          0,   0,   0,   0,   2 },
+	{ "Emacs",           NULL,    NULL,       1 << 3,          0,           -1,     0,          0,   0,   0,   0,   2 },
 	{ NULL,          "Notepad",   NULL,       0,               1,           -1,    'n',         0,   6, 614, 741,   2 },
 
   /*
@@ -153,6 +154,7 @@ static const char *nvim[]     = { "alacritty", "--class=\"Alacritty:nvim\"", "-e
 static const char *quteb[]    = { "qutebrowser", NULL };
 static const char *brave[]    = { "brave", NULL };
 static const char *pcmanfm[]  = { "pcmanfm", NULL };
+static const char *emacsc[]   = { "emacsclient", "-c", "-a", "emacs", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -214,7 +216,8 @@ static const Key keys[] = {
   /* App keybinding */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
  	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = brave } },
- 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = nvim } },
+ 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = emacsc } },
+ 	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = nvim } },
  	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = pcmanfm } },
  	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = ncmpcpp } },
  	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = quteb } },
