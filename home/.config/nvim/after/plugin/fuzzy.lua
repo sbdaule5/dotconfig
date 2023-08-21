@@ -1,6 +1,7 @@
 local fzf = require('fzf')
 dotfiles = function ()
   coroutine.wrap(function ()
+    vim.cmd("cd ~/Projects/dotconfig/home/")
     local result = fzf.fzf("config -l", "", {border = false})
 
     if result then

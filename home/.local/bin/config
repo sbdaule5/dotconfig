@@ -12,13 +12,22 @@ function fz1() {
   fi
 }
 
-BASE="$HOME"
+function list() {
+	for line in ${config[@]}; do
+		echo $line
+	done
+}
+
+BASE="$HOME/Projects/dotconfig/home/"
 config=(
 	'i3wm:.config/i3/'
 	'neovim:.config/nvim/'
 	'bash:.bashrc'
 	'alacritty:.config/alacritty/alacritty.yml'
 	'config:.local/bin/config'
+	'startdwm:.local/bin/startdwm'
+	'startup:.local/bin/startup.sh'
+	'dwm-6.4:.local/src/dwm-6.4/'
 	'i3status:.config/i3status/'
 	'i3blocks:.config/i3blocks/'
 	'i3blocks-scripts:.config/i3blocks/scripts/'
@@ -41,9 +50,11 @@ config=(
 	'zathura:.config/zathura/zathurarc'
 )
 
-if [[ -z $1 ]]
-then
+if [ -z "$1" ]; then
 	selected=$(echo ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fzf)
+elif [ "$1" == "-l" ]; then
+	list $config
+	exit
 else
 	selected=$(echo ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fz1 "$1")
 fi
