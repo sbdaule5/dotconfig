@@ -126,7 +126,7 @@ Plug 'vijaymarupudi/nvim-fzf'
 "Plug 'dart-lang/dart-vim-plugin'
 "Plug 'natebosch/vim-lsc'
 "Plug 'natebosch/vim-lsc-dart'
-"Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 "Plug 'kana/vim-operator-user'
 
 call plug#end()
