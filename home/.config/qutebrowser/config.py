@@ -194,43 +194,98 @@ c.tabs.max_width = 150
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}', 'ddg': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'g': 'https://www.google.com/search?hl=en&q={}', 'github': 'https://github.com/search?q={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'man': ' https://www.die.net/search/?q={}', 'aur': 'https://aur.archlinux.org/packages?O=0&SeB=nd&K={}&outdated=&SB=p&SO=d&PP=50&submit=Go'}
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}',
+                       'ddg': 'https://duckduckgo.com/?q={}',
+                       'aw': 'https://wiki.archlinux.org/?search={}',
+                       'g': 'https://www.google.com/search?hl=en&q={}',
+                       'github': 'https://github.com/search?q={}',
+                       'yt': 'https://www.youtube.com/results?search_query={}',
+                       'man': ' https://www.die.net/search/?q={}',
+                       'aur': 'https://aur.archlinux.org/packages?O=0&SeB=nd&K={}',
+                       'r/': 'https://www.reddit.com/r/{}',
+                       'u/': 'https://www.reddit.com/u/{}',
+                       }
+
+# The start page
+c.url.start_pages = ["qute://start/"]
+c.url.default_page = "qute://start/"
+
+# Enable pdf.js
+c.content.pdfjs = True
 
 # Setting color scheme
 # Type: QssColor
-pcol1  = "#98971a"
-pcol2  = "#458588"
-bcol   = "#282828"
-wcol   = "#cc241d"
-tcol   = "#FFFFFF"
-c.colors.completion.odd.bg = bcol
-c.colors.completion.even.bg = bcol
-c.colors.completion.item.selected.fg = bcol
-c.colors.completion.item.selected.bg = pcol1
-c.colors.completion.category.bg = pcol2
+primary_color_1    = "#98971A"
+primary_color_2    = "#458588"
+secondary_color_1  = "#E7A927"
+secondary_color_2  = "#B16286"
+background_color   = "#282828"
+warning_color      = "#CC241D"
+text_color         = "#FFFFFF"
 
-c.colors.tabs.bar.bg = bcol
-c.colors.tabs.odd.bg = bcol
-c.colors.tabs.even.bg = bcol
-c.colors.tabs.odd.fg = tcol
-c.colors.tabs.even.fg = tcol
-c.colors.tabs.selected.odd.fg = bcol
-c.colors.tabs.selected.even.fg = bcol
-c.colors.tabs.selected.odd.bg = pcol1
-c.colors.tabs.selected.even.bg = pcol1
-c.colors.tabs.indicator.error = wcol
-c.colors.tabs.indicator.start = pcol2
-c.colors.tabs.indicator.stop = pcol1
+c.colors.completion.odd.bg = background_color
+c.colors.completion.even.bg = background_color
+c.colors.completion.item.selected.fg = background_color
+c.colors.completion.item.selected.bg = primary_color_1
+c.colors.completion.category.bg = primary_color_2
+c.colors.completion.scrollbar.fg = primary_color_2
+c.colors.completion.scrollbar.bg = background_color
+
+c.colors.tabs.bar.bg = background_color
+c.colors.tabs.odd.bg = background_color
+c.colors.tabs.even.bg = background_color
+c.colors.tabs.odd.fg = text_color
+c.colors.tabs.even.fg = text_color
+c.colors.tabs.selected.odd.fg = background_color
+c.colors.tabs.selected.even.fg = background_color
+c.colors.tabs.selected.odd.bg = primary_color_1
+c.colors.tabs.selected.even.bg = primary_color_1
+c.colors.tabs.indicator.error = warning_color
+c.colors.tabs.indicator.start = primary_color_2
+c.colors.tabs.indicator.stop = primary_color_1
 c.tabs.padding = {"bottom": 2, "left": 5, "right": 5, "top":2}
 
-c.colors.statusbar.normal.bg = bcol
+c.colors.statusbar.normal.fg = text_color
+c.colors.statusbar.normal.bg = background_color
+c.colors.statusbar.insert.fg = background_color
+c.colors.statusbar.insert.bg = primary_color_1
+c.colors.statusbar.passthrough.fg = text_color
+c.colors.statusbar.passthrough.bg = primary_color_2
+c.colors.statusbar.caret.fg = text_color
+c.colors.statusbar.caret.bg = secondary_color_2
 
-c.colors.contextmenu.menu.bg = bcol
-c.colors.contextmenu.menu.fg = tcol
-c.colors.contextmenu.selected.fg = bcol
-c.colors.contextmenu.selected.bg = pcol1
+c.colors.downloads.bar.bg = background_color
+c.colors.downloads.start.fg = background_color
+c.colors.downloads.start.bg = primary_color_2
+c.colors.downloads.stop.fg = background_color
+c.colors.downloads.stop.bg = primary_color_1
+c.colors.downloads.error.fg = background_color
+c.colors.downloads.error.bg = warning_color
 
-c.colors.webpage.bg = bcol
+c.colors.contextmenu.menu.bg = background_color
+c.colors.contextmenu.menu.fg = text_color
+c.colors.contextmenu.selected.fg = background_color
+c.colors.contextmenu.selected.bg = primary_color_1
+
+c.colors.messages.error.fg = text_color
+c.colors.messages.error.bg = warning_color
+c.colors.messages.info.fg = text_color
+c.colors.messages.info.bg = primary_color_2
+c.colors.messages.warning.fg = text_color
+c.colors.messages.warning.bg = secondary_color_1
+
+c.colors.prompts.fg = text_color
+c.colors.prompts.bg = background_color
+c.colors.prompts.selected.fg = background_color
+c.colors.prompts.selected.bg = primary_color_1
+c.colors.prompts.border = "1px solid" + primary_color_2
+
+c.colors.hints.bg = primary_color_1
+c.colors.hints.fg = background_color
+c.hints.border = "solid 0px"
+c.hints.radius = 1
+
+c.colors.webpage.bg = background_color
 c.colors.webpage.preferred_color_scheme = "dark"
 
 c.completion.scrollbar.padding = 1
@@ -251,7 +306,8 @@ config.bind(',M', 'spawn linkhandler_mpd {url}')
 #  config.bind(',v', 'hint links spawn --detach mpv {hint-url}')
 #  config.bind(',V', 'spawn --detach mpv {url}')
 #  Added temporarily till no audio bug is fixed
-config.bind(',v', 'hint links spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=720]" --force-window=yes --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {hint-url}')
-config.bind(',V', 'spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=720]" --force-window=yes --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {url}')
+config.bind(',v', 'hint links spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=720]" --force-window=immediate --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {hint-url}')
+config.bind(',V', 'spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=720]" --force-window=immediate --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {url}')
 
-config.bind('<Ctrl+o>', 'set-cmd-text -s :open -w')
+config.bind('<Ctrl+o>', 'cmd-set-text -s :open -w')
+config.bind('<Ctrl+Shift+o>', 'open -p')
