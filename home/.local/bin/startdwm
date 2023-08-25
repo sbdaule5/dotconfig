@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 
+setsid -f /home/arch/.local/bin/startup.sh
 setsid -f dwmblocks
 while true; do
     # Log stderror to a file
