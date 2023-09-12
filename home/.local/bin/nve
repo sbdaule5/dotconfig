@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+xdotool key super+Escape
+nvr --servername /tmp/nvim-notepad --remote-tab-wait-silent "$@"

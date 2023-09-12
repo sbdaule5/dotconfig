@@ -143,8 +143,9 @@ fi
 
 export LIBVA_DRIVER_NAME=iHD
 export PATH=$PATH:~/.local/bin:~/.local/share/flutter/bin:~/.config/emacs/bin
-export EDITOR=tnvim
-export VISUAL="alacritty --class \"Alacritty:Floating\" -e nvim"
+export EDITOR=nvim
+# export VISUAL="alacritty --class \"Alacritty:Floating\" -e nvim"
+export VISUAL="nve"
 export LD_LIBRARY_PATH=~/.local/lib:${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH}
 export CPLUS_INCLUDE_PATH=~/.local/include:$CPLUS_INCLUDE_PATH
 
