@@ -3,3 +3,9 @@ __pycache__/
 home/.config/newsboat/urls
 home/.config/qutebrowser/bookmarks/
 home/.config/qutebrowser/quickmarks
+home/.config/qutebrowser/autoconfig.yml
+*.log
+*.o
+home/.local/src/st/st
+home/.config/tmux/plugins/
+home/.config/nvim/site/
