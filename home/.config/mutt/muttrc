@@ -1,4 +1,4 @@
-source "gpg2 -dq ~/.mutt/gmail.gpg |"
+source "gpg2 -dq ~/.mutt/com.gmail.sbdaule5.gpg |"
 set ssl_force_tls = yes
 set abort_nosubject = no
 set mail_check = 60
@@ -8,11 +8,6 @@ set copy = no
 
 alternative_order text/plain text text/html
 auto_view text/html
-
-macro index gd "<change-folder>$postponed<enter>" "go to drafts"
-macro index gs "<change-folder>$record<enter>" "go to sent"
-macro index gi "<change-folder>$spoolfile<Enter>" "go to inbox"
-macro index gt "<change-folder>$trash<enter>" "go to trash""
 
 # colors
 color hdrdefault cyan default
@@ -63,10 +58,10 @@ bind pager G bottom
 bind alias,index,browser,query gg first-entry
 bind pager gg top
 
-bind pager h previous-entry
+bind pager h exit
 bind pager j next-line
 bind pager k previous-line
-bind pager l next-entry
+bind pager l view-attachments
 
 # bind index h previous-entry
 # bind index j next-line
@@ -99,6 +94,15 @@ bind editor <up> history-up
 bind editor <down> history-down
 bind editor \Cp history-up
 bind editor \Cn history-down
+
+#scroll inside the message rather than the index
+bind pager <up> previous-line
+bind pager <down> next-line
+
+macro index gd "<change-folder>$postponed<enter>" "go to drafts"
+macro index gs "<change-folder>$record<enter>" "go to sent"
+macro index gi "<change-folder>$spoolfile<Enter>" "go to inbox"
+macro index gt "<change-folder>$trash<enter>" "go to trash""
 
 # Convenient macros to switch between common folders.  Also tells me what other
 # folders have new mail once I make a switch.
