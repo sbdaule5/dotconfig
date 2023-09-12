@@ -50,12 +50,12 @@
 #define CLEANMASK(mask)         (mask & ~(numlockmask|LockMask) & (ShiftMask|ControlMask|Mod1Mask|Mod2Mask|Mod3Mask|Mod4Mask|Mod5Mask))
 #define INTERSECT(x,y,w,h,m)    (MAX(0, MIN((x)+(w),(m)->wx+(m)->ww) - MAX((x),(m)->wx)) \
                                * MAX(0, MIN((y)+(h),(m)->wy+(m)->wh) - MAX((y),(m)->wy)))
-#define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
+#define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]) | C->isalwaysvisible)
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
 #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
-#define TAGMASK                 ((1 << LENGTH(tags)) - 1)
+#define TAGMASK                 ((1 << (LENGTH(tags) + 1)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 #define TTEXTW(X)               (drw_fontset_getwidth(drw, (X)))
 
@@ -114,7 +114,8 @@ struct Client {
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh, hintsvalid;
 	int bw, oldbw;
 	unsigned int tags;
-	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isbg;
+	int isalwaysvisible;
 	int floatborderpx;
 	int hasfloatbw;
 	char scratchkey;
@@ -151,7 +152,7 @@ struct Monitor {
 	int rmaster;
 	int showbar;
 	int topbar;
-        int statushandcursor;
+	int statushandcursor;
 	Client *clients;
 	Client *sel;
 	Client *stack;
@@ -170,6 +171,7 @@ typedef struct {
 	const char scratchkey;
 	int floatx, floaty, floatw, floath;
 	int floatborderpx;
+	int isbg;
 } Rule;
 
 typedef struct Systray   Systray;
@@ -344,6 +346,8 @@ applyrules(Client *c)
 	c->isfloating = 0;
 	c->tags = 0;
 	c->scratchkey = 0;
+	c->isbg = 0;
+	c->isalwaysvisible = 0;
 	XGetClassHint(dpy, c->win, &ch);
 	class    = ch.res_class ? ch.res_class : broken;
 	instance = ch.res_name  ? ch.res_name  : broken;
@@ -355,7 +359,15 @@ applyrules(Client *c)
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
 			c->isfloating = r->isfloating;
-			c->tags |= r->tags;
+			if (r->tags == ~0)
+			{
+				c->isalwaysvisible = True;
+				c->tags = 1 << 10;
+			}
+			else
+			{
+				c->tags |= r->tags;
+			}
 			c->scratchkey = r->scratchkey;
 			if (r->floatborderpx >= 0) {
 				c->floatborderpx = r->floatborderpx;
@@ -367,6 +379,7 @@ applyrules(Client *c)
 				if (r->floatw >= 0) c->w = r->floatw;
 				if (r->floath >= 0) c->h = r->floath;
 			}
+			c->isbg = r->isbg;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
 				c->mon = m;
@@ -634,6 +647,8 @@ clientmessage(XEvent *e)
 			c->oldbw = wa.border_width;
 			c->bw = 0;
 			c->isfloating = True;
+			c->isbg = False;
+			c->isalwaysvisible = False;
 			/* reuse tags field as mapped status */
 			c->tags = 1;
 			updatesizehints(c);
@@ -966,7 +981,7 @@ void
 focus(Client *c)
 {
 	if (!c || !ISVISIBLE(c))
-		for (c = selmon->stack; c && !ISVISIBLE(c); c = c->snext);
+		for (c = selmon->stack; (c && !ISVISIBLE(c)) || (c && c->isbg); c = c->snext);
 	if (selmon->sel && selmon->sel != c)
 		unfocus(selmon->sel, 0);
 	if (c) {
@@ -1019,16 +1034,16 @@ focusstack(const Arg *arg)
 	if (!selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
 		return;
 	if (arg->i > 0) {
-		for (c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next);
+		for (c = selmon->sel->next; (c && !ISVISIBLE(c)) || (c && c->isbg); c = c->next);
 		if (!c)
-			for (c = selmon->clients; c && !ISVISIBLE(c); c = c->next);
+			for (c = selmon->clients; (c && !ISVISIBLE(c)) || (c && c->isbg); c = c->next);
 	} else {
 		for (i = selmon->clients; i != selmon->sel; i = i->next)
-			if (ISVISIBLE(i))
+			if (ISVISIBLE(i) && !i->isbg)
 				c = i;
 		if (!c)
 			for (; i; i = i->next)
-				if (ISVISIBLE(i))
+				if (ISVISIBLE(i) && !i->isbg)
 					c = i;
 	}
 	if (c) {
@@ -1257,7 +1272,10 @@ manage(Window w, XWindowAttributes *wa)
 	c->y = MAX(c->y, c->mon->wy);
 	c->bw = borderpx;
 
-	wc.border_width = c->bw;
+	if (c->isbg)
+		wc.border_width = 0;
+	else
+		wc.border_width = c->bw;
 	XConfigureWindow(dpy, w, CWBorderWidth, &wc);
 	XSetWindowBorder(dpy, w, scheme[SchemeNorm][ColBorder].pixel);
 	configure(c); /* propagates border_width, if size doesn't change */
@@ -1511,6 +1529,8 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldh = c->h; c->h = wc.height = h;
 	if (c->isfloating && c->hasfloatbw && !c->isfullscreen)
 		wc.border_width = c->floatborderpx;
+	else if (c->isbg)
+		wc.border_width = 0;
 	else
 		wc.border_width = c->bw;
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
@@ -1609,6 +1629,8 @@ restack(Monitor *m)
 				wc.sibling = c->win;
 			}
 	}
+	if ((m->sel->isfloating && m->sel->isbg) || !m->lt[m->sellt]->arrange)
+		XLowerWindow(dpy, m->sel->win);
 	XSync(dpy, False);
 	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
 }

@@ -63,15 +63,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class          instance    title       tags mask     isfloating   monitor  scratchkey  float x,y,w,h       floatborderpx */
-	{ "qutebrowser",     NULL,    NULL,       1 << 9,          0,           -1 ,    0,          0,   0,   0,   0,   2 },
-	{ "Gimp",            NULL,    NULL,       1 << 1,          0,           -1 ,    0,          0,   0,   0,   0,   2 },
-	{ "Alacritty:btop",  NULL,    NULL,       1 << 8,          0,           -1 ,    0,          0,   0,   0,   0,   2 },
-	{ "Alacritty:Music", NULL,    NULL,       1 << 5,          0,           -1 ,    0,          0,   0,   0,   0,   2 },
-	{ "Alacritty:Mixer", NULL,    NULL,       ~0,              1,           -1 ,    0,        666,  25, 700, 255,   2 },
-	{ "Alacritty:nvim",  NULL,    NULL,       1 << 6,          0,           -1,     0,          0,   0,   0,   0,   2 },
-	{ "Emacs",           NULL,    NULL,       1 << 3,          0,           -1,     0,          0,   0,   0,   0,   2 },
-	{ NULL,          "Notepad",   NULL,       0,               1,           -1,    'n',         0,   6, 614, 741,   2 },
+	/* class          instance    title       tags mask     isfloating   monitor  scratchkey  float x,y,w,h       floatborderpx bg  */
+	{ "qutebrowser",     NULL,    NULL,       1 << 9,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
+	{ "Gimp",            NULL,    NULL,       1 << 1,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
+	{ "Alacritty:btop",  NULL,    NULL,       1 << 8,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
+	{ "Alacritty:Music", NULL,    NULL,       1 << 5,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
+	{ "Alacritty:Mixer", NULL,    NULL,       ~0,              1,           -1 ,    0,        666,  25, 700, 255,   2,           0 },
+	{ "Alacritty:nvim",  NULL,    NULL,       1 << 6,          0,           -1,     0,          0,   0,   0,   0,   2,           0 },
+	{ "NoBlur:cava",     NULL,    NULL,       ~0,              1,           -1,     0,     gappx, 500, 1366 -2*gappx, 268,  0,   1 },
+	{ "Emacs",           NULL,    NULL,       1 << 3,          0,           -1,     0,          0,   0,   0,   0,   2,           0 },
+	{ NULL,              NULL, "Notepad",     0,               1,           -1,    'n',         0,   6, 614, 741,   2,           0 },
 
   /*
 	{ "Gimp",         NULL,       NULL,       0,            1,           -1,        50,50,500,500,    5,           0},

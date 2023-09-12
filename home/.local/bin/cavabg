@@ -1,0 +1,1 @@
+alacritty -o window.opacity=0 --class="NoBlur:cava" -T cava -e cava
