@@ -156,12 +156,15 @@ alias cls='clear'
 alias vi='/usr/bin/nvim'
 alias prompt-short='prompt_style=short'
 alias prompt-full='prompt_style=full'
+alias prompt-switch='if [[ $prompt_style == "full" ]]; then prompt-short; else prompt-full; fi'
 alias ncmpcpp='ncmpcpp -b ~/.config/ncmpcpp/bindings'
 alias :e='/usr/bin/nvim'
 alias ..='cd ..'
+alias ysy='yay -Ss '
 
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 clear && pfetch --gap 10
 . "$HOME/.cargo/env"
