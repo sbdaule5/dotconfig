@@ -129,17 +129,24 @@ static const char *logoutCmd[]  = {"killall", "startdmenu", NULL};
 
 /* rofi and dmenu menus */
 static const char *powerMenu[] = {"/home/arch/.config/rofi/powermenu/type-2/powermenu.sh", NULL};
+static const char *rofiCalc[] = {"rofi", "-show", "calc", NULL};
+static const char *rofiEmoji[] = {"rofi", "-show", "emoji", NULL};
+static const char *rofiPass[] = {"rofi-pass", NULL};
 static const char *appMenu[]   = {"/home/arch/.config/rofi/launchers/type-3/launcher.sh", NULL};
 static const char *dmenuapp[]  = { "j4-dmenu-desktop", "--term=\"alacritty\"", NULL };
 static const char *dmenucmd[]  = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", pcol1, "-sf", col_gray4, NULL };
 static const char *dmenuaddmusic[]  = { "dmenuaddmusic", NULL };
 
 /* Notification commands */
-
 static const char *notifyDismiss[]     = {"dunstctl", "close", NULL};
 static const char *notifyDismissAll[]  = {"dunstctl", "close-all", NULL};
 static const char *notifyPop[]         = {"dunstctl", "history-pop", NULL};
 static const char *notifyContext[]     = {"dunstctl", "context", NULL};
+
+/* My app keybindings */
+static const char *keyboard60[]     = {"keyboard.sh", "60", NULL};
+static const char *keyboard100[]    = {"keyboard.sh", "100", NULL};
+static const char *keyboard_std[]   = {"keyboard.sh", "std", NULL};
 
 /* scratchpad commands */
 static const char *notepad[]  = {"n", "scratchpad", "start", "notepad", NULL};
@@ -178,6 +185,9 @@ static const Key keys[] = {
   {ControlMask|ShiftMask, XK_Print,          spawn,          {.v = screenshotWindowSelect} },
 
 	{ MODKEY,                       XK_F4,     spawn,          {.v = powerMenu } },
+	{ MODKEY,                       XK_c,      spawn,          {.v = rofiCalc } },
+	{ MODKEY,                       XK_Insert, spawn,          {.v = rofiEmoji } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = rofiPass } },
 
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenuapp } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
@@ -204,11 +214,17 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_grave,  view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_grave,  tag,            {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = logoutCmd} },
+	{ MODKEY|ControlMask,           XK_q,      spawn,          {.v = logoutCmd} },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_o,      viewsingle,     {0} },
+
+	/* Keyboard Layout */
+	{ MODKEY,                       XK_g,      spawn,          {.v = keyboard60 } },
+	{ MODKEY|ShiftMask,             XK_g,      spawn,          {.v = keyboard100 } },
+	{ MODKEY|ControlMask,           XK_g,      spawn,          {.v = keyboard_std } },
 
   /* scratchpad keybinding */
  	{ MODKEY,                       XK_Escape, togglescratch,  {.v = notepad } },

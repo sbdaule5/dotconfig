@@ -23,6 +23,7 @@ capture_select_window(){
 
 capture_select(){
     cd ~/Pictures/screenshots
+    sleep 0.2 # Prevent issues on dwm
     scrot -s 'screenshot-%Y-%m-%d-%H-%M-%S.png'
     xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
     notify-send "Selection captured" -a "Scrot"
