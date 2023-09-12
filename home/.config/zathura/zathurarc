@@ -9,7 +9,7 @@ set pages-per-row 1
 
 #stop at page boundries
 set scroll-page-aware       "true"
-set smooth-scroll           "true"
+# set smooth-scroll           "true"
 set scroll-full-overlap     0.01
 set scroll-step             100
 set selection-clipboard     clipboard
@@ -24,7 +24,7 @@ set guioptions              "s"
 
 # zathurarc-dark
 
-set font                    "inconsolata 15"
+set font                    "inconsolata 10"
 set default-fg              "#ebdbb2" # fg
 set default-bg              "rgba(50, 48, 47, 0.7)" # bg
 
@@ -32,7 +32,7 @@ set inputbar-fg             "#ebdbb2" # fg
 set inputbar-bg             "#32302f" # bg
 
 set statusbar-fg            "#ebdbb2" # fg
-set statusbar-bg            "#504945" # bg2
+set statusbar-bg            "rgba(50, 48, 47, 1)" # bg2
 
 set notification-error-fg   "#fb4934" # bright:red
 set notification-error-bg   "#32302f" # bg
