@@ -2,6 +2,7 @@ require("sbdaule.settings")
 require("sbdaule.keybindings")
 require("sbdaule.view")
 require("sbdaule.markdown")
+require("sbdaule.gitlog")
 
 local function Reload()
   vim.cmd [[luafile ~/.config/nvim/lua/sbdaule/settings.lua]]

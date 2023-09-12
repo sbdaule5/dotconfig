@@ -65,6 +65,8 @@ vim.keymap.set("n", "<Leader>fgs", ":GFiles?<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>gg", ":Git<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>gs", ":Git status<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", {noremap = true});
+vim.keymap.set("n", "<Leader>gl", ":call GitLog(1)<CR>", {noremap = true, silent = true});
+vim.keymap.set("n", "<Leader>gL", ":call GitLog(0)<CR>", {noremap = true, silent = true});
 
 -- System clipboard commands
 vim.keymap.set("n", "<Leader>cf", ":let @+=@%<CR>:echo  'File Name Copied'<CR>", {noremap = true, silent = true});
