@@ -64,6 +64,7 @@ let g:ft = ''
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options
     \ = '-reuse-instance -forward-search @tex @line @pdf'
+let g:vimtex_quickfix_open_on_warning=0
 
 " Undo tree
 let g:undotree_ShortIndicators = 1
@@ -80,6 +81,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-abolish'
 Plug 'svermeulen/vim-subversive'
 Plug 'airblade/vim-gitgutter'
 
@@ -97,10 +99,11 @@ Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-context'
+
 " LSP Support
-Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'} " Optional
-Plug 'williamboman/mason-lspconfig.nvim'               " Optional
-Plug 'neovim/nvim-lspconfig'                           " Required
+Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'}
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
@@ -114,6 +117,9 @@ Plug 'romgrk/fzy-lua-native'
 Plug 'nvimdev/dashboard-nvim'
 Plug 'vijaymarupudi/nvim-fzf'
 
+Plug 'lervag/vimtex'
+Plug 'untitled-ai/jupyter-ascending.vim'
+
 " Autocompletion
 " Plug 'L3MON4D3/LuaSnip'     " Required
 "Plug 'cpiger/NeoDebug'
@@ -126,7 +132,6 @@ Plug 'vijaymarupudi/nvim-fzf'
 "Plug 'dart-lang/dart-vim-plugin'
 "Plug 'natebosch/vim-lsc'
 "Plug 'natebosch/vim-lsc-dart'
-Plug 'lervag/vimtex'
 "Plug 'kana/vim-operator-user'
 
 call plug#end()
