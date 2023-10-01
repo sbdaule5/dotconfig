@@ -51,3 +51,4 @@ nvim_lsp.jedi_language_server.setup{ capabilities = lsp_capabilities, handlers =
 nvim_lsp.svelte.setup{ capabilities = lsp_capabilities, handlers = handlers}
 nvim_lsp.texlab.setup{ capabilities = lsp_capabilities, handlers = handlers}
 nvim_lsp.dotls.setup{ capabilities = lsp_capabilities, handlers = handlers}
+nvim_lsp.cmake.setup{ capabilities = lsp_capabilities, handlers = handlers}
