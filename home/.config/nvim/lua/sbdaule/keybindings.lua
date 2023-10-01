@@ -135,6 +135,18 @@ vim.keymap.set("n", "<Leader>vg", ":lua ChangeView('GitStatus')<CR>", {noremap =
 vim.keymap.set("n", "<Leader>vq", ":lua ChangeView('Quickfix')<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>vd", ":lua ChangeView('Dashboard')<CR>", {noremap = true});
 
+-- Jupyter keybindings
+-- Creating blocks
+vim.keymap.set("n", "<Leader>oc", ":lua JupyterNewBlock('code', false)<CR>", {noremap = true, silent = true});
+vim.keymap.set("n", "<Leader>om", ":lua JupyterNewBlock('markdown', false)<CR>", {noremap = true, silent = true});
+vim.keymap.set("n", "<Leader>Oc", ":lua JupyterNewBlock('code', true)<CR>", {noremap = true, silent = true});
+vim.keymap.set("n", "<Leader>Om", ":lua JupyterNewBlock('markdown', true)<CR>", {noremap = true, silent = true});
+-- Executing code
+vim.keymap.set("n", "<space>xx", "<Plug>JupyterExecute");
+vim.keymap.set("n", "<space>X", "<Plug>JupyterExecuteAll");
+vim.keymap.set("n", "<space>xr", "<Plug>JupyterRestart");
+
+
 -- Tab keybindings
 vim.keymap.set("n", "<Leader>td", ":tabe | Dashboard<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>tn", ":tabe<CR>", {noremap = true});

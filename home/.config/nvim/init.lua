@@ -118,7 +118,7 @@ Plug 'nvimdev/dashboard-nvim'
 Plug 'vijaymarupudi/nvim-fzf'
 
 Plug 'lervag/vimtex'
-Plug 'untitled-ai/jupyter-ascending.vim'
+Plug 'untitled-ai/jupyter_ascending.vim'
 
 " Autocompletion
 " Plug 'L3MON4D3/LuaSnip'     " Required
