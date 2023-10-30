@@ -4,15 +4,9 @@
 ## Github : @adi1090x
 #
 ## Rofi   : Power Menu
-#
-## Available Styles
-#
-## style-1   style-2   style-3   style-4   style-5
-## style-6   style-7   style-8   style-9   style-10
 
 # Current Theme
-dir="$HOME/.config/rofi/powermenu/type-2"
-theme='style-1'
+theme="$HOME/.config/rofi/themes/powermenu.rasi"
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
@@ -32,7 +26,7 @@ rofi_cmd() {
 	rofi -dmenu \
 		-p "Uptime: $uptime" \
 		-mesg "Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme ${theme}
 }
 
 # Confirmation CMD
@@ -79,6 +73,8 @@ run_cmd() {
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+			elif [[ "$DESKTOP_SESSION" == 'dwm' ]]; then
+				pkill startdwm
 			fi
 		fi
 	else
@@ -99,7 +95,7 @@ case ${chosen} in
 		if [[ -x '/usr/bin/betterlockscreen' ]]; then
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock --nofork -e -p default -i ~/.lock.png
+			i3lock --nofork -e -p default -i ~/.local/share/screen-saver.png
 		fi
         ;;
     $suspend)

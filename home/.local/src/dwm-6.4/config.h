@@ -129,11 +129,11 @@ static const char *screenshotWindowSelect[]  = {"screenshot", "select_window", N
 static const char *logoutCmd[]  = {"killall", "startdmenu", NULL};
 
 /* rofi and dmenu menus */
-static const char *powerMenu[] = {"/home/arch/.config/rofi/powermenu/type-2/powermenu.sh", NULL};
-static const char *rofiCalc[] = {"rofi", "-show", "calc", NULL};
+static const char *powerMenu[] = {"/home/arch/.config/rofi/scripts/powermenu.sh", NULL};
+static const char *rofiCalc[] = {"rofi", "-show", "calc", "-theme", "/usr/share/rofi/themes/gruvbox-dark-soft.rasi", NULL};
 static const char *rofiEmoji[] = {"rofi", "-show", "emoji", NULL};
 static const char *rofiPass[] = {"rofi-pass", NULL};
-static const char *appMenu[]   = {"/home/arch/.config/rofi/launchers/type-3/launcher.sh", NULL};
+static const char *appMenu[] = {"rofi", "-show", "drun", "-theme", "~/.config/rofi/themes/applauncher.rasi", NULL};
 static const char *dmenuapp[]  = { "j4-dmenu-desktop", "--term=\"alacritty\"", NULL };
 static const char *dmenucmd[]  = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", pcol1, "-sf", col_gray4, NULL };
 static const char *dmenuaddmusic[]  = { "dmenuaddmusic", NULL };

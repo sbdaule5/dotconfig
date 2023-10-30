@@ -8,7 +8,7 @@
 
 configuration {
 	/*---------- General setting ----------*/
-	modi: "drun,run,filebrowser,window";
+	modi: "drun,run,filebrowser,window,calc,emoji";
 	case-sensitive: false;
 	cycle: true;
 	filter: "";
@@ -181,4 +181,5 @@ configuration {
 	me-accept-custom: "Control+MouseDPrimary";
 */
 }
-@theme "/usr/share/rofi/themes/Monokai.rasi"
+// Calculator is broken with this theme
+@theme "/home/arch/.config/rofi/themes/emoji.rasi"
