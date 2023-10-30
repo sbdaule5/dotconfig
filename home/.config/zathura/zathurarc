@@ -68,9 +68,21 @@ set recolor-keephue         "true"
 set render-loading          "true"
 set scroll-step             50
 
+unmap               <C-n>
+unmap [fullscreen]  <C-n>
+map                 <C-n>   exec "zathura $FILE --page $PAGE --fork"
+map   [fullscreen]  <C-n>   exec "zathura $FILE --page $PAGE --fork"
+
+map                 <C-b>   toggle_statusbar
+map   [fullscreen]  <C-b>   toggle_statusbar
+
 unmap               f
+unmap [fullscreen]  f
 map                 f       toggle_fullscreen
 map   [fullscreen]  f       toggle_fullscreen
+
+map                 <C-f>   follow
+map   [fullscreen]  <C-f>   follow
+
 map                 i       recolor
 map   [fullscreen]  i       recolor
-
