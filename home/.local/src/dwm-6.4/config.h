@@ -245,6 +245,10 @@ static const Key keys[] = {
  	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = lf } },
  	{ MODKEY|ShiftMask,             XK_z,      spawn,          {.v = ranger } },
 
+	/* Brightness keys */
+ 	{ MODKEY,                 XK_semicolon,    spawn,          {.v = riseBrightness } },
+ 	{ MODKEY|ShiftMask,       XK_semicolon,    spawn,          {.v = lowerBrightness } },
+
 	/* Media keys */
  	{ MODKEY,                 XK_apostrophe,   spawn,          {.v = audioRise } },
  	{ MODKEY|ShiftMask,       XK_apostrophe,   spawn,          {.v = audioLower } },
