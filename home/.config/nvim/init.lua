@@ -72,6 +72,10 @@ let g:undotree_SplitWidth = 40
 let g:undotree_DiffpanelHeight = 20
 let g:undotree_SetFocusWhenToggle = 1
 
+" Start interactive EasyAlign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 call plug#begin()
 " Essential plugins
 Plug 'tpope/vim-fugitive'
@@ -120,6 +124,10 @@ Plug 'vijaymarupudi/nvim-fzf'
 Plug 'lervag/vimtex'
 Plug 'untitled-ai/jupyter_ascending.vim'
 
+Plug 'junegunn/vim-easy-align'
+
+" Plug 'tversteeg/registers.nvim'
+" Plug 'jupyter-vim/jupyter-vim'
 " Autocompletion
 " Plug 'L3MON4D3/LuaSnip'     " Required
 "Plug 'cpiger/NeoDebug'
