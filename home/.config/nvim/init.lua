@@ -48,6 +48,7 @@ let g:vimwiki_list = [{'path': '~/notes/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:vimwiki_global_ext = 0
+let g:instant_username="sbdaule"
 
 augroup VimwikiKeybinding
   autocmd!
@@ -125,6 +126,7 @@ Plug 'lervag/vimtex'
 Plug 'untitled-ai/jupyter_ascending.vim'
 
 Plug 'junegunn/vim-easy-align'
+Plug 'jbyuki/instant.nvim'
 
 " Plug 'tversteeg/registers.nvim'
 " Plug 'jupyter-vim/jupyter-vim'

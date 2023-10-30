@@ -153,12 +153,14 @@ static const char *keyboard_std[]   = {"keyboard.sh", "std", NULL};
 static const char *notepad[]  = {"n", "scratchpad", "start", "notepad", NULL};
 
 /* My app keybindings */
-static const char *termcmd[]  = { "alacritty", NULL };
-static const char *topCmd[]   = { "alacritty", "--class=\"Alacritty:btop\"", "-e", "btop", NULL };
-static const char *ncmpcpp[]  = { "alacritty", "--class=\"Alacritty:Music\"", "-e", "ncmpcpp", NULL };
-static const char *lf[]       = { "alacritty", "--class=\"Alacritty:Files\"", "-e", "lf", NULL };
-static const char *ranger[]   = { "alacritty", "--class=\"Alacritty:Files\"", "-e", "ranger", NULL };
-static const char *nvim[]     = { "alacritty", "--class=\"Alacritty:nvim\"", "-e", "nvim", NULL };
+#define TERM "kitty"
+static const char *termcmd[]  = { "kitty", "-1", NULL };
+static const char *alt_termcmd[]  = { "alacritty", NULL };
+static const char *topCmd[]   = { TERM, "--class=\"Alacritty:btop\"", "-e", "btop", NULL };
+static const char *ncmpcpp[]  = { TERM, "--class=\"Alacritty:Music\"", "-e", "ncmpcpp", NULL };
+static const char *lf[]       = { TERM, "--class=\"Alacritty:Files\"", "-e", "lf", NULL };
+static const char *ranger[]   = { TERM, "--class=\"Alacritty:Files\"", "-e", "ranger", NULL };
+static const char *nvim[]     = { TERM, "--class=\"Alacritty:nvim\"", "-e", "nvim", NULL };
 static const char *quteb[]    = { "qutebrowser", NULL };
 static const char *brave[]    = { "brave", NULL };
 static const char *pcmanfm[]  = { "pcmanfm", NULL };
@@ -232,6 +234,7 @@ static const Key keys[] = {
 
   /* App keybinding */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = alt_termcmd } },
  	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = brave } },
  	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = emacsc } },
  	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = nvim } },
