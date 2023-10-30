@@ -20,15 +20,11 @@ function list() {
 
 BASE="$HOME/Projects/dotconfig/home/"
 config=(
-	'i3wm:.config/i3/'
-	'neovim:.config/nvim/'
-	'bash:.bashrc'
 	'alacritty:.config/alacritty/alacritty.yml'
+	'aliasrc:.config/shell/aliasrc'
+	'bash:.bashrc'
 	'config:.local/bin/config'
-	'startdwm:.local/bin/startdwm'
-	'startup:.local/bin/startup.sh'
 	'dwm-6.4:.local/src/dwm-6.4/'
-	'i3status:.config/i3status/'
 	'i3blocks:.config/i3blocks/'
 	'i3blocks-scripts:.config/i3blocks/scripts/'
 	'i3blocks-battery:.config/i3blocks/scripts/battery.sh'
@@ -38,16 +34,23 @@ config=(
 	'i3blocks-time:.config/i3blocks/scripts/time.sh'
 	'i3blocks-volume:.config/i3blocks/scripts/volume.sh'
 	'i3blocks-wifi:.config/i3blocks/scripts/wifi.sh'
+	'i3status:.config/i3status/'
+	'i3wm:.config/i3/'
 	'iamb:.config/iamb/config.json'
+	'lf:.config/lf'
 	'mutt:.config/mutt/muttrc'
 	'ncmpcpp:.config/ncmpcpp'
+	'neovim:.config/nvim/'
+	'newsboat:.config/newsboat/'
 	'picom:.config/picom/picom.config'
+	'profile:.profile'
 	'ranger:.config/ranger'
-	'lf:.config/lf'
+	'startdwm:.local/bin/startdwm'
+	'startup:.local/bin/startup.sh'
 	'tmux:.config/tmux/tmux.conf'
 	'qutebrowser:.config/qutebrowser/config.py'
-	'newsboat:.config/newsboat/'
 	'zathura:.config/zathura/zathurarc'
+	'zsh:.config/zsh/.zshrc'
 )
 
 if [ -z "$1" ]; then

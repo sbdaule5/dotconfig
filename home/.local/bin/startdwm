@@ -2,9 +2,10 @@
 
 setsid -f /home/arch/.local/bin/startup.sh
 setsid -f dwmblocks
+export DESKTOP_SESSION="dwm"
 while true; do
     # Log stderror to a file
-    dwm 2> ~/.dwm.log
+    dwm 2> ~/.local/share/dwm/dwm.log
     # No error logging
     # dwm >/dev/null 2>&1
     sleep 1
