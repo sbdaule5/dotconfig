@@ -13,7 +13,13 @@ case "$url" in
 	*mkv|*webp|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtube.com/shorts*|*youtu.be*|*videos.lukesmith.xyz*|*odysee.com*)
 		setsid -f mpv --ytdl-format="bestaudio+bestvideo[height<=720]" "$url" > /dev/null 2>&1 ;;
 	*png|*jpg|*jpeg|*jpe)
-		feh "$url" ;;
+		if [ "$TERM" == "xterm-kitty" ]; then
+			kitty +kitten icat "$url"
+			read
+		else
+			feh "$url"
+		fi
+		;;
 	*pdf)
 		zathura "$url" ;;
 	*)
