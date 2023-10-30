@@ -1,42 +1,24 @@
 source "gpg2 -dq ~/.mutt/com.gmail.sbdaule5.gpg |"
+
+source /usr/share/mutt-wizard/mutt-wizard.muttrc
+source /home/arch/.config/mutt/accounts/sbdaule5@gmail.com.muttrc
+
 set ssl_force_tls = yes
 set abort_nosubject = no
 set mail_check = 60
 set timeout = 10
-set sort = "reverse-date-received"
+set sort = "threads"
+set sort_aux = "reverse-date-received"
 set copy = no
+set index_format="%2C %Z %?X?󰁦 &  ? %D %-15.15F %?M?-> ?%s (%-4.4c)"
 
 alternative_order text/plain text text/html
-auto_view text/html
+auto_view image/jpeg
 
-# colors
-color hdrdefault cyan default
-color attachment yellow default
 
-color header brightyellow default "From: "
-color header brightyellow default "Subject: "
-color header brightyellow default "Date: "
-
-color quoted green default
-color quoted1 cyan default
-color quoted2 green default
-color quoted3 cyan default
-
-color error     red             default         # error messages
-color message   yellow          default         # message  informational messages
-color indicator black           green           # indicator for the "current message"
-color status    brightwhite     blue            # status lines in the folder index sed for the mini-help line
-color tree      red             default         # the "tree" display of threads within the folder index
-color search    white           blue            # search matches found with search within the internal pager
-color markers   red             default         # The markers indicate a wrapped line hen showing messages with looong lines
-
-color index     brightyellow    default  '~O'
-color index     brightyellow    default  '~N'
-color index     brightred       default  '~F'   # Flagged Messages are important!
-color index     blue            default  '~D'   # Deleted Mails - use dark color as these are already "dealt with"
-
-# Keybindings and macros
-# ---------------------------
+################################################################################
+#        Keybindings and Macros                                                #
+################################################################################
 
 # alias   - alias menu displaying suggested aliases
 # browser - file/directory browser
@@ -145,3 +127,106 @@ macro index,pager,attach,compose \cy                                            
   <pipe-message>pbcopy<Enter>                                                   \
   <enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
   "copy message to clipboard using mutt-pbcopy"
+
+set query_command = "abook --datafile '${XDG_DATA_HOME}/abook/addressbook' --config '${XDG_CONFIG_HOME}/abook/abookrc' --mutt-query '%s'"
+macro index,pager a "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --datafile '${XDG_DATA_HOME}/abook/addressbook' --config '${XDG_CONFIG_HOME}/abook/abookrc' --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
+
+################################################################################
+#        Colors and statuslines                                                #
+################################################################################
+
+# Statusline
+## Index
+set status_format = " Index  󰊫  %f / 󰻧 %m %?u? %u?%?d?  %d?%?F? 󰈽 %F?%?t?  %t?  $from %> %P  NeoMutt "
+folder-hook . 'set status_format = " Index  󰊫  %f / 󰻧 %m %?u? %u?%?d?  %d?%?F? 󰈽 %F?%?t?  %t?  $from %>  %?T?%T/?%S  %P  NeoMutt "'
+
+color status   bold blue     color239  "󰻧 *[0-9]+ "
+color status   bold green    color239  " *[0-9]+ "
+color status   bold red      color239  " *[0-9]+ "
+color status   bold yellow   color239  "󰈽 *[0-9]+ "
+color status   bold magenta  color239  " *[0-9]+ "
+color status   bold color255 color239 " 󰊫  [^ ]* / "
+color status   bold color255 color239 " [0-9]+% "
+color status   bold color236 color7 " NeoMutt $"
+color status   bold color236 color7 "^ Index "
+color status yellow color234
+
+
+color index         blue    default '.*'
+color index_author  magenta default '.*'
+color index_number  color8  default
+color index_subject green   default '.*'
+
+# New mail is boldened:
+color index         brightyellow  default "~N"
+color index_author  brightmagenta default "~N"
+color index_subject brightgreen   default "~N"
+
+# Tagged mail is highlighted:
+color index         brightblue    brightyellow "~T"
+color index_author  brightmagenta brightyellow "~T"
+color index_subject brightgreen   brightyellow "~T"
+
+# Flagged mail is highlighted:
+color index         brightred default "~F"
+color index_subject brightred default "~F"
+color index_author  brightred default "~F"
+
+color indicator default color238
+
+color hdrdefault cyan default
+color attachment yellow default
+
+color header brightyellow default "From: "
+color header brightyellow default "Subject: "
+color header brightyellow default "Date: "
+
+color quoted  green       default
+color quoted1 blue        default
+color quoted2 cyan        default
+color quoted3 yellow      default
+color quoted4 red         default
+color quoted5 brightred   default
+
+color error     red             default         # error messages
+color message   yellow          default         # message  informational messages
+color tree      red             default         # the "tree" display of threads within the folder index
+color search    white           blue            # search matches found with search within the internal pager
+color markers   red             default         # The markers indicate a wrapped line hen showing messages with looong lines
+
+# Sidebar colors
+color sidebar_highlight  reverse brightblue     default
+color sidebar_divider            yellow         default
+color sidebar_flagged            default        default
+color sidebar_indicator  bold    blue           default
+color sidebar_new        bold    default        default
+color sidebar_spoolfile          green          default
+
+# Regex highlighting:
+color header brightmagenta default "^From"
+color header brightcyan default "^Subject"
+color header brightwhite default "^(CC|BCC)"
+color header blue default ".*"
+color body brightred default "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+" # Email addresses
+color body brightblue default "(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+" # URL
+color body green default "\`[^\`]*\`" # Green text between ` and `
+color body brightblue default "^# \.*" # Headings as bold blue
+color body brightcyan default "^## \.*" # Subheadings as bold cyan
+color body brightgreen default "^### \.*" # Subsubheadings as bold green
+color body yellow default "^(\t| )*(-|\\*) \.*" # List items as yellow
+color body brightcyan default "[;:][-o][)/(|]" # emoticons
+color body brightcyan default "[;:][)(|]" # emoticons
+color body brightcyan default "[ ][*][^*]*[*][ ]?" # more emoticon?
+color body brightcyan default "[ ]?[*][^*]*[*][ ]" # more emoticon?
+color body red default "(BAD signature)"
+color body cyan default "(Good signature)"
+color body brightblack default "^gpg: Good signature .*"
+color body brightyellow default "^gpg: "
+color body brightyellow red "^gpg: BAD signature from.*"
+mono body bold "^gpg: Good signature"
+mono body bold "^gpg: BAD signature from.*"
+color body red default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
+
+macro index,pager i1 '<sync-mailbox><enter-command>source /home/arch/.config/mutt/accounts/sbdaule5@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to sbdaule5@gmail.com"
+macro index,pager i2 '<sync-mailbox><enter-command>source /home/arch/.config/mutt/accounts/sbdaule580@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to sbdaule580@gmail.com"
+macro index,pager i3 '<sync-mailbox><enter-command>source /home/arch/.config/mutt/accounts/shubhambd@iitbhilai.ac.in.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to shubhambd@iitbhilai.ac.in"
