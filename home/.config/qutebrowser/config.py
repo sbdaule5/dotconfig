@@ -288,6 +288,8 @@ c.hints.radius = 1
 c.colors.webpage.bg = background_color
 c.colors.webpage.preferred_color_scheme = "dark"
 
+c.colors.webpage.darkmode.enabled = True
+
 c.completion.scrollbar.padding = 1
 c.completion.scrollbar.width = 7
 c.tabs.show = 'multiple'
