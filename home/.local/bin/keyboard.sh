@@ -14,10 +14,11 @@ elif [ "$1" == "100" ]; then
 elif [ "$1" == "0" ] || [ "${1,,}" == "std" ]; then
   setxkbmap -option
   notify-send "Standard keyboard layout restored" -a "Keyboard.sh"
+  exit 0
 else
   echo "Invalid keyboard layout. Valid options are '100' and '60'(default)"
 fi
 
-xcape -e 'Super_L=space' -t 300
+xcape -e 'Super_L=space' -t 500
 xcape -e 'Control_L=Escape' -t 300
 
