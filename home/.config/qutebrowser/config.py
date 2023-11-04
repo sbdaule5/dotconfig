@@ -211,7 +211,7 @@ c.url.start_pages = ["qute://start/"]
 c.url.default_page = "qute://start/"
 
 # Enable pdf.js
-c.content.pdfjs = True
+c.content.pdfjs = False
 
 # Setting color scheme
 # Type: QssColor
