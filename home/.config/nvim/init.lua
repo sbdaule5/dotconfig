@@ -89,19 +89,25 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'svermeulen/vim-subversive'
 Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-slash'
 
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 Plug 'vimwiki/vimwiki'
-Plug 'junegunn/fzf.vim', { 'do' : { -> fzf#install() } }
 Plug 'mbbill/undotree'
 Plug 'lilydjwg/colorizer'
-
-Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'nvim-tree/nvim-tree.lua'
+
+" Ricing
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'nvimdev/dashboard-nvim'
 
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
@@ -110,39 +116,22 @@ Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'}
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 
+" Completions
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'L3MON4D3/LuaSnip'
 
+" Fuzzy completions
 Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-fuzzy-buffer'
 Plug 'romgrk/fzy-lua-native'
 
-Plug 'nvimdev/dashboard-nvim'
 Plug 'vijaymarupudi/nvim-fzf'
 
 Plug 'lervag/vimtex'
 Plug 'untitled-ai/jupyter_ascending.vim'
-
-Plug 'junegunn/vim-easy-align'
 Plug 'jbyuki/instant.nvim'
-
-" Plug 'tversteeg/registers.nvim'
-" Plug 'jupyter-vim/jupyter-vim'
-" Autocompletion
-" Plug 'L3MON4D3/LuaSnip'     " Required
-"Plug 'cpiger/NeoDebug'
-"Plug 'Shougo/context_filetype.vim'
-"Plug 'pangloss/vim-javascript'
-"Plug 'evanleck/vim-svelte'
-"Plug 'leafgarland/typescript-vim'
-"Plug 'sudar/vim-arduino-syntax'
-" Plug 'vim-scripts/DrawIt'
-"Plug 'dart-lang/dart-vim-plugin'
-"Plug 'natebosch/vim-lsc'
-"Plug 'natebosch/vim-lsc-dart'
-"Plug 'kana/vim-operator-user'
 
 call plug#end()
 
