@@ -11,9 +11,13 @@
 #define XF86XK_MonBrightnessDown 0x1008FF03  /* Monitor/panel brightness */
 #define XF86XK_PowerOff		0x1008FF2A   /* Power off system entirely  */
 
+#define HOME /home/sbdaule
+#define SCR_H 1080
+#define SCR_W 1920
+
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 6;        /* gaps between windows */
+static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 8;       /* snap pixel */
 static const int rmaster            = 0;        /* 1 means master-area is initially on the right */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -23,8 +27,8 @@ static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
-static const char *fonts[]          = {"monospace:size=9", "JetBrainsMono Nerd Font:style=bold:size=10"};
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=10";
+static const char *fonts[]          = {"monospace:size=12", "JetBrainsMono Nerd Font:style=bold:size=13"};
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=13";
 
 static unsigned int baralpha        = 0xb0;
 static unsigned int borderalpha     = 0xff;
@@ -70,9 +74,9 @@ static const Rule rules[] = {
 	{ "Alacritty:Music", NULL,    NULL,       1 << 5,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
 	{ "Alacritty:Mixer", NULL,    NULL,       ~0,              1,           -1 ,    0,        666,  25, 700, 255,   2,           0 },
 	{ "Alacritty:nvim",  NULL,    NULL,       1 << 6,          0,           -1,     0,          0,   0,   0,   0,   2,           0 },
-	{ "NoBlur:cava",     NULL,    NULL,       ~0,              1,           -1,     0,     gappx, 500, 1366 -2*gappx, 268,  0,   1 },
+	{ "NoBlur:cava",     NULL,    NULL,       ~0,              1,           -1,     0,     gappx, 0.75*SCR_H, SCR_W -2*gappx, 0.25*SCR_H,  0,   1 },
 	{ "Emacs",           NULL,    NULL,       1 << 3,          0,           -1,     0,          0,   0,   0,   0,   2,           0 },
-	{ NULL,              NULL, "Notepad",     0,               1,           -1,    'n',         0,   6, 614, 741,   2,           0 },
+	{ NULL,              NULL, "Notepad",     0,               1,           -1,    'n',         0,   6+gappx, SCR_W * 0.4, SCR_H - 6 - 2*gappx,   2,           0 },
 
   /*
 	{ "Gimp",         NULL,       NULL,       0,            1,           -1,        50,50,500,500,    5,           0},

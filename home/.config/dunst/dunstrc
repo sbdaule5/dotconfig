@@ -8,7 +8,7 @@
     height = 350
     origin = top-center
     offset = 0x25
-    scale = 0
+    scale = 1.2
     notification_limit = 20
 
     ### Progress bar ###
@@ -45,12 +45,12 @@
     idle_threshold = 120
 
     ### Text ###
-    font = Iosevka Nerd Font 10
+    font = Iosevka Nerd Font 13
     line_height = 2
     markup = full
     format = "<b>%p %s - %a</b>\n%b"
     alignment = left
-    vertical_alignment = top
+    vertical_alignment = center
     show_age_threshold = 60
     ellipsize = end
     ignore_newline = no
@@ -75,7 +75,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst -l 6:
+    dmenu = /home/sbdaule/.local/bin/dmenu -p dunst -l 6:
 
     browser = /usr/bin/xdg-open
 

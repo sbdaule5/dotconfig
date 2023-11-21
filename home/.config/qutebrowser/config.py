@@ -243,7 +243,7 @@ c.colors.tabs.selected.even.bg = primary_color_1
 c.colors.tabs.indicator.error = warning_color
 c.colors.tabs.indicator.start = primary_color_2
 c.colors.tabs.indicator.stop = primary_color_1
-c.tabs.padding = {"bottom": 2, "left": 5, "right": 5, "top":2}
+c.tabs.padding = {"bottom": 4, "left": 5, "right": 5, "top":4}
 
 c.colors.statusbar.normal.fg = text_color
 c.colors.statusbar.normal.bg = background_color
