@@ -37,6 +37,7 @@ config=(
 	'i3status:.config/i3status/'
 	'i3wm:.config/i3/'
 	'iamb:.config/iamb/config.json'
+	'kitty:.config/kitty/kitty.conf'
 	'lf:.config/lf'
 	'mutt:.config/mutt/muttrc'
 	'ncmpcpp:.config/ncmpcpp'

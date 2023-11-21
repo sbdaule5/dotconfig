@@ -226,7 +226,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_o,      viewsingle,     {0} },
+	// { MODKEY,                       XK_o,      viewsingle,     {0} },
 
 	/* Keyboard Layout */
 	{ MODKEY,                       XK_g,      spawn,          {.v = keyboard60 } },
