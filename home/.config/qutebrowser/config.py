@@ -297,6 +297,7 @@ c.content.javascript.can_open_tabs_automatically = True
 
 # c.editor.command = ["alacritty", "--class", "Alacritty:Floating", "-o", "font.size=9.0", "-e", "nvim", "-f", "{file}", "-c", "normal {line}G{column0}l"]
 c.editor.command = ["nve", "{file}"]
+c.downloads.location.directory = "~/downloads/unorganized/"
 
 # Bindings for normal mode
 config.bind('J', 'tab-prev')

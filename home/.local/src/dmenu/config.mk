@@ -2,7 +2,7 @@
 VERSION = 5.2
 
 # paths
-PREFIX = /home/arch/.local
+PREFIX = /home/sbdaule/.local
 MANPREFIX = $(PREFIX)/share/man
 
 X11INC = /usr/X11R6/include

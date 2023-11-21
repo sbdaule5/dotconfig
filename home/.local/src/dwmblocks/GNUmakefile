@@ -1,4 +1,4 @@
-PREFIX = /home/arch/.local
+PREFIX = /home/sbdaule/.local
 
 CC = gcc
 CFLAGS = -O3 -Wall -Wextra

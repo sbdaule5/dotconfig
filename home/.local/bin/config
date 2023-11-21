@@ -18,7 +18,7 @@ function list() {
 	done
 }
 
-BASE="$HOME/Projects/dotconfig/home/"
+BASE="$HOME/projects/dotconfig/home/"
 config=(
 	'alacritty:.config/alacritty/alacritty.yml'
 	'aliasrc:.config/shell/aliasrc'

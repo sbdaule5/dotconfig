@@ -1,6 +1,6 @@
 if [ -z $1 ]
 then
-	feh ~/.lock.png
+	feh ~/.local/share/screen-saver.png
 else
-	convert $1 -resize 1366x768^ ~/.lock.png	
+	convert $1 -resize 1920x1080^ ~/.local/share/screen-saver.png	
 fi

@@ -32,7 +32,7 @@ SAVEHIST=4000
 ################################################################################
 # 
 autoload -Uz compinit
-zstyle :compinstall filename '/home/arch/.config/zsh/.zshrc'
+zstyle :compinstall filename "$HOME/.config/zsh/.zshrc"
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 _comp_options+=(globdots)		# Include hidden files.

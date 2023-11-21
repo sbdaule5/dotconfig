@@ -1,36 +1,39 @@
 #! /bin/bash
 
+SCREENSHOT_DIR="$(xdg-user-dir PICTURES)/screenshots/"
+FILE_NAME='screenshot-%Y-%m-%d-%H-%M-%S.png'
+
 capture_screen(){
-    cd ~/Pictures/screenshots
-    scrot 'screenshot-%Y-%m-%d-%H-%M-%S.png'
-    xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
+    cd $SCREENSHOT_DIR
+    scrot $FILE_NAME
+    xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
     notify-send "Screen captured" -a "Scrot"
 }
 
 capture_window(){
-    cd ~/Pictures/screenshots
-    scrot -w $(xdotool getactivewindow) 'screenshot-%Y-%m-%d-%H-%M-%S.png'
-    xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
+    cd $SCREENSHOT_DIR
+    scrot -w $(xdotool getactivewindow) $FILE_NAME
+    xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
     notify-send "Window captured" -a "Scrot"
 }
 
 capture_select_window(){
-    cd ~/Pictures/screenshots
-    scrot -w $(xdotool selectwindow) 'screenshot-%Y-%m-%d-%H-%M-%S.png'
-    xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
+    cd $SCREENSHOT_DIR
+    scrot -w $(xdotool selectwindow) $FILE_NAME
+    xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
     notify-send "Window captured" -a "Scrot"
 }
 
 capture_select(){
-    cd ~/Pictures/screenshots
+    cd $SCREENSHOT_DIR
     sleep 0.2 # Prevent issues on dwm
-    scrot -s 'screenshot-%Y-%m-%d-%H-%M-%S.png'
-    xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`
+    scrot -s $FILE_NAME
+    xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
     notify-send "Selection captured" -a "Scrot"
 }
 
-if ! [[ -d ~/Pictures/screenshots/ ]]; then
-    mkdir -p ~/Pictures/screenshots
+if ! [[ -d $SCREENSHOT_DIR/ ]]; then
+    mkdir -p $SCREENSHOT_DIR
 fi
 
 if [[ -z $1 ]]; then

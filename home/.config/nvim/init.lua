@@ -73,6 +73,9 @@ let g:undotree_SplitWidth = 40
 let g:undotree_DiffpanelHeight = 20
 let g:undotree_SetFocusWhenToggle = 1
 
+" Flutter
+" let g:flutter_command = "/home/sbdaule/projects/smart-insti-app/SDK/flutter/bin/flutter"
+
 " Start interactive EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -132,6 +135,7 @@ Plug 'vijaymarupudi/nvim-fzf'
 Plug 'lervag/vimtex'
 Plug 'untitled-ai/jupyter_ascending.vim'
 Plug 'jbyuki/instant.nvim'
+Plug 'thosakwe/vim-flutter'
 
 call plug#end()
 

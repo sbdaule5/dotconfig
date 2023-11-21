@@ -182,4 +182,4 @@ configuration {
 */
 }
 // Calculator is broken with this theme
-@theme "/home/arch/.config/rofi/themes/emoji.rasi"
+@theme "/home/sbdaule/.config/rofi/themes/emoji.rasi"

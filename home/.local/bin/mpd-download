@@ -11,7 +11,7 @@ case $url in
             FILE="$1"
         fi
 
-        cd ~/Music/mpd-downloads
+        cd ~/multimedia/music/mpd-downloads
         curl "$url" -o "${FILE}.webm"
         if [  "$?" -ne 0 ]; then
             notify-send "Download failed" -a "MPD"

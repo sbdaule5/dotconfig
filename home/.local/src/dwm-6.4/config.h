@@ -116,10 +116,10 @@ static const char *musicSeekBackCmd[] = {"playerctl", "position", "5-", NULL};
 static const char *musicSeekFwdCmd[]  = {"playerctl", "position", "5+", NULL};
 static const char *musicNextPlayer[]  = {"playerctld", "shift", NULL};
 static const char *musicPrevPlayer[]  = {"playerctld", "unshift", NULL};
-static const char *audioMixer[]  = { "/home/arch/.local/src/dwmblocks/blocks/volume_button.sh", "3", NULL };
+static const char *audioMixer[]  = { "/home/sbdaule/.local/src/dwmblocks/blocks/volume_button.sh", "3", NULL };
 
-static const char *lowerBrightness[]  = {"xbacklight", "-1", NULL};
-static const char *riseBrightness[]  = {"xbacklight", "+1", NULL};
+static const char *lowerBrightness[]  = {"brillo", "-q", "-U", "0.5", NULL};
+static const char *riseBrightness[]  = {"brillo", "-q", "-A", "0.5", NULL};
 
 static const char *screenshotComplete[]      = {"screenshot", "screen", NULL};
 static const char *screenshotSelect[]        = {"screenshot", "select", NULL};
@@ -129,7 +129,7 @@ static const char *screenshotWindowSelect[]  = {"screenshot", "select_window", N
 static const char *logoutCmd[]  = {"killall", "startdmenu", NULL};
 
 /* rofi and dmenu menus */
-static const char *powerMenu[] = {"/home/arch/.config/rofi/scripts/powermenu.sh", NULL};
+static const char *powerMenu[] = {"/home/sbdaule/.config/rofi/scripts/powermenu.sh", NULL};
 static const char *rofiCalc[] = {"rofi", "-show", "calc", "-theme", "/usr/share/rofi/themes/gruvbox-dark-soft.rasi", NULL};
 static const char *rofiEmoji[] = {"rofi", "-show", "emoji", NULL};
 static const char *rofiPass[] = {"rofi-pass", NULL};
@@ -144,7 +144,7 @@ static const char *notifyDismissAll[]  = {"dunstctl", "close-all", NULL};
 static const char *notifyPop[]         = {"dunstctl", "history-pop", NULL};
 static const char *notifyContext[]     = {"dunstctl", "context", NULL};
 
-/* My app keybindings */
+/* My keybindings */
 static const char *keyboard60[]     = {"keyboard.sh", "60", NULL};
 static const char *keyboard100[]    = {"keyboard.sh", "100", NULL};
 static const char *keyboard_std[]   = {"keyboard.sh", "std", NULL};
@@ -153,18 +153,18 @@ static const char *keyboard_std[]   = {"keyboard.sh", "std", NULL};
 static const char *notepad[]  = {"n", "scratchpad", "start", "notepad", NULL};
 
 /* My app keybindings */
-#define TERM "kitty"
-static const char *termcmd[]  = { "kitty", "-1", NULL };
-static const char *alt_termcmd[]  = { "alacritty", NULL };
-static const char *topCmd[]   = { TERM, "--class=\"Alacritty:btop\"", "-e", "btop", NULL };
-static const char *ncmpcpp[]  = { TERM, "--class=\"Alacritty:Music\"", "-e", "ncmpcpp", NULL };
-static const char *lf[]       = { TERM, "--class=\"Alacritty:Files\"", "-e", "lf", NULL };
-static const char *ranger[]   = { TERM, "--class=\"Alacritty:Files\"", "-e", "ranger", NULL };
-static const char *nvim[]     = { TERM, "--class=\"Alacritty:nvim\"", "-e", "nvim", NULL };
-static const char *quteb[]    = { "qutebrowser", NULL };
-static const char *brave[]    = { "brave", NULL };
-static const char *pcmanfm[]  = { "pcmanfm", NULL };
-static const char *emacsc[]   = { "emacsclient", "-c", "-a", "emacs", NULL };
+#define TERM "kitty", "-1"
+static const char *termcmd[]     = { "setsid", "kitty", "-1", NULL };
+static const char *alt_termcmd[] = { "setsid", "alacritty", NULL };
+static const char *topCmd[]      = { "setsid", TERM, "--class=\"Alacritty:btop\"", "-e", "btop", NULL };
+static const char *ncmpcpp[]     = { "setsid", TERM, "--class=\"Alacritty:Music\"", "-e", "ncmpcpp", NULL };
+static const char *lf[]          = { "setsid", TERM, "--class=\"Alacritty:Files\"", "-e", "lf", NULL };
+static const char *ranger[]      = { "setsid", TERM, "--class=\"Alacritty:Files\"", "-e", "ranger", NULL };
+static const char *nvim[]        = { "setsid", TERM, "--class=\"Alacritty:nvim\"", "-e", "nvim", NULL };
+static const char *quteb[]       = { "setsid", "qutebrowser", NULL };
+static const char *brave[]       = { "setsid", "brave", NULL };
+static const char *pcmanfm[]     = { "setsid", "thunar", NULL };
+static const char *emacsc[]      = { "setsid", "emacsclient", "-c", "-a", "emacs", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
