@@ -24,7 +24,9 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 # Keep bash history of different tmux sessions seperate
 if [[ $TERM == "tmux-256color" ]] || [[ $TERM == "screen-256color" ]]
 then
-    export HISTFILE=/home/$USER/.tmux-bash-history/$(tmux display-message -p '#S')
+    export HISTFILE=${XDG_STATE_HOME:-~/.local/state}/bash/tmux-history/$(tmux display-message -p '#S')
+else
+    export HISTFILE=${XDG_STATE_HOME:-~/.local/state}/bash/history
 fi
 
 # Use bash-completion, if available
@@ -99,7 +101,7 @@ parse_pwd(){
     case $prompt_style in
         full)
             case $PWD/ in
-                /home/*) echo -n $(pwd | sed -e 's/^\/home\/arch/~/' -e 's/\// '$pl_ss' /g');;
+                /home/*) echo -n $(pwd | sed -e 's/^\/home\/sbdaule/~/' -e 's/\// '$pl_ss' /g');;
                 *) pwd;;
             esac;;
         short) echo -n `pwd | awk -F '/' '{print $NF}'`;;
