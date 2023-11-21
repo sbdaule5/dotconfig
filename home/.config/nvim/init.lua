@@ -66,6 +66,10 @@ let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options
     \ = '-reuse-instance -forward-search @tex @line @pdf'
 let g:vimtex_quickfix_open_on_warning=0
+let g:vimtex_compiler_latexmk = {
+      \ 'aux_dir': "./aux",
+      \ 'out_dir': "./out",
+      \}
 
 " Undo tree
 let g:undotree_ShortIndicators = 1
