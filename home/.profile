@@ -1,5 +1,5 @@
 
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:~/.local/share/npm/bin:$PATH
 export EDITOR=nvim
 export VISUAL="~/.local/bin/nve"
 export TERMINAL="alacritty"
@@ -10,6 +10,8 @@ export BROWSER=qutebrowser
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+export NO_XDG_HOME="/home/sbdaule/.local/share/no-xdg-home/"
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
@@ -20,21 +22,36 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
-export HISTFILE="$XDG_DATA_HOME/history"
+export HISTFILE="$XDG_STATE_HOME/history"
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
 export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
-export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
+export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
+export PYTHONUSERBASE=$XDG_DATA_HOME/python
+export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
 export GRB_LICENSE_FILE="$XDG_DATA_HOME/gurobi.lic"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export KODI_DATA="$XDG_DATA_HOME/kodi"
 export MAILCAPS="$XDG_CONFIG_HOME/mailcap:/usr/share/neomutt/mailcap"
-# export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
+export PUB_CACHE=$XDG_CACHE_HOME/pub
+export TERMINFO=$XDG_DATA_HOME/terminfo
+export TERMINFO_DIRS=$XDG_DATA_HOME/terminfo:/usr/share/terminfo:$TERMINFO_DIRS
+export W3M_DIR="$XDG_STATE_HOME/w3m"
+export DOT_SAGE="$XDG_CONFIG_HOME"/sage
+export RANDFILE="$XDG_STATE_HOME"/rnd
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
-# export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 # export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
 # export UNISON="$XDG_DATA_HOME/unison"
+
+# Alias the apps that do not adhere to xdg specifications to use the NO_XDG_HOME instead
+alias \
+  dart="HOME=$NO_XDG_HOME dart" \
+  flutter="HOME=$NO_XDG_HOME flutter" \
 
 # Other program settings:
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"

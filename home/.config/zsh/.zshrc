@@ -23,7 +23,7 @@ setopt INC_APPEND_HISTORY
 setopt histignoredups
 setopt histignorespace
 
-HISTFILE=~/.local/share/zsh/history
+HISTFILE=${XDG_STATE_HOME:-~/.local/state}/zsh/history
 HISTSIZE=500000
 SAVEHIST=4000
 
@@ -103,7 +103,7 @@ if [[ $TERM == "tmux-256color" ]] || [[ $TERM == "screen-256color" ]]
 then
     TMUX_SESSION_NAME=$(tmux display-message -p '#S')
     # Keep bash history of different tmux sessions seperate
-    export HISTFILE=${XDG_DATA_HOME}/zsh/tmux-history/${TMUX_SESSION_NAME}
+    export HISTFILE=${XDG_STATE_HOME:-~/.local/state}/zsh/tmux-history/${TMUX_SESSION_NAME}
 
     # Load tmux session specific configs
     if [ -f "${XDG_CONFIG_HOME}/zsh/tmux/${TMUX_SESSION_NAME}.zsh" ]; then
