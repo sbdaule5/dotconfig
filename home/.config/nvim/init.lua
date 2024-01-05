@@ -140,6 +140,7 @@ Plug 'lervag/vimtex'
 Plug 'untitled-ai/jupyter_ascending.vim'
 Plug 'jbyuki/instant.nvim'
 Plug 'thosakwe/vim-flutter'
+Plug 'mipmip/vim-scimark'
 
 call plug#end()
 

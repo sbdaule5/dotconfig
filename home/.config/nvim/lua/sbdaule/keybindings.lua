@@ -26,9 +26,9 @@ vim.keymap.set("n", "<Leader>7", "7gt", {noremap = true});
 vim.keymap.set("n", "<Leader>8", "8gt", {noremap = true});
 vim.keymap.set("n", "<Leader>9", "9gt", {noremap = true});
 
-vim.keymap.set("n", "<Leader>R", ":Rename<CR>", {noremap = true});
+-- vim.keymap.set("n", "<Leader>R", ":Rename<CR>", {noremap = true}); -- broken
 vim.keymap.set("n", "<Leader>r", ":lua Reload()<CR>", {noremap = true, silent = true});
-vim.keymap.set("n", "<Leader>i", "i <ESC>r", {noremap = true});
+-- vim.keymap.set("n", "<Leader>i", "i <ESC>r", {noremap = true}); -- Not in use
 
 -- Delete buffer on ZQ
 vim.keymap.set("n", "ZQ", ":bd %<CR>", {noremap = true});
@@ -36,12 +36,12 @@ vim.keymap.set("n", "ZQ", ":bd %<CR>", {noremap = true});
 -- Buffer mappings
 vim.keymap.set("n", "<Leader>bb", ":Buffers<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>bv", ":lua ChangeView('Buffers')<CR>", {noremap = true});
-vim.keymap.set("n", "<Leader>bn", ":bn<CR>", {noremap = true});
-vim.keymap.set("n", "<Leader>bp", ":bp<CR>", {noremap = true});
-vim.keymap.set("n", "<Leader>bs", ":buffer #<CR>", {noremap = true});
+vim.keymap.set("n", "<Leader>bn", ":bn<CR>", {noremap = true, silent = true});
+vim.keymap.set("n", "<Leader>bp", ":bp<CR>", {noremap = true, silent = true});
+vim.keymap.set("n", "<Leader>bs", ":buffer #<CR>", {noremap = true, silent = true});
 vim.keymap.set("n", "<Leader>bh", ":ClangdSwitchSourceHeader<CR>", {noremap = true});
 
-vim.keymap.set("n", "<Leader>s", ":buffer #<CR>", {noremap = true});
+-- vim.keymap.set("n", "<Leader>s", ":buffer #<CR>", {noremap = true}); -- No longer in use
 
 -- f for fuzzy
 vim.keymap.set("n", "<Leader>ff", ":Files<CR>", {noremap = true});
@@ -52,7 +52,7 @@ vim.keymap.set("n", "<Leader>fm", ":Marks<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fj", ":Jumps<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fh", ":Helptags<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fo", ":History<CR>", {noremap = true});
-vim.keymap.set("n", "<Leader>fd", ":lua dotfiles()<CR>", {noremap = true});
+-- vim.keymap.set("n", "<Leader>fd", ":lua dotfiles()<CR>", {noremap = true}); -- broken
 
 vim.keymap.set("n", "<Leader>fT", ":Tags \"<CR>", {noremap = true});
 
@@ -89,13 +89,13 @@ vim.keymap.set("n", "dx", [["_d]])
 vim.keymap.set("x", "<Leader>p", [["_p]])
 vim.keymap.set("x", "<Leader>P", [["_P]])
 
--- S for substitute
-vim.keymap.set("n", "s", "<plug>(SubversiveSubstitute)")
-vim.keymap.set("n", "ss", "<plug>(SubversiveSubstituteLine)")
-vim.keymap.set("n", "S", "<plug>(SubversiveSubstituteToEndOfLine)")
-vim.keymap.set("n", "sc", [["+s]])
-vim.keymap.set("n", "scc", [["+ss]])
-vim.keymap.set("n", "sC", [["+s]])
+-- gs for substitute
+vim.keymap.set("n", "gs", "<plug>(SubversiveSubstitute)")
+vim.keymap.set("n", "gss", "<plug>(SubversiveSubstituteLine)")
+vim.keymap.set("n", "gS", "<plug>(SubversiveSubstituteToEndOfLine)")
+vim.keymap.set("n", "gsc", [["+s]])
+vim.keymap.set("n", "gscc", [["+ss]])
+vim.keymap.set("n", "gsC", [["+S]])
 
 -- insert a blank line
 vim.keymap.set("n", "<Leader><CR>", "i<CR><ESC>", {noremap = true});
@@ -104,9 +104,10 @@ vim.keymap.set("n", "<Leader>O", "O<ESC>", {noremap = true});
 
 -- Run will change based on project and will be retained due to Session.vim
 -- x as in execute
-vim.keymap.set("n", "<Leader>x", ":Run<CR>", {noremap = true});
-vim.keymap.set("n", "<Leader>X", ":RunAlt<CR>", {noremap = true});
-vim.keymap.set("n", "<Leader>z", ":Build<CR>", {noremap = true});
+-- vim.keymap.set("n", "<Leader>x", ":Run<CR>", {noremap = true});    -- Not in use
+-- vim.keymap.set("n", "<Leader>X", ":RunAlt<CR>", {noremap = true}); -- Not in use
+-- vim.keymap.set("n", "<Leader>z", ":Build<CR>", {noremap = true});  -- Not in use
+-- Make project type/filetype based keybindings instead
 
 -- use leader / to stop highlighting
 vim.keymap.set("n", "<Leader>/", ":noh<CR>", {noremap = true, silent = true});
@@ -120,10 +121,10 @@ vim.keymap.set("o", "ai", ":<C-U>cal IndTxtObj(0)<CR>", {silent = true});
 vim.keymap.set("v", "ii", ":<C-U>cal IndTxtObj(1)<CR><Esc>gv", {silent = true, noremap = true});
 vim.keymap.set("v", "ai", ":<C-U>cal IndTxtObj(0)<CR><Esc>gv", {silent = true, noremap = true});
 
-vim.keymap.set("v", "af", ":<C-U>?^{$<CR>V/^}$<CR>", {silent = true});
-vim.keymap.set("v", "if", ":<C-U>?^{$<CR>jV/^}$<CR>k", {silent = true});
-vim.keymap.set("o", "af", ":normal Vaf<CR>", {silent = true});
-vim.keymap.set("o", "if", ":normal Vif<CR>", {silent = true});
+-- vim.keymap.set("v", "af", ":<C-U>?^{$<CR>V/^}$<CR>", {silent = true});   -- Not in use
+-- vim.keymap.set("v", "if", ":<C-U>?^{$<CR>jV/^}$<CR>k", {silent = true}); -- Not in use
+-- vim.keymap.set("o", "af", ":normal Vaf<CR>", {silent = true});           -- Not in use
+-- vim.keymap.set("o", "if", ":normal Vif<CR>", {silent = true});           -- Not in use
 
 
 -- Gui keybindings
