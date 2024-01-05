@@ -7,7 +7,8 @@ setsid -f picom --config ~/.config/picom/picom.config -b
 # setsid -f kdeconnect-indicator
 setsid -f playerctld
 setsid -f dunst
-emacs --daemon
-$HOME/.fehbg
+setsid -f udiskie
+# emacs --daemon
+$HOME/.local/state/fehbg
 # clipmenud
 # setsid -f mpd-mpris

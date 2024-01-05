@@ -22,10 +22,11 @@ setopt interactive_comments
 setopt INC_APPEND_HISTORY
 setopt histignoredups
 setopt histignorespace
+setopt histexpiredupsfirst
 
 HISTFILE=${XDG_STATE_HOME:-~/.local/state}/zsh/history
 HISTSIZE=500000
-SAVEHIST=4000
+SAVEHIST=400000
 
 ################################################################################
 #                               COMPLETIONS                                    #

@@ -16,19 +16,22 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
-  lsa="ls -la" \
+  lsa="ls -lA" \
 	:e="$EDITOR" \
 	v="$EDITOR" \
 	p="pacman" \
 	z="zathura" \
   ysy="yay -Ss " \
+  yiy="yay -Si " \
   yfy="yay -F " \
   cls="clear" \
+	py3="python3"\
   ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
 
 # Alternate config path to cleanup home directory
 alias \
   abook="abook --datafile '${XDG_DATA_HOME}/abook/addressbook' --config '${XDG_CONFIG_HOME}/abook/abookrc'" \
+  irssi="irssi --config=\"$XDG_CONFIG_HOME\"/irssi/config --home=\"$XDG_DATA_HOME\"/irssi" \
 	elinks="elinks --config-dir ${XDG_CONFIG_HOME}/elinks" \
 	irssi="irssi --home=${XDG_DATA_HOME}/irssi"
 
