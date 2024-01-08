@@ -25,43 +25,43 @@ set guioptions              "s"
 # zathurarc-dark
 
 set font                    "inconsolata 10"
-set default-fg              "#ebdbb2" # fg
-set default-bg              "rgba(50, 48, 47, 0.7)" # bg
+set default-fg              "#c0caf5"
+set default-bg              "rgba(192, 202, 245, 0.18)" # bg
 
-set inputbar-fg             "#ebdbb2" # fg
-set inputbar-bg             "#32302f" # bg
+set inputbar-fg             "#c0caf5"
+set inputbar-bg             "#1a1b26"
 
-set statusbar-fg            "#ebdbb2" # fg
-set statusbar-bg            "rgba(50, 48, 47, 1)" # bg2
+set statusbar-fg            "#c0caf5"
+set statusbar-bg            "#1a1b26"
 
-set notification-error-fg   "#fb4934" # bright:red
-set notification-error-bg   "#32302f" # bg
+set notification-error-fg   "#f7768e"
+set notification-error-bg   "#c0caf5"
 
-set notification-warning-fg "#fabd2f" # bright:yellow
-set notification-warning-bg "#32302f" # bg
+set notification-warning-fg "#e0af68"
+set notification-warning-bg "#414868"
 
-set highlight-color         "#fabd2f" # bright:yellow
-set highlight-active-color  "#fe8019" # bright:orange
+set highlight-color         "#e0af68"
+set highlight-active-color  "#9ece6a"
 
-set completion-highlight-fg "#504945" # bg2
-set completion-highlight-bg "#83a598" # bright:blue
+set completion-highlight-fg "#c0caf5"
+set completion-highlight-bg "#414868"
 
-set completion-group-fg     "#928374" # gray
-set completion-group-bg     "#3c3836" # bg1
+set completion-group-fg     "#a9b1d6"
+set completion-group-bg     "#1a1b26"
 
-set completion-fg           "#ebdbb2" # fg
-set completion-bg           "#504945" # bg2
+set completion-fg           "#a9b1d6"
+set completion-bg           "#1a1b26"
 
-set notification-fg         "#b8bb26" # bright:green
-set notification-bg         "#32302f" # bg
+set notification-fg         "#c0caf5"
+set notification-bg         "#1a1b26"
 
-set index-fg                "#ebdbb2" # fg
-set index-bg                "rgba(80, 73, 69, 0)" # bg2
-set index-active-fg         "#504945" # bg2
-set index-active-bg         "#83a598" # bright:blue
+set index-fg                "#c0caf5"
+set index-bg                "rgba(26, 27, 38, 0)" # bg2
+set index-active-fg         "#c0caf5"
+set index-active-bg         "#414868"
 
-set recolor-lightcolor      "rgba(50, 48, 47, 0)" # bg
-set recolor-darkcolor       "#ebdbb2" # fg
+set recolor-lightcolor      "rgba(26, 27, 38, 0)" # bg
+set recolor-darkcolor       "#c0caf5"
 set recolor-reverse-video   "true"
 set recolor-keephue         "true"
 

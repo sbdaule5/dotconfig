@@ -39,13 +39,13 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 
-static const char pcol1[]           = "#98971a";
-static const char pcol2[]           = "#458588";
-static const char bcol[]            = "#282828";
-static const char wcol[]            = "#cc241d";
-static const char tcol[]            = "#FFFFFF";
-static const char purple[]          = "#b16286";
-static const char yellow[]          = "#E7A927";
+static const char pcol1[]           = "#7aa2f7";
+static const char pcol2[]           = "#9ece6a";
+static const char bcol[]            = "#24283b";
+static const char wcol[]            = "#f7768e";
+static const char tcol[]            = "#c0caf5";
+static const char purple[]          = "#bb9af7";
+static const char yellow[]          = "#e0af68";
 
 enum { SchemeNorm, SchemeSel, SchemeWarn, SchemePurple, SchemeBlue, SchemeYellow }; /* color schemes */
 

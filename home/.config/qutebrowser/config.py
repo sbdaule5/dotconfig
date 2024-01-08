@@ -215,18 +215,20 @@ c.content.pdfjs = False
 
 # Setting color scheme
 # Type: QssColor
-primary_color_1    = "#98971A"
-primary_color_2    = "#458588"
-secondary_color_1  = "#E7A927"
-secondary_color_2  = "#B16286"
-background_color   = "#282828"
-warning_color      = "#CC241D"
-text_color         = "#FFFFFF"
+primary_color_1    = "#7aa2f7"
+primary_color_2    = "#9ece6a"
+secondary_color_1  = "#e0af68"
+secondary_color_2  = "#bb9af7"
+background_color   = "#24283b"
+warning_color      = "#f7768e"
+text_color         = "#c0caf5"
+text_color_2  = "#24283b"
 
 c.colors.completion.odd.bg = background_color
 c.colors.completion.even.bg = background_color
 c.colors.completion.item.selected.fg = background_color
 c.colors.completion.item.selected.bg = primary_color_1
+c.colors.completion.category.fg = text_color_2
 c.colors.completion.category.bg = primary_color_2
 c.colors.completion.scrollbar.fg = primary_color_2
 c.colors.completion.scrollbar.bg = background_color
@@ -249,7 +251,7 @@ c.colors.statusbar.normal.fg = text_color
 c.colors.statusbar.normal.bg = background_color
 c.colors.statusbar.insert.fg = background_color
 c.colors.statusbar.insert.bg = primary_color_1
-c.colors.statusbar.passthrough.fg = text_color
+c.colors.statusbar.passthrough.fg = text_color_2
 c.colors.statusbar.passthrough.bg = primary_color_2
 c.colors.statusbar.caret.fg = text_color
 c.colors.statusbar.caret.bg = secondary_color_2

@@ -101,7 +101,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-table-mode'
 
 " Ricing
-Plug 'ellisonleao/gruvbox.nvim'
+Plug 'folke/tokyonight.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvimdev/dashboard-nvim'
