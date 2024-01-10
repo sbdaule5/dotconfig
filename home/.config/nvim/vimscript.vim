@@ -34,6 +34,32 @@ function! IndTxtObj(inner)
   endif
 endfunction
 
+" Abbrivations
+let g:abbreviation_marker = "Abbreviations"
+function! LoadAbb()
+  let markerline = search(g:abbreviation_marker, 'nw')
+  let lastline = line('$')
+  let p = markerline + 2
+  if markerline != 0
+    " Clear existing Abbrivations
+    abclear <buffer>
+    " Load Abbrivations
+    while p <= lastline
+      let curr_line = getline(p)
+      if curr_line =~ "^[^ ][^ ]* [^ ][^ ]*$"
+        execute 'Abolish -buffer '..curr_line
+      endif
+      let p = p + 1
+    endwhile
+  endif
+endfunction
+
+augroup AbbrivationsGroup
+  autocmd!
+  autocmd BufRead *.md call LoadAbb()
+  autocmd BufWrite *.md call LoadAbb()
+augroup END
+
 nnoremap g<C-]> :execute 'tab tag '.expand('<cword>')<CR>
 
 let g:vimwiki_list = [{'path': '~/notes/',
