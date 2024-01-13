@@ -54,6 +54,37 @@ function! LoadAbb()
   endif
 endfunction
 
+augroup AutoAdjustEquals
+  autocmd!
+  autocmd BufWritePre *.md call AdjustEquals()
+augroup END
+
+function! AdjustEquals()
+  let l:line = 1
+  let l:lastline = line('$')
+  let l:dash_found = 0
+  while l:line <= l:lastline
+    let l:current_line = getline(l:line)
+    let l:prev_line = getline(l:line - 1)
+
+    if l:current_line =~# '^=\+$' && l:prev_line =~# '^.\+$'
+      let l:equals = repeat('=', len(l:prev_line))
+      call setline(l:line, l:equals)
+    elseif l:current_line =~# '^--\+$' && l:prev_line =~# '^[^-].\+$'
+      let l:dash_found = l:dash_found + 1
+
+      if l:dash_found > 1
+        let l:equals = repeat('-', len(l:prev_line))
+        call setline(l:line, l:equals)
+      endif
+
+    endif
+
+    let l:line = l:line + 1
+  endwhile
+endfunction
+
+" au FileType vimwiki.md set ft=markdown
 augroup AbbrivationsGroup
   autocmd!
   autocmd BufRead *.md call LoadAbb()
