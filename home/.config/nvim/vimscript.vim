@@ -34,75 +34,16 @@ function! IndTxtObj(inner)
   endif
 endfunction
 
-" Abbrivations
-let g:abbreviation_marker = "Abbreviations"
-function! LoadAbb()
-  let markerline = search(g:abbreviation_marker, 'nw')
-  let lastline = line('$')
-  let p = markerline + 2
-  if markerline != 0
-    " Clear existing Abbrivations
-    abclear <buffer>
-    " Load Abbrivations
-    while p <= lastline
-      let curr_line = getline(p)
-      if curr_line =~ "^[^ ][^ ]* [^ ][^ ]*$"
-        execute 'Abolish -buffer '..curr_line
-      endif
-      let p = p + 1
-    endwhile
-  endif
-endfunction
-
-augroup AutoAdjustEquals
-  autocmd!
-  autocmd BufWritePre *.md call AdjustEquals()
-augroup END
-
-function! AdjustEquals()
-  let l:line = 1
-  let l:lastline = line('$')
-  let l:dash_found = 0
-  while l:line <= l:lastline
-    let l:current_line = getline(l:line)
-    let l:prev_line = getline(l:line - 1)
-
-    if l:current_line =~# '^=\+$' && l:prev_line =~# '^.\+$'
-      let l:equals = repeat('=', len(l:prev_line))
-      call setline(l:line, l:equals)
-    elseif l:current_line =~# '^--\+$' && l:prev_line =~# '^[^-].\+$'
-      let l:dash_found = l:dash_found + 1
-
-      if l:dash_found > 1
-        let l:equals = repeat('-', len(l:prev_line))
-        call setline(l:line, l:equals)
-      endif
-
-    endif
-
-    let l:line = l:line + 1
-  endwhile
-endfunction
-
-" au FileType vimwiki.md set ft=markdown
-augroup AbbrivationsGroup
-  autocmd!
-  autocmd BufRead *.md call LoadAbb()
-  autocmd BufWrite *.md call LoadAbb()
-augroup END
-
 nnoremap g<C-]> :execute 'tab tag '.expand('<cword>')<CR>
 
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_list = [{'path': '~/notes/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_global_ext = 1
+let g:vimwiki_filetypes = ['md']
 
-let g:vimwiki_global_ext = 0
 let g:instant_username="sbdaule"
-
-augroup VimwikiKeybinding
-  autocmd!
-  autocmd FileType vimwiki lua vimwikiKeybindings()
-augroup END
 
 if !exists('g:context_filetype#same_filetypes')
     let g:context_filetype#filetypes = {}
