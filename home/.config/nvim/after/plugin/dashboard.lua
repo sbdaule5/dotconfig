@@ -19,6 +19,14 @@ db.setup({
     },
     center = {
       {
+        icon = ' ',
+        desc = 'Files',
+        desc_hl = 'String',
+        key = 'f',
+        key_hl = 'Number',
+        action = ':lua ChangeView("FileTree")'
+      },
+      {
         icon = ' ',
         desc = 'Dotfiles',
         desc_hl = 'String',
