@@ -90,12 +90,12 @@ vim.keymap.set("x", "<Leader>p", [["_p]])
 vim.keymap.set("x", "<Leader>P", [["_P]])
 
 -- gs for substitute
-vim.keymap.set("n", "gs", "<plug>(SubversiveSubstitute)")
-vim.keymap.set("n", "gss", "<plug>(SubversiveSubstituteLine)")
-vim.keymap.set("n", "gS", "<plug>(SubversiveSubstituteToEndOfLine)")
-vim.keymap.set("n", "gsc", [["+s]])
-vim.keymap.set("n", "gscc", [["+ss]])
-vim.keymap.set("n", "gsC", [["+S]])
+vim.keymap.set("n", "gr", "<plug>(SubversiveSubstitute)")
+vim.keymap.set("n", "grr", "<plug>(SubversiveSubstituteLine)")
+vim.keymap.set("n", "gR", "<plug>(SubversiveSubstituteToEndOfLine)")
+vim.keymap.set("n", "grc", [["+<plug>(SubversiveSubstitute)]])
+vim.keymap.set("n", "grcc", [["+<plug>(SubversiveSubstituteLine)]])
+vim.keymap.set("n", "grC", [["+<plug>(SubversiveSubstituteToEndOfLine)]])
 
 -- insert a blank line
 vim.keymap.set("n", "<Leader><CR>", "i<CR><ESC>", {noremap = true});
