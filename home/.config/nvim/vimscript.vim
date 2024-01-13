@@ -190,6 +190,8 @@ Plug 'untitled-ai/jupyter_ascending.vim'
 Plug 'jbyuki/instant.nvim'
 Plug 'thosakwe/vim-flutter'
 Plug 'mipmip/vim-scimark'
+Plug 'diepm/vim-rest-console'
+Plug 'toppair/peek.nvim', { 'do': 'deno task --quiet build:fast' }
 
 call plug#end()
 
