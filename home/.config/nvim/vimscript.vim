@@ -43,6 +43,8 @@ let g:vimwiki_markdown_link_ext = 1
 let g:vimwiki_global_ext = 1
 let g:vimwiki_filetypes = ['md']
 
+let g:wiki_root = '~/notes'
+
 let g:instant_username="sbdaule"
 
 if !exists('g:context_filetype#same_filetypes')
@@ -91,7 +93,6 @@ Plug 'junegunn/vim-slash'
 
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'vimwiki/vimwiki'
 Plug 'mbbill/undotree'
 Plug 'lilydjwg/colorizer'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -138,6 +139,9 @@ Plug 'thosakwe/vim-flutter'
 Plug 'mipmip/vim-scimark'
 Plug 'diepm/vim-rest-console'
 Plug 'toppair/peek.nvim', { 'do': 'deno task --quiet build:fast' }
+Plug 'lervag/wiki.vim'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 
 call plug#end()
 

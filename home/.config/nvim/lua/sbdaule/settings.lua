@@ -26,6 +26,7 @@ vim.opt.splitbelow = true
 vim.opt.laststatus = 3
 
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.linebreak = true
 vim.opt.nrformats = 'alpha,hex,bin'
 vim.opt.wildmenu = true
@@ -40,3 +41,17 @@ vim.g.netrwPlugin = 1
 
 -- Disable gitgutter default maps
 vim.g.gitgutter_map_keys = 0
+
+-- Notes
+vim.g.vim_markdown_fenced_languages = {'c', 'python', 'py=python', 'cpp', 'c++=cpp'}
+vim.g.vim_markdown_follow_anchor = 1
+vim.g.vim_markdown_frontmatter = 1
+vim.g.vim_markdown_auto_insert_bullets = 1
+vim.g.vim_markdown_new_list_item_indent = 4
+vim.g.vim_markdown_no_extensions_in_markdown = 1
+vim.g.vim_markdown_borderless_table = 1
+vim.g.vim_markdown_override_foldtext = 1
+vim.g.vim_markdown_toc_autofit = 1
+vim.g.vim_markdown_math = 1
+vim.g.vim_markdown_follow_anchor = 1
+-- vim.g.vim_markdown_anchorexpr = "'<<'.v:anchor.'>>'"

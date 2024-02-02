@@ -10,7 +10,7 @@ function! LoadAbb()
     " Load Abbrivations
     while p <= lastline
       let curr_line = getline(p)
-      if curr_line =~ "^[^ ][^ ]* [^ ][^ ]*$"
+      if curr_line =~ "^[^ ]\+ [^ ].*$"
         execute 'Abolish -buffer '..curr_line
       endif
       let p = p + 1
@@ -43,21 +43,18 @@ function! AdjustHeaders()
   endwhile
 endfunction
 
-augroup AbbrivationsGroup
+augroup NotesGroup
   autocmd!
   autocmd BufRead *.md call LoadAbb()
+  " autocmd BufRead *.md Toc
   autocmd BufWrite *.md call LoadAbb()
-augroup END
-
-augroup AutoAdjustHeaders
-  autocmd!
   autocmd BufWritePre *.md call AdjustHeaders()
+  autocmd FileType markdown lua NotesKeybindings()
+  autocmd FileType markdown lua NotesSettings()
+  " autocmd BufWritePre *.md * %s/\s\+$//e "Autoremove trailing whitespace
 augroup END
 
-augroup VimwikiKeybinding
-  autocmd!
-  autocmd FileType vimwiki set ft="markdown"
-  autocmd FileType vimwiki lua vimwikiKeybindings()
-  autocmd FileType markdown lua vimwikiKeybindings()
-augroup END
-
+let g:wiki_journal = {
+      \ 'name' : 'diary',
+      \ 'frequency' : 'daily',
+      \ }
