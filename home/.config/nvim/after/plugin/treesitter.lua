@@ -16,13 +16,63 @@ require'nvim-treesitter.configs'.setup {
       scope_incremental = "grc",
       node_decremental = "grm",
     },
-  }
+  },
+  indent = {
+    enabled = true,
+  },
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      clear_on_cursor_move = true,
+    },
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_definition = "gnd",
+        list_definitions = "gnD",
+        list_definitions_toc = "gO",
+        goto_next_usage = "<a-*>",
+        goto_previous_usage = "<a-#>",
+      },
+    },
+    autotag = {
+      enable = true,
+      enable_rename = true,
+      enable_close = true,
+      enable_close_on_slash = true,
+      filetypes = { "html" , "xml" },
+    }
+  },
+  textobjects = {
+    select = {
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+      enable = true,
+      keymaps =
+      {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ia"] = "@attribute",
+        ["aa"] = "@attribute.outer",
 
+        ["iC"] = { query = "@comment.inner", desc = "Select inner part of a comment" },
+        ["aC"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
+        ["aS"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+      },
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
+      },
+      include_surrounding_whitespace = true,
+    },
+  },
 }
 
 require'treesitter-context'.setup{
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-  max_lines = 15, -- How many lines the window should span. Values <= 0 mean no limit.
+  max_lines = 10, -- How many lines the window should span. Values <= 0 mean no limit.
   min_window_height = 20, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
   line_numbers = true,
   multiline_threshold = 20, -- Maximum number of lines to collapse for a single context line
