@@ -37,3 +37,6 @@ vim.cmd.filetype("plugin", "on");
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.netrwPlugin = 1
+
+-- Disable gitgutter default maps
+vim.g.gitgutter_map_keys = 0

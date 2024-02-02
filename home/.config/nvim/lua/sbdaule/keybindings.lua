@@ -68,6 +68,15 @@ vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>gl", ":call GitLog(1)<CR>", {noremap = true, silent = true});
 vim.keymap.set("n", "<Leader>gL", ":call GitLog(0)<CR>", {noremap = true, silent = true});
 
+-- Git gutter mapping
+vim.keymap.set("n", "ghq", ":GitGutterQuickFixCurrentFile | copen<CR>", {noremap = true, silent = true});
+vim.keymap.set("n", "ghQ", ":GitGutterQuickFix | copen<CR>",            {noremap = true, silent = true});
+vim.keymap.set("n", "ghp", "<Plug>(GitGutterPreviewHunk)",              {noremap = true, silent = true});
+vim.keymap.set("n", "ghs", "<Plug>(GitGutterStageHunk)",                {noremap = true, silent = true});
+vim.keymap.set("n", "ghu", "<Plug>(GitGutterUndoHunk)",                 {noremap = true, silent = true});
+vim.keymap.set("n", "[g",  "<Plug>(GitGutterPrevHunk)",                 {noremap = true, silent = true});
+vim.keymap.set("n", "]g",  "<Plug>(GitGutterNextHunk)",                 {noremap = true, silent = true});
+
 -- System clipboard commands
 vim.keymap.set("n", "<Leader>cf", ":let @+=@%<CR>:echo  'File Name Copied'<CR>", {noremap = true, silent = true});
 vim.keymap.set("n", "<Leader>cl", ":let @+ = expand('%') . ':' . line('.')<CR>:echo  'Line Number Copied'<CR>", {noremap = true, silent = true});
@@ -120,6 +129,10 @@ vim.keymap.set("o", "ii", ":<C-U>cal IndTxtObj(1)<CR>", {silent = true});
 vim.keymap.set("o", "ai", ":<C-U>cal IndTxtObj(0)<CR>", {silent = true});
 vim.keymap.set("v", "ii", ":<C-U>cal IndTxtObj(1)<CR><Esc>gv", {silent = true, noremap = true});
 vim.keymap.set("v", "ai", ":<C-U>cal IndTxtObj(0)<CR><Esc>gv", {silent = true, noremap = true});
+vim.keymap.set("o", "ih", "<Plug>(GitGutterTextObjectInnerPending)", {silent = true, noremap = true});
+vim.keymap.set("o", "ah", "<Plug>(GitGutterTextObjectOuterPending)", {silent = true, noremap = true});
+vim.keymap.set("x", "ih", "<Plug>(GitGutterTextObjectInnerVisual)",  {silent = true, noremap = true});
+vim.keymap.set("x", "ah", "<Plug>(GitGutterTextObjectOuterVisual)",  {silent = true, noremap = true});
 
 -- vim.keymap.set("v", "af", ":<C-U>?^{$<CR>V/^}$<CR>", {silent = true});   -- Not in use
 -- vim.keymap.set("v", "if", ":<C-U>?^{$<CR>jV/^}$<CR>k", {silent = true}); -- Not in use
@@ -163,5 +176,3 @@ vim.keymap.set("n", "<C-u>", "<C-d>zz", {noremap = true});
 -- Next and previous commands
 vim.keymap.set("n", "[q", ":cprevious<CR>", {noremap = true, silent = true});
 vim.keymap.set("n", "]q", ":cnext<CR>", {noremap = true, silent = true});
-vim.keymap.set("n", "[g", ":GitGutterPrevHunk<CR>", {noremap = true, silent = true});
-vim.keymap.set("n", "]g", ":GitGutterNextHunk<CR>", {noremap = true, silent = true});
