@@ -52,6 +52,7 @@ vim.keymap.set("n", "<Leader>fm", ":Marks<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fj", ":Jumps<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fh", ":Helptags<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fo", ":History<CR>", {noremap = true});
+vim.keymap.set("n", "<Leader>fr", ":RG<CR>", {noremap = true});
 vim.keymap.set("n", "<Leader>fd", ":lua dotfiles()<CR>", {noremap = true});
 
 vim.keymap.set("n", "<Leader>fT", ":Tags \"<CR>", {noremap = true});
