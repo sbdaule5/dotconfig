@@ -48,7 +48,7 @@ db.setup({
         desc_hl = 'String',
         key = 'w',
         key_hl = 'Number',
-        action = 'VimwikiIndex'
+        action = 'OpenWiki'
       },
       {
         icon = ' ',
@@ -56,7 +56,7 @@ db.setup({
         desc_hl = 'String',
         key = 't',
         key_hl = 'Number',
-        action = 'VimwikiMakeDiaryNote'
+        action = 'WikiJournal'
       },
       {
         icon = ' ',
