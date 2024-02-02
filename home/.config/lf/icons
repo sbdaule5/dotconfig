@@ -273,54 +273,54 @@ Vagrantfile             
 *.svgz  
 *.mng   
 *.pcx   
-*.mov   
-*.mpg   
-*.mpeg  
-*.m2v   
-*.mkv   
-*.webm  
-*.ogm   
-*.mp4   
-*.m4v   
-*.mp4v  
-*.vob   
-*.qt    
-*.nuv   
-*.wmv   
-*.asf   
-*.rm    
-*.rmvb  
-*.flc   
-*.avi   
-*.fli   
-*.flv   
-*.gl    
-*.dl    
-*.xcf   
-*.xwd   
-*.yuv   
-*.cgm   
-*.emf   
-*.ogv   
-*.ogx   
+*.mov   󰕧
+*.mpg   󰕧
+*.mpeg  󰕧
+*.m2v   󰕧
+*.mkv   󰕧
+*.webm  󰕧
+*.ogm   󰕧
+*.mp4   󰕧
+*.m4v   󰕧
+*.mp4v  󰕧
+*.vob   󰕧
+*.qt    󰕧
+*.nuv   󰕧
+*.wmv   󰕧
+*.asf   󰕧
+*.rm    󰕧
+*.rmvb  󰕧
+*.flc   󰕧
+*.avi   󰕧
+*.fli   󰕧
+*.flv   󰕧
+*.gl    󰕧
+*.dl    󰕧
+*.xcf   󰕧
+*.xwd   󰕧
+*.yuv   󰕧
+*.cgm   󰕧
+*.emf   󰕧
+*.ogv   󰕧
+*.ogx   󰕧
 
 # audio formats (extensions from dircolors defaults)
-*.aac   
-*.au    
-*.flac  
-*.m4a   
-*.mid   
-*.midi  
-*.mka   
-*.mp3   
-*.mpc   
-*.ogg   
-*.ra    
-*.wav   
-*.oga   
-*.opus  
-*.spx   
-*.xspf  
+*.aac   󰎈
+*.au    󰎈
+*.flac  󰎈
+*.m4a   󰎈
+*.mid   󰎈
+*.midi  󰎈
+*.mka   󰎈
+*.mp3   󰎈
+*.mpc   󰎈
+*.ogg   󰎈
+*.ra    󰎈
+*.wav   󰎈
+*.oga   󰎈
+*.opus  󰎈
+*.spx   󰎈
+*.xspf  󰎈
 
 # other formats
 *.pdf   
@@ -332,11 +332,11 @@ tw      t       # STICKY_OTHER_WRITABLE
 ow             # OTHER_WRITABLE
 st      t       # STICKY
 di             # DIR
-pi      p       # FIFO
+pi      󱠄       # FIFO
 so      s       # SOCK
 bd      b       # BLK
 cd      c       # CHR
 su      u       # SETUID
 sg      g       # SETGID
 ex             # EXEC
-fi             # FILE
+fi             # FILE
