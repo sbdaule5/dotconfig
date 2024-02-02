@@ -118,5 +118,7 @@ map zt push :tar<space>
 # Get disk usage info when pressing zd
 map zd %du -h $f
 map zD %du -hc $fs
+map zf $dragon-drop -x $f
+map zF $dragon-drop -ax $fs
 
 map zi $~/.config/lf/draw_img.sh "$f"
