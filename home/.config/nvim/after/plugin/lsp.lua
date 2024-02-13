@@ -25,16 +25,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "<leader>sws", function() vim.lsp.buf.workspace_symbol() end, opts)
+    vim.keymap.set("n", "<leader>sd", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set("n", "<leader>sca", function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set("n", "<leader>srr", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "<leader>srn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-g>", function() vim.lsp.buf.signature_help() end, opts)
   end
 })
+
+local xdg_config_home = os.getenv("XDG_CONFIG_HOME")
+if xdg_config_home ~= nil then
+   xdg_config_home = os.getenv("HOME").."/.config"
+end
 
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
