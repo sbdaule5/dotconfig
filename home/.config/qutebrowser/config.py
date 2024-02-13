@@ -287,15 +287,16 @@ c.colors.hints.fg = background_color
 c.hints.border = "solid 0px"
 c.hints.radius = 1
 
-c.colors.webpage.bg = background_color
+# c.colors.webpage.bg = background_color
 c.colors.webpage.preferred_color_scheme = "dark"
 
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 c.completion.scrollbar.padding = 1
 c.completion.scrollbar.width = 7
 c.tabs.show = 'multiple'
 c.content.javascript.can_open_tabs_automatically = True
+c.content.javascript.clipboard = "access"
 
 # c.editor.command = ["alacritty", "--class", "Alacritty:Floating", "-o", "font.size=9.0", "-e", "nvim", "-f", "{file}", "-c", "normal {line}G{column0}l"]
 c.editor.command = ["nve", "{file}"]
