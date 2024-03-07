@@ -33,7 +33,14 @@ alias \
   abook="abook --datafile '${XDG_DATA_HOME}/abook/addressbook' --config '${XDG_CONFIG_HOME}/abook/abookrc'" \
   irssi="irssi --config=\"$XDG_CONFIG_HOME\"/irssi/config --home=\"$XDG_DATA_HOME\"/irssi" \
 	elinks="elinks --config-dir ${XDG_CONFIG_HOME}/elinks" \
-	irssi="irssi --home=${XDG_DATA_HOME}/irssi"
+	irssi="irssi --home=${XDG_DATA_HOME}/irssi"\
+	arduino-cli="arduino-cli --config-file ${XDG_CONFIG_HOME}/arduino15/arduino-cli.yaml"
+
+# Alias the apps that do not adhere to xdg specifications to use the NO_XDG_HOME instead
+alias \
+  dart="HOME=$NO_XDG_HOME ~/project/dart" \
+  flutter="HOME=$NO_XDG_HOME flutter" \
+
 
 # Prohibited commands to fix habits
 # alias \
