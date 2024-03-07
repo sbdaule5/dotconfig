@@ -114,6 +114,17 @@ vim.keymap.set("n", "<Leader>O", "O<ESC>", {noremap = true});
 
 -- Run will change based on project and will be retained due to Session.vim
 -- x as in execute
+-- Arduino commands
+local executeCommandGroups = {
+    arduino = vim.api.nvim_create_augroup("execute_commands_arduino", {clear = true})
+}
+vim.api.nvim_create_autocmd("FileType", {
+        callback = function ()
+            vim.keymap.set('n', "<Leader>xa", ":terminal")
+        end,
+        group = executeCommandGroups["arduino"],
+        pattern = "arduino",
+    })
 -- vim.keymap.set("n", "<Leader>x", ":Run<CR>", {noremap = true});    -- Not in use
 -- vim.keymap.set("n", "<Leader>X", ":RunAlt<CR>", {noremap = true}); -- Not in use
 -- vim.keymap.set("n", "<Leader>z", ":Build<CR>", {noremap = true});  -- Not in use

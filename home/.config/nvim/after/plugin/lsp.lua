@@ -123,6 +123,15 @@ nvim_lsp.pylsp.setup{ capabilities = lsp_capabilities, handlers = handlers,
     }
   }
 }
+nvim_lsp.arduino_language_server.setup{
+  capabilities = lsp_capabilities,
+  handlers = handlers,
+  cmd = {"/usr/bin/arduino-language-server",
+         "-clangd", '/usr/bin/clangd',
+         "-fqbn", "esp32:esp32:nodemcu-32s",
+         "-cli", '/usr/bin/arduino-cli', "-cli-config",
+         xdg_config_home..'/arduino15/arduino-cli.yaml'}
+}
 nvim_lsp.svelte.setup{ capabilities = lsp_capabilities, handlers = handlers}
 nvim_lsp.texlab.setup{ capabilities = lsp_capabilities, handlers = handlers}
 nvim_lsp.dotls.setup{ capabilities = lsp_capabilities, handlers = handlers}
