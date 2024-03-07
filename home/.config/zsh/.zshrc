@@ -45,6 +45,7 @@ source /usr/share/fzf/key-bindings.zsh
 #                                 ALISES                                       #
 ################################################################################
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/funcs"
 
 ################################################################################
 #                               KEYBINDINGS                                    #

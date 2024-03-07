@@ -51,6 +51,8 @@ if !exists('g:context_filetype#same_filetypes')
     let g:context_filetype#filetypes = {}
 endif
 
+autocmd FileType arduino setlocal commentstring=//\ %s
+
 let g:ft = ''
 
 " settings for vimtex
@@ -70,7 +72,7 @@ let g:undotree_DiffpanelHeight = 20
 let g:undotree_SetFocusWhenToggle = 1
 
 " Flutter
-" let g:flutter_command = "/home/sbdaule/projects/smart-insti-app/SDK/flutter/bin/flutter"
+let g:flutter_command = "HOME=/home/sbdaule/.local/share/no-xdg-home flutter"
 
 " Start interactive EasyAlign
 xmap ga <Plug>(EasyAlign)
@@ -93,6 +95,7 @@ Plug 'junegunn/vim-slash'
 
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
+" Plug 'vimwiki/vimwiki'
 Plug 'mbbill/undotree'
 Plug 'lilydjwg/colorizer'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -142,6 +145,8 @@ Plug 'toppair/peek.nvim', { 'do': 'deno task --quiet build:fast' }
 Plug 'lervag/wiki.vim'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
+Plug 'stevearc/vim-arduino'
+Plug 'vim-scripts/SingleCompile'
 
 call plug#end()
 

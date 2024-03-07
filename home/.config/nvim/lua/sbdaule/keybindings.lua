@@ -116,8 +116,24 @@ vim.keymap.set("n", "<Leader>O", "O<ESC>", {noremap = true});
 -- x as in execute
 -- Arduino commands
 local executeCommandGroups = {
+    c = vim.api.nvim_create_augroup("execute_commands_c", {clear = true}),
     arduino = vim.api.nvim_create_augroup("execute_commands_arduino", {clear = true})
 }
+vim.api.nvim_create_autocmd("FileType", {
+        callback = function ()
+            vim.g.SingleCompile_showresultafterrun = 1;
+            vim.g.SingleCompile_silentcompileifshowquickfix = 1;
+            vim.g.SingleCompile_showquickfixiferror = 1;
+
+            vim.keymap.set('n', "<Leader>xc", ":SingleCompile-silentcompileifshowquickfix<CR>");
+            vim.keymap.set('n', "<Leader>xx", ":SCCompileRun<CR>");
+            vim.keymap.set('n', "<Leader>xc", ":SCCompile<CR>");
+            vim.keymap.set('n', "<Leader>xv", ":SCViewResult<CR>");
+            vim.keymap.set('n', "<Leader>xp", ":lua ChangeView('cp')<CR>");
+        end,
+        group = executeCommandGroups["c"],
+        pattern = {"c", "cpp", "rust", "python"},
+    })
 vim.api.nvim_create_autocmd("FileType", {
         callback = function ()
             vim.keymap.set('n', "<Leader>xa", ":terminal")
