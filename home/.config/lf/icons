@@ -12,6 +12,7 @@
 *.html          
 *.slim          
 *.haml          
+*.xml           󰗀
 *.ejs           
 *.css           
 *.less          
@@ -126,6 +127,9 @@
 *.rproj         鉶
 *.sol           ﲹ
 *.pem           
+*.apk           
+*.gpg           󱆄
+*.desktop       
 
 # file names (vim-devicons) (case-insensitive not supported in lf)
 *gruntfile.coffee       
@@ -142,6 +146,7 @@
 *.gitattributes         
 *.gitlab-ci.yml         
 *.bashrc                
+*addressbook            
 *.zshrc                 
 *.zshenv                
 *.zprofile              
@@ -184,15 +189,15 @@
 *CMakeLists.txt         
 
 # file patterns (vim-devicons) (patterns not supported in lf)
-# .*jquery.*\.js$         
-# .*angular.*\.js$        
-# .*backbone.*\.js$       
-# .*require.*\.js$        
-# .*materialize.*\.js$    
-# .*materialize.*\.css$   
-# .*mootools.*\.js$       
-# .*vimrc.*               
-# Vagrantfile$            
+.*jquery.*\.js$         
+.*angular.*\.js$        
+.*backbone.*\.js$       
+.*require.*\.js$        
+.*materialize.*\.js$    
+.*materialize.*\.css$   
+.*mootools.*\.js$       
+.*vimrc.*               
+Vagrantfile$            
 
 # file patterns (file name adaptations)
 *jquery.min.js          
@@ -206,11 +211,11 @@
 Vagrantfile             
 
 # archives or compressed (extensions from dircolors defaults)
-*.tar   
-*.tgz   
+*.tar   
+*.tgz   
 *.arc   
 *.arj   
-*.taz   
+*.taz   
 *.lha   
 *.lz4   
 *.lzh   
@@ -329,12 +334,12 @@ Vagrantfile             
 ln             # LINK
 or             # ORPHAN
 tw      t       # STICKY_OTHER_WRITABLE
-ow             # OTHER_WRITABLE
+ow      󱔔       # OTHER_WRITABLE
 st      t       # STICKY
 di             # DIR
 pi      󱠄       # FIFO
-so      s       # SOCK
-bd      b       # BLK
+so      󱄇       # SOCK
+bd      󰨣       # BLK
 cd      c       # CHR
 su      u       # SETUID
 sg      g       # SETGID
