@@ -17,4 +17,4 @@ else
     ICON="$BRIGHTNESS_HIGH"
 fi
 
-echo -e " $ICON $BRIGHTNESS% "
+echo -e "$ICON $BRIGHTNESS% | "

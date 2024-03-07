@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
@@ -40,23 +41,29 @@ void
 buttonhandler(int sig, siginfo_t *info, void *ucontext)
 {
         sig = info->si_value.sival_int >> 8;
-        for (Block *block = blocks; block->pathu; block++)
-                if (block->signal == sig)
-                        switch (fork()) {
-                                case -1:
-                                        perror("buttonhandler - fork");
-                                        break;
-                                case 0:
-                                {
-                                        char button[] = { '0' + (info->si_value.sival_int & 0xff), '\0' };
-                                        char *arg[] = { block->pathc, button, NULL };
+        for (Block *block = blocks; block->sh.type != END_MARKER; block++) {
+                if (block->sh.type == SHELL_SCRIPT){
+                        if (block->sh.signal == sig)
+                                switch (fork()) {
+                                        case -1:
+                                                perror("buttonhandler - fork");
+                                                break;
+                                        case 0:
+                                        {
+                                                char button[] = { '0' + (info->si_value.sival_int & 0xff), '\0' };
+                                                char *arg[] = { block->sh.pathc, button, NULL };
 
-                                        setsid();
-                                        execv(arg[0], arg);
-                                        perror("buttonhandler - child - execv");
-                                        _exit(127);
+                                                setsid();
+                                                execv(arg[0], arg);
+                                                perror("buttonhandler - child - execv");
+                                                _exit(127);
+                                        }
                                 }
-                        }
+                }
+                else {
+                        assert(block->func.type == FUCTION);
+                }
+        }
 }
 
 void
@@ -77,16 +84,16 @@ setupsignals(void)
         sigaddset(&blocksigmask, SIGHUP);
         sigaddset(&blocksigmask, SIGINT);
         sigaddset(&blocksigmask, SIGTERM);
-        for (Block *block = blocks; block->pathu; block++) {
-                if (block->signal <= 0)
+        for (Block *block = blocks; block->sh.pathu; block++) {
+                if (block->sh.signal <= 0)
                         continue;
-                if (block->signal > SIGRTMAX - SIGRTMIN) {
-                        fprintf(stderr, "Error: SIGRTMIN + %d exceeds SIGRTMAX.\n", block->signal);
+                if (block->sh.signal > SIGRTMAX - SIGRTMIN) {
+                        fprintf(stderr, "Error: SIGRTMIN + %d exceeds SIGRTMAX.\n", block->sh.signal);
                         unlink(LOCKFILE);
                         XCloseDisplay(dpy);
                         exit(2);
                 }
-                sigaddset(&blocksigmask, SIGRTMIN + block->signal);
+                sigaddset(&blocksigmask, SIGRTMIN + block->sh.signal);
         }
 
         /* setup signal handlers */
@@ -121,17 +128,17 @@ setupsignals(void)
         sa.sa_flags = SA_NODEFER | SA_RESTART | SA_SIGINFO;
         sa.sa_mask = blocksigmask;
         sa.sa_sigaction = sighandler;
-        for (Block *block = blocks; block->pathu; block++)
-                if (block->signal > 0)
-                        sigaction(SIGRTMIN + block->signal, &sa, NULL);
+        for (Block *block = blocks; block->sh.pathu; block++)
+                if (block->sh.signal > 0)
+                        sigaction(SIGRTMIN + block->sh.signal, &sa, NULL);
 }
 
 void
 sighandler(int sig, siginfo_t *info, void *ucontext)
 {
         sig -= SIGRTMIN;
-        for (Block *block = blocks; block->pathu; block++)
-                if (block->signal == sig)
+        for (Block *block = blocks; block->sh.pathu; block++)
+                if (block->sh.signal == sig)
                         updateblock(block, info->si_value.sival_int);
         updatestatus();
 }
@@ -143,8 +150,8 @@ statusloop(void)
         struct timespec t;
 
         sigprocmask(SIG_BLOCK, &blocksigmask, NULL);
-        for (Block *block = blocks; block->pathu; block++)
-                if (block->interval >= 0)
+        for (Block *block = blocks; block->sh.pathu; block++)
+                if (block->sh.interval >= 0)
                         updateblock(block, NILL);
         for (i = 1; ; i++) {
                 updatestatus();
@@ -152,8 +159,8 @@ statusloop(void)
                 t.tv_sec = INTERVALs, t.tv_nsec = INTERVALn;
                 while (nanosleep(&t, &t) == -1);
                 sigprocmask(SIG_BLOCK, &blocksigmask, NULL);
-                for (Block *block = blocks; block->pathu; block++)
-                        if (block->interval > 0 && i % block->interval == 0)
+                for (Block *block = blocks; block->sh.pathu; block++)
+                        if (block->sh.interval > 0 && i % block->sh.interval == 0)
                                 updateblock(block, NILL);
         }
 }
@@ -193,12 +200,12 @@ updateblock(Block *block, int sigval)
                                 close(fd[1]);
                         }
                         if (sigval == NILL) {
-                                char *arg[] = { block->pathu, NULL };
+                                char *arg[] = { block->sh.pathu, NULL };
 
                                 execv(arg[0], arg);
                         } else {
                                 char buf[12];
-                                char *arg[] = { block->pathu, buf, NULL };
+                                char *arg[] = { block->sh.pathu, buf, NULL };
 
                                 snprintf(buf, sizeof buf, "%d", sigval);
                                 execv(arg[0], arg);
@@ -212,7 +219,7 @@ updateblock(Block *block, int sigval)
 
                         close(fd[1]);
                         do
-                                rd = read(fd[0], block->curtext + trd, CMDOUTLENGTH - trd);
+                                rd = read(fd[0], block->sh.curtext + trd, CMDOUTLENGTH - trd);
                         while (rd > 0 && (trd += rd) < CMDOUTLENGTH);
                         if (rd == -1) {
                                 perror("updateblock - read");
@@ -222,21 +229,21 @@ updateblock(Block *block, int sigval)
                         }
                         close(fd[0]);
 
-                        block->curtext[trd] = '\0';
-                        if (memcmp(block->curtext, block->prvtext, trd + 1) != 0) {
-                                memcpy(block->prvtext, block->curtext, trd + 1);
+                        block->sh.curtext[trd] = '\0';
+                        if (memcmp(block->sh.curtext, block->sh.prvtext, trd + 1) != 0) {
+                                memcpy(block->sh.prvtext, block->sh.curtext, trd + 1);
                                 if (!dirtyblock || block < dirtyblock)
                                         dirtyblock = block;
                         }
                         if (trd == 0)
-                                block->length = 0;
+                                block->sh.length = 0;
                         else {
-                                if (block->curtext[trd - 1] == '\n')
+                                if (block->sh.curtext[trd - 1] == '\n')
                                         trd--;
-                                if (block->pathc)
-                                        block->curtext[trd++] = block->signal;
-                                memcpy(block->curtext + trd, delimiter, DELIMITERLENGTH);
-                                block->length = trd + DELIMITERLENGTH;
+                                if (block->sh.pathc)
+                                        block->sh.curtext[trd++] = block->sh.signal;
+                                memcpy(block->sh.curtext + trd, delimiter, DELIMITERLENGTH);
+                                block->sh.length = trd + DELIMITERLENGTH;
                         }
                 }
         }
@@ -252,10 +259,10 @@ updatestatus(void)
         if (!dirtyblock)
                 return;
         for (block = blocks; block < dirtyblock; block++)
-                s += block->length;
-        for (; block->pathu; block++) {
-                memcpy(s, block->curtext, block->length);
-                s += block->length;
+                s += block->sh.length;
+        for (; block->sh.pathu; block++) {
+                memcpy(s, block->sh.curtext, block->sh.length);
+                s += block->sh.length;
         }
         s[s == statustext ? 0 : -DELIMITERLENGTH] = '\0';
         dirtyblock = NULL;

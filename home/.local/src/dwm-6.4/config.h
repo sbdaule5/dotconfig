@@ -20,7 +20,7 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 8;       /* snap pixel */
 static const int rmaster            = 0;        /* 1 means master-area is initially on the right */
-static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
@@ -30,8 +30,8 @@ static const int focusonwheel       = 0;
 static const char *fonts[]          = {"monospace:size=12", "JetBrainsMono Nerd Font:style=bold:size=13"};
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=13";
 
-static unsigned int baralpha        = 0xb0;
-static unsigned int borderalpha     = 0xff;
+/* static unsigned int baralpha        = 0xb0; */
+/* static unsigned int borderalpha     = 0xff; */
 
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -60,23 +60,24 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰅩 ", "󰣇 ", " ", " ", " ", " ", " ", " ", " ", " " };
+static const char *tags[] = { "󰅩 ", "󰣇 ", " ", "󱉟 ", " ", " ", " ", "󰊫 ", " ", " " };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class          instance    title       tags mask     isfloating   monitor  scratchkey  float x,y,w,h       floatborderpx bg  */
-	{ "qutebrowser",     NULL,    NULL,       1 << 9,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
-	{ "Gimp",            NULL,    NULL,       1 << 1,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
-	{ "Alacritty:btop",  NULL,    NULL,       1 << 8,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
-	{ "Alacritty:Music", NULL,    NULL,       1 << 5,          0,           -1 ,    0,          0,   0,   0,   0,   2,           0 },
-	{ "Alacritty:Mixer", NULL,    NULL,       ~0,              1,           -1 ,    0,        666,  25, 700, 255,   2,           0 },
-	{ "Alacritty:nvim",  NULL,    NULL,       1 << 6,          0,           -1,     0,          0,   0,   0,   0,   2,           0 },
-	{ "NoBlur:cava",     NULL,    NULL,       ~0,              1,           -1,     0,     gappx, 0.75*SCR_H, SCR_W -2*gappx, 0.25*SCR_H,  0,   1 },
-	{ "Emacs",           NULL,    NULL,       1 << 3,          0,           -1,     0,          0,   0,   0,   0,   2,           0 },
-	{ NULL,              NULL, "Notepad",     0,               1,           -1,    'n',         0,   6+gappx, SCR_W * 0.4, SCR_H - 6 - 2*gappx,   2,           0 },
+
+	/* class,            instance, title,     tags mask, isfloating, monitor, scratchkey, float x,           y,          w,              h       floatborderpx, bg */
+	{ "qutebrowser",     NULL,     NULL,      1 << 9,    0,          -1,      0,          0,                 0,          0,              0,                     2, 0 },
+	{ "Gimp",            NULL,     NULL,      1 << 1,    0,          -1,      0,          0,                 0,          0,              0,                     2, 0 },
+	{ "Alacritty:btop",  NULL,     NULL,      1 << 8,    0,          -1,      0,          0,                 0,          0,              0,                     2, 0 },
+	{ "Alacritty:Music", NULL,     NULL,      1 << 5,    0,          -1,      0,          0,                 0,          0,              0,                     2, 0 },
+	{ "Alacritty:Mixer", NULL,     NULL,      ~0,        1,          -1,      0,          0.5*SCR_W-6-gappx, 6+gappx*4,  0.5*SCR_W,      255,                   2, 0 },
+	{ "Alacritty:nvim",  NULL,     NULL,      1 << 6,    0,          -1,      0,          0,                 0,          0,              0,                     2, 0 },
+	{ "NoBlur:cava",     NULL,     NULL,      ~0,        1,          -1,      0,          gappx,             0.75*SCR_H, SCR_W -2*gappx, 0.25*SCR_H,            0, 1 },
+	{ "Emacs",           NULL,     NULL,      1 << 3,    0,          -1,      0,          0,                 0,          0,              0,                     2, 0 },
+	{ NULL,              NULL,     "Notepad", 0,         1,          -1,      'n',        0,                 6+gappx,    SCR_W * 0.4,    SCR_H - 6 - 2*gappx,   2, 0 },
 
   /*
 	{ "Gimp",         NULL,       NULL,       0,            1,           -1,        50,50,500,500,    5,           0},
@@ -94,6 +95,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[D]",      deck },
 };
 
 /* key definitions */
@@ -130,12 +132,13 @@ static const char *screenshotSelect[]        = {"screenshot", "select", NULL};
 static const char *screenshotWindow[]        = {"screenshot", "window", NULL};
 static const char *screenshotWindowSelect[]  = {"screenshot", "select_window", NULL};
  
-static const char *logoutCmd[]  = {"killall", "startdmenu", NULL};
+static const char *logoutCmd[]  = {"killall", "startdwm", NULL};
 
 /* rofi and dmenu menus */
 static const char *powerMenu[] = {"/home/sbdaule/.config/rofi/scripts/powermenu.sh", NULL};
 static const char *rofiCalc[] = {"rofi", "-show", "calc", "-theme", "/usr/share/rofi/themes/gruvbox-dark-soft.rasi", NULL};
 static const char *rofiEmoji[] = {"rofi", "-show", "emoji", NULL};
+// static const char *rofiWindows[] = {"rofi", "-show", "windows", NULL};
 static const char *rofiPass[] = {"rofi-pass", NULL};
 static const char *appMenu[] = {"rofi", "-show", "drun", "-theme", "~/.config/rofi/themes/applauncher.rasi", NULL};
 static const char *dmenuapp[]  = { "j4-dmenu-desktop", "--term=\"alacritty\"", NULL };
@@ -158,17 +161,17 @@ static const char *notepad[]  = {"n", "scratchpad", "start", "notepad", NULL};
 
 /* My app keybindings */
 #define TERM "kitty", "-1"
-static const char *termcmd[]     = { "setsid", "kitty", "-1", NULL };
-static const char *alt_termcmd[] = { "setsid", "alacritty", NULL };
-static const char *topCmd[]      = { "setsid", TERM, "--class=\"Alacritty:btop\"", "-e", "btop", NULL };
-static const char *ncmpcpp[]     = { "setsid", TERM, "--class=\"Alacritty:Music\"", "-e", "ncmpcpp", NULL };
-static const char *lf[]          = { "setsid", TERM, "--class=\"Alacritty:Files\"", "-e", "lf", NULL };
-static const char *ranger[]      = { "setsid", TERM, "--class=\"Alacritty:Files\"", "-e", "ranger", NULL };
-static const char *nvim[]        = { "setsid", TERM, "--class=\"Alacritty:nvim\"", "-e", "nvim", NULL };
+
+static const char *termcmd[]     = { "setsid", "kitty",       "-1",                          NULL };
+static const char *alt_termcmd[] = { "setsid", "alacritty",   NULL };
+static const char *topCmd[]      = { "setsid", TERM,          "--class=\"Alacritty:btop\"",  "--Title=\"System Monitor (btop)\"",  "-e", "btop",    NULL };
+static const char *ncmpcpp[]     = { "setsid", TERM,          "--class=\"Alacritty:Music\"", "--Title=\"Music Player (ncmpcpp)\"", "-e", "ncmpcpp", NULL };
+static const char *lf[]          = { "setsid", TERM,          "--class=\"Alacritty:Files\"", "--Title=\"File Manager (lf)\"",      "-e", "lf",      NULL };
+static const char *ranger[]      = { "setsid", TERM,          "--class=\"Alacritty:Files\"", "--Title=\"File Manager (ranger)\"",  "-e", "ranger",  NULL };
+static const char *nvim[]        = { "setsid", TERM,          "--class=\"Alacritty:nvim\"",  "--Title=\"Neovim::Notes\"",          "-e", "nvim",    NULL };
 static const char *quteb[]       = { "setsid", "qutebrowser", NULL };
-static const char *brave[]       = { "setsid", "brave", NULL };
-static const char *pcmanfm[]     = { "setsid", "thunar", NULL };
-static const char *emacsc[]      = { "setsid", "emacsclient", "-c", "-a", "emacs", NULL };
+static const char *brave[]       = { "setsid", "brave",       NULL };
+static const char *pcmanfm[]     = { "setsid", "thunar",      NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -196,7 +199,6 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Insert, spawn,          {.v = rofiEmoji } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofiPass } },
 
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenuapp } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_a,      spawn,          {.v = appMenu } },
 	{ MODKEY,                       XK_slash,  spawn,          {.v = dmenuaddmusic } },
@@ -216,6 +218,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_grave,  view,           {.ui = ~0 } },
@@ -290,6 +293,8 @@ static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkLtSymbol,          0,              Button4,        setgaps,        {.i = -1} },
+	{ ClkLtSymbol,          0,              Button5,        setgaps,        {.i = +1} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button1,        sigdwmblocks,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,        sigdwmblocks,   {.i = 2} },

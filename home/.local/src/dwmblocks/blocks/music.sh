@@ -25,13 +25,10 @@ if [ -n "$1" ]; then
     fi
 fi
 
-# TITLE=$(playerctl metadata title | sed 's/&/&amp;/g')
-# ARTIST=$(playerctl metadata artist | sed 's/&/&amp;/g')
-# STATUS=$(playerctl status | sed 's/&/&amp;/g')
 TITLE=$(playerctl metadata title)
 ARTIST=$(playerctl metadata artist)
 STATUS=$(playerctl status)
-COLOR=""
+COLOR=""
 
 if [ "${#TITLE}" -gt 20 ]; then
     TITLE="${TITLE:0:20}..."
@@ -44,16 +41,15 @@ if [ "$STATUS" == "Playing" ]; then
         NAME=$(mpc status -f "[[%title%] - [%artist%]]"| awk '{if (NR==1) head=$0; if(NR==2){if($1 == "[playing]"){print head " " $3}}}')
         TIME=$(mpc status -f "[%title%]"| awk '{if (NR==1) head=$0; if(NR==2){if($1 == "[playing]"){print $3}}}')
 
-        echo -e "$COLOR  $TITLE $TIME ($PLAYER) "
+        echo -e "$COLOR  $TITLE $TIME ($PLAYER)|"
     else
         if [ -n "$ARTIST" ]; then
-            echo -e "$COLOR  $TITLE ($PLAYER)"
+            echo -e "$COLOR  $TITLE ($PLAYER)|"
         else
-            echo -e "$COLOR  $TITLE ($PLAYER)"
+            echo -e "$COLOR  $TITLE ($PLAYER)|"
         fi
     fi
 else
-    # echo -e "<span color='#282828' bgcolor='#b16286' bgalpha='90%'>   <span size=\"x-small\">($PLAYER)</span></span>"
-    echo -e "$COLOR   ($PLAYER)"
+    echo -e "$COLOR   ($PLAYER)|"
 fi
 
