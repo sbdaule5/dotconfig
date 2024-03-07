@@ -35,4 +35,10 @@ function ChangeView(view)
         vim.cmd ":UndotreeHide"
         vim.cmd ":Dashboard"
     end
+    if (view == "cp")
+    then
+        vim.cmd('split');
+        vim.cmd('enew');
+        vim.api.nvim_buf_set_name(0, '__INPUT__');
+    end
 end

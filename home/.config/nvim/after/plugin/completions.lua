@@ -10,6 +10,7 @@ cmp.setup({
     mappings = {
       ['<C-n>'] = cmp.select_next_item(),
       ['<C-p>'] = cmp.select_prev_item(),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },
     sources = cmp.config.sources(
       {

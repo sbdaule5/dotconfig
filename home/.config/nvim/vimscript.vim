@@ -95,7 +95,6 @@ Plug 'junegunn/vim-slash'
 
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'vimwiki/vimwiki'
 Plug 'mbbill/undotree'
 Plug 'lilydjwg/colorizer'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -113,6 +112,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'theHamsta/nvim-treesitter-pairs'
 
 " LSP Support
 Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'}
