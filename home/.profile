@@ -77,8 +77,20 @@ export FZF_DEFAULT_COMMAND='bfs . -type d \( -name .cache -o -name caches -o -na
 
 # [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && setsid shortcuts >/dev/null 2>&1
 
+function startserv(){
+  sessions=( 'dwm' 'sddm' )
+  select session in "${sessions[@]}"; do
+    if [ "$session" = 'dwm' ]; then
+      exec startx "$XINITRC"
+    else
+      systemctl start sddm
+    fi
+    break
+  done
+}
+
 # Start graphical server on user's current tty if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && startserv
 
 # Switch escape and caps if tty and no passwd required:
 # sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/myconfigs/ttymaps.kmap 2>/dev/null
