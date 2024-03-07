@@ -42,6 +42,13 @@ vim.keymap.set("n", "<Leader>bs", ":buffer #<CR>", {noremap = true, silent = tru
 vim.keymap.set("n", "<Leader>bh", ":ClangdSwitchSourceHeader<CR>", {noremap = true});
 
 -- vim.keymap.set("n", "<Leader>s", ":buffer #<CR>", {noremap = true}); -- No longer in use
+vim.keymap.set({'n', 'v'}, "<Leader>sf", function ()
+    require('conform').format({
+        lsp_fallback = true,
+        async = false,
+        timeout = 500
+    })
+end)
 
 -- f for fuzzy
 vim.keymap.set("n", "<Leader>ff", ":Files<CR>", {noremap = true});
@@ -88,6 +95,7 @@ vim.keymap.set("n", "<Leader>cP", [["+P]], {noremap = true});
 vim.keymap.set({"n", "v"}, "<Leader>cy", [["+y]], {noremap = true, silent = true});
 vim.keymap.set({"n", "v"}, "<Leader>cY", [["+Y]], {noremap = true, silent = true});
 
+vim.keymap.set("v", "<leader>y", [["+y]])
 vim.keymap.set("n", "yc", [["+y]])
 vim.keymap.set("n", "ycc", [["+yy]])
 vim.keymap.set("n", "yC", [["+Y]])

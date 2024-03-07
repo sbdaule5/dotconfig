@@ -147,6 +147,7 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'stevearc/vim-arduino'
 Plug 'vim-scripts/SingleCompile'
+Plug 'stevearc/conform.nvim'
 
 call plug#end()
 
