@@ -1,4 +1,3 @@
-
 vim.cmd([[
     " Git log function
     function! GitLog(oneline = 1)

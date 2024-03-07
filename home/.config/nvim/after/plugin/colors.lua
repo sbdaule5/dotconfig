@@ -7,7 +7,7 @@ scheme.setup({
   light_style = "storm",
   undercurl = true,
   underline = true,
-  transparent = true, -- Enable this to disable setting the background color
+  transparent = true,     -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
   styles = {
     comments = { italic = true },
@@ -15,14 +15,14 @@ scheme.setup({
     functions = {},
     variables = {},
     -- Background styles. Can be "dark", "transparent" or "normal"
-    sidebars = "transparent", -- style for sidebars, see below
-    floats = "transparent", -- style for floating windows
+    sidebars = "transparent",       -- style for sidebars, see below
+    floats = "transparent",         -- style for floating windows
   },
-  sidebars = { "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-  day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+  sidebars = { "help" },            -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+  day_brightness = 0.3,             -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
   hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-  dim_inactive = false, -- dims inactive windows
-  lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
+  dim_inactive = false,             -- dims inactive windows
+  lualine_bold = true,              -- When `true`, section headers in the lualine theme will be bold
 
   --- You can override specific color groups to use other groups or a hex color
   --- function will be called with a ColorScheme table
@@ -59,28 +59,27 @@ scheme.setup({
 --   transparent = true,
 -- })
 
-function ColorMyPencils(color) 
-    vim.cmd("colorscheme tokyonight")
-	-- color = color or "gruvbox"
-	-- vim.cmd.colorscheme(color)
+function ColorMyPencils(color)
+  vim.cmd("colorscheme tokyonight")
+  -- color = color or "gruvbox"
+  -- vim.cmd.colorscheme(color)
 
-    -- If transparency is not supported by scheme:
--- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+  -- If transparency is not supported by scheme:
+  -- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  -- 	vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+  -- 	vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
--- 	vim.api.nvim_set_hl(0, "GitGutterAdd", { bg = "none" , fg=scheme.pro.gutter_add})
--- 	vim.api.nvim_set_hl(0, "GitGutterChange", { bg = "none" , fg=scheme.pro.gutter_change})
--- 	vim.api.nvim_set_hl(0, "GitGutterDelete", { bg = "none" , fg=scheme.pro.gutter_remove})
---  vim.api.nvim_set_hl(0, "WinSeperator", { bg = "none", fg=scheme.pro.black})
--- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = scheme.gray})
--- 	vim.api.nvim_set_hl(0, "FloatBorder ", { bg = "none", fg=scheme.pro.black})
-	-- vim.cmd [[highlight NormalFloat guifg=#ebdbb2 guibg=#3c3836]]
-	vim.cmd [[highlight! link TreesitterContextLineNumber GruvboxOrangeBold]]
-	vim.cmd [[highlight! TreesitterContext guibg=none]]
--- 	-- vim.cmd [[highlight FloatBorder guifg=white guibg=#1f2335]]
--- 	vim.cmd [[highlight WinSeparator cterm=NONE ctermbg=None ctermbg=gray guibg=None guifg=gray]]
-
+  -- 	vim.api.nvim_set_hl(0, "GitGutterAdd", { bg = "none" , fg=scheme.pro.gutter_add})
+  -- 	vim.api.nvim_set_hl(0, "GitGutterChange", { bg = "none" , fg=scheme.pro.gutter_change})
+  -- 	vim.api.nvim_set_hl(0, "GitGutterDelete", { bg = "none" , fg=scheme.pro.gutter_remove})
+  --  vim.api.nvim_set_hl(0, "WinSeperator", { bg = "none", fg=scheme.pro.black})
+  -- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = scheme.gray})
+  -- 	vim.api.nvim_set_hl(0, "FloatBorder ", { bg = "none", fg=scheme.pro.black})
+  -- vim.cmd [[highlight NormalFloat guifg=#ebdbb2 guibg=#3c3836]]
+  vim.cmd [[highlight! link TreesitterContextLineNumber GruvboxOrangeBold]]
+  vim.cmd [[highlight! TreesitterContext guibg=none]]
+  -- 	-- vim.cmd [[highlight FloatBorder guifg=white guibg=#1f2335]]
+  -- 	vim.cmd [[highlight WinSeparator cterm=NONE ctermbg=None ctermbg=gray guibg=None guifg=gray]]
 end
 
 ColorMyPencils()
