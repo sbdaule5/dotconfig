@@ -108,37 +108,37 @@ char *termname = "st-256color";
 unsigned int tabspaces = 4;
 
 /* bg opacity */
-float alpha = 0.7;
+float alpha = 1.0;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     /* 8 normal colors */
-    "#282828",
-    "#cc241d",
-    "#98971a",
-    "#d79921",
-    "#458588",
-    "#b16286",
-    "#689d6a",
-    "#a89984",
+    "#15161e",
+    "#f7768e",
+    "#9ece6a",
+    "#e0af68",
+    "#7aa2f7",
+    "#bb9af7",
+    "#7dcfff",
+    "#a9b1d6",
 
     /* 8 bright colors */
-    "#928374",
-    "#fb4934",
-    "#b8bb26",
-    "#fabd2f",
-    "#83a598",
-    "#d3869b",
-    "#8ec07c",
-    "#ebdbb2",
+    "#414868",
+    "#f7768e",
+    "#9ece6a",
+    "#e0af68",
+    "#7aa2f7",
+    "#bb9af7",
+    "#7dcfff",
+    "#c0caf5",
 
     [255] = 0,
 
     /* more colors can be added after 255 to use with DefaultXX */
-    "#ebdbb2",
-    "#1d1f21",
-    "#ebdbb2", /* default foreground colour */
-    "#1d1f21", /* default background colour */
+    "#c0caf5",
+    "#1a1b26",
+    "#c0caf5", /* default foreground colour */
+    "#1a1b26", /* default background colour */
 };
 
 
@@ -218,19 +218,21 @@ static MouseShortcut mshortcuts[] = {
 #define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
-	/* mask                 keysym          function        argument */
-	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
-	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
-	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
-	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
-	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
-	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
-	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	/* mask,       keysym,         function,      argument */
+	{ XK_ANY_MOD,  XK_Break,       sendbreak,     {.i =  0} },
+	{ ControlMask, XK_Print,       toggleprinter, {.i =  0} },
+	{ ShiftMask,   XK_Print,       printscreen,   {.i =  0} },
+	{ XK_ANY_MOD,  XK_Print,       printsel,      {.i =  0} },
+	{ TERMMOD,     XK_KP_Add,      zoom,          {.f = +1} },
+	{ TERMMOD,     XK_KP_Subtract, zoom,          {.f = -1} },
+	{ TERMMOD,     XK_equal,       zoom,          {.f = +1} },
+	{ TERMMOD,     XK_minus,       zoom,          {.f = -1} },
+	{ TERMMOD,     XK_0,           zoomreset,     {.f =  0} },
+	{ TERMMOD,     XK_C,           clipcopy,      {.i =  0} },
+	{ TERMMOD,     XK_V,           clippaste,     {.i =  0} },
+	{ TERMMOD,     XK_Y,           selpaste,      {.i =  0} },
+	{ ShiftMask,   XK_Insert,      selpaste,      {.i =  0} },
+	{ TERMMOD,     XK_Num_Lock,    numlock,       {.i =  0} },
 };
 
 /*
