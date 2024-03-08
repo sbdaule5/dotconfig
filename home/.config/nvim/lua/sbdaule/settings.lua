@@ -43,7 +43,7 @@ vim.g.netrwPlugin = 1
 vim.g.gitgutter_map_keys = 0
 
 -- Notes
-vim.g.vim_markdown_fenced_languages = {'c', 'python', 'py=python', 'cpp', 'c++=cpp'}
+vim.g.vim_markdown_fenced_languages = { 'c', 'python', 'py=python', 'cpp', 'c++=cpp' }
 vim.g.vim_markdown_follow_anchor = 1
 vim.g.vim_markdown_frontmatter = 1
 vim.g.vim_markdown_auto_insert_bullets = 1

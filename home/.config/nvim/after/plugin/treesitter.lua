@@ -52,12 +52,12 @@ require 'nvim-treesitter.configs'.setup {
       {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
+        ["aC"] = "@class.outer",
         ["ia"] = "@attribute",
         ["aa"] = "@attribute.outer",
 
-        ["iC"] = { query = "@comment.inner", desc = "Select inner part of a comment" },
-        ["aC"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
+        ["ic"] = { query = "@comment.inner", desc = "Select inner part of a comment" },
+        ["ac"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
         ["aS"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
       },
       selection_modes = {

@@ -51,7 +51,6 @@ if !exists('g:context_filetype#same_filetypes')
     let g:context_filetype#filetypes = {}
 endif
 
-autocmd FileType arduino setlocal commentstring=//\ %s
 
 let g:ft = ''
 
@@ -82,7 +81,6 @@ call plug#begin()
 " Essential plugins
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
@@ -148,6 +146,8 @@ Plug 'preservim/vim-markdown'
 Plug 'stevearc/vim-arduino'
 Plug 'vim-scripts/SingleCompile'
 Plug 'stevearc/conform.nvim'
+Plug 'numToStr/Comment.nvim'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
 call plug#end()
 
