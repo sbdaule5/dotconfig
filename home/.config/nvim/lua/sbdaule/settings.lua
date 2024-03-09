@@ -9,8 +9,10 @@ vim.opt.wrap = false
 vim.opt.scrolloff = 5
 
 vim.opt.fdm = 'expr'
-vim.opt.foldexpr = "nvim_treesitter#flodexpr()"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
+vim.opt.foldlevel = 20
+vim.opt.foldcolumn = "1"
 
 vim.opt.number = true
 vim.opt.relativenumber = true
