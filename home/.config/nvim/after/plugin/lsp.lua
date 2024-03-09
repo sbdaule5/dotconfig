@@ -139,3 +139,4 @@ nvim_lsp.dotls.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.cmake.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.vimls.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.bashls.setup { capabilities = lsp_capabilities, handlers = handlers }
+nvim_lsp.ccls.setup { capabilities = lsp_capabilities, handlers = handlers }
