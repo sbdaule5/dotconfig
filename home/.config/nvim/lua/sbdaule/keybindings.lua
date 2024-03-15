@@ -128,19 +128,19 @@ vim.keymap.set("n", "<Leader>O", "O<ESC>", { noremap = true });
 -- Arduino commands
 local executeCommandGroups = {
     c = vim.api.nvim_create_augroup("execute_commands_c", { clear = true }),
-    arduino = vim.api.nvim_create_augroup("execute_commands_arduino", { clear = true })
+    arduino = vim.api.nvim_create_augroup("execute_commands_arduino", { clear = true }),
 }
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()
-        vim.g.SingleCompile_showresultafterrun = 1;
-        vim.g.SingleCompile_silentcompileifshowquickfix = 1;
-        vim.g.SingleCompile_showquickfixiferror = 1;
+        vim.g.SingleCompile_showresultafterrun = 1
+        vim.g.SingleCompile_silentcompileifshowquickfix = 1
+        vim.g.SingleCompile_showquickfixiferror = 1
 
-        vim.keymap.set('n', "<Leader>xc", ":SingleCompile-silentcompileifshowquickfix<CR>");
-        vim.keymap.set('n', "<Leader>xx", ":SCCompileRun<CR>");
-        vim.keymap.set('n', "<Leader>xc", ":SCCompile<CR>");
-        vim.keymap.set('n', "<Leader>xv", ":SCViewResult<CR>");
-        vim.keymap.set('n', "<Leader>xp", ":lua ChangeView('cp')<CR>");
+        vim.keymap.set("n", "<Leader>xc", ":SingleCompile-silentcompileifshowquickfix<CR>")
+        -- vim.keymap.set('n', "<Leader>xx", ":SCCompileRun<CR>");
+        vim.keymap.set("n", "<Leader>xc", ":SCCompile<CR>")
+        vim.keymap.set("n", "<Leader>xv", ":SCViewResult<CR>")
+        vim.keymap.set("n", "<Leader>xp", ":lua ChangeView('cp')<CR>")
     end,
     group = executeCommandGroups["c"],
     pattern = { "c", "cpp", "rust", "python" },
@@ -152,6 +152,35 @@ vim.api.nvim_create_autocmd("FileType", {
     group = executeCommandGroups["arduino"],
     pattern = "arduino",
 })
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        -- Jupyter keybindings
+        -- Creating blocks
+        vim.keymap.set("n", "<Leader>oc", ":lua JupyterNewBlock('code', false)<CR>", { noremap = true, silent = true })
+        vim.keymap.set(
+            "n",
+            "<Leader>om",
+            ":lua JupyterNewBlock('markdown', false)<CR>",
+            { noremap = true, silent = true }
+        )
+        vim.keymap.set("n", "<Leader>Oc", ":lua JupyterNewBlock('code', true)<CR>", { noremap = true, silent = true })
+        vim.keymap.set(
+            "n",
+            "<Leader>Om",
+            ":lua JupyterNewBlock('markdown', true)<CR>",
+            { noremap = true, silent = true }
+        )
+        -- Executing code
+        vim.keymap.set("n", "<space>xx", "<Plug>JupyterExecute")
+        vim.keymap.set("n", "<space>X", "<Plug>JupyterExecuteAll")
+        vim.keymap.set("n", "<space>xr", "<Plug>JupyterRestart")
+    end,
+    group = executeCommandGroups[".sync.py"],
+    pattern = "python",
+})
+
+vim.keymap.set("n", "<Leader>xf", ":OverseerRun<CR>")
+vim.keymap.set("n", "<Leader>xx", ":OverseerQuickAction restart<CR>")
 -- vim.keymap.set("n", "<Leader>x", ":Run<CR>", {noremap = true});    -- Not in use
 -- vim.keymap.set("n", "<Leader>X", ":RunAlt<CR>", {noremap = true}); -- Not in use
 -- vim.keymap.set("n", "<Leader>z", ":Build<CR>", {noremap = true});  -- Not in use
@@ -182,7 +211,6 @@ vim.keymap.set("x", "ah", "<Plug>(GitGutterTextObjectOuterVisual)", { silent = t
 -- Gui keybindings
 vim.keymap.set("n", "<Leader>vf", ":lua ChangeView('FileTree')<CR>", { noremap = true });
 vim.keymap.set("n", "<Leader>vu", ":lua ChangeView('UndoTree')<CR>", { noremap = true });
-vim.keymap.set("n", "<Leader>vb", ":lua ChangeView('Buffers')<CR>", { noremap = true });
 vim.keymap.set("n", "<Leader>vt", ":lua ChangeView('Tags')<CR>", { noremap = true });
 vim.keymap.set("n", "<Leader>vg", ":lua ChangeView('GitStatus')<CR>", { noremap = true });
 vim.keymap.set("n", "<Leader>vq", ":lua ChangeView('Quickfix')<CR>", { noremap = true });
@@ -199,6 +227,9 @@ vim.keymap.set("n", "<space>xx", "<Plug>JupyterExecute");
 vim.keymap.set("n", "<space>X", "<Plug>JupyterExecuteAll");
 vim.keymap.set("n", "<space>xr", "<Plug>JupyterRestart");
 
+-- vim.keymap.set("n", "<Leader>vb", ":lua ChangeView('Buffers')<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>vo", ":lua ChangeView('Overseer')<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>vb", ":lua ChangeView('db')<CR>", { noremap = true })
 
 -- Tab keybindings
 vim.keymap.set("n", "<Leader>td", ":tabe | Dashboard<CR>", { noremap = true });
