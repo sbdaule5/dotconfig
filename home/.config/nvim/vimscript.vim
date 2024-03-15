@@ -148,11 +148,17 @@ Plug 'vim-scripts/SingleCompile'
 Plug 'stevearc/conform.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'rcarriga/nvim-notify'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 
+Plug 'stevearc/dressing.nvim'
 
 call plug#end()
 
