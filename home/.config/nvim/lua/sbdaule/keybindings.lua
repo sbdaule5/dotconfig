@@ -68,6 +68,7 @@ vim.keymap.set("n", "<Leader>fgc", ":Commits<CR>", { noremap = true });
 vim.keymap.set("n", "<Leader>fgb", ":BCommits<CR>", { noremap = true });
 vim.keymap.set("n", "<Leader>fgf", ":GFiles<CR>", { noremap = true });
 vim.keymap.set("n", "<Leader>fgs", ":GFiles?<CR>", { noremap = true });
+vim.keymap.set("n", "<Leader>fa", ":Gen<CR>", { noremap = true })
 
 -- Git mappings
 vim.keymap.set("n", "<Leader>gg", ":Git<CR>", { noremap = true });
