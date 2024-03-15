@@ -48,7 +48,6 @@ local nvim_lsp = require('lspconfig')
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 nvim_lsp.clangd.setup { capabilities = lsp_capabilities, handlers = handlers, cmd = { "/usr/bin/clangd", "--background-index", "--header-insertion=never" } }
 nvim_lsp.tsserver.setup { capabilities = lsp_capabilities, handlers = handlers }
-nvim_lsp.cssls.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.emmet_ls.setup { capabilities = lsp_capabilities, handlers = handlers }
 
 nvim_lsp.lua_ls.setup {
@@ -139,4 +138,5 @@ nvim_lsp.dotls.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.cmake.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.vimls.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.bashls.setup { capabilities = lsp_capabilities, handlers = handlers }
-nvim_lsp.ccls.setup { capabilities = lsp_capabilities, handlers = handlers }
+nvim_lsp.java_language_server.setup { capabilities = lsp_capabilities, handlers = handlers }
+-- nvim_lsp.ccls.setup { capabilities = lsp_capabilities, handlers = handlers }

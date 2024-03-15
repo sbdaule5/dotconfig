@@ -24,5 +24,5 @@ vim.keymap.set("i", "<C-p>",     "<Cmd>lua require('cmp').select_prev_item()<CR>
 vim.keymap.set("i", "<C-y>",     "<Cmd>lua require('cmp').confirm()<CR>",                { silent = true })
 vim.keymap.set("i", "<C-L>",     "<Cmd>lua require('cmp').complete_common_string()<CR>", { silent = true })
 vim.keymap.set("i", "<C-Space>", "<Cmd>lua require('cmp').complete()<CR>",               { silent = true })
-vim.keymap.set("i", "<C-l>",     "<Cmd>lua require('luasnip').jump(1)<CR>",              { silent = true })
-vim.keymap.set("i", "<C-h>",     "<Cmd>lua require('luasnip').jump(-1)<CR>",             { silent = true })
+vim.keymap.set("i", "<C-j>",     "<Cmd>lua require('luasnip').jump(1)<CR>",              { silent = true })
+vim.keymap.set("i", "<C-k>",     "<Cmd>lua require('luasnip').jump(-1)<CR>",             { silent = true })

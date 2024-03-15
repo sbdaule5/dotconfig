@@ -132,6 +132,7 @@ Plug 'tzachar/cmp-fuzzy-buffer'
 Plug 'romgrk/fzy-lua-native'
 
 Plug 'vijaymarupudi/nvim-fzf'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 
 Plug 'lervag/vimtex'
 Plug 'untitled-ai/jupyter_ascending.vim'
@@ -148,9 +149,12 @@ Plug 'vim-scripts/SingleCompile'
 Plug 'stevearc/conform.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'normen/vim-pio'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'stevearc/overseer.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'rcarriga/nvim-notify'
+Plug 'David-Kunz/gen.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 

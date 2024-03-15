@@ -1,3 +1,7 @@
+local function myshiftwidth()
+  return "󰌒  " .. tostring(vim.bo.shiftwidth)
+end
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -41,7 +45,7 @@ require('lualine').setup {
         }
       }
     },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' , myshiftwidth},
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },
@@ -72,5 +76,5 @@ require('lualine').setup {
   },
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {'quickfix', 'fzf', 'fugitive', 'nvim-tree'}
 }
