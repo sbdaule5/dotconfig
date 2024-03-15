@@ -2,11 +2,15 @@ function ChangeView(view)
     if (view == "UndoTree")
     then
         vim.cmd ":NvimTreeClose"
+        vim.cmd ":DBUI"
+        vim.cmd ":DBUIToggle"
         vim.cmd ":UndotreeToggle"
     end
     if (view == "FileTree")
     then
         vim.cmd ":UndotreeHide"
+        vim.cmd ":DBUI"
+        vim.cmd ":DBUIToggle"
         vim.cmd ":NvimTreeToggle"
     end
     if (view == "Buffers")
@@ -33,6 +37,8 @@ function ChangeView(view)
     then
         vim.cmd ":NvimTreeClose"
         vim.cmd ":UndotreeHide"
+        vim.cmd ":DBUI"
+        vim.cmd ":DBUIToggle"
         vim.cmd ":Dashboard"
     end
     if (view == "cp")
@@ -40,5 +46,11 @@ function ChangeView(view)
         vim.cmd('split');
         vim.cmd('enew');
         vim.api.nvim_buf_set_name(0, '__INPUT__');
+    end
+    if (view == "db")
+    then
+        vim.cmd ":NvimTreeClose"
+        vim.cmd ":UndotreeHide"
+        vim.cmd ":DBUI"
     end
 end

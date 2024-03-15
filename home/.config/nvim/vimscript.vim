@@ -149,6 +149,11 @@ Plug 'stevearc/conform.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+
+
 call plug#end()
 
 let g:lsc_auto_map = v:true
