@@ -37,9 +37,14 @@ function ChangeView(view)
     then
         vim.cmd ":NvimTreeClose"
         vim.cmd ":UndotreeHide"
+        vim.cmd ":OverseerClose"
         vim.cmd ":DBUI"
         vim.cmd ":DBUIToggle"
         vim.cmd ":Dashboard"
+    end
+    if (view == "Overseer")
+    then
+        vim.cmd ":OverseerToggle"
     end
     if (view == "cp")
     then
