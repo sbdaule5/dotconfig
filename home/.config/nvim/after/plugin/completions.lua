@@ -1,25 +1,22 @@
-local cmp = require 'cmp'
-
+local cmp = require("cmp")
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)   -- For `luasnip` users.
-    end,
-  },
-  mappings = {
-    ['<C-n>'] = cmp.select_next_item(),
-    ['<C-p>'] = cmp.select_prev_item(),
-    ['<CR>'] = cmp.mapping.confirm({ select = false }),
-  },
-  sources = cmp.config.sources(
-    {
-      { name = 'nvim_lsp' },
-      { name = 'buffer' },
-      { name = 'fuzzy_buffer' },
-      { name = 'nvim_lsp_signature_help' },
-    }
-  )
+    snippet = {
+        expand = function(args)
+            require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+        end,
+    },
+    mappings = {
+        ["<C-n>"] = cmp.select_next_item(),
+        ["<C-p>"] = cmp.select_prev_item(),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    },
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "buffer" },
+        { name = "fuzzy_buffer" },
+        { name = "nvim_lsp_signature_help" },
+    }),
 })
 
 vim.keymap.set("i", "<C-n>",     "<Cmd>lua require('cmp').select_next_item()<CR>",       { silent = true })
