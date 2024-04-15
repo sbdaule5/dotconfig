@@ -26,9 +26,7 @@ vim.keymap.set("n", "<Leader>7", "7gt", { noremap = true })
 vim.keymap.set("n", "<Leader>8", "8gt", { noremap = true })
 vim.keymap.set("n", "<Leader>9", "9gt", { noremap = true })
 
--- vim.keymap.set("n", "<Leader>R", ":Rename<CR>", {noremap = true}); -- broken
 vim.keymap.set("n", "<Leader>r", ":lua Reload()<CR>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<Leader>i", "i <ESC>r", {noremap = true}); -- Not in use
 
 -- Delete buffer on ZQ
 vim.keymap.set("n", "ZQ", ":bd %<CR>", { noremap = true })
@@ -191,10 +189,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.keymap.set("n", "<Leader>xf", ":OverseerRun<CR>")
 vim.keymap.set("n", "<Leader>xx", ":OverseerQuickAction restart<CR>")
--- vim.keymap.set("n", "<Leader>x", ":Run<CR>", {noremap = true});    -- Not in use
--- vim.keymap.set("n", "<Leader>X", ":RunAlt<CR>", {noremap = true}); -- Not in use
--- vim.keymap.set("n", "<Leader>z", ":Build<CR>", {noremap = true});  -- Not in use
--- Make project type/filetype based keybindings instead
+vim.keymap.set("n", "<Leader>xp", ":OverseerQuickAction open float<CR>")
+vim.keymap.set("n", "<Leader>xq", ":OverseerQuickAction<CR>")
+vim.keymap.set("n", "<Leader>xo", ":OverseerLoadBundle<CR>")
+
+-- Info bindings
+vim.keymap.set("n", "<Leader>il", ":LspInfo<CR>")
+vim.keymap.set("n", "<Leader>if", ":ConformInfo<CR>")
 
 -- use leader / to stop highlighting
 vim.keymap.set("n", "<Leader>/", ":noh<CR>", { noremap = true, silent = true })
@@ -212,21 +213,14 @@ vim.keymap.set("o", "ah", "<Plug>(GitGutterTextObjectOuterPending)", { silent = 
 vim.keymap.set("x", "ih", "<Plug>(GitGutterTextObjectInnerVisual)", { silent = true, noremap = true })
 vim.keymap.set("x", "ah", "<Plug>(GitGutterTextObjectOuterVisual)", { silent = true, noremap = true })
 
--- vim.keymap.set("v", "af", ":<C-U>?^{$<CR>V/^}$<CR>", {silent = true});   -- Not in use
--- vim.keymap.set("v", "if", ":<C-U>?^{$<CR>jV/^}$<CR>k", {silent = true}); -- Not in use
--- vim.keymap.set("o", "af", ":normal Vaf<CR>", {silent = true});           -- Not in use
--- vim.keymap.set("o", "if", ":normal Vif<CR>", {silent = true});           -- Not in use
-
 -- Gui keybindings
 vim.keymap.set("n", "<Leader>vf", ":lua ChangeView('FileTree')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vu", ":lua ChangeView('UndoTree')<CR>", { noremap = true })
--- vim.keymap.set("n", "<Leader>vb", ":lua ChangeView('Buffers')<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>vt", ":lua ChangeView('Tags')<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>vg", ":lua ChangeView('GitStatus')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vq", ":lua ChangeView('Quickfix')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vd", ":lua ChangeView('Dashboard')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vo", ":lua ChangeView('Overseer')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vb", ":lua ChangeView('db')<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>e", ":lua ViewFocusLeft()<CR>", {noremap = true, silent = true})
 
 -- Tab keybindings
 vim.keymap.set("n", "<Leader>td", ":tabe | Dashboard<CR>", { noremap = true })

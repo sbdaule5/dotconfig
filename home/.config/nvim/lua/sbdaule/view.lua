@@ -1,3 +1,5 @@
+CurrentLeftView = "Dashboard"
+
 function ChangeView(view)
     if (view == "UndoTree")
     then
@@ -5,6 +7,7 @@ function ChangeView(view)
         vim.cmd ":DBUI"
         vim.cmd ":DBUIToggle"
         vim.cmd ":UndotreeToggle"
+        CurrentLeftView = view
     end
     if (view == "FileTree")
     then
@@ -12,22 +15,7 @@ function ChangeView(view)
         vim.cmd ":DBUI"
         vim.cmd ":DBUIToggle"
         vim.cmd ":NvimTreeToggle"
-    end
-    if (view == "Buffers")
-    then
-        vim.cmd ":Buffers"
-    end
-    if (view == "Tags")
-    then
-        vim.cmd ":Tags"
-    end
-    if (view == "GitBlame")
-    then
-        vim.cmd ":Git blame"
-    end
-    if (view == "GitStatus")
-    then
-        vim.cmd ":Git"
+        CurrentLeftView = view
     end
     if (view == "Quickfix")
     then
@@ -40,7 +28,9 @@ function ChangeView(view)
         vim.cmd ":OverseerClose"
         vim.cmd ":DBUI"
         vim.cmd ":DBUIToggle"
+        vim.cmd ":enew"
         vim.cmd ":Dashboard"
+        CurrentLeftView = view
     end
     if (view == "Overseer")
     then
@@ -57,5 +47,14 @@ function ChangeView(view)
         vim.cmd ":NvimTreeClose"
         vim.cmd ":UndotreeHide"
         vim.cmd ":DBUI"
+        CurrentLeftView = view
+    end
+end
+
+function ViewFocusLeft()
+    if(CurrentLeftView == "FileTree") then
+        vim.cmd ":NvimTreeFocus"
+    elseif (CurrentLeftView == "UndoTree") then
+        vim.cmd ":UndotreeFocus"
     end
 end
