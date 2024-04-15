@@ -1,113 +1,21 @@
+import random
+
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
-# Which cookies to accept. With QtWebEngine, this setting also controls
-# other features with tracking capabilities similar to those of cookies;
-# including IndexedDB, DOM storage, filesystem API, service workers, and
-# AppCache. Note that with QtWebKit, only `all` and `never` are
-# supported as per-domain values. Setting `no-3rdparty` or `no-
-# unknown-3rdparty` per-domain on QtWebKit will have the same effect as
-# `all`. If this setting is used with URL patterns, the pattern gets
-# applied to the origin/first party URL of the page making the request,
-# not the request URL. With QtWebEngine 5.15.0+, paths will be stripped
-# from URLs, so URL patterns using paths will not match. With
-# QtWebEngine 5.15.2+, subdomains are additionally stripped as well, so
-# you will typically need to set this setting for `example.com` when the
-# cookie is set on `somesubdomain.example.com` for it to work properly.
-# To debug issues with this setting, start qutebrowser with `--debug
-# --logfilter network --debug-flag log-cookies` which will show all
-# cookies being set.
-# Type: String
-# Valid values:
-#   - all: Accept all cookies.
-#   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
-#   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
-#   - never: Don't accept cookies at all.
 config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
-
-# Which cookies to accept. With QtWebEngine, this setting also controls
-# other features with tracking capabilities similar to those of cookies;
-# including IndexedDB, DOM storage, filesystem API, service workers, and
-# AppCache. Note that with QtWebKit, only `all` and `never` are
-# supported as per-domain values. Setting `no-3rdparty` or `no-
-# unknown-3rdparty` per-domain on QtWebKit will have the same effect as
-# `all`. If this setting is used with URL patterns, the pattern gets
-# applied to the origin/first party URL of the page making the request,
-# not the request URL. With QtWebEngine 5.15.0+, paths will be stripped
-# from URLs, so URL patterns using paths will not match. With
-# QtWebEngine 5.15.2+, subdomains are additionally stripped as well, so
-# you will typically need to set this setting for `example.com` when the
-# cookie is set on `somesubdomain.example.com` for it to work properly.
-# To debug issues with this setting, start qutebrowser with `--debug
-# --logfilter network --debug-flag log-cookies` which will show all
-# cookies being set.
-# Type: String
-# Valid values:
-#   - all: Accept all cookies.
-#   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
-#   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
-#   - never: Don't accept cookies at all.
 config.set('content.cookies.accept', 'all', 'devtools://*')
-
-# Value to send in the `Accept-Language` header. Note that the value
-# read from JavaScript is always the global value.
-# Type: String
-config.set('content.headers.accept_language', '', 'https://matchmaker.krunker.io/*')
-
-# User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
-# The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
-# QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
-# QtWebEngine. * `{upstream_browser_version}`: The corresponding
-# Safari/Chrome version. * `{qutebrowser_version}`: The currently
-# running qutebrowser version.  The default value is equal to the
-# unchanged user agent of QtWebKit/QtWebEngine.  Note that the value
-# read from JavaScript is always the global value. With QtWebEngine
-# between 5.12 and 5.14 (inclusive), changing the value exposed to
-# JavaScript requires a restart.
-# Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
-
-# User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
-# The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
-# QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
-# QtWebEngine. * `{upstream_browser_version}`: The corresponding
-# Safari/Chrome version. * `{qutebrowser_version}`: The currently
-# running qutebrowser version.  The default value is equal to the
-# unchanged user agent of QtWebKit/QtWebEngine.  Note that the value
-# read from JavaScript is always the global value. With QtWebEngine
-# between 5.12 and 5.14 (inclusive), changing the value exposed to
-# JavaScript requires a restart.
-# Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:90.0) Gecko/20100101 Firefox/90.0', 'https://accounts.google.com/*')
-
-# User agent to send.  The following placeholders are defined:  *
-# `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
-# The underlying WebKit version (set to a fixed value   with
-# QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
-# QtWebEngine. * `{qt_version}`: The underlying Qt version. *
-# `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
-# QtWebEngine. * `{upstream_browser_version}`: The corresponding
-# Safari/Chrome version. * `{qutebrowser_version}`: The currently
-# running qutebrowser version.  The default value is equal to the
-# unchanged user agent of QtWebKit/QtWebEngine.  Note that the value
-# read from JavaScript is always the global value. With QtWebEngine
-# between 5.12 and 5.14 (inclusive), changing the value exposed to
-# JavaScript requires a restart.
-# Type: FormatString
-
-# config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
-# Set a fake user agent string
-config.set('content.headers.user_agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'https://*.slack.com/*')
-
-# Load images automatically in web pages.
-# Type: Bool
+# config.set('content.headers.user_agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
 config.set('content.images', True, 'chrome-devtools://*')
+
+## Reduce finger printing
+config.set('content.headers.accept_language', 'en-US,en;q=0.5')
+config.set('content.headers.custom', {"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"})
+config.set('content.canvas_reading', True)
+config.set('content.webgl', True)
+config.set('content.blocking.method', 'both')
+
+
 
 # Load images automatically in web pages.
 # Type: Bool
@@ -151,13 +59,6 @@ config.set('content.register_protocol_handler', True, 'https://mail.google.com?e
 # Type: Bool
 c.scrolling.smooth = True
 
-# Position of the tab bar.
-# Type: Position
-# Valid values:
-#   - top
-#   - bottom
-#   - left
-#   - right
 c.tabs.position = 'top'
 
 # Minimum width (in pixels) of tabs (-1 for the default minimum size
@@ -167,33 +68,8 @@ c.tabs.position = 'top'
 # Type: Int
 c.tabs.min_width = 100
 
-# Maximum width (in pixels) of tabs (-1 for no maximum). This setting
-# only applies when tabs are horizontal. This setting does not apply to
-# pinned tabs, unless `tabs.pinned.shrink` is False. This setting may
-# not apply properly if max_width is smaller than the minimum size of
-# tab contents, or smaller than tabs.min_width.
-# Type: Int
 c.tabs.max_width = 150
 
-# Search engines which can be used via the address bar.  Maps a search
-# engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
-# placeholder. The placeholder will be replaced by the search term, use
-# `{{` and `}}` for literal `{`/`}` braces.  The following further
-# placeholds are defined to configure how special characters in the
-# search terms are replaced by safe characters (called 'quoting'):  *
-# `{}` and `{semiquoted}` quote everything except slashes; this is the
-# most   sensible choice for almost all search engines (for the search
-# term   `slash/and&amp` this placeholder expands to `slash/and%26amp`).
-# * `{quoted}` quotes all characters (for `slash/and&amp` this
-# placeholder   expands to `slash%2Fand%26amp`). * `{unquoted}` quotes
-# nothing (for `slash/and&amp` this placeholder   expands to
-# `slash/and&amp`). * `{0}` means the same as `{}`, but can be used
-# multiple times.  The search engine named `DEFAULT` is used when
-# `url.auto_search` is turned on and something else than a URL was
-# entered to be opened. Other search engines can be used by prepending
-# the search engine name to the search term, e.g. `:open google
-# qutebrowser`.
-# Type: Dict
 c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}',
                        'ddg': 'https://duckduckgo.com/?q={}',
                        'aw': 'https://wiki.archlinux.org/?search={}',
@@ -219,7 +95,7 @@ primary_color_1    = "#7aa2f7"
 primary_color_2    = "#9ece6a"
 secondary_color_1  = "#e0af68"
 secondary_color_2  = "#bb9af7"
-background_color   = "#24283b"
+background_color   = "#1a1b26"
 warning_color      = "#f7768e"
 text_color         = "#c0caf5"
 text_color_2  = "#24283b"
@@ -315,6 +191,10 @@ config.bind(',M', 'spawn linkhandler_mpd {url}')
 #  Added temporarily till no audio bug is fixed
 config.bind(',v', 'hint links spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=720]" --force-window=immediate --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {hint-url}')
 config.bind(',V', 'spawn --detach mpv --ytdl-format="bestaudio+bestvideo[height<=720]" --force-window=immediate --ytdl=no --script-opts=ytdl_hooks-all_formats="yes" {url}')
+config.bind(',p', 'spawn --user qute-pass')
 
 config.bind('<Ctrl+o>', 'cmd-set-text -s :open -w')
 config.bind('<Ctrl+Shift+o>', 'open -p')
+
+c.content.blocking.method = 'both'
+c.spellcheck.languages = ["en-US"]
