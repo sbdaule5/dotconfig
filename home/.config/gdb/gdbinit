@@ -1,0 +1,5 @@
+add-auto-load-safe-path /home/sbdaule/projects/
+set history save on
+set history size 10000
+set history filename ~/.local/state/gdb_history
+# source ~/.config/gdb/userfriendly.gdb
