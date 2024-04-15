@@ -1,4 +1,4 @@
-gen = require("gen")
+local gen = require("gen")
 
 gen.setup({
     model = "mistral:instruct",

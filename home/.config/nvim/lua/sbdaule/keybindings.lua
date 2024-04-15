@@ -33,7 +33,7 @@ vim.keymap.set("n", "ZQ", ":bd %<CR>", { noremap = true })
 
 -- Buffer mappings
 vim.keymap.set("n", "<Leader>bb", "<cmd>FzfLua buffers resume=true<cr>", { noremap = true })
-vim.keymap.set("n", "<Leader>bv", ":lua ChangeView('Buffers')<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>bv", "<cmd>FzfLua buffers resume=true<cr>", { noremap = true })
 vim.keymap.set("n", "<Leader>bn", ":bn<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>bp", ":bp<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>bs", ":buffer #<CR>", { noremap = true, silent = true })

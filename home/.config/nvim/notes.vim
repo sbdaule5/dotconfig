@@ -51,6 +51,7 @@ augroup NotesGroup
   autocmd BufWritePre *.md call AdjustHeaders()
   autocmd FileType markdown lua NotesKeybindings()
   autocmd FileType markdown lua NotesSettings()
+  autocmd FileType markdown lua WritingMode()
   " autocmd BufWritePre *.md * %s/\s\+$//e "Autoremove trailing whitespace
 augroup END
 

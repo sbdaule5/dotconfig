@@ -77,6 +77,7 @@ require("overseer").setup({
                 ["<C-c>"] = "Cancel",
             },
             n = {
+                ["<C-c>"] = "Cancel",
                 ["<CR>"] = "Submit",
                 ["<C-s>"] = "Submit",
                 ["q"] = "Cancel",
@@ -94,6 +95,7 @@ require("overseer").setup({
                 ["<C-c>"] = "Cancel",
             },
             n = {
+                ["<C-c>"] = "Cancel",
                 ["<CR>"] = "NextOrSubmit",
                 ["<C-s>"] = "Submit",
                 ["<Tab>"] = "Next",

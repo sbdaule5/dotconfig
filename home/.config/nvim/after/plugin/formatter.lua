@@ -8,6 +8,7 @@ require("conform").setup({
         json = { { "prettierd", "prettier" } },
         scss = { { "prettierd", "prettier" } },
         svelte = { { "prettierd", "prettier" } },
+        haskell = { "fourmolu" },
 
         c = { { "clang-format", "ast-grep" } },
         cpp = { { "clang-format", "ast-grep" } },

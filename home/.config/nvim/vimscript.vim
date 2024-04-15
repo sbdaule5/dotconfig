@@ -163,6 +163,7 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 
 Plug 'stevearc/dressing.nvim'
+Plug 'kevinhwang91/nvim-bqf'
 
 call plug#end()
 

@@ -16,6 +16,7 @@ vim.keymap.set("n", "<Leader>mF", "ysiW`", { remap = true });
 
 function NotesSettings()
   vim.opt.conceallevel = 2
+  vim.opt.wrap = true
 
   vim.opt.tabstop = 4
   vim.opt.softtabstop = 4
@@ -34,4 +35,10 @@ function GoyoEnter()
 end
 
 function GoyoLeave()
+end
+
+function WritingMode()
+  vim.cmd [[ set tw=80 ]]
+  vim.cmd [[ set spell ]]
+  vim.opt.wrap = true
 end

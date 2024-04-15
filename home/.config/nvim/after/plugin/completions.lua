@@ -16,6 +16,7 @@ cmp.setup({
         { name = "buffer" },
         { name = "fuzzy_buffer" },
         { name = "nvim_lsp_signature_help" },
+        { name = "vim-dadbod-completion" },
     }),
 })
 

@@ -1,4 +1,6 @@
-vim.notify = require("notify")
+local notify = require("notify")
+notify.setup({ top_down = true, max_width = 50 })
+vim.notify = notify
 
 require("telescope").setup({
     extensions = {
@@ -81,17 +83,19 @@ require("dressing").setup({
         trim_prompt = true,
         telescope = nil,
 
-        fzf = {
-            window = {
-                width = 0.5,
-                height = 0.4,
-            },
-        },
-
         fzf_lua = {
             winopts = {
                 height = 0.5,
-                width = 0.5,
+                max_width = { 0.9 },
+                min_width = 0.5,
+            },
+        },
+
+        fzf = {
+            window = {
+                min_width = 0.5,
+                max_width = { 0.9 },
+                height = 0.4,
             },
         },
 
@@ -110,9 +114,9 @@ require("dressing").setup({
             win_options = {
                 winblend = 0,
             },
-            max_width = 80,
+            max_width = 0.90,
             max_height = 40,
-            min_width = 40,
+            min_width = 60,
             min_height = 10,
         },
 
@@ -162,3 +166,11 @@ require("dressing").setup({
         get_config = nil,
     },
 })
+
+require('fzf-lua').setup {
+    winopts = {
+        height = 0.5,
+        max_width = { 0.9 },
+        min_width = 0.5,
+    },
+}

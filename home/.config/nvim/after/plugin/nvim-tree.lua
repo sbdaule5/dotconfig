@@ -24,5 +24,5 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
   on_attach = nvim_tree_attach,
-  hijack_unnamed_buffer_when_opening = false,
+  hijack_unnamed_buffer_when_opening = true,
 });
