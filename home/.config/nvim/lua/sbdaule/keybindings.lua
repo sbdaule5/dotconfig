@@ -34,7 +34,7 @@ vim.keymap.set("n", "<Leader>r", ":lua Reload()<CR>", { noremap = true, silent =
 vim.keymap.set("n", "ZQ", ":bd %<CR>", { noremap = true })
 
 -- Buffer mappings
-vim.keymap.set("n", "<Leader>bb", ":Buffers<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>bb", "<cmd>FzfLua buffers resume=true<cr>", { noremap = true })
 vim.keymap.set("n", "<Leader>bv", ":lua ChangeView('Buffers')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>bn", ":bn<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>bp", ":bp<CR>", { noremap = true, silent = true })
@@ -51,25 +51,26 @@ vim.keymap.set({ "n", "v" }, "<Leader>sf", function()
 end)
 
 -- f for fuzzy
-vim.keymap.set("n", "<Leader>ff", ":Files<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>ft", ":Tags<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fb", ":Buffers<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fl", ":Lines<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fm", ":Marks<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fj", ":Jumps<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fh", ":Helptags<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fo", ":History<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fr", ":RG<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>ff", "<cmd>FzfLua files resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>ft", "<cmd>FzfLua tags resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fb", "<cmd>FzfLua buffers resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fl", "<cmd>FzfLua lines resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fm", "<cmd>FzfLua man_pages resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fj", "<cmd>FzfLua jumps resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fh", "<cmd>FzfLua help_tags resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fo", "<cmd>FzfLua oldfiles resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fr", "<cmd>FzfLua grep resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fq", "<cmd>FzfLua quickfix resume=true<cr>", { noremap = true })
 vim.keymap.set("n", "<Leader>fd", ":lua dotfiles()<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>fx", ":OverseerRun<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>fa", ":Gen<CR>", { noremap = true })
 
 vim.keymap.set("n", "<Leader>fT", ':Tags "<CR>', { noremap = true })
 
-vim.keymap.set("n", "<Leader>fgc", ":Commits<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fgb", ":BCommits<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fgf", ":GFiles<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>fgs", ":GFiles?<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>fgc", "<cmd>FzfLua git_commits resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fgb", "<cmd>FzfLua git_bcommits resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fgf", "<cmd>FzfLua git_files resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fgs", "<cmd>FzfLua git_status resume=true<cr>", { noremap = true })
 
 -- Git mappings
 vim.keymap.set("n", "<Leader>gg", ":Git<CR>", { noremap = true })
@@ -244,3 +245,4 @@ vim.keymap.set("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
 
 -- Terminal keymappings
 -- vim.keymap.set("t", "<Esc><leader>", "<C-\\><C-n> ", { noremap = false, silent = true });
+vim.keymap.set("n", "z=", "<cmd>FzfLua spell_suggest resume=true<cr>", { noremap = true, silent = true })
