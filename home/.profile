@@ -38,6 +38,7 @@ export KODI_DATA="$XDG_DATA_HOME/kodi"
 export MAILCAPS="$XDG_CONFIG_HOME/mailcap:/usr/share/neomutt/mailcap"
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export PNPM_HOME=$XDG_DATA_HOME/pnpm
+export GHCUP_USE_XDG_DIRS=true
 export GEM_HOME="$(gem env user_gemhome)"
 export PATH="$PATH:$GEM_HOME/bin"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
@@ -48,9 +49,13 @@ export W3M_DIR="$XDG_STATE_HOME/w3m"
 export DOT_SAGE="$XDG_CONFIG_HOME"/sage
 export RANDFILE="$XDG_STATE_HOME"/rnd
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export LEIN_HOME="$XDG_DATA_HOME/lein"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
+export OLLAMA_MODELS="$XDG_DATA_HOME/ollama/models"
+export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 # export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
 # export UNISON="$XDG_DATA_HOME/unison"
@@ -77,12 +82,14 @@ export FZF_DEFAULT_COMMAND='bfs . -type d \( -name .cache -o -name caches -o -na
 # [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && setsid shortcuts >/dev/null 2>&1
 
 function startserv(){
-  sessions=( 'dwm' 'sddm' )
+  sessions=( 'dwm' 'sddm' 'hyprland')
   select session in "${sessions[@]}"; do
     if [ "$session" = 'dwm' ]; then
       exec startx "$XINITRC"
-    else
+    elif [ "$session" = 'sddm' ]; then
       systemctl start sddm
+    elif [ "$session" = "hyprland" ]; then
+      exec Hyprland
     fi
     break
   done

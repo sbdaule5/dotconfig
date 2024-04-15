@@ -45,7 +45,8 @@ source /usr/share/fzf/key-bindings.zsh
 #                                 ALISES                                       #
 ################################################################################
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/funcs"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/funcs" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/funcs"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/keys" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/keys"
 
 ################################################################################
 #                               KEYBINDINGS                                    #
@@ -101,7 +102,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ################################################################################
 #                             CONFIG FOR TMUX SESSIONS                         #
 ################################################################################
-if [[ $TERM == "tmux-256color" ]] || [[ $TERM == "screen-256color" ]]
+if [ -n "$TMUX" ]
 then
     TMUX_SESSION_NAME=$(tmux display-message -p '#S')
     # Keep bash history of different tmux sessions seperate
