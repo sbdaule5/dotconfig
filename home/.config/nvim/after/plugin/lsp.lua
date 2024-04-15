@@ -24,14 +24,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     vim.keymap.set("n", "gd",          function() vim.lsp.buf.definition() end,       opts)
+    vim.keymap.set("n", "gD",          function() vim.lsp.buf.declaration() end,      opts)
     vim.keymap.set("n", "K",           function() vim.lsp.buf.hover() end,            opts)
     vim.keymap.set("n", "<leader>sws", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "<leader>sd",  function() vim.diagnostic.open_float() end,    opts)
     vim.keymap.set("n", "]d",          function() vim.diagnostic.goto_next() end,     opts)
     vim.keymap.set("n", "[d",          function() vim.diagnostic.goto_prev() end,     opts)
-    vim.keymap.set("n", "<leader>sca", function() vim.lsp.buf.code_action() end,      opts)
-    vim.keymap.set("n", "<leader>srr", function() vim.lsp.buf.references() end,       opts)
-    vim.keymap.set("n", "<leader>srn", function() vim.lsp.buf.rename() end,           opts)
+    vim.keymap.set("n", "<leader>sa",  function() vim.lsp.buf.code_action() end,      opts)
+    vim.keymap.set("n", "<leader>sR",  function() vim.lsp.buf.references() end,       opts)
+    vim.keymap.set("n", "<leader>sr",  function() vim.lsp.buf.rename() end,           opts)
     vim.keymap.set("n", "<leader>sF",  function() vim.lsp.buf.format() end,           opts)
     vim.keymap.set("i", "<C-g>",       function() vim.lsp.buf.signature_help() end,   opts)
   end
@@ -46,7 +47,19 @@ local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
 local nvim_lsp = require('lspconfig')
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-nvim_lsp.clangd.setup { capabilities = lsp_capabilities, handlers = handlers, cmd = { "/usr/bin/clangd", "--background-index", "--header-insertion=never" } }
+nvim_lsp.clangd.setup {
+  capabilities = lsp_capabilities,
+  handlers = handlers,
+  cmd = {
+    "/usr/bin/clangd",
+    "--background-index",
+    "--header-insertion=never",
+    "--enable-config",
+    "--clang-tidy",
+    "--malloc-trim"
+  }
+}
+
 nvim_lsp.tsserver.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.emmet_ls.setup { capabilities = lsp_capabilities, handlers = handlers }
 
@@ -138,5 +151,8 @@ nvim_lsp.dotls.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.cmake.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.vimls.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.bashls.setup { capabilities = lsp_capabilities, handlers = handlers }
-nvim_lsp.java_language_server.setup { capabilities = lsp_capabilities, handlers = handlers }
+-- nvim_lsp.java_language_server.setup { capabilities = lsp_capabilities, handlers = handlers }
+nvim_lsp.jdtls.setup { capabilities = lsp_capabilities, handlers = handlers }
+nvim_lsp.hls.setup { capabilities = lsp_capabilities, handlers = handlers, cmd = {"haskell-language-server"}}
+
 -- nvim_lsp.ccls.setup { capabilities = lsp_capabilities, handlers = handlers }
