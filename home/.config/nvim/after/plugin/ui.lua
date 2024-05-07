@@ -1,5 +1,5 @@
 local notify = require("notify")
-notify.setup({ top_down = true, max_width = 50 })
+notify.setup({ top_down = false, max_width = 50 })
 vim.notify = notify
 
 require("telescope").setup({

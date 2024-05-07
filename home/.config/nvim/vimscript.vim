@@ -51,7 +51,6 @@ if !exists('g:context_filetype#same_filetypes')
     let g:context_filetype#filetypes = {}
 endif
 
-
 let g:ft = ''
 
 " settings for vimtex
@@ -157,13 +156,24 @@ Plug 'rcarriga/nvim-notify'
 Plug 'David-Kunz/gen.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+Plug 'folke/neodev.nvim'
 
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 
 Plug 'stevearc/dressing.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'kevinhwang91/nvim-bqf'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ggandor/leap.nvim'
+
+" Plug 'preservim/tagbar'
+
+" My plugins (dev or mod)
+Plug '/home/sbdaule/projects/011.nvim-plugins/gpg.nvim'
 
 call plug#end()
 

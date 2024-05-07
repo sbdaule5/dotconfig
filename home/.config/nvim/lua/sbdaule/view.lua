@@ -34,7 +34,13 @@ function ChangeView(view)
     end
     if (view == "Overseer")
     then
+        -- vim.cmd ":TagbarClose"
         vim.cmd ":OverseerToggle"
+    end
+    if (view == "Tagbar")
+    then
+        vim.cmd ":OverseerClose"
+        -- vim.cmd ":TagbarToggle"
     end
     if (view == "cp")
     then

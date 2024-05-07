@@ -25,4 +25,6 @@ require("nvim-tree").setup({
   },
   on_attach = nvim_tree_attach,
   hijack_unnamed_buffer_when_opening = true,
+  hijack_netrw = true,
+  disable_netrw = false
 });

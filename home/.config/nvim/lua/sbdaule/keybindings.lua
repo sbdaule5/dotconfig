@@ -6,10 +6,11 @@ vim.keymap.set("n", "<Leader>>", ":tabnext<CR>", { silent = true })
 vim.keymap.set("n", "<Leader><", ":tabprevious<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>w", "<C-w>", { silent = true })
 
-vim.keymap.set("n", "<Leader>h", "<C-w>h", { noremap = true })
-vim.keymap.set("n", "<Leader>j", "<C-w>j", { noremap = true })
-vim.keymap.set("n", "<Leader>k", "<C-w>k", { noremap = true })
-vim.keymap.set("n", "<Leader>l", "<C-w>l", { noremap = true })
+-- These bindings will be handled by vim-tmux-navigate plugin
+-- vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
+-- vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
+-- vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
+-- vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
 
 vim.keymap.set("n", "<Leader>H", "<C-w>H", { noremap = true })
 vim.keymap.set("n", "<Leader>J", "<C-w>J", { noremap = true })
@@ -118,13 +119,14 @@ vim.keymap.set("n", "dx", [["_d]])
 vim.keymap.set("x", "<Leader>p", [["_p]])
 vim.keymap.set("x", "<Leader>P", [["_P]])
 
--- gs for substitute
+-- gr for substitute
 vim.keymap.set("n", "gr", "<plug>(SubversiveSubstitute)")
 vim.keymap.set("n", "grr", "<plug>(SubversiveSubstituteLine)")
 vim.keymap.set("n", "gR", "<plug>(SubversiveSubstituteToEndOfLine)")
 vim.keymap.set("n", "grc", [["+<plug>(SubversiveSubstitute)]])
 vim.keymap.set("n", "grcc", [["+<plug>(SubversiveSubstituteLine)]])
 vim.keymap.set("n", "grC", [["+<plug>(SubversiveSubstituteToEndOfLine)]])
+vim.keymap.set("v", "gr", "<plug>(SubversiveSubstitute)")
 
 -- insert a blank line
 vim.keymap.set("n", "<Leader><CR>", "i<CR><ESC>", { noremap = true })
@@ -219,6 +221,7 @@ vim.keymap.set("n", "<Leader>vu", ":lua ChangeView('UndoTree')<CR>", { noremap =
 vim.keymap.set("n", "<Leader>vq", ":lua ChangeView('Quickfix')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vd", ":lua ChangeView('Dashboard')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vo", ":lua ChangeView('Overseer')<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>vt", ":lua ChangeView('Tagbar')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vb", ":lua ChangeView('db')<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>e", ":lua ViewFocusLeft()<CR>", {noremap = true, silent = true})
 
