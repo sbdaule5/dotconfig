@@ -9,3 +9,8 @@ home/.config/qutebrowser/autoconfig.yml
 home/.local/src/st/st
 home/.config/tmux/plugins/
 home/.config/nvim/site/
+home/.config/nvim/spell/
+home/.config/mutt/accounts/
+home/.config/zsh/tmux/
+.zcompdump
+key*
