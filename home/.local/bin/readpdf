@@ -1,0 +1,20 @@
+#! /usr/bin/sh
+
+pdf_files="${XDG_CACHE_HOME:-$HOME/.cache}/readpdffiles"
+
+if [ ! -e "$pdf_files" ]; then
+  touch "$pdf_files"
+fi
+
+if [ -n "$TERM" ] && [ "$TERM" = "linux" ]; then
+  file=$(wofi --show dmenu -M fuzzy -i < "${pdf_files}")
+else
+  file=$(fzf < "${pdf_files}")
+fi
+
+bfs "$HOME" -type f \( -name .cache -o -name caches -o -name Cache -o -path ./.npm -o -path ./.cargo -o -name node_modules -o -name .git -o -name venv -o -name venvs -o -name pyvenv -o -name pnpm -o -name "BraveSoftware" -o -path ./.local/share/flutter -o -name Steam -o -path ./.local/share/Trash -o -path ./Files -o -name wineprefixes \) -prune -o -iname "*.pdf" > "${pdf_files}" 2> /dev/null  
+
+
+if [ -n "$file" ] && [ -e "$file" ]; then
+  command zathura "$file"
+fi
