@@ -1,0 +1,77 @@
+".ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+"b.gg/ideavim-plugins
+let g:mapleader = ' '
+let mapleader = " "
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'vim-scripts/ReplaceWithRegister'
+
+nnoremap <leader>vf :NERDTreeToggle<CR>
+nmap <leader>vl <Action>(ActivateLogcatToolWindow)
+nnoremap <leader>w <C-w>
+nnoremap <leader>wq <C-w>c
+nmap <C-w>q <C-w>c
+
+" Clipboard commands
+nnoremap <Leader>cf :let @+=@%<CR>:echo  'File Name Copied'<CR>
+nnoremap <Leader>cl :let @+ = expand('%') . ':' . line('.')<CR>:echo  'Line Number Copied'<CR>
+nnoremap <Leader>c" :let @+=@"<CR>
+
+nnoremap <Leader>cp "+p
+nnoremap <Leader>cP "+P
+nnoremap <Leader>cy "+y
+nnoremap <Leader>cY "+Y
+
+nnoremap yc "+y
+nnoremap ycc "+yy
+nnoremap yC "+Y
+nnoremap ycf :let @+=@%<CR>:echo  'File Name Copied'<CR>
+nnoremap ycl :let @+ = expand('%') . ':' . line('.')<CR>:echo  'Line Number Copied'<CR>
+
+nnoremap cx "_c
+nnoremap dx "_d
+xnoremap <Leader>p "_p
+xnoremap <Leader>P "_P
+
+nmap ]q <Action>(GotoNextError)
+nmap [q <Action>(GotoPreviousError)
+nmap <Leader>ff <Action>(GotoFile)
+nmap <Leader>fb <Action>(RecentFiles)
+nmap <Leader>bb <Action>(RecentFiles)
+nmap <Leader>fc <Action>(GotoClass)
+nmap <Leader>< gT
+nmap <Leader>> gt
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+set clipboard="+"
