@@ -37,6 +37,10 @@ gen.prompts['Fix_Code'] = {
   replace = true,
   extract = "```$filetype\n(.-)```"
 }
+gen.prompts['Write documentation'] = {
+  prompt = "Write documentation for the following code. Only output the result in format ```$filetype\n...\n```:\n```$filetype\n$text\n```. Do not repeat the code only write the documentation.",
+  replace = false
+}
 
 vim.keymap.set({ 'n', 'v' }, '<leader>fa', ':Gen<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>aa', ':Gen Ask<CR>')
