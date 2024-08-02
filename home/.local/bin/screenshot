@@ -1,13 +1,20 @@
 #! /bin/bash
 
 SCREENSHOT_DIR="$(xdg-user-dir PICTURES)/screenshots/"
-FILE_NAME='screenshot-%Y-%m-%d-%H-%M-%S.png'
+FILE_NAME=$(date +"screenshot-%Y-%m-%d-%H-%M-%S.png")
 
 capture_screen(){
-    cd $SCREENSHOT_DIR
-    scrot $FILE_NAME
-    xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
-    notify-send "Screen captured" -a "Scrot"
+    cd "$SCREENSHOT_DIR"
+    if [ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+        scrot "$FILE_NAME"
+        xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
+        notify-send "Screen captured" -a "Scrot"
+    else
+        grim "$FILE_NAME"
+        xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
+        notify-send "Screen captured $FILE_NAME and copied to clipboard" -a "Grim"
+        wl-copy < "$FILE_NAME" 
+    fi
 }
 
 capture_window(){
@@ -18,22 +25,28 @@ capture_window(){
 }
 
 capture_select_window(){
-    cd $SCREENSHOT_DIR
-    scrot -w $(xdotool selectwindow) $FILE_NAME
+    cd "$SCREENSHOT_DIR"
+    scrot -w $(xdotool selectwindow) "$FILE_NAME"
     xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
     notify-send "Window captured" -a "Scrot"
 }
 
 capture_select(){
-    cd $SCREENSHOT_DIR
-    sleep 0.2 # Prevent issues on dwm
-    scrot -s $FILE_NAME
-    xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
-    notify-send "Selection captured" -a "Scrot"
+    cd "$SCREENSHOT_DIR"
+    if [ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+        sleep 0.2 # Prevent issues on dwm
+        scrot -s "$FILE_NAME"
+        xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
+        notify-send "Selection captured" -a "Scrot"
+    else
+        grim -g "$(slurp)" "$FILE_NAME" || exit 1
+        notify-send "Selection captured ($FILE_NAME) and copied to clipboard" -a "Grim"
+        wl-copy < "$FILE_NAME" 
+    fi
 }
 
 if ! [[ -d $SCREENSHOT_DIR/ ]]; then
-    mkdir -p $SCREENSHOT_DIR
+    mkdir -p "$SCREENSHOT_DIR"
 fi
 
 if [[ -z $1 ]]; then
