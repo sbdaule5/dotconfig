@@ -2,6 +2,8 @@ local function myshiftwidth()
   return "󰌒  " .. tostring(vim.bo.shiftwidth)
 end
 
+local navic = require("nvim-navic")
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -43,9 +45,12 @@ require('lualine').setup {
           unnamed = '[No Name]', -- Text to show for unnamed buffers.
           newfile = '[New]',     -- Text to show for newly created file before first write
         }
-      }
+      },
+      function ()
+        return navic.get_location()
+      end
     },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' , myshiftwidth},
+    lualine_x = { 'encoding', 'fileformat', 'filetype', myshiftwidth },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },
@@ -76,5 +81,12 @@ require('lualine').setup {
   },
   winbar = {},
   inactive_winbar = {},
-  extensions = {'quickfix', 'fzf', 'fugitive', 'nvim-tree'}
+  extensions = { 'quickfix', 'fzf', 'fugitive', 'nvim-tree' }
 }
+
+navic.setup({
+  lsp = {
+    auto_attach = true,
+    preference = nil,
+  },
+})
