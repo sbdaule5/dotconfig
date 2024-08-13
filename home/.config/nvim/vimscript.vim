@@ -91,6 +91,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-slash'
 
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
 Plug 'lilydjwg/colorizer'

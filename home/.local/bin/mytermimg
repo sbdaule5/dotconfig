@@ -1,0 +1,19 @@
+#! /usr/bin/bash
+
+# notify-send "Using mytermimg $IMAGE_MODE"
+# This is defective, needs fixing
+if [ -n "$1" ]; then
+  INPUT_FILE_NAME="$1"
+fi
+
+if [ -n "$IMAGE_MODE" ]; then
+  if [ "$IMAGE_MODE" == "sixel" ]; then
+      chafa "$INPUT_FILE_NAME"
+  elif [ "$IMAGE_MODE" == "kitty" ]; then
+      chafa "$INPUT_FILE_NAME"
+  else
+      catimg -w 160 "$INPUT_FILE_NAME"
+  fi
+else
+  catimg -w 160 "$INPUT_FILE_NAME"
+fi
