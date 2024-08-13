@@ -169,6 +169,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ggandor/leap.nvim'
+Plug 'mfussenegger/nvim-lint'
 Plug 'SmiteshP/nvim-navic'
 
 " Plug 'preservim/tagbar'

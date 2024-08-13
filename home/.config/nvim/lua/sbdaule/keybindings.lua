@@ -60,6 +60,7 @@ vim.keymap.set("n", "<Leader>fh", "<cmd>FzfLua help_tags resume=true<cr>", { nor
 vim.keymap.set("n", "<Leader>fo", "<cmd>FzfLua oldfiles resume=true<cr>", { noremap = true })
 vim.keymap.set("n", "<Leader>fr", "<cmd>FzfLua grep resume=true<cr>", { noremap = true })
 vim.keymap.set("n", "<Leader>fq", "<cmd>FzfLua quickfix resume=true<cr>", { noremap = true })
+vim.keymap.set("n", "<Leader>fs", "<cmd>FzfLua lsp_workspace_symbols resume=false<cr>", { noremap = true })
 vim.keymap.set("n", "<Leader>fd", ":lua dotfiles()<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>fx", ":OverseerRun<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>fa", ":Gen<CR>", { noremap = true })
