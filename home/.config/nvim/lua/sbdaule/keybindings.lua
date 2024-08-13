@@ -136,21 +136,21 @@ local executeCommandGroups = {
     c = vim.api.nvim_create_augroup("execute_commands_c", { clear = true }),
     arduino = vim.api.nvim_create_augroup("execute_commands_arduino", { clear = true }),
 }
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.g.SingleCompile_showresultafterrun = 1
-        vim.g.SingleCompile_silentcompileifshowquickfix = 1
-        vim.g.SingleCompile_showquickfixiferror = 1
+-- vim.api.nvim_create_autocmd("FileType", {
+--     callback = function()
+--         vim.g.SingleCompile_showresultafterrun = 1
+--         vim.g.SingleCompile_silentcompileifshowquickfix = 1
+--         vim.g.SingleCompile_showquickfixiferror = 1
 
-        vim.keymap.set("n", "<Leader>xc", ":SingleCompile-silentcompileifshowquickfix<CR>")
-        -- vim.keymap.set('n', "<Leader>xx", ":SCCompileRun<CR>");
-        vim.keymap.set("n", "<Leader>xc", ":SCCompile<CR>")
-        vim.keymap.set("n", "<Leader>xv", ":SCViewResult<CR>")
-        vim.keymap.set("n", "<Leader>xp", ":lua ChangeView('cp')<CR>")
-    end,
-    group = executeCommandGroups["c"],
-    pattern = { "c", "cpp", "rust", "python" },
-})
+--         vim.keymap.set("n", "<Leader>xc", ":SingleCompile-silentcompileifshowquickfix<CR>")
+--         -- vim.keymap.set('n', "<Leader>xx", ":SCCompileRun<CR>");
+--         vim.keymap.set("n", "<Leader>xc", ":SCCompile<CR>")
+--         vim.keymap.set("n", "<Leader>xv", ":SCViewResult<CR>")
+--         vim.keymap.set("n", "<Leader>xp", ":lua ChangeView('cp')<CR>")
+--     end,
+--     group = executeCommandGroups["c"],
+--     pattern = { "c", "cpp", "rust", "python" },
+-- })
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.keymap.set("n", "<Leader>xa", ":terminal")
@@ -158,8 +158,34 @@ vim.api.nvim_create_autocmd("FileType", {
     group = executeCommandGroups["arduino"],
     pattern = "arduino",
 })
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        -- Jupyter keybindings
+        -- Creating blocks
+        vim.keymap.set("n", "<Leader>oc", ":lua JupyterNewBlock('code', false)<CR>", { noremap = true, silent = true })
+        vim.keymap.set(
+            "n",
+            "<Leader>om",
+            ":lua JupyterNewBlock('markdown', false)<CR>",
+            { noremap = true, silent = true }
+        )
+        vim.keymap.set("n", "<Leader>Oc", ":lua JupyterNewBlock('code', true)<CR>", { noremap = true, silent = true })
+        vim.keymap.set(
+            "n",
+            "<Leader>Om",
+            ":lua JupyterNewBlock('markdown', true)<CR>",
+            { noremap = true, silent = true }
+        )
+        -- Executing code
+        vim.keymap.set("n", "<space>xx", "<Plug>JupyterExecute")
+        vim.keymap.set("n", "<space>X", "<Plug>JupyterExecuteAll")
+        vim.keymap.set("n", "<space>xr", "<Plug>JupyterRestart")
+    end,
+    group = executeCommandGroups[".sync.py"],
+    pattern = "python",
+})
 
-vim.keymap.set("n", "<Leader>xc", ":CompierOpen<CR>")
+vim.keymap.set("n", "<Leader>xc", ":CompilerOpen<CR>")
 vim.keymap.set("n", "<Leader>xf", ":OverseerRun<CR>")
 vim.keymap.set("n", "<Leader>xx", ":OverseerQuickAction restart<CR>")
 vim.keymap.set("n", "<Leader>xp", ":OverseerQuickAction open float<CR>")
