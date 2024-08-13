@@ -5,11 +5,30 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '[  %b ] '
 
+# Determines prompt modifier if and when a conda environment is active
+precmd_conda_info() {
+  if [[ -n $CONDA_DEFAULT_ENV ]] && [ "$CONDA_DEFAULT_ENV" != "base" ]; then
+    conda_info_msg_0_="[  $CONDA_DEFAULT_ENV ] "
+  else
+    conda_info_msg_0_=""
+  fi
+}
+precmd_functions+=( precmd_conda_info )
+
 autoload -U colors && colors	# Load colors
 setopt PROMPT_SUBST
-PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M ${vcs_info_msg_0_} %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-PROMPT='%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[red]%}${vcs_info_msg_0_}%{$fg[magenta]%} %~%{$fg[red]%}] $ %{$reset_color%}'
-# PS1="%B%{$fg[green]%}%{$bg[blue]%} %n %{$bg[magenta]%}%{$fg[yellow]%} %M \[\e[0;1;37;41m\]\$(echo_if_git '  ')\$(parse_git_branch)\$(echo_if_git ' ')\[\e[0;1;37;101m\]\$(echo_if_venv '   ')\$(parse_venv)\$(echo_if_venv ' ')\[\e[0;1;7;32;40m\] \$(parse_pwd) \[\e[0;1;31m\] $\[\e[0m\] "
+PROMPT_PARTS=(
+  '%B%{$fg[red]%}['
+  '%{$fg[yellow]%}%n'
+  '%{$fg[green]%}@'
+  '%{$fg[blue]%}%M '
+  '%{$fg[red]%}${vcs_info_msg_0_}'
+  '%{$fg[green]%}${conda_info_msg_0_}'
+  '%{$fg[magenta]%}%~'
+  '%{$fg[red]%}] $ '
+  '%{$reset_color%}'
+)
+PROMPT="${(j::)PROMPT_PARTS}"
 
 
 setopt autocd		# Automatically cd into typed directory.
@@ -31,7 +50,8 @@ SAVEHIST=400000
 ################################################################################
 #                               COMPLETIONS                                    #
 ################################################################################
-# 
+
+setopt nocaseglob
 autoload -Uz compinit
 zstyle :compinstall filename "$HOME/.config/zsh/.zshrc"
 zstyle ':completion:*' menu select
@@ -113,3 +133,19 @@ then
         source ${XDG_CONFIG_HOME}/zsh/tmux/${TMUX_SESSION_NAME}.zsh
     fi
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sbdaule/.local/share/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sbdaule/.local/share/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sbdaule/.local/share/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sbdaule/.local/share/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

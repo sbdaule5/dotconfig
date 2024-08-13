@@ -19,14 +19,15 @@ alias \
   lsa="ls -lA" \
 	:e="$EDITOR" \
 	v="$EDITOR" \
-	p="pacman" \
+	p="sudo pacman" \
 	z="zathura" \
   ysy="yay -Ss " \
   yiy="yay -Si " \
   yfy="yay -F " \
   cls="clear" \
 	py3="python3"\
-  ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
+	py3nv="pyenv"\
+	g="git"
 
 # Alternate config path to cleanup home directory
 alias \
@@ -34,13 +35,15 @@ alias \
   irssi="irssi --config=\"$XDG_CONFIG_HOME\"/irssi/config --home=\"$XDG_DATA_HOME\"/irssi" \
 	elinks="elinks --config-dir ${XDG_CONFIG_HOME}/elinks" \
 	irssi="irssi --home=${XDG_DATA_HOME}/irssi"\
-	arduino-cli="arduino-cli --config-file ${XDG_CONFIG_HOME}/arduino15/arduino-cli.yaml"
+	arduino-cli="arduino-cli --config-file ${XDG_CONFIG_HOME}/arduino15/arduino-cli.yaml"\
+  ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
 
 # Alias the apps that do not adhere to xdg specifications to use the NO_XDG_HOME instead
 alias \
   dart="HOME=$NO_XDG_HOME ~/project/dart" \
   flutter="HOME=$NO_XDG_HOME flutter" \
 
+alias lf="lfcd"
 
 # Prohibited commands to fix habits
 # alias \
