@@ -19,7 +19,7 @@ def run_command(command):
 
 
 socket_file = os.path.join(
-    "/tmp/hypr/", os.getenv("HYPRLAND_INSTANCE_SIGNATURE", ""), ".socket2.sock"
+    os.getenv("XDG_RUNTIME_DIR", "/tmp"), "hypr/", os.getenv("HYPRLAND_INSTANCE_SIGNATURE", ""), ".socket2.sock"
 )
 # print(socket_file)
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
