@@ -23,6 +23,5 @@ case "$url" in
 	*pdf)
 		zathura "$url" ;;
 	*)
-		readable -o /tmp/newsboat_article.html > /dev/null 2>&1 \
-		&& setsid -f qutebrowser /tmp/newsboat_article.html > /dev/null 2>&1 ;;
+		setsid -f qutebrowser "$url" > /dev/null 2>&1
 esac
