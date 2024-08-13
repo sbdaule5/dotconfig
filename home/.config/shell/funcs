@@ -108,3 +108,15 @@ function list_dirs {
 
 
 alias list_labels=list_dirs
+
+lfcd() {
+    dir=$(/usr/bin/lf -print-last-dir "$@")
+    while ! cd "$dir" 2> /dev/null
+    do
+        dir=$(dirname "$dir")
+    done
+}
+
+gr () {
+    cd "$(git rev-parse --show-toplevel 2>/dev/null)"
+}
