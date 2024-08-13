@@ -185,7 +185,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "python",
 })
 
-vim.keymap.set("n", "<Leader>xc", ":CompilerOpen<CR>")
+vim.keymap.set("n", "<Leader>xF", ":CompilerOpen<CR>")
 vim.keymap.set("n", "<Leader>xf", ":OverseerRun<CR>")
 vim.keymap.set("n", "<Leader>xx", ":OverseerQuickAction restart<CR>")
 vim.keymap.set("n", "<Leader>xp", ":OverseerQuickAction open float<CR>")

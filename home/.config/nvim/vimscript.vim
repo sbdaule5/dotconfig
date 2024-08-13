@@ -124,7 +124,8 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
 Plug 'lukas-reineke/cmp-rg'
-Plug 'L3MON4D3/LuaSnip'
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " Fuzzy completions
 Plug 'tzachar/fuzzy.nvim'
@@ -173,6 +174,7 @@ Plug 'mfussenegger/nvim-lint'
 Plug 'SmiteshP/nvim-navic'
 Plug 'Vigemus/iron.nvim'
 Plug 'Zeioth/compiler.nvim'
+Plug 'rafamadriz/friendly-snippets'
 
 " Plug 'preservim/tagbar'
 
