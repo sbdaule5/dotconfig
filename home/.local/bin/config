@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 function fz1() {
   local lines
@@ -25,6 +25,7 @@ config=(
 	'bash:.bashrc'
 	'config:.local/bin/config'
 	'dwm-6.4:.local/src/dwm-6.4/'
+	'hyprland:.config/hypr/'
 	'i3status:.config/i3status/'
 	'i3wm:.config/i3/'
 	'iamb:.config/iamb/config.json'
@@ -42,6 +43,7 @@ config=(
 	'startup:.local/bin/startup.sh'
 	'tmux:.config/tmux/tmux.conf'
 	'qutebrowser:.config/qutebrowser/config.py'
+	'waybar:.config/waybar/'
 	'zathura:.config/zathura/zathurarc'
 	'zsh:.config/zsh/.zshrc'
 )
