@@ -111,8 +111,9 @@ vim.keymap.set(
 
 vim.keymap.set("n", "cx", [["_c]])
 vim.keymap.set("n", "dx", [["_d]])
-vim.keymap.set("x", "<Leader>p", [["_p]])
-vim.keymap.set("x", "<Leader>P", [["_P]])
+-- Unused and gr does same
+-- vim.keymap.set("x", "<Leader>p", [["_p]])
+-- vim.keymap.set("x", "<Leader>P", [["_P]])
 
 -- gr for substitute
 vim.keymap.set("n", "gr", "<plug>(SubversiveSubstitute)")
@@ -157,33 +158,8 @@ vim.api.nvim_create_autocmd("FileType", {
     group = executeCommandGroups["arduino"],
     pattern = "arduino",
 })
-vim.api.nvim_create_autocmd("BufEnter", {
-    callback = function()
-        -- Jupyter keybindings
-        -- Creating blocks
-        vim.keymap.set("n", "<Leader>oc", ":lua JupyterNewBlock('code', false)<CR>", { noremap = true, silent = true })
-        vim.keymap.set(
-            "n",
-            "<Leader>om",
-            ":lua JupyterNewBlock('markdown', false)<CR>",
-            { noremap = true, silent = true }
-        )
-        vim.keymap.set("n", "<Leader>Oc", ":lua JupyterNewBlock('code', true)<CR>", { noremap = true, silent = true })
-        vim.keymap.set(
-            "n",
-            "<Leader>Om",
-            ":lua JupyterNewBlock('markdown', true)<CR>",
-            { noremap = true, silent = true }
-        )
-        -- Executing code
-        vim.keymap.set("n", "<space>xx", "<Plug>JupyterExecute")
-        vim.keymap.set("n", "<space>X", "<Plug>JupyterExecuteAll")
-        vim.keymap.set("n", "<space>xr", "<Plug>JupyterRestart")
-    end,
-    group = executeCommandGroups[".sync.py"],
-    pattern = "python",
-})
 
+vim.keymap.set("n", "<Leader>xc", ":CompierOpen<CR>")
 vim.keymap.set("n", "<Leader>xf", ":OverseerRun<CR>")
 vim.keymap.set("n", "<Leader>xx", ":OverseerQuickAction restart<CR>")
 vim.keymap.set("n", "<Leader>xp", ":OverseerQuickAction open float<CR>")

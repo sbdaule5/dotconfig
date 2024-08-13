@@ -172,6 +172,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ggandor/leap.nvim'
 Plug 'mfussenegger/nvim-lint'
 Plug 'SmiteshP/nvim-navic'
+Plug 'Vigemus/iron.nvim'
+Plug 'Zeioth/compiler.nvim'
 
 " Plug 'preservim/tagbar'
 

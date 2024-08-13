@@ -6,17 +6,15 @@ require("overseer").setup({
     dap = false,
     -- Configure the task list
     task_list = {
-        -- Default detail level for tasks. Can be 1-3.
+        direction = "bottom",
+        min_height = 20,
+        max_height = 25,
+        height = 0.20,
         default_detail = 1,
-        max_width = { 100, 0.2 },
-        min_width = { 40, 0.1 },
+        -- Default detail level for tasks. Can be 1-3.
         width = nil,
-        max_height = { 20, 0.1 },
-        min_height = 8,
-        height = nil,
         separator = "────────────────────────────────────────",
         -- Default direction. Can be "left", "right", or "bottom"
-        direction = "right",
         -- Set keymap to false to remove default behavior
         -- You can add custom keymaps here as well (anything vim.keymap.set accepts)
         bindings = {
@@ -191,3 +189,4 @@ require("overseer").setup({
         },
     },
 })
+require("compiler").setup()
