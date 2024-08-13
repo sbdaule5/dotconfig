@@ -120,5 +120,6 @@ map zd %du -h $f
 map zD %du -hc $fs
 map zf $dragon-drop -x $f
 map zF $dragon-drop -ax $fs
+map zR $massren $fs
 
 map zi $~/.config/lf/draw_img.sh "$f"
