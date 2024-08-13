@@ -22,7 +22,8 @@ cmp.setup({
         { name = "fuzzy_buffer" },
         { name = "nvim_lsp_signature_help" },
         { name = "vim-dadbod-completion" },
-        { name = 'nvim_lua' }
+        { name = "nvim_lua" },
+        { name = "vimtex" },
     }),
 })
 

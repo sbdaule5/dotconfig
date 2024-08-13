@@ -124,6 +124,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
 Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'micangl/cmp-vimtex'
 Plug 'lukas-reineke/cmp-rg'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 Plug 'saadparwaiz1/cmp_luasnip'
@@ -176,6 +177,7 @@ Plug 'SmiteshP/nvim-navic'
 Plug 'Vigemus/iron.nvim'
 Plug 'Zeioth/compiler.nvim'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'mfussenegger/nvim-dap-python'
 
 " Plug 'preservim/tagbar'
 
