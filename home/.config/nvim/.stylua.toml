@@ -1,3 +1,3 @@
 indent_type = "Spaces"
 indent_width = 4
-line_ending = "Unix"
+line_endings = "Unix"

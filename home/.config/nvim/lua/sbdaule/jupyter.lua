@@ -43,17 +43,17 @@
 function JupyterNewBlock(type, above)
     -- Move to the appropriate location
     if above then
-        vim.cmd "norm k"
+        vim.cmd("norm k")
     end
 
     -- Add separators
-    vim.cmd "norm o# %%"
+    vim.cmd("norm o# %%")
     if type == "markdown" then
-        vim.cmd "norm a [markdown]"
+        vim.cmd("norm a [markdown]")
     end
 
     -- Move to final position
-    vim.cmd "norm o# "
-    vim.cmd "norm $"
-    vim.cmd('startinsert')
+    vim.cmd("norm o# ")
+    vim.cmd("norm $")
+    vim.cmd("startinsert")
 end

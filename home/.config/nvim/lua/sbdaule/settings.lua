@@ -1,4 +1,4 @@
-vim.opt.encoding = 'UTF-8'
+vim.opt.encoding = "UTF-8"
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -8,7 +8,7 @@ vim.opt.wrap = false
 
 vim.opt.scrolloff = 5
 
-vim.opt.fdm = 'expr'
+vim.opt.fdm = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.foldlevel = 20
@@ -30,12 +30,12 @@ vim.opt.laststatus = 3
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.linebreak = true
-vim.opt.nrformats = 'alpha,hex,bin'
+vim.opt.nrformats = "alpha,hex,bin"
 vim.opt.wildmenu = true
-vim.opt.wildmode = 'list:longest,full'
+vim.opt.wildmode = "list:longest,full"
 vim.opt.compatible = false
-vim.cmd.syntax("on");
-vim.cmd.filetype("plugin", "on");
+vim.cmd.syntax("on")
+vim.cmd.filetype("plugin", "on")
 
 -- Disable netrw
 -- vim.g.loaded_netrw = 1
@@ -47,7 +47,7 @@ vim.opt.grepprg = "ag"
 vim.g.gitgutter_map_keys = 0
 
 -- Notes
-vim.g.vim_markdown_fenced_languages = { 'c', 'python', 'py=python', 'cpp', 'c++=cpp' }
+vim.g.vim_markdown_fenced_languages = { "c", "python", "py=python", "cpp", "c++=cpp" }
 vim.g.vim_markdown_follow_anchor = 1
 vim.g.vim_markdown_frontmatter = 1
 vim.g.vim_markdown_auto_insert_bullets = 1

@@ -6,12 +6,6 @@ vim.keymap.set("n", "<Leader>>", ":tabnext<CR>", { silent = true })
 vim.keymap.set("n", "<Leader><", ":tabprevious<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>w", "<C-w>", { silent = true })
 
--- These bindings will be handled by vim-tmux-navigate plugin
--- vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
--- vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
--- vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
--- vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
-
 vim.keymap.set("n", "<Leader>H", "<C-w>H", { noremap = true })
 vim.keymap.set("n", "<Leader>J", "<C-w>J", { noremap = true })
 vim.keymap.set("n", "<Leader>K", "<C-w>K", { noremap = true })
@@ -224,7 +218,7 @@ vim.keymap.set("n", "<Leader>vd", ":lua ChangeView('Dashboard')<CR>", { noremap 
 vim.keymap.set("n", "<Leader>vo", ":lua ChangeView('Overseer')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vt", ":lua ChangeView('Tagbar')<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>vb", ":lua ChangeView('db')<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>e", ":lua ViewFocusLeft()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>e", ":lua ViewFocusLeft()<CR>", { noremap = true, silent = true })
 
 -- Tab keybindings
 vim.keymap.set("n", "<Leader>td", ":tabe | Dashboard<CR>", { noremap = true })
