@@ -5,6 +5,7 @@ require("sbdaule.markdown")
 require("sbdaule.jupyter")
 require("sbdaule.gitlog")
 require("sbdaule.autocommands")
+require("sbdaule.options")
 
 local function reloadPluginConfigs()
     vim.cmd([[luafile ~/.config/nvim/after/plugin/ai.lua]])
@@ -36,6 +37,7 @@ local function Reload()
     vim.cmd([[luafile ~/.config/nvim/lua/sbdaule/markdown.lua]])
     vim.cmd([[luafile ~/.config/nvim/lua/sbdaule/settings.lua]])
     vim.cmd([[luafile ~/.config/nvim/lua/sbdaule/view.lua]])
+    vim.cmd([[luafile ~/.config/nvim/lua/sbdaule/options.lua]])
     reloadPluginConfigs()
 end
 

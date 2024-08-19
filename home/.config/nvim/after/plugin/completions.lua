@@ -17,6 +17,10 @@ cmp.setup({
     },
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
+        {
+            name = "lazydev",
+            group_index = 0,
+        },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "fuzzy_buffer" },
@@ -34,3 +38,5 @@ vim.keymap.set("i", "<C-L>", "<Cmd>lua require('cmp').complete_common_string()<C
 vim.keymap.set("i", "<C-Space>", "<Cmd>lua require('cmp').complete()<CR>", { silent = true })
 vim.keymap.set("i", "<C-j>", "<Cmd>lua require('luasnip').jump(1)<CR>", { silent = true })
 vim.keymap.set("i", "<C-k>", "<Cmd>lua require('luasnip').jump(-1)<CR>", { silent = true })
+
+require("lazydev").setup()

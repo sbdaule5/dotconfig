@@ -47,6 +47,15 @@ function ChangeView(view)
         vim.cmd(":DBUI")
         CurrentLeftView = view
     end
+    if view == "dap" then
+        vim.cmd(":UndotreeHide")
+        vim.cmd(":DBUI")
+        vim.cmd(":DBUIToggle")
+        vim.cmd(":NvimTreeClose")
+        vim.cmd(":UndotreeHide")
+        require("dapui").toggle()
+        CurrentLeftView = view
+    end
 end
 
 function ViewFocusLeft()

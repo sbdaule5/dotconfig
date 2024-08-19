@@ -155,3 +155,7 @@ require("fzf-lua").setup({
         min_width = 0.5,
     },
 })
+
+require("ufo").setup()
+require("outline").setup()
+require("headlines").setup()

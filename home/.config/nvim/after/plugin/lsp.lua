@@ -68,8 +68,14 @@ if xdg_config_home ~= nil then
 end
 
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
 local nvim_lsp = require("lspconfig")
+
+local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+lsp_capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+}
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 nvim_lsp.clangd.setup({
     capabilities = lsp_capabilities,
@@ -161,6 +167,10 @@ nvim_lsp.pylsp.setup({
             },
         },
     },
+})
+nvim_lsp.pyright.setup({
+    capabilities = lsp_capabilities,
+    handlers = handlers,
 })
 nvim_lsp.arduino_language_server.setup({
     capabilities = lsp_capabilities,

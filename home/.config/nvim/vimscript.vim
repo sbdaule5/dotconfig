@@ -178,6 +178,12 @@ Plug 'Vigemus/iron.nvim'
 Plug 'Zeioth/compiler.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'mfussenegger/nvim-dap-python'
+Plug 'kevinhwang91/promise-async'
+Plug 'kevinhwang91/nvim-ufo'
+Plug 'bullets-vim/bullets.vim'
+Plug 'folke/lazydev.nvim'
+Plug 'hedyhli/outline.nvim'
+Plug 'lukas-reineke/headlines.nvim'
 
 " Plug 'preservim/tagbar'
 
