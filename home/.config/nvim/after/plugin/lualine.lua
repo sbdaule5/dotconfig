@@ -2,6 +2,14 @@ local function myshiftwidth()
     return "󰌒  " .. tostring(vim.bo.shiftwidth)
 end
 
+local function spellstatus()
+    if vim.opt.spell:get() then
+        return " " .. vim.bo.spelllang
+    else
+        return ""
+    end
+end
+
 local navic = require("nvim-navic")
 
 require("lualine").setup({
@@ -50,7 +58,7 @@ require("lualine").setup({
                 return navic.get_location()
             end,
         },
-        lualine_x = { "encoding", "fileformat", "filetype", myshiftwidth },
+        lualine_x = { "encoding", "fileformat", "filetype", myshiftwidth, spellstatus },
         lualine_y = { "progress" },
         lualine_z = { "location" },
     },

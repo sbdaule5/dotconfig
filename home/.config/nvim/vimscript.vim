@@ -76,6 +76,14 @@ let g:flutter_command = "HOME=/home/sbdaule/.local/share/no-xdg-home flutter"
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <M-h> :<C-U>TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :<C-U>TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :<C-U>TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :<C-U>TmuxNavigateRight<cr>
+nnoremap <silent> <M-/> :<C-U>TmuxNavigatePrevious<cr>
+
 call plug#begin()
 " Essential plugins
 Plug 'tpope/vim-fugitive'
