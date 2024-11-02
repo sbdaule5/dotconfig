@@ -7,8 +7,12 @@ zstyle ':vcs_info:git:*' formats '[  %b ] '
 
 # Determines prompt modifier if and when a conda environment is active
 precmd_conda_info() {
-  if [[ -n $CONDA_DEFAULT_ENV ]] && [ "$CONDA_DEFAULT_ENV" != "base" ]; then
-    conda_info_msg_0_="[  $CONDA_DEFAULT_ENV ] "
+  if [[ -n $CONDA_DEFAULT_ENV ]]; then
+    if [ "$CONDA_DEFAULT_ENV" != "base" ]; then
+      conda_info_msg_0_="[  $CONDA_DEFAULT_ENV ] "
+    else
+      conda_info_msg_0_="[  ] "
+    fi
   else
     conda_info_msg_0_=""
   fi
@@ -42,6 +46,9 @@ setopt INC_APPEND_HISTORY
 setopt histignoredups
 setopt histignorespace
 setopt histexpiredupsfirst
+setopt appendhistory
+setopt INC_APPEND_HISTORY
+# setopt SHARE_HISTORY
 
 HISTFILE=${XDG_STATE_HOME:-~/.local/state}/zsh/history
 HISTSIZE=500000
@@ -119,20 +126,9 @@ setopt beep
 ################################################################################
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-################################################################################
-#                             CONFIG FOR TMUX SESSIONS                         #
-################################################################################
-if [ -n "$TMUX" ]
-then
-    TMUX_SESSION_NAME=$(tmux display-message -p '#S')
-    # Keep bash history of different tmux sessions seperate
-    export HISTFILE=${XDG_STATE_HOME:-~/.local/state}/zsh/tmux-history/${TMUX_SESSION_NAME}
-
-    # Load tmux session specific configs
-    if [ -f "${XDG_CONFIG_HOME}/zsh/tmux/${TMUX_SESSION_NAME}.zsh" ]; then
-        source ${XDG_CONFIG_HOME}/zsh/tmux/${TMUX_SESSION_NAME}.zsh
-    fi
-fi
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -148,4 +144,19 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+conda deactivate
 
+################################################################################
+#                             CONFIG FOR TMUX SESSIONS                         #
+################################################################################
+if [ -n "$TMUX" ]
+then
+    TMUX_SESSION_NAME=$(tmux display-message -p '#S')
+    # Keep bash history of different tmux sessions seperate
+    export HISTFILE=${XDG_STATE_HOME:-~/.local/state}/zsh/tmux-history/${TMUX_SESSION_NAME}
+
+    # Load tmux session specific configs
+    if [ -f "${XDG_CONFIG_HOME}/zsh/tmux/${TMUX_SESSION_NAME}.zsh" ]; then
+        source ${XDG_CONFIG_HOME}/zsh/tmux/${TMUX_SESSION_NAME}.zsh
+    fi
+fi
