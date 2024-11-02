@@ -1,5 +1,6 @@
 require("lint").linters_by_ft = {
     python = { "pylint" },
+    cmake = { "cmakelint" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {

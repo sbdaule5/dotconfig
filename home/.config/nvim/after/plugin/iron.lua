@@ -42,7 +42,7 @@ iron.setup({
         -- mark_visual = "<space>umc",
         -- remove_mark = "<space>umd",
         cr = "gi<cr>",
-        interrupt = "gix",
+        interrupt = "gi<C-c>",
         exit = "giq",
         clear = "gi<C-l>",
     },

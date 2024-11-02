@@ -157,5 +157,11 @@ require("fzf-lua").setup({
 })
 
 require("ufo").setup()
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
 require("outline").setup()
 require("headlines").setup()
+require('todotxt-nvim').setup({
+	todo_file = "~/notes/todo.txt",
+})

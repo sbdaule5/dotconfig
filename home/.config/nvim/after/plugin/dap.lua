@@ -62,3 +62,5 @@ dap.configurations.c = {
     cwd = '${workspaceFolder}'
   },
 }
+
+dap.configurations.cpp = dap.configurations.c

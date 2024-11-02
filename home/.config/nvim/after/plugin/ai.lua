@@ -1,7 +1,7 @@
 local gen = require("gen")
 
 gen.setup({
-    model = "mistral:instruct",
+    model = "llama3.1:latest",
     host = "localhost",
     port = "11434",
     display_mode = "float", -- The display mode. Can be "float" or "split".

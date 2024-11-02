@@ -13,5 +13,6 @@ require("conform").setup({
 
         c = { { "clang-format", "ast-grep" } },
         cpp = { { "clang-format", "ast-grep" } },
+        cmake = { "cmake_format" },
     },
 })

@@ -55,6 +55,8 @@ augroup NotesGroup
   " autocmd BufWritePre *.md * %s/\s\+$//e "Autoremove trailing whitespace
 augroup END
 
+autocmd BufRead *.gd set filetype=gdscript
+
 let g:wiki_journal = {
       \ 'name' : 'diary',
       \ 'frequency' : 'daily',

@@ -90,7 +90,7 @@ nvim_lsp.clangd.setup({
     },
 })
 
-nvim_lsp.tsserver.setup({ capabilities = lsp_capabilities, handlers = handlers })
+-- nvim_lsp.tsserver.setup({ capabilities = lsp_capabilities, handlers = handlers })
 nvim_lsp.emmet_ls.setup({ capabilities = lsp_capabilities, handlers = handlers })
 
 nvim_lsp.lua_ls.setup({
@@ -153,7 +153,7 @@ nvim_lsp.rust_analyzer.setup({
     },
 })
 
-nvim_lsp.tsserver.setup({ capabilities = lsp_capabilities, handlers = handlers })
+-- nvim_lsp.tsserver.setup({ capabilities = lsp_capabilities, handlers = handlers })
 nvim_lsp.pylsp.setup({
     capabilities = lsp_capabilities,
     handlers = handlers,
@@ -193,8 +193,10 @@ nvim_lsp.dotls.setup({ capabilities = lsp_capabilities, handlers = handlers })
 nvim_lsp.cmake.setup({ capabilities = lsp_capabilities, handlers = handlers })
 nvim_lsp.vimls.setup({ capabilities = lsp_capabilities, handlers = handlers })
 nvim_lsp.bashls.setup({ capabilities = lsp_capabilities, handlers = handlers })
+nvim_lsp.gdscript.setup(lsp_capabilities)
 -- nvim_lsp.java_language_server.setup { capabilities = lsp_capabilities, handlers = handlers }
 nvim_lsp.jdtls.setup({ capabilities = lsp_capabilities, handlers = handlers })
 nvim_lsp.hls.setup({ capabilities = lsp_capabilities, handlers = handlers, cmd = { "haskell-language-server" } })
+nvim_lsp.awk_ls.setup({ capabilities = lsp_capabilities, handlers = handlers , single_file_support = true, })
 
 -- nvim_lsp.ccls.setup { capabilities = lsp_capabilities, handlers = handlers }
