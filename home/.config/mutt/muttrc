@@ -6,9 +6,9 @@ set abort_nosubject = no
 set mail_check = 60
 set timeout = 10
 set sort = "threads"
-set sort_aux = "reverse-date-received"
+set sort_aux = "reverse-last-date-received"
 set copy = no
-set index_format="%2C %Z %?X?󰁦 &  ? %D %-15.15F %?M?-> ?%s (%-4.4c)"
+# set index_format="%2C %Z %?X?󰁦 &  ? %D %-15.15F %?M?-> ?%s (%-4.4c)"
 
 alternative_order text/plain text text/html
 auto_view image/jpeg
@@ -30,7 +30,7 @@ bind index <esc>V noop
 bind index <esc>v noop
 bind index \Cn noop
 bind index \Cp noop
-bind pager,index g noop
+# bind pager,index g noop
 
 bind alias,index,browser,query G last-entry
 bind pager G bottom
@@ -143,7 +143,7 @@ color status   bold green    color239  " *[0-9]+ "
 color status   bold red      color239  " *[0-9]+ "
 color status   bold yellow   color239  "󰈽 *[0-9]+ "
 color status   bold magenta  color239  " *[0-9]+ "
-color status   bold color255 color239 " 󰊫  [^ ]* / "
+color status   bold color255 color239 " 󰊫  =.* / "
 color status   bold color255 color239 " [0-9]+% "
 color status   bold color236 color7 " NeoMutt $"
 color status   bold color236 color7 "^ Index "
@@ -161,9 +161,9 @@ color index_author  brightmagenta default "~N"
 color index_subject brightgreen   default "~N"
 
 # Tagged mail is highlighted:
-color index         brightblue    brightyellow "~T"
-color index_author  brightmagenta brightyellow "~T"
-color index_subject brightgreen   brightyellow "~T"
+color index         brightblue    color8 "~T"
+color index_author  brightmagenta color8 "~T"
+color index_subject brightgreen   color8 "~T"
 
 # Flagged mail is highlighted:
 color index         brightred default "~F"
