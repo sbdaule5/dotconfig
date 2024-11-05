@@ -31,6 +31,7 @@ export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
 export PYTHONUSERBASE=$XDG_DATA_HOME/python
+export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
 export GRB_LICENSE_FILE="$XDG_DATA_HOME/gurobi.lic"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
@@ -39,6 +40,8 @@ export MAILCAPS="$XDG_CONFIG_HOME/mailcap:/usr/share/neomutt/mailcap"
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export PNPM_HOME=$XDG_DATA_HOME/pnpm
 export GHCUP_USE_XDG_DIRS=true
+export STACK_ROOT="$XDG_DATA_HOME"/stack
+export STACK_XDG=1
 export GEM_HOME="$(gem env user_gemhome)"
 export PATH="$PATH:$GEM_HOME/bin"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
@@ -51,11 +54,12 @@ export RANDFILE="$XDG_STATE_HOME"/rnd
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export LEIN_HOME="$XDG_DATA_HOME/lein"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 export OLLAMA_MODELS="$XDG_DATA_HOME/ollama/models"
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export KONAN_DATA_DIR="$XDG_CONFIG_HOME"/konan
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 # export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
 # export UNISON="$XDG_DATA_HOME/unison"
@@ -82,7 +86,7 @@ export FZF_DEFAULT_COMMAND='bfs . -type d \( -name .cache -o -name caches -o -na
 # [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && setsid shortcuts >/dev/null 2>&1
 
 function startserv(){
-  sessions=( 'dwm' 'sddm' 'hyprland')
+  sessions=( 'dwm' 'sddm' 'hyprland' 'cosmic')
   select session in "${sessions[@]}"; do
     if [ "$session" = 'dwm' ]; then
       exec startx "$XINITRC"
@@ -90,6 +94,8 @@ function startserv(){
       systemctl start sddm
     elif [ "$session" = "hyprland" ]; then
       exec Hyprland
+    elif [ "$session" = "cosmic" ]; then
+      exec start-cosmic
     fi
     break
   done

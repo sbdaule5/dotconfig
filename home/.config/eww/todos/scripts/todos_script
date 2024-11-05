@@ -1,0 +1,27 @@
+#!/bin/bash
+
+list() {
+  AWK_SCRIPT='{if(NF == 0){next}content=$4; for(i=5;i<=NF;i++){content=content " " $i}; print "(button :onclick \"scripts/todos_script --edit " $3 "\" (label :class \"todo-item\" :halign \"start\" :text \"" content "\"))"}'
+  echo -n '(box :class "todo-container" :orientation "v" :spacing 5 :valign "top" :halign "top" :space-evenly "true" :vexpand "false" :hexpand "true"'
+  todo list --sort due,priority Personal --priority low | awk -v list_name=Personal -f scripts/todos_literal_yuck.awk
+  todo list --sort due,priority Configs --priority medium| awk -v list_name=Configs -f scripts/todos_literal_yuck.awk
+  echo -n ")"
+}
+
+add() {
+  kitty --detach --class "float" -T "New Task" -e "todo" "new"
+}
+
+edit() {
+  kitty --detach --class "float" -T "New Task" -e "todo" "edit" "$1"
+}
+
+if [ -z "$1" ]; then
+  list;
+elif [ "$1" = --add ]; then
+  add;
+elif [ "$1" = --edit ]; then
+  edit $2;
+else
+  notify-send "Unknown input"
+fi

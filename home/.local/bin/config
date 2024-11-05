@@ -61,7 +61,8 @@ file=$(echo -n ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}' 
 
 if [[ -n $file ]]
 then
-	nvim $BASE/$file
+	cd "$BASE"
+	nvim "$file"
 else
 	echo "No such config"
 fi

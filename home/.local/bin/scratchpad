@@ -27,12 +27,12 @@ then
 
 	elif [[ $2 == "notepad" ]]
 	then
-
+		cd "$HOME/notes/"
 		if [ "$DESKTOP_SESSION" == "i3" ]; then
-			i3-msg exec 'alacritty --class="Alacritty:Notepad" -o font.size=9.0 -e nvim --listen /tmp/nvim-notepad notes/diary/`date +%Y-%m-%d`.md'
+			i3-msg exec 'alacritty --class="Alacritty:Notepad" --title="Notepad" -o font.size=9.0 -e nvim --listen /tmp/nvim-notepad notes/diary/`date +%Y-%m-%d`.md'
 		else
-			# alacritty --class="Alacritty:Notepad" -T "Notepad" -o font.size=9.0 -e nvim notes/diary/`date +%Y-%m-%d`.md
-			st -c "st:Notepad" -t Notepad -e nvim --listen /tmp/nvim-notepad notes/diary/`date +%Y-%m-%d`.md
+			# alacritty --class="Alacritty:Notepad" -T "Notepad" -o font.size=9.0 -e nvim diary/`date +%Y-%m-%d`.md
+			alacritty --class "Alacritty:Notepad" --title Notepad -e nvim --listen /tmp/nvim-notepad diary/`date +%Y-%m-%d`.md
 		fi
 
 		notify-send "Notepad created" -a Scratchpad
