@@ -42,7 +42,7 @@ try:
             or data.find("workspacev2>>") != -1
             or data.find("closewindow>>") != -1
         ):
-            result = run_command("hyprctl -j -r activeworkspace | jq '.windows'")
+            result = run_command("hyprctl -j activeworkspace | jq '.windows'")
             print(f"{json.dumps(result, indent=2)}", flush=True)
             # f = open("/tmp/tp.log", "w")
             # f.write(json.dumps(result, indent=2))
