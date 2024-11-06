@@ -10,7 +10,24 @@ return { -- Highlight, edit, and navigate code
   },
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
   opts = {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'javascript', 'typescript' },
+    ensure_installed = {
+      'bash',
+      'c',
+      'cpp',
+      'python',
+      'sql',
+      'diff',
+      'html',
+      'lua',
+      'luadoc',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'vim',
+      'vimdoc',
+      'javascript',
+      'typescript',
+    },
 
     sync_install = false,
     auto_install = false,

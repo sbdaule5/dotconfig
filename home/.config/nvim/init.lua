@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = false
-vim.opt.encoding = "UTF-8"
+vim.opt.encoding = 'UTF-8'
 
 -- [[ Setting options ]]
 vim.opt.number = true
@@ -11,11 +11,11 @@ vim.opt.relativenumber = true
 
 vim.opt.mouse = 'a'
 
-vim.opt.fdm = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.fdm = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false
 vim.opt.foldlevel = 20
-vim.opt.foldcolumn = "1"
+vim.opt.foldcolumn = '1'
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -32,7 +32,7 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.local/state/nvim/undodir"
+vim.opt.undodir = os.getenv 'HOME' .. '/.local/state/nvim/undodir'
 vim.opt.undofile = true
 
 vim.opt.ignorecase = true
@@ -59,10 +59,10 @@ vim.opt.splitbelow = true
 -- vim.opt.wildmenu = true
 -- vim.opt.wildmode = "list:longest,full"
 -- vim.opt.compatible = false
-vim.cmd.syntax("on")
-vim.cmd.filetype("plugin", "on")
+vim.cmd.syntax 'on'
+vim.cmd.filetype('plugin', 'on')
 
-vim.opt.grepprg = "ag"
+vim.opt.grepprg = 'ag'
 
 vim.g.gitgutter_map_keys = 0
 
@@ -144,7 +144,8 @@ require('lazy').setup({
   },
 })
 
-require('sbdaule.keybindings')
+require 'sbdaule.keybindings'
+require 'sbdaule.core'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

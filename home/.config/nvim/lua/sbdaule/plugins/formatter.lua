@@ -31,6 +31,9 @@ return {
       svelte = { { 'prettierd', 'prettier' } },
       haskell = { 'fourmolu' },
 
+      bash = { 'beautysh' },
+      sh = { 'beautysh' },
+
       c = { { 'clang-format', 'ast-grep' } },
       cpp = { { 'clang-format', 'ast-grep' } },
       cmake = { 'cmake_format' },

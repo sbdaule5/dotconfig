@@ -113,6 +113,8 @@ return {
       vim.keymap.set('i', '<C-Space>', "<Cmd>lua require('cmp').complete()<CR>", { silent = true })
       vim.keymap.set('i', '<C-j>', "<Cmd>lua require('luasnip').jump(1)<CR>", { silent = true })
       vim.keymap.set('i', '<C-k>', "<Cmd>lua require('luasnip').jump(-1)<CR>", { silent = true })
+      vim.keymap.set('i', '<C-h>', "<Cmd>lua require('luasnip').change_choice()<CR>", { silent = true })
+      vim.keymap.set('i', '<C-l>', "<Cmd>lua require('luasnip').change_choice(1)<CR>", { silent = true })
     end,
   },
 }

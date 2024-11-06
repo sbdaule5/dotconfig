@@ -19,7 +19,7 @@ end
 return {
   'nvim-tree/nvim-tree.lua',
   keys = {
-    {"<leader>vf", "<cmd>NvimTreeToggle<cr>"}
+    { '<leader>vf', '<cmd>NvimTreeToggle<cr>' },
   },
   opts = {
     view = {

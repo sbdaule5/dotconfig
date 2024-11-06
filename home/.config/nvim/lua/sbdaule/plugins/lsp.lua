@@ -138,6 +138,9 @@ return {
             '--clang-tidy',
             '--malloc-trim',
           },
+          on_attach = function()
+            vim.keymap.set('n', '<Leader>bh', ':ClangdSwitchSourceHeader<CR>', { noremap = true })
+          end,
         },
         -- gopls = {},
         pyright = {},
@@ -232,8 +235,8 @@ return {
         { '▏', 'FloatBorder' },
       }
       local handlers = {
-          ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-          ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+        ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+        ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
       }
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

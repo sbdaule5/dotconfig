@@ -1,8 +1,6 @@
 -- myconfig = require 'sbdaule'
 myconfig = {
-  reload = function ()
-  end
-
+  reload = function() end,
 }
 return {
   'nvimdev/dashboard-nvim',
@@ -71,14 +69,14 @@ return {
           key = 'r',
           key_hl = 'Number',
           action = 'myconfig.reload()',
-        {
-          icon = '󰒲 ',
-          desc = 'Lazy',
-          desc_hl = 'String',
-          key = 'l',
-          key_hl = 'Number',
-          action = 'Lazy',
-        },
+          {
+            icon = '󰒲 ',
+            desc = 'Lazy',
+            desc_hl = 'String',
+            key = 'l',
+            key_hl = 'Number',
+            action = 'Lazy',
+          },
         },
         {
           icon = '󰿅  ',

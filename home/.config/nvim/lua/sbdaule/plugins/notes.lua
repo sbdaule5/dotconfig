@@ -1,9 +1,68 @@
+function addCalloutSnips(callouts)
+  -- add snippets for Obsidian callouts
+  local ls = require 'luasnip'
+  -- some shorthands...
+  local s = ls.snippet
+  local sn = ls.snippet_node
+  local t = ls.text_node
+  local i = ls.insert_node
+  local f = ls.function_node
+  local c = ls.choice_node
+  local d = ls.dynamic_node
+  local r = ls.restore_node
+  local l = require('luasnip.extras').lambda
+  local rep = require('luasnip.extras').rep
+  local p = require('luasnip.extras').partial
+  local m = require('luasnip.extras').match
+  local n = require('luasnip.extras').nonempty
+  local dl = require('luasnip.extras').dynamic_lambda
+  local fmt = require('luasnip.extras.fmt').fmt
+  local fmta = require('luasnip.extras.fmt').fmta
+  local types = require 'luasnip.util.types'
+  local conds = require 'luasnip.extras.conditions'
+  local conds_expand = require 'luasnip.extras.conditions.expand'
+
+  -- individual snippets
+  for k, v in pairs(callouts) do
+    if not v.nosnippet then
+      ls.add_snippets('markdown', {
+        s(k, {
+          t { '> ' .. v.raw .. ' ' },
+          i(1),
+          t { '', '> ' },
+          i(2),
+        }),
+        s(k, {
+          t { '> ' .. v.raw .. ' ' },
+          i(1),
+        }),
+      })
+    end
+  end
+
+  local raws = {}
+  for _, v in pairs(callouts) do
+    table.insert(raws, t(v.raw))
+  end
+  print(raws)
+
+  -- unified snippet
+  ls.add_snippets('markdown', {
+    s('callouts', {
+      t { '> ' },
+      c(1, raws),
+      t { ' ' },
+      i(2),
+      t { '', '> ' },
+      i(3),
+    }),
+  })
+end
+
 return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons', 'L3MON4D3/LuaSnip' },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
@@ -62,7 +121,7 @@ return {
         position = 'right',
         -- Amount of padding to add around the language
         -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
-        language_pad = 0,
+        language_pad = 1,
         -- Whether to include the language name next to the icon
         language_name = true,
         -- A list of language names for which background highlighting will be disabled
@@ -78,7 +137,7 @@ return {
         left_margin = 0,
         -- Amount of padding to add to the left of code blocks
         -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
-        left_pad = 2,
+        left_pad = 1,
         -- Amount of padding to add to the right of code blocks when width is 'block'
         -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
         right_pad = 2,
@@ -199,14 +258,13 @@ return {
         filler = 'RenderMarkdownTableFill',
       },
       callout = {
-        note = { raw = '[!NOTE]', rendered = '󰋽 Note', highlight = 'RenderMarkdownInfo' },
-        tip = { raw = '[!TIP]', rendered = '󰌶 Tip', highlight = 'RenderMarkdownSuccess' },
-        important = { raw = '[!IMPORTANT]', rendered = '󰅾 Important', highlight = 'RenderMarkdownHint' },
-        warning = { raw = '[!WARNING]', rendered = '󰀪 Warning', highlight = 'RenderMarkdownWarn' },
-        caution = { raw = '[!CAUTION]', rendered = '󰳦 Caution', highlight = 'RenderMarkdownError' },
+        note = { raw = '[!NOTE]', rendered = '󰋽 Note', highlight = 'RenderMarkdownInfo', nosnippet = true },
+        tip = { raw = '[!TIP]', rendered = '󰌶 Tip', highlight = 'RenderMarkdownSuccess', nosnippet = true },
+        important = { raw = '[!IMPORTANT]', rendered = '󰅾 Important', highlight = 'RenderMarkdownHint', nosnippet = true },
+        warning = { raw = '[!WARNING]', rendered = '󰀪 Warning', highlight = 'RenderMarkdownWarn', nosnippet = true },
+        caution = { raw = '[!CAUTION]', rendered = '󰳦 Caution', highlight = 'RenderMarkdownError', nosnippet = true },
         -- Obsidian: https://help.obsidian.md/Editing+and+formatting/Callouts
         abstract = { raw = '[!ABSTRACT]', rendered = '󰨸 Abstract', highlight = 'RenderMarkdownInfo' },
-        defination = { raw = '[!DEFINATION]', rendered = '󰨸 Defination', highlight = 'RenderMarkdownInfo' },
         summary = { raw = '[!SUMMARY]', rendered = '󰨸 Summary', highlight = 'RenderMarkdownInfo' },
         tldr = { raw = '[!TLDR]', rendered = '󰨸 Tldr', highlight = 'RenderMarkdownInfo' },
         info = { raw = '[!INFO]', rendered = '󰋽 Info', highlight = 'RenderMarkdownInfo' },
@@ -228,6 +286,8 @@ return {
         example = { raw = '[!EXAMPLE]', rendered = '󰉹 Example', highlight = 'RenderMarkdownHint' },
         quote = { raw = '[!QUOTE]', rendered = '󱆨 Quote', highlight = 'RenderMarkdownQuote' },
         cite = { raw = '[!CITE]', rendered = '󱆨 Cite', highlight = 'RenderMarkdownQuote' },
+        -- My custom callouts
+        defination = { raw = '[!DEFINATION]', rendered = '󰨸 Defination', highlight = 'RenderMarkdownInfo' },
       },
       link = {
         -- TODO: Expand this section as needed
@@ -253,6 +313,19 @@ return {
         skip_heading = true,
       },
     },
+    init = function()
+      vim.g.vim_markdown_fenced_languages = { 'c', 'python', 'py=python', 'cpp', 'c++=cpp', 'sql' }
+      vim.g.vim_markdown_follow_anchor = 1
+      vim.g.vim_markdown_frontmatter = 1
+      vim.g.vim_markdown_auto_insert_bullets = 1
+      vim.g.vim_markdown_new_list_item_indent = 4
+      vim.g.vim_markdown_no_extensions_in_markdown = 1
+      vim.g.vim_markdown_borderless_table = 1
+      vim.g.vim_markdown_override_foldtext = 1
+      vim.g.vim_markdown_toc_autofit = 1
+      vim.g.vim_markdown_math = 1
+      vim.g.vim_markdown_follow_anchor = 1
+    end,
     config = function(_, opts)
       require('render-markdown').setup(opts)
       vim.api.nvim_create_autocmd('BufEnter', {
@@ -260,9 +333,9 @@ return {
         pattern = { '*.md' },
         callback = function()
           require('render-markdown').enable()
-          vim.notify 'Started render md'
         end,
       })
+      addCalloutSnips(opts.callout)
     end,
   },
 }

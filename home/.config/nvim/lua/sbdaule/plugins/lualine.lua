@@ -10,6 +10,14 @@ local function spellstatus()
   end
 end
 
+local function diffstatus()
+  if vim.wo.diff then
+    return ' diff'
+  else
+    return ''
+  end
+end
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -71,7 +79,14 @@ return {
             return require('nvim-navic').get_location()
           end,
         },
-        lualine_x = { 'encoding', 'fileformat', 'filetype', myshiftwidth, spellstatus },
+        lualine_x = {
+          'encoding',
+          'fileformat',
+          'filetype',
+          myshiftwidth,
+          spellstatus,
+          diffstatus,
+        },
         lualine_y = { 'progress' },
         lualine_z = { 'location' },
       },

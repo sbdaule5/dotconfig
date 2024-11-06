@@ -73,10 +73,10 @@ return {
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[B] Find existing buffers' })
       vim.keymap.set('n', '<leader>bb', builtin.buffers, { desc = '[B] Find existing buffers' })
 
-      vim.keymap.set("n", "<Leader>fgc", builtin.git_commits, { noremap = true })
-      vim.keymap.set("n", "<Leader>fgb", builtin.git_bcommits, { noremap = true })
-      vim.keymap.set("n", "<Leader>fgf", builtin.git_files, { noremap = true })
-      vim.keymap.set("n", "<Leader>fgs", builtin.git_status, { noremap = true })
+      vim.keymap.set('n', '<Leader>fgc', builtin.git_commits, { noremap = true })
+      vim.keymap.set('n', '<Leader>fgb', builtin.git_bcommits, { noremap = true })
+      vim.keymap.set('n', '<Leader>fgf', builtin.git_files, { noremap = true })
+      vim.keymap.set('n', '<Leader>fgs', builtin.git_status, { noremap = true })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()

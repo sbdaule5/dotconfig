@@ -51,7 +51,6 @@ return {
   -- 'thosakwe/vim-flutter',
   -- 'mipmip/vim-scimark',
   -- 'diepm/vim-rest-console',
-  -- 'toppair/peek.nvim', { 'do': 'deno task --quiet build:fast' }
   {
     'toppair/peek.nvim',
     event = { 'VeryLazy' },
@@ -102,8 +101,6 @@ return {
     end,
   },
   -- 'godlygeek/tabular',
-  --
-  -- 'nvim-telescope/telescope-ui-select.nvim',
   {
     'christoomey/vim-tmux-navigator',
     cmd = {
@@ -131,8 +128,6 @@ return {
   -- 'elkowar/yuck.vim',
   'sevko/vim-nand2tetris-syntax',
   --
-  -- '3rd/image.nvim',
-  -- 'HakonHarnes/img-clip.nvim',
   -- 'benlubas/molten-nvim',
   -- 'quarto-dev/quarto-nvim',
   -- 'jmbuhr/otter.nvim',
