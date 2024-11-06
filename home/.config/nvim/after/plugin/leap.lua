@@ -1,5 +1,0 @@
-require("leap")
-vim.keymap.set("n", "gl", "<Plug>(leap)")
-vim.keymap.set("n", "gL", "<Plug>(leap-from-window)")
-vim.keymap.set({ "x", "o" }, "gl", "<Plug>(leap-forward)")
-vim.keymap.set({ "x", "o" }, "gL", "<Plug>(leap-backward)")
