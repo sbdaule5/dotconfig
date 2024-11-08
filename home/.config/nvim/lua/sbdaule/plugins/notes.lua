@@ -44,7 +44,6 @@ function addCalloutSnips(callouts)
   for _, v in pairs(callouts) do
     table.insert(raws, t(v.raw))
   end
-  print(raws)
 
   -- unified snippet
   ls.add_snippets('markdown', {
