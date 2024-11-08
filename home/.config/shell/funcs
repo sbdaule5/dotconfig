@@ -1,31 +1,39 @@
 #!/bin/sh
 
 function pyenv(){
-	base_dir="$1"
-	if [ -z "$1" ]; then
-		base_dir="venv"
-	fi
-  activate_script="${base_dir}/bin/activate"
+    base_dir="$1"
+    if [ -z "$1" ]; then
+        base_dir="venv"
+    fi
+    activate_script="${base_dir}/bin/activate"
 
-	if [ -f "${activate_script}" ]; then
-		source "${activate_script}"
-	else
-		echo "File ${activate_script} not found"
-	fi
+    if [ -f "${activate_script}" ]; then
+        source "${activate_script}"
+    else
+        echo "File ${activate_script} not found"
+    fi
+}
+
+ta() {
+    if pgrep -x 'tmux' > /dev/null; then
+        tmux;
+    else
+        tmux a;
+    fi
 }
 
 STORE_FILE="${XDG_STATE_HOME:-~/.local/state}"/dirs
 
 function fz1() {
-  local lines
-  lines=$(cat | fzf --filter="$1" --no-sort)
-  if [ -z "$lines" ]; then
-    return 1
-  elif [ $(wc -l <<< "$lines") -eq 1 ]; then
-    echo "$lines"
-  else
-    echo "$lines" | fzf --query="$1"
-  fi
+    local lines
+    lines=$(cat | fzf --filter="$1" --no-sort)
+    if [ -z "$lines" ]; then
+        return 1
+    elif [ $(wc -l <<< "$lines") -eq 1 ]; then
+        echo "$lines"
+    else
+        echo "$lines" | fzf --query="$1"
+    fi
 }
 
 function goto_dirs {
@@ -84,7 +92,7 @@ function mark {
 
     local label_exists=$(grep "^$1 " $STORE_FILE)
     local current_path=$(pwd)
-    
+
     if [ -z "$label_exists" ]; then
         echo "$1 $current_path" >> $STORE_FILE
     else
