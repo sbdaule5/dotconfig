@@ -298,6 +298,9 @@ return {
         highlight = 'RenderMarkdownLink',
         wiki = { icon = '󱗖 ', highlight = 'RenderMarkdownWikiLink' },
         custom = {
+          github = { pattern = '^http[s]?://github.com/.*', icon = ' ', highlight = 'RenderMarkdownLink' },
+          reddit = { pattern = '^http[s]?://reddit.com/.*', icon = '󰑍 ', highlight = 'RenderMarkdownLink' },
+          cppreference = { pattern = '^http[s]?://en.cppreference.com/.*', icon = ' ', highlight = 'RenderMarkdownLink' },
           web = { pattern = '^http[s]?://', icon = '󰖟 ', highlight = 'RenderMarkdownLink' },
         },
       },

@@ -204,5 +204,13 @@ return {
       require('overseer').setup(opts)
     end,
   },
+  { -- This plugin
+    'Zeioth/compiler.nvim',
+    cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
+    dependencies = { 'stevearc/overseer.nvim', 'nvim-telescope/telescope.nvim' },
+    opts = {},
+    init = function()
+      vim.keymap.set('n', '<Leader>xF', '<cmd>CompilerOpen<CR>')
+    end,
+  },
 }
--- require("compiler").setup()

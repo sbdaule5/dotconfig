@@ -120,7 +120,6 @@ return {
   },
 
   -- 'David-Kunz/gen.nvim',
-  -- 'Zeioth/compiler.nvim',
   -- 'bullets-vim/bullets.vim',
   -- 'normen/vim-pio',
   -- 'preservim/vim-markdown',

@@ -9,6 +9,7 @@ vim.keymap.set({ 'n', 'v' }, '<Leader>cy', [["+y]], { noremap = true, silent = t
 vim.keymap.set({ 'n', 'v' }, '<Leader>cY', [["+y$]], { noremap = true, silent = true })
 
 vim.keymap.set('v', '<leader>y', [["+y]])
+vim.keymap.set('v', '<leader>yy', [["+yy]])
 vim.keymap.set('n', 'yc', [["+y]])
 vim.keymap.set('n', 'ycc', [["+yy]])
 vim.keymap.set('n', 'yC', [["+y$]])
