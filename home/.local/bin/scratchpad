@@ -1,64 +1,61 @@
 #!/usr/bin/bash
 
+notepad() {
+    cd "$HOME/notes/" || notify-send "Failed to open directory $HOME/notes"
+    if [ "$DESKTOP_SESSION" == "i3" ]; then
+        i3-msg exec 'alacritty --class="Alacritty:Notepad" --title="Notepad" -o font.size=9.0 -e nvim --listen /tmp/nvim-notepad notes/diary/`date +%Y-%m-%d`.md'
+    else
+        # alacritty --class="Alacritty:Notepad" -T "Notepad" -o font.size=9.0 -e nvim diary/`date +%Y-%m-%d`.md
+        kitty --class "Kitty:Notepad" --title Notepad -e nvim --listen /tmp/nvim-notepad diary/`date +%Y-%m-%d`.md
+    fi
+
+    notify-send "Notepad created" -a Scratchpad
+
+}
+
 if [[ $1 == "start" ]]
 then
-	if [[ $2 == "reading" ]]
-	then
+    if [[ $2 == "reading" ]]
+    then
+        if [[ -a /tmp/readingpad ]]
+        then
+            rm /tmp/readingpad
+        fi
+        mkfifo /tmp/readingpad
+        chmod o-r /tmp/readingpad
+        notify-send "Reading panel created" -a Scratchpad
 
-		if [[ -a /tmp/readingpad ]]
-		then
-			rm /tmp/readingpad
-		fi
-		mkfifo /tmp/readingpad
-		chmod o-r /tmp/readingpad
-		notify-send "Reading panel created" -a Scratchpad
+        # i3-msg exec 'alacritty --class="Alacritty:Reading" -e bat --style="plain" -l man < /tmp/readingpad'
+        if [ "$DESKTOP_SESSION" == "i3" ]; then
+            i3-msg exec 'alacritty --class="Alacritty:Reading" -e less -r -f /tmp/readingpad'
+        else
+            alacritty --class="Alacritty:Reading" -e less -r -f /tmp/readingpad
+        fi
 
-		# i3-msg exec 'alacritty --class="Alacritty:Reading" -e bat --style="plain" -l man < /tmp/readingpad'
-		if [ "$DESKTOP_SESSION" == "i3" ]; then
-			i3-msg exec 'alacritty --class="Alacritty:Reading" -e less -r -f /tmp/readingpad'
-		else
-			alacritty --class="Alacritty:Reading" -e less -r -f /tmp/readingpad
-		fi
+        if [[ -a "$HOME/.config/readingpanel/welcome" ]]
+        then
+            cat $HOME/.config/readingpanel/welcome > /tmp/readingpad
+        fi
 
-		if [[ -a "$HOME/.config/readingpanel/welcome" ]]
-		then
-			cat $HOME/.config/readingpanel/welcome > /tmp/readingpad
-		fi
-
-	elif [[ $2 == "notepad" ]]
-	then
-		cd "$HOME/notes/"
-		if [ "$DESKTOP_SESSION" == "i3" ]; then
-			i3-msg exec 'alacritty --class="Alacritty:Notepad" --title="Notepad" -o font.size=9.0 -e nvim --listen /tmp/nvim-notepad notes/diary/`date +%Y-%m-%d`.md'
-		else
-			# alacritty --class="Alacritty:Notepad" -T "Notepad" -o font.size=9.0 -e nvim diary/`date +%Y-%m-%d`.md
-			alacritty --class "Alacritty:Notepad" --title Notepad -e nvim --listen /tmp/nvim-notepad diary/`date +%Y-%m-%d`.md
-		fi
-
-		notify-send "Notepad created" -a Scratchpad
-
-	elif [[ $2 == "tgpt" ]]
-	then
-
-		notify-send "Chat panel created" -a Scratchpad
-		if [ "$DESKTOP_SESSION" == "i3" ]; then
-			i3-msg exec 'alacritty --class="Alacritty:Chat" -o font.size=9.0 -e tgpt -m'
-		else
-			alacritty --class="Alacritty:Chat" -o font.size=9.0 -e tgpt -m
-		fi
-
-	fi
+    elif [[ $2 == "notepad" ]]
+    then
+        notepad
+    elif [[ $2 == "tgpt" ]]
+    then
+        notify-send "Chat panel created" -a Scratchpad
+        if [ "$DESKTOP_SESSION" == "i3" ]; then
+            i3-msg exec 'alacritty --class="Alacritty:Chat" -o font.size=9.0 -e tgpt -m'
+        else
+            alacritty --class="Alacritty:Chat" -o font.size=9.0 -e tgpt -m
+        fi
+    fi
 elif [[ $1 == "print" ]]
 then
-	if [[ $2 == "reading" ]]
-	then
-
-		echo "$3" > /tmp/readingpad
-
-	elif [[ $2 == "notepad" ]]
-	then
-
-		notify-send "Can not print to notepad" -a Scratchpad
-
-	fi
+    if [[ $2 == "reading" ]]
+    then
+        echo "$3" > /tmp/readingpad
+    elif [[ $2 == "notepad" ]]
+    then
+        notify-send "Can not print to notepad" -a Scratchpad
+    fi
 fi
