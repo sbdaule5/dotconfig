@@ -299,6 +299,7 @@ return {
         custom = {
           github = { pattern = '^http[s]?://github.com/.*', icon = ' ', highlight = 'RenderMarkdownLink' },
           reddit = { pattern = '^http[s]?://reddit.com/.*', icon = '󰑍 ', highlight = 'RenderMarkdownLink' },
+          youtube = { pattern = '^http[s]?://www.youtube.com/.*', icon = ' ', highlight = 'RenderMarkdownLink' },
           cppreference = { pattern = '^http[s]?://en.cppreference.com/.*', icon = ' ', highlight = 'RenderMarkdownLink' },
           web = { pattern = '^http[s]?://', icon = '󰖟 ', highlight = 'RenderMarkdownLink' },
         },
@@ -339,5 +340,52 @@ return {
       })
       addCalloutSnips(opts.callout)
     end,
+  },
+  {
+    'praczet/yaml-tags.nvim',
+    opts = {
+      sanitizer = true,
+      tag_formatting = {
+        allow_camel_case = false,
+        allowed_characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+      },
+      forbidden_words = { 'and', 'is', 'or', 'a', 'the', 'not' },
+      excluded_directories = {},
+      included_directories = { vim.fs.joinpath(os.getenv 'HOME', 'notes') },
+    },
+    dependencies = {
+      'nvim-telescope/telescope.nvim', -- for file and tag search
+      '3rd/image.nvim',
+    },
+  },
+  {
+    'Thiago4532/mdmath.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {
+      -- Filetypes that the plugin will be enabled by default.
+      filetypes = { 'markdown' },
+
+      -- Color of the equation, can be a highlight group or a hex color.
+      -- Examples: 'Normal', '#ff0000'
+      foreground = 'Normal',
+      -- Hide the text when the equation is under the cursor.
+      anticonceal = true,
+      -- Hide the text when in the Insert Mode.
+      hide_on_insert = true,
+      -- Enable dynamic size for non-inline equations.
+      dynamic = true,
+      -- Configure the scale of dynamic-rendered equations.
+      dynamic_scale = 1.0,
+
+      -- Internal scale of the equation images, increase to prevent blurry images when increasing terminal
+      -- font, high values may produce aliased images.
+      -- WARNING: This do not affect how the images are displayed, only how many pixels are used to render them.
+      --          See `dynamic_scale` to modify the displayed size.
+      internal_scale = 1.0,
+    },
+
+    build = ':MdMath build'
   },
 }

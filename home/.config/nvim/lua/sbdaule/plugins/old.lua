@@ -45,7 +45,18 @@ return {
   -- 'vijaymarupudi/nvim-fzf',
   -- 'ibhagwan/fzf-lua', {'branch': 'main'}
 
-  -- 'lervag/vimtex',
+  {
+    'lervag/vimtex',
+    init = function()
+      vim.g.vimtex_view_general_viewer = 'zathura'
+      vim.g.vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+      vim.g.vimtex_quickfix_open_on_warning = 0
+      vim.g.vimtex_compiler_latexmk = {
+        aux_dir = './aux',
+        out_dir = './out',
+      }
+    end,
+  },
   -- 'untitled-ai/jupyter_ascending.vim',
   -- 'jbyuki/instant.nvim',
   -- 'thosakwe/vim-flutter',

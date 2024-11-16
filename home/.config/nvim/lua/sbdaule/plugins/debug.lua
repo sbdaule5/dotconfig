@@ -87,7 +87,13 @@ return {
         end,
         desc = 'Debug: Eval variable',
       },
-      { '<leader>dq', dap.terminate(), desc = 'Debug: Terminate' },
+      {
+        '<leader>dq',
+        function()
+          dap.terminate()
+        end,
+        desc = 'Debug: Terminate',
+      },
 
       unpack(keys),
     }

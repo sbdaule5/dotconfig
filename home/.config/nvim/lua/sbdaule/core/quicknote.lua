@@ -4,12 +4,16 @@ local function to_title_case(str)
   end)
 end
 
+local function title_to_filename(str)
+  return string.lower(str):gsub('%W', '-'):gsub("-+", "-") .. '.md'
+end
+
 local newquicknote = function()
   local quicknotes_dir = vim.fs.joinpath(vim.fn.environ()['HOME'], 'notes/quicknotes')
   vim.ui.input({ prompt = 'Title: ' }, function(title)
     local filename = ''
     if title and string.len(title) ~= 0 then
-      filename = vim.fs.joinpath(quicknotes_dir, string.gsub(title, ' ', '-') .. '.md')
+      filename = vim.fs.joinpath(quicknotes_dir, title_to_filename(title))
     else
       title = 'Untitled'
       local ts = os.date '%Y-%m-%d-%H-%M'
