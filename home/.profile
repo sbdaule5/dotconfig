@@ -1,7 +1,7 @@
 
 export PATH=~/.local/bin:~/.local/share/npm/bin:~/.local/share/pnpm:$PATH
 export EDITOR=nvim
-export VISUAL="~/.local/bin/nve"
+export VISUAL="kitty -e nvim"
 export TERMINAL="alacritty"
 export TERMINAL_PROG="alacritty"
 export BROWSER=qutebrowser
