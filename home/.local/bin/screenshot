@@ -2,6 +2,20 @@
 
 SCREENSHOT_DIR="$(xdg-user-dir PICTURES)/screenshots/"
 FILE_NAME=$(date +"screenshot-%Y-%m-%d-%H-%M-%S.png")
+VIEWER="feh"
+
+notify-hypr(){
+    filepath="${SCREENSHOT_DIR}/$1"
+    file="$1"
+    message="$2"
+    wl-copy < "$file"
+    action=$(notify-send "Screenshot captured" "$message" -a "Grim" -A "view=View" -i "$filepath")
+    if [ -n "$action" ]; then
+        if [ "$action" == "view" ]; then
+            $VIEWER "$file"
+        fi
+    fi
+}
 
 capture_screen(){
     cd "$SCREENSHOT_DIR"
@@ -11,24 +25,34 @@ capture_screen(){
         notify-send "Screen captured" -a "Scrot"
     else
         grim "$FILE_NAME"
-        xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
-        notify-send "Screen captured $FILE_NAME and copied to clipboard" -a "Grim"
-        wl-copy < "$FILE_NAME" 
+        notify-hypr "$FILE_NAME" "Screen captured $FILE_NAME and copied to clipboard"
     fi
 }
 
 capture_window(){
     cd $SCREENSHOT_DIR
-    scrot -w $(xdotool getactivewindow) $FILE_NAME
-    xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
-    notify-send "Window captured" -a "Scrot"
+    if [ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+        scrot -w $(xdotool getactivewindow) $FILE_NAME
+        xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
+        notify-send "Window captured" -a "Scrot"
+    else
+        geometry=$(hyprctl -j -r activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
+        grim -g "$geometry" "$FILE_NAME" || exit 1
+        notify-hypr "$FILE_NAME" "Window captured ($FILE_NAME) and copied to clipboard"
+    fi
 }
 
 capture_select_window(){
     cd "$SCREENSHOT_DIR"
-    scrot -w $(xdotool selectwindow) "$FILE_NAME"
-    xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
-    notify-send "Window captured" -a "Scrot"
+    if [ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+        scrot -w $(xdotool selectwindow) "$FILE_NAME"
+        xclip -selection clipboard -t image/png -i $SCREENSHOT_DIR/`ls -1 -t $SCREENSHOT_DIR | head -1`
+        notify-send "Window captured" -a "Scrot"
+    else
+        geometry="$(hyprprop | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')"
+        grim -g "$geometry" "$FILE_NAME" || exit 1
+        notify-hypr "$FILE_NAME" "Window captured ($FILE_NAME) and copied to clipboard"
+    fi
 }
 
 capture_select(){
@@ -40,8 +64,7 @@ capture_select(){
         notify-send "Selection captured" -a "Scrot"
     else
         grim -g "$(slurp)" "$FILE_NAME" || exit 1
-        notify-send "Selection captured ($FILE_NAME) and copied to clipboard" -a "Grim"
-        wl-copy < "$FILE_NAME" 
+        notify-hypr "$FILE_NAME" "Selection captured ($FILE_NAME) and copied to clipboard"
     fi
 }
 
@@ -59,7 +82,7 @@ elif [[ $1 == "screen" ]]; then
     capture_screen
 elif [[ $1 == "select_window" ]]; then
     capture_select_window
-else 
+else
     echo hi
     # echo usage
 fi
