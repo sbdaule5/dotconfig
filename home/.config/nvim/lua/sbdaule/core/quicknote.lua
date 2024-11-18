@@ -1,11 +1,16 @@
-local function to_title_case(str)
+local function format_title(str)
+
+  if string.find(str, '%u') then
+    return str
+  end
+
   return str:gsub("(%a)([%w'-]*)", function(first, rest)
     return string.upper(first) .. string.lower(rest)
   end)
 end
 
 local function title_to_filename(str)
-  return string.lower(str):gsub('%W', '-'):gsub("-+", "-") .. '.md'
+  return string.lower(str):gsub('%W', '-'):gsub('-+', '-') .. '.md'
 end
 
 local newquicknote = function()
@@ -35,14 +40,14 @@ local newquicknote = function()
     vim.bo.ft = 'markdown'
     local lines = {
       '---',
-      'title: ' .. to_title_case(title),
+      'title: ' .. format_title(title),
       'date: ' .. os.date '%Y-%m-%d',
       'author: Shubham <sbdaule5@gmail.com>',
       'tags: ',
       'type: quicknote',
       '---',
       '',
-      '# ' .. to_title_case(title),
+      '# ' .. format_title(title),
       '',
     }
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
