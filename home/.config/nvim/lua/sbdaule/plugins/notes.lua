@@ -328,6 +328,8 @@ return {
       vim.g.vim_markdown_toc_autofit = 1
       vim.g.vim_markdown_math = 1
       vim.g.vim_markdown_follow_anchor = 1
+
+      vim.opt.expandtab = true
     end,
     config = function(_, opts)
       require('render-markdown').setup(opts)
