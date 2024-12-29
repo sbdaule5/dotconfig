@@ -1,0 +1,49 @@
+[general]
+use_page_scrolling = true
+
+[theme.palette]
+foreground = "#f6f6ef"
+background = "#1a1b26"
+selection_background = "#414868"
+selection_foreground = "#f6f6ef"
+light_black = "#1d202f"
+light_blue = "#7aa2f7"
+light_cyan = "#7dcfff"
+light_green = "#9ece6a"
+light_magenta = "#bb9af7"
+light_red = "#f7768e"
+light_white = "#aaaaaa"
+light_yellow = "#e0af68"
+black = "#555555"
+white = "#ffffff"
+red = "#ff5555"
+magenta = "#5555ff"
+green = "#55ff55"
+cyan = "#55ffff"
+blue = "#5555ff"
+yellow = "#ffff55"
+
+[theme.component_style]
+# styles for application's specific components
+title_bar = { back = "#ff6600", effect = "bold" }
+matched_highlight = { front = "black", back = "#ffff55"}
+metadata = { front = "#828282" }
+username = { effect = "bold" }
+loading_bar = { front = "light yellow", back = "blue"}
+
+# general component styles
+header = { front = "black", effect = "bold" }
+quote = { front = "#677280" }
+italic = { effect = "italic" }
+bold = { effect = "bold" }
+single_code_block = { front = "black", back = "#c8c8c8"}
+multiline_code_block = { front = "light black", effect = "bold" }
+link = { front = "#4fbbfd" }
+link_id = { front = "black", back = "#ffff55"}
+
+# story tag styles
+current_story_tag = { front = "light white" }
+ask_hn = { front = "red", effect = "bold" }
+tell_hn = { front = "yellow", effect = "bold" }
+show_hn = { front = "blue", effect = "bold" }
+launch_hn = { front = "green", effect = "bold" }
