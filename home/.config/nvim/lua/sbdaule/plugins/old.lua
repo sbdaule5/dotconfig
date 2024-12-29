@@ -128,6 +128,12 @@ return {
       { '<M-l>', '<cmd>TmuxNavigateRight<cr>' },
       { '<M-/>', '<cmd>TmuxNavigatePrevious<cr>' },
     },
+    init = function(opts)
+      vim.keymap.set('t', '<M-h>', '<C-\\><C-n><M-h>', { remap = true, desc = 'Move focus to the left window' })
+      vim.keymap.set('t', '<M-l>', '<C-\\><C-n><M-l>', { remap = true, desc = 'Move focus to the right window' })
+      vim.keymap.set('t', '<M-j>', '<C-\\><C-n><M-j>', { remap = true, desc = 'Move focus to the lower window' })
+      vim.keymap.set('t', '<M-k>', '<C-\\><C-n><M-k>', { remap = true, desc = 'Move focus to the upper window' })
+    end,
   },
 
   -- 'David-Kunz/gen.nvim',
