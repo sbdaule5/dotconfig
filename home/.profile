@@ -5,6 +5,7 @@ export VISUAL="kitty -e nvim"
 export TERMINAL="alacritty"
 export TERMINAL_PROG="alacritty"
 export BROWSER=qutebrowser
+export MANPAGER="nvim +Man!"
 
 # Home directory clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
