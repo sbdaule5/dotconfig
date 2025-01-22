@@ -1,0 +1,36 @@
+{
+    "label" : "screenshot-screen",
+    "action" : "screenshot screen",
+    "text" : "screenshot-screen",
+    "keybind" : "1"
+}
+{
+    "label" : "screenshot-select",
+    "action" : "screenshot select",
+    "text" : "screenshot-select",
+    "keybind" : "2"
+}
+{
+    "label" : "screenshot-window",
+    "action" : "screenshot window",
+    "text" : "screenshot-window",
+    "keybind" : "3"
+}
+{
+    "label" : "screenshot-select-window",
+    "action" : "screenshot select_window",
+    "text" : "screenshot-select-window",
+    "keybind" : "4"
+}
+{
+    "label" : "screenshot-view",
+    "action" : "kitty -e lf ~/multimedia/pictures/screenshots",
+    "text" : "View screenshots",
+    "keybind" : "5"
+}
+{
+    "label" : "screenshot-open-folder",
+    "action" : "kitty -e lf ~/multimedia/pictures/screenshots",
+    "text" : "Open screenshots folder",
+    "keybind" : "6"
+}

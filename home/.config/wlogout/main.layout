@@ -1,0 +1,36 @@
+{
+    "label" : "screenshotmenu",
+    "action" : "wlogout --layout ~/.config/wlogout/screenshot.layout --css ~/.config/wlogout/style.css",
+    "text" : "Screenshot",
+    "keybind" : "1"
+}
+{
+    "label" : "apps",
+    "action" : "wofi --show drun",
+    "text" : "Apps",
+    "keybind" : "2"
+}
+{
+    "label" : "record",
+    "action" : "wlogout -b 2 --layout ~/.config/wlogout/record.layout --css ~/.config/wlogout/style.css",
+    "text" : "Record",
+    "keybind" : "3"
+}
+{
+    "label" : "files",
+    "action" : "wlogout --layout ~/.config/wlogout/files.layout --css ~/.config/wlogout/style.css",
+    "text" : "Files",
+    "keybind" : "4"
+}
+{
+    "label" : "notifications",
+    "action" : "swaync-client -t",
+    "text" : "Notifications",
+    "keybind" : "5"
+}
+{
+    "label" : "powermenu",
+    "action" : "wlogout --layout ~/.config/wlogout/power.layout --css ~/.config/wlogout/style.css",
+    "text" : "Power Menu",
+    "keybind" : "6"
+}

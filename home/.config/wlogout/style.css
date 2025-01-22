@@ -1,0 +1,132 @@
+* {
+  background-image: none;
+  box-shadow: none;
+}
+
+window {
+  background-color: rgba(12, 12, 12, 0.8);
+}
+
+button {
+    border-radius: 0;
+    /* border-color: black; */
+    text-decoration-color: #FFFFFF;
+    color: #FFFFFF;
+    background-color: rgba(36, 40, 50, 1);
+    border-color: rgba(36, 40, 50, 1);
+    border-style: solid;
+    border-width: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    margin: 5px;
+}
+
+button:focus, button:active, button:hover {
+    border: 4px solid #7aa2f7;
+    outline-style: none;
+}
+
+/* common ui elements */
+#back {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/back.png"), url("/home/sbdaule/.config/wlogout/icons/back.png"));
+}
+#none {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/block.png"), url("/home/sbdaule/.config/wlogout/icons/block.png"));
+}
+
+/* main menu styles */
+#screenshotmenu {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/screenshot.png"), url("/home/sbdaule/.config/wlogout/icons/screenshot.png"));
+}
+#apps {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/apps.png"), url("/home/sbdaule/.config/wlogout/icons/apps.png"));
+}
+#record {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/record.png"), url("/home/sbdaule/.config/wlogout/icons/record.png"));
+}
+#files {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/folder.png"), url("/home/sbdaule/.config/wlogout/icons/folder.png"));
+}
+#notifications {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/notifications.png"), url("/home/sbdaule/.config/wlogout/icons/notifications.png"));
+}
+#powermenu {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+}
+
+/* screenshot menu styles */
+#screenshot-screen {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/desktop.png"), url("/home/sbdaule/.config/wlogout/icons/screenshot.png"));
+}
+#screenshot-select {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/screenshot.png"), url("/home/sbdaule/.config/wlogout/icons/screenshot.png"));
+}
+#screenshot-window {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/multi-window.png"), url("/home/sbdaule/.config/wlogout/icons/screenshot.png"));
+}
+#screenshot-select-window {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/window-select.png"), url("/home/sbdaule/.config/wlogout/icons/window-select.png"));
+}
+#screenshot-view {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/view-image.png"), url("/home/sbdaule/.config/wlogout/icons/view-image.png"));
+}
+#screenshot-open-folder {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/folder.png"), url("/home/sbdaule/.config/wlogout/icons/folder.png"));
+}
+
+/* screen capture */
+#obs {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/obs.png"), url("/home/sbdaule/.config/wlogout/icons/obs.png"));
+}
+#camera {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/webcam.png"), url("/home/sbdaule/.config/wlogout/icons/webcam.png"));
+}
+#voice-record {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/mic.png"), url("/home/sbdaule/.config/wlogout/icons/mic.png"));
+}
+#phone-camera {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/phonecam.png"), url("/home/sbdaule/.config/wlogout/icons/phonecam.png"));
+}
+
+/* files */
+#mounts {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/drives.png"), url("/home/sbdaule/.config/wlogout/icons/drives.png"));
+}
+#configs {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/configs.png"), url("/home/sbdaule/.config/wlogout/icons/configs.png"));
+}
+#multimedia {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/multimedia.png"), url("/home/sbdaule/.config/wlogout/icons/multimedia.png"));
+}
+#documents {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/documents.png"), url("/home/sbdaule/.config/wlogout/icons/documents.png"));
+}
+#syncthing {
+    background-image: image(url("/home/sbdaule/.config/wlogout/icons/syncthing.png"), url("/home/sbdaule/.config/wlogout/icons/syncthing.png"));
+}
+
+/* power menu styles */
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+}

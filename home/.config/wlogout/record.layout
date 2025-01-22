@@ -1,0 +1,24 @@
+{
+    "label" : "obs",
+    "action" : "flatpak run com.obsproject.Studio",
+    "text" : "Screen Record",
+    "keybind" : "1"
+}
+{
+    "label" : "camera",
+    "action" : "cheese",
+    "text" : "Camera",
+    "keybind" : "2"
+}
+{
+    "label" : "voice-record",
+    "action" : "notify-send 'Not Implemented'",
+    "text" : "Voice Record",
+    "keybind" : "3"
+}
+{
+    "label" : "phone-camera",
+    "action" : "kitty -e lf ~/personal/pictures/phone/Camera/",
+    "text" : "Phone Camera",
+    "keybind" : "4"
+}

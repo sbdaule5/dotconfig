@@ -1,0 +1,36 @@
+{
+    "label" : "mounts",
+    "action" : "kitty -e lf ~/mount",
+    "text" : "Mounted drives",
+    "keybind" : "1"
+}
+{
+    "label" : "configs",
+    "action" : "kitty -e lf ~/.local/config",
+    "text" : "Configs",
+    "keybind" : "2"
+}
+{
+    "label" : "multimedia",
+    "action" : "kitty -e lf ~/multimedia/",
+    "text" : "Multimedia",
+    "keybind" : "3"
+}
+{
+    "label" : "documents",
+    "action" : "kitty -e lf ~/personal/documents/",
+    "text" : "Documents",
+    "keybind" : "4"
+}
+{
+    "label" : "",
+    "action" : "",
+    "text" : "",
+    "keybind" : "5"
+}
+{
+    "label" : "syncthing",
+    "action" : "$BROWSER syncthing.local:8384",
+    "text" : "Syncthing",
+    "keybind" : "6"
+}
