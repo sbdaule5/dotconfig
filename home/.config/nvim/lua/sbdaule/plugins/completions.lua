@@ -16,8 +16,16 @@ return {
           return 'make install_jsregexp'
         end)(),
 
-        config = function()
+        opts = {
+          link_children = true,
+          keep_roots = true,
+          link_roots = true,
+          updateevents = 'TextChanged,TextChangedI',
+        },
+
+        config = function(_, opts)
           require('luasnip.loaders.from_vscode').lazy_load()
+          require('luasnip').setup(opts)
         end,
 
         dependencies = {
@@ -59,10 +67,6 @@ return {
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
 
-        -- For an understanding of why these mappings were
-        -- chosen, you will need to read `:help ins-completion`
-        --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mappings = {
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -87,6 +91,9 @@ return {
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
             end
+          end, { 'i', 's' }),
+          ['C-;'] = cmp.mapping(function()
+            require('luasnip.extras.select_choice')()
           end, { 'i', 's' }),
         },
         sources = {
@@ -115,6 +122,7 @@ return {
       vim.keymap.set('i', '<C-k>', "<Cmd>lua require('luasnip').jump(-1)<CR>", { silent = true })
       vim.keymap.set('i', '<C-h>', "<Cmd>lua require('luasnip').change_choice()<CR>", { silent = true })
       vim.keymap.set('i', '<C-l>', "<Cmd>lua require('luasnip').change_choice(1)<CR>", { silent = true })
+      vim.keymap.set('i', '<C-;>', "<Cmd>lua require('luasnip.extras.select_choice')()<CR>", { silent = true })
     end,
   },
 }

@@ -1,63 +1,3 @@
-function addCalloutSnips(callouts)
-  -- add snippets for Obsidian callouts
-  local ls = require 'luasnip'
-  -- some shorthands...
-  local s = ls.snippet
-  local sn = ls.snippet_node
-  local t = ls.text_node
-  local i = ls.insert_node
-  local f = ls.function_node
-  local c = ls.choice_node
-  local d = ls.dynamic_node
-  local r = ls.restore_node
-  local l = require('luasnip.extras').lambda
-  local rep = require('luasnip.extras').rep
-  local p = require('luasnip.extras').partial
-  local m = require('luasnip.extras').match
-  local n = require('luasnip.extras').nonempty
-  local dl = require('luasnip.extras').dynamic_lambda
-  local fmt = require('luasnip.extras.fmt').fmt
-  local fmta = require('luasnip.extras.fmt').fmta
-  local types = require 'luasnip.util.types'
-  local conds = require 'luasnip.extras.conditions'
-  local conds_expand = require 'luasnip.extras.conditions.expand'
-
-  -- individual snippets
-  for k, v in pairs(callouts) do
-    if not v.nosnippet then
-      ls.add_snippets('markdown', {
-        s(k, {
-          t { '> ' .. v.raw .. ' ' },
-          i(1),
-          t { '', '> ' },
-          i(2),
-        }),
-        s(k, {
-          t { '> ' .. v.raw .. ' ' },
-          i(1),
-        }),
-      })
-    end
-  end
-
-  local raws = {}
-  for _, v in pairs(callouts) do
-    table.insert(raws, t(v.raw))
-  end
-
-  -- unified snippet
-  ls.add_snippets('markdown', {
-    s('callouts', {
-      t { '> ' },
-      c(1, raws),
-      t { ' ' },
-      i(2),
-      t { '', '> ' },
-      i(3),
-    }),
-  })
-end
-
 return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
@@ -340,7 +280,9 @@ return {
           require('render-markdown').enable()
         end,
       })
-      addCalloutSnips(opts.callout)
+      markdownSnippets = require('sbdaule.snippets.markdown')
+      markdownSnippets.addCalloutSnippets(opts.callout)
+      markdownSnippets.addFrontmatterSnippets()
     end,
   },
   {
@@ -388,6 +330,6 @@ return {
       internal_scale = 1.0,
     },
 
-    build = ':MdMath build'
+    build = ':MdMath build',
   },
 }
