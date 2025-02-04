@@ -1,0 +1,56 @@
+
+export PATH=~/.local/bin:~/.local/share/npm/bin:~/.local/share/pnpm:~/.local/share/cargo/bin:$PATH
+export EDITOR=nvim
+export VISUAL="kitty -e nvim"
+export TERMINAL="alacritty"
+export TERMINAL_PROG="alacritty"
+export BROWSER=qutebrowser
+export MANPAGER="nvim +Man!"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+DOTCONFIG_HOME="$XDG_STATE_HOME/dotconfig/"
+export PATH="$PATH:$DOTCONFIG_HOME/bin"
+
+source "$XDG_CONFIG_HOME/shell/xdg_exports"
+
+# Other program settings:
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
+export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
+export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
+export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
+# export DICS="/usr/share/stardict/dic/"
+# export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+export FZF_DEFAULT_COMMAND='bfs . -type d \( -name .cache -o -name caches -o -name Cache -o -path ./.npm -o -path ./.cargo -o -name node_modules -o -name .git -o -name venv -o -name venvs -o -name pyvenv -o -name pnpm -o -name "BraveSoftware" -o -path ./.local/share/flutter -o -name Steam -o -path ./.local/share/Trash -o -path ./Files -o -name wineprefixes \) -prune -o -iname "*"'
+
+if [ -f "$DOTCONFIG_HOME/config/shell/local_profile" ]; then
+    source  "$DOTCONFIG_HOME/config/shell/local_profile"
+fi
+
+function startenv(){
+    sessions=( 'shell' 'dwm' 'hyprland' 'cosmic' 'sddm' )
+    select session in "${sessions[@]}"; do
+        if [ "$session" = 'dwm' ]; then
+            exec startx "$XINITRC"
+        elif [ "$session" = "hyprland" ]; then
+            exec Hyprland
+        elif [ "$session" = 'sddm' ]; then
+            systemctl start sddm
+        elif [ "$session" = "cosmic" ]; then
+            exec start-cosmic
+        elif [ "$session" = "shell" ]; then
+            exec zsh
+        fi
+        break
+    done
+}
+
+# Start graphical server on user's current tty if not already running.
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && startserv
+
+# Switch escape and caps if tty and no passwd required:
+# sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/myconfigs/ttymaps.kmap 2>/dev/null

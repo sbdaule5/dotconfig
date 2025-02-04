@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+VENV_ROOT="~/.local/share/python-venv/"
+VENV=""
+
+if [ -z "$1" ]; then
+    echo "Swithcing "
+fi

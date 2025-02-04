@@ -1,0 +1,4 @@
+- JOB: intercept -g /dev/input/by-id/usb-contact@carlossless.io_SMK_Keyboard_0001-event-kbd | caps2esc -m 2 | space2meta | uinput -d /dev/input/by-id/usb-contact@carlossless.io_SMK_Keyboard_0001-event-kbd
+
+  DEVICE:
+    LINK: /dev/input/by-id/usb-contact@carlossless.io_SMK_Keyboard_0001-event-kbd

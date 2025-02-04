@@ -1,0 +1,130 @@
+#!/bin/sh
+
+function pyenv(){
+    base_dir="$1"
+    if [ -z "$1" ]; then
+        base_dir="venv"
+    fi
+    activate_script="${base_dir}/bin/activate"
+
+    if [ -f "${activate_script}" ]; then
+        source "${activate_script}"
+    else
+        echo "File ${activate_script} not found"
+    fi
+}
+
+ta() {
+    if pgrep 'tmux' > /dev/null; then
+        tmux;
+    else
+        tmux a;
+    fi
+}
+
+STORE_FILE="${XDG_STATE_HOME:-~/.local/state}"/dirs
+
+function fz1() {
+    local lines
+    lines=$(cat | fzf --filter="$1" --no-sort)
+    if [ -z "$lines" ]; then
+        return 1
+    elif [ $(wc -l <<< "$lines") -eq 1 ]; then
+        echo "$lines"
+    else
+        echo "$lines" | fzf --query="$1"
+    fi
+}
+
+function goto_dirs {
+    # Project dirs
+    for d in ${HOME}/projects/*; do
+        echo "$(echo $d | rev | cut -d'/' -f 1 | rev) $d"
+    done
+    # Acadmics
+    for sem in ${HOME}/acadmics/*; do
+        echo "$(echo $sem | rev | cut -d'/' -f 1 | rev) $sem"
+        for course in ${sem}/*; do
+            echo "$(echo $course | rev | cut -d'/' -f 1 | rev) $course"
+        done
+    done
+}
+
+# goto: Change the current working directory to the path associated with the given label
+function goto {
+    query="$1"
+    if [ "$1" "==" "-h" ] || [ "$1" "==" "--help" ]; then
+        echo "Usage: goto <label>"
+        return 0
+    fi
+
+    #echo "Checking if $STORE_FILE exist..."
+    if [ ! -f "$STORE_FILE" ]
+    then
+        echo "Does not exist  - creating"
+        touch "$STORE_FILE"
+    fi
+
+    local dir=$(grep "^$1 [^\n]*$" $STORE_FILE | cut -d' ' -f2-)
+    if [ -z "$dir" ]; then
+        dirs=$({cat "$STORE_FILE" && goto_dirs})
+        label=$(echo $dirs | cut -d' ' -f1 | fz1 "$query")
+        dir=$(echo $dirs | grep "^${label} " | cut -d' ' -f2- | head -n1)
+    fi
+
+    if [ -z "$dir" ]; then
+        echo "Error: Label not found."
+        return 1
+    fi
+
+    # echo "Changing dir to $dir"
+    cd "$dir" || { echo "Error: Failed to change directory"; return 1; }
+    # echo "Change dir OK"
+}
+
+
+# mark: Add a label for the current working directory or update an existing label
+function mark {
+    if [ -z "$1" ]; then
+        echo "Usage: mark <label>"
+        return 1
+    fi
+
+    local label_exists=$(grep "^$1 " $STORE_FILE)
+    local current_path=$(pwd)
+
+    if [ -z "$label_exists" ]; then
+        echo "$1 $current_path" >> $STORE_FILE
+    else
+        local dir=$(echo "$label_exists" | cut -d' ' -f2-)
+        if [[ "$dir" == "$current_path" ]]; then
+            echo "Link named $1 already registered for this path"
+            return 1
+        else
+            echo "$1 $current_path" >> $STORE_FILE
+        fi
+    fi
+}
+
+
+# list_dirs: List all labels and their associated directory paths
+function list_dirs {
+    local dirs=$(cat $STORE_FILE)
+    local output=$(echo "${dirs}" | awk '{printf("%-30s", $1); printf("%-30s", $2); printf("%-30s", $3); printf("%-30s\n", $4);}' | sort)
+    echo "${output}"
+}
+
+
+alias list_labels=list_dirs
+
+lfcd() {
+    dir=$(/usr/bin/lf -print-last-dir "$@")
+    while ! cd "$dir" 2> /dev/null
+    do
+        dir=$(dirname "$dir")
+    done
+}
+
+gr () {
+    cd "$(git rev-parse --show-toplevel 2>/dev/null)"
+}

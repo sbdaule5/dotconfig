@@ -1,0 +1,91 @@
+# Zathura configuration file
+# See man `man zathurarc'
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# One page per row by default
+set pages-per-row 1
+
+#stop at page boundries
+set scroll-page-aware       "true"
+# set smooth-scroll           "true"
+set scroll-full-overlap     0.01
+set scroll-step             100
+set selection-clipboard     clipboard
+set selection-notification  false
+
+# GUI
+set statusbar-v-padding     2
+
+#zoom settings
+#set zoom-min 10
+set guioptions              "s"
+
+# zathurarc-dark
+
+set font                    "inconsolata 10"
+set default-fg              "#c0caf5"
+set default-bg              "rgba(26, 27, 38, 0.9)" # bg
+
+set inputbar-fg             "#c0caf5"
+set inputbar-bg             "#1a1b26"
+
+set statusbar-fg            "#c0caf5"
+set statusbar-bg            "#1a1b26"
+
+set notification-error-fg   "#f7768e"
+set notification-error-bg   "#c0caf5"
+
+set notification-warning-fg "#e0af68"
+set notification-warning-bg "#414868"
+
+set highlight-color         "#e0af68"
+set highlight-active-color  "#9ece6a"
+
+set completion-highlight-fg "#c0caf5"
+set completion-highlight-bg "#414868"
+
+set completion-group-fg     "#a9b1d6"
+set completion-group-bg     "#1a1b26"
+
+set completion-fg           "#a9b1d6"
+set completion-bg           "#1a1b26"
+
+set notification-fg         "#c0caf5"
+set notification-bg         "#1a1b26"
+
+set index-fg                "#c0caf5"
+set index-bg                "rgba(26, 27, 38, 0)" # bg2
+set index-active-fg         "#c0caf5"
+set index-active-bg         "#414868"
+
+set recolor-lightcolor      "rgba(26, 27, 38, 0)" # bg
+set recolor-darkcolor       "#c0caf5"
+set recolor-reverse-video   "true"
+set recolor-keephue         "true"
+
+set render-loading          "true"
+set scroll-step             50
+
+unmap               <C-n>
+unmap [fullscreen]  <C-n>
+map                 <C-n>   exec "zathura $FILE --page $PAGE --fork"
+map   [fullscreen]  <C-n>   exec "zathura $FILE --page $PAGE --fork"
+
+map                 <C-b>   toggle_statusbar
+map   [fullscreen]  <C-b>   toggle_statusbar
+
+unmap               f
+unmap [fullscreen]  f
+map                 f       toggle_fullscreen
+map   [fullscreen]  f       toggle_fullscreen
+
+map                 <C-f>   follow
+map   [fullscreen]  <C-f>   follow
+
+map                 i       recolor
+map   [fullscreen]  i       recolor
+map [normal] <Return> scroll full-down
+map             <CapsLock>   scroll full-down
+map             3   scroll full-down
