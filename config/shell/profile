@@ -1,4 +1,3 @@
-
 export PATH=~/.local/bin:~/.local/share/npm/bin:~/.local/share/pnpm:~/.local/share/cargo/bin:$PATH
 export EDITOR=nvim
 export VISUAL="kitty -e nvim"
@@ -12,7 +11,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-DOTCONFIG_HOME="$XDG_STATE_HOME/dotconfig/"
+export MY_PROJECTS_ROOT="$HOME/project"
+export MY_NOTES_ROOT="$HOME/notes"
+
 export PATH="$PATH:$DOTCONFIG_HOME/bin"
 
 source "$XDG_CONFIG_HOME/shell/xdg_exports"
@@ -27,8 +28,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
 # export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export FZF_DEFAULT_COMMAND='bfs . -type d \( -name .cache -o -name caches -o -name Cache -o -path ./.npm -o -path ./.cargo -o -name node_modules -o -name .git -o -name venv -o -name venvs -o -name pyvenv -o -name pnpm -o -name "BraveSoftware" -o -path ./.local/share/flutter -o -name Steam -o -path ./.local/share/Trash -o -path ./Files -o -name wineprefixes \) -prune -o -iname "*"'
 
-if [ -f "$DOTCONFIG_HOME/config/shell/local_profile" ]; then
-    source  "$DOTCONFIG_HOME/config/shell/local_profile"
+if [ -f "$XDG_CONFIG_HOME/shell/local_profile" ]; then
+    source "$XDG_CONFIG_HOME/shell/local_profile"
 fi
 
 function startenv(){

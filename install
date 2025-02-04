@@ -1,0 +1,30 @@
+#!/usr/bin/sh
+
+DOTCONFIG_SOURCE="$(dirname "$(readlink -f "$0")")"
+
+if [ -z "${DOTCONFIG_SOURCE}" ]; then
+    echo "Please provide dotconfig source path" 1>&2
+    exit 1
+fi
+
+
+if [ -z "${XDG_CONFIG_HOME}" ]; then
+    echo "XDG_CONFIG_HOME not set, using ${HOME}/.config" 1>&2
+    mkdir -p "$HOME/.config"
+fi
+
+if [ -z "${XDG_STATE_HOME}" ]; then
+    echo "XDG_CONFIG_HOME not set, using ${HOME}/.local/state" 1>&2
+    mkdir -p "$HOME/.local/state"
+fi
+
+for dir in ${DOTCONFIG_SOURCE}/config/*; do
+    ln -sf "$dir" "$XDG_CONFIG_HOME/"
+done
+
+ln -sf "${DOTCONFIG_SOURCE}/config/shell/profile" "$HOME/.profile"
+ln -sf "${DOTCONFIG_SOURCE}/config/shell/profile" "$HOME/.zprofile"
+ln -sf "${DOTCONFIG_SOURCE}/config/shell/inputrc" "$HOME/.inputrc"
+ln -sf "${DOTCONFIG_SOURCE}/config/x11/xinitrc" "$HOME/.xinitrc"
+ln -sf "${DOTCONFIG_SOURCE}/config/x11/Xresources" "$HOME/.Xresources"
+

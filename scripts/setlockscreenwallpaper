@@ -1,6 +1,8 @@
-if [ -z $1 ]
+#!/usr/bin/sh
+
+if [ -z "$1" ]
 then
-	feh ~/.local/share/screen-saver.png
+    feh "${XDG_STATE_HOME:-~/.local/state}/lockscreenwallpaper.png"
 else
-	convert $1 -resize 1920x1080^ ~/.local/share/screen-saver.png	
+    convert "$1" -resize 1920x1080^ "${XDG_STATE_HOME:-~/.local/state}/lockscreenwallpaper.png"
 fi
