@@ -1,0 +1,20 @@
+beets_mpdstats='_beet_mpdstats () {
+	local _ra_p1 _ra_p2 _ra_left _ra_right _ra_com expl tmp nm="$compstate[nmatches]" 
+	local _ra_actions _ra_line="${(pj:\0:)${(@)words[1,CURRENT - 1]:Q}}"$'\''\0'\''"$PREFIX" 
+	_ra_actions=() 
+	zregexparse -c _ra_p1 _ra_p2 "$_ra_line" $'\''/[^\0]##\0/'\'' $'\''/mpdstats\0/'\'' $'\''('\'' $'\''/-h\0/'\'' $'\''|'\'' $'\''/--host=HOST\0/'\'' $'\''|'\'' $'\''/--port=PORT\0/'\'' $'\''|'\'' $'\''/--password=PASSWORD\0/'\'' $'\''|'\'' $'\''/[]/'\'' $'\'':_ra_comp $\'\''options:mpdstats options:(( -h\\\\:show\\\\ this\\\\ help\\\\ message\\\\ and\\\\ exit --host=HOST\\\\:set\\\\ the\\\\ hostname\\\\ of\\\\ the\\\\ server\\\\ to\\\\ connect\\\\ to --port=PORT\\\\:set\\\\ the\\\\ port\\\\ of\\\\ the\\\\ MPD\\\\ server\\\\ to\\\\ connect\\\\ to --password=PASSWORD\\\\:set\\\\ the\\\\ password\\\\ of\\\\ the\\\\ MPD\\\\ server\\\\ to\\\\ connect\\\\ to ))\'\'''\'' $'\'')'\'' $'\''#'\'' $'\''('\'' $'\''/(acoustid_fingerprint|acoustid_id|added|album|album_id|albumartist|albumartist_credit|albumartist_sort|albumartists|albumartists_credit|albumartists_sort|albumdisambig|albumstatus|albumtotal|albumtype|albumtypes|arranger|artist|artist_credit|artist_sort|artists|artists_credit|artists_ids|artists_sort|artpath|asin|barcode|bitdepth|bitrate|bitrate_mode|bpm|catalognum|channels|comments|comp|composer|composer_sort|country|data_source|day|disc|discogs_albumid|discogs_artistid|discogs_labelid|disctitle|disctotal|encoder|encoder_info|encoder_settings|filesize|format|genre|grouping|id|initial_key|isrc|label|language|last_played|length|lyricist|lyrics|mb_albumartistid|mb_albumartistids|mb_albumid|mb_artistid|mb_artistids|mb_releasegroupid|mb_releasetrackid|mb_trackid|mb_workid|media|month|mtime|original_day|original_month|original_year|path|play_count|r128_album_gain|r128_track_gain|rating|release_group_title|releasegroupdisambig|remixer|rg_album_gain|rg_album_peak|rg_track_gain|rg_track_peak|samplerate|script|singleton|skip_count|style|title|track|track_alt|trackdisambig|tracktotal|work|work_disambig|year):[^\0]##\0/'\'' $'\'':_ra_comp $\'\''query:query string:{_beet_query}\'\'''\'' $'\'')'\'' $'\''#'\''
+	case "$?" in
+		(0 | 2) _message "no more arguments" ;;
+		(1) if [[ "$_ra_line[_ra_p1 + 1, -1]" = *$'\''\0'\''* ]]
+			then
+				_message "parse failed before current word"
+			else
+				_ra_left="$_ra_line[_ra_p1 + 1, _ra_p2]" 
+				_ra_right="$_ra_line[_ra_p2 + 1, -1]" 
+				compset -p $(( $#PREFIX - $#_ra_line + $_ra_p1 ))
+				(( $#_ra_actions )) && _alternative "$_ra_actions[@]"
+			fi ;;
+		(3) _message "invalid regex" ;;
+	esac
+	[[ nm -ne "$compstate[nmatches]" ]]
+}'

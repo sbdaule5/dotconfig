@@ -1,0 +1,63 @@
+"query:--Unread:unread # \"yes\" and age < 365" meta
+
+"query:--Tech YouTube:tags # \"youtube\" and tags !# \"high_volume\" and tags !# \"archived\" and tags # \"tech\"" meta youtube-feed
+"query:--Local YouTube:tags # \"youtube\" and tags !# \"high_volume\" and tags !# \"archived\" and tags # \"local\" and title !# \"#shorts\"" meta youtube-feed
+"query:--Global YouTube:tags # \"youtube\" and tags !# \"high_volume\" and tags !# \"archived\" and tags # \"tech\"" meta youtube-feed
+"query:--Science YouTube:tags # \"youtube\" and tags !# \"high_volume\" and tags !# \"archived\" and tags # \"science\" and title !# \"#shorts\"" meta youtube-feed
+"query:--YouTube Shorts:tags # \"youtube\" and tags !# \"archived\" and title # \"#shorts\"" meta youtube-feed
+
+"query:--Reddit:tags # \"reddit\"" meta
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw youtube tech local "~BugsWriter"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA youtube tech    "~Mental Outlaw"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg youtube tech    "~DistroTube" archived
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw youtube tech    "~ThePrimeagen"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA youtube tech    "~Brodie Robertson" high_volume
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA youtube tech    "~Luke Smith"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw youtube tech    "~The Linux Experiment"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0ZTPkdxlAKf-V33tqXwi3Q youtube tech    "~HackerSploit"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA youtube science "~Vertasium"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q youtube science "~Kurzgesagt"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCS1abmNrZSkWM1vq-sMm63g youtube science "~Gareeb Scientist"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCfH_Hz868iwzA7g36NyBX1A youtube local   "~Project Shivoham"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw youtube science "~3Blue1Brown"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC3vpdI7klzLSLNgqZEESZ4g youtube local   "~India in Pixels by Ashris"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCbKWv2x9t6u8yZoB3KcPtnw youtube lite    "~Alan Becker"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCmtyQOKKmrMVaKuRXz02jbQ youtube tech    "~Sebastian Lague"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCdp4_l1vPmpN-gDbUwhaRUQ youtube science "~Branch Education"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUHW94eEFW7hkUMVaZz4eDg youtube science "~minutephysics"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCcf4LQogGFtYzPhq05uHE4g youtube science "~udiprod"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCS0N5baNlQWJCUrhCEo8WlA youtube tech    "~Ben Eater"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRWodrIDrJJFXSf9y5Y5hyw youtube tech    "~Slador"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCKzJFdi57J53Vr_BkTfN3uQ youtube science "~Primer"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2C_jShtL725hvbm1arSV9w youtube global  "~CGP Grey"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCIvt19fKjT_PBOxnnd60Hng youtube science "~Scientific Minds"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCQ-W1KE9EYfdxhL6S4twUNw youtube tech    "~The Cherno"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqJ-Xo29CKyLTjn6z2XwYAw youtube tech    "~Game Maker's Toolkit"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC-jYG1g742vWmLElZ97Ezng youtube local   "~Engineer Xplains"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCs0kMbzhUYV2lhIV7xoWhoA youtube local   "~The Sham Sharma Show"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCKZozRVHRYsYHGEyNKuhhdA youtube local   "~Think School"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSvQIaXSik2emJ83jlwvQLQ youtube local   "~Rishabh Bidhuri" high_volume 
+
+"--Blogs--"
+https://xkcd.com/atom.xml                                  other      global
+https://lukesmith.xyz/index.xml                            blog       global
+https://bugswriter.com/blog/atom.xml                       blog       tech  "~Bugswriter_Blogs"
+https://waterprogramming.wordpress.com/feed/               blog       tech
+https://blog.meain.io/feed.xml                             blog       tech
+https://blog.vaxry.net/feed                                tech       blog
+http://feeds.feedburner.com/blogspot/RLXA                  blog       tech
+https://projectshivoham.com/feed/                          blog       local
+https://kill-the-newsletter.com/feeds/vnu0gru4ha17cf7m.xml newsletter local "~Creator Logic"
+
+# https://bastian.rieck.me/blog/index.xml 
+
+"--Reddit--"
+https://reddit.com/r/india.rss reddit local
+
+"--Projects--"
+https://neomutt.org/feed.xml        blog project
+https://www.gimp.org/feeds/atom.xml blog project
+https://blog.system76.com/rss.xml   blog project
+http://cowlark.com/feed.rss         blog project
+https://archlinux.org/feeds/news/   blog project

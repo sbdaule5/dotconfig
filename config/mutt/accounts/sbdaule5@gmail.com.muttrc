@@ -1,0 +1,39 @@
+# vim: filetype=neomuttrc
+# muttrc file for account sbdaule5@gmail.com
+set realname = "Shubham"
+set from = "sbdaule5@gmail.com"
+set sendmail = "msmtp -a sbdaule5@gmail.com"
+alias me sbdaule5 <sbdaule5@gmail.com>
+set folder = "/home/sbdaule/.local/share/mail/sbdaule5@gmail.com"
+set header_cache = "/home/sbdaule/.cache/mutt-wizard/sbdaule5_gmail.com/headers"
+set message_cachedir = "/home/sbdaule/.cache/mutt-wizard/sbdaule5_gmail.com/bodies"
+set mbox_type = Maildir
+set hostname = "gmail.com"
+source /usr/share/mutt-wizard/switch.muttrc
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set trash = "+Trash"
+set record = "+Sent"
+
+macro index o "<shell-escape>mailsync sbdaule5@gmail.com<enter>" "sync sbdaule5@gmail.com"
+mailboxes "=INBOX" \
+          "=Newsletters" \
+          "=Job Search" \
+          "=Banking" \
+          "=Dev Tools" \
+          "=Github" \
+          "=GIMP" \
+          "=Product Updates" \
+          "=Google" \
+          "=Archive" \
+          "=Personal" \
+          "=Traveling" \
+          "=Reports" \
+          "=Trash" \
+          "=Junk"
+          "=[Gmail]/Bin" \
+          "=[Gmail]/Drafts" \
+          "=[Gmail]/Sent Mail" \
+          "=[Gmail]/Spam" \
+          "=[Gmail]/Starred" \
+          "=[Gmail]/Trash" \
