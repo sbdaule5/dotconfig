@@ -13,13 +13,13 @@ uptime="`uptime -p | sed -e 's/up //g'`"
 host=`whoami`
 
 # Options
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
-yes=''
-no=''
+shutdown='Shutdown'
+reboot='Reboot'
+lock='Lock'
+suspend='Suspend'
+logout='Logout'
+yes='Y'
+no='N'
 
 # Rofi CMD
 rofi_cmd() {
@@ -95,7 +95,7 @@ case ${chosen} in
 		if [[ -x '/usr/bin/betterlockscreen' ]]; then
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock --nofork -e -p default -i ~/.local/share/screen-saver.png
+			i3lock --nofork -e -p default -i "${XDG_STATE_HOME:-~/.local/state}/lockscreen.png"
 		fi
         ;;
     $suspend)

@@ -22,6 +22,10 @@ for dir in ${DOTCONFIG_SOURCE}/config/*; do
     ln -sf "$dir" "$XDG_CONFIG_HOME/"
 done
 
+for file in ${DOTCONFIG_SOURCE}/scripts/*; do
+    ln -sf "$file" "$HOME/.local/bin/"
+done
+
 ln -sf "${DOTCONFIG_SOURCE}/config/shell/profile" "$HOME/.profile"
 ln -sf "${DOTCONFIG_SOURCE}/config/shell/profile" "$HOME/.zprofile"
 ln -sf "${DOTCONFIG_SOURCE}/config/shell/inputrc" "$HOME/.inputrc"

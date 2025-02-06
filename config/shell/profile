@@ -51,7 +51,7 @@ function startenv(){
 }
 
 # Start graphical server on user's current tty if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && startserv
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && startenv
 
 # Switch escape and caps if tty and no passwd required:
 # sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/myconfigs/ttymaps.kmap 2>/dev/null

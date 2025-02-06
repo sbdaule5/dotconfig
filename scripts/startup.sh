@@ -9,6 +9,7 @@ setsid -f playerctld
 setsid -f dunst
 setsid -f udiskie
 # emacs --daemon
+feh --bg-fill --no-fehbg "${XDG_STATE_HOME:-~$HOME/.local/state}/wallpaper.png"
 $HOME/.local/state/fehbg
 # clipmenud
 # setsid -f mpd-mpris
