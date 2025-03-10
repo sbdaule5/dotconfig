@@ -14,4 +14,4 @@ home/.config/mutt/accounts/
 home/.config/zsh/tmux/
 .zcompdump
 key*
-!keybindings.lua
+!keybind*
