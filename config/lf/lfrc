@@ -94,6 +94,28 @@ cmd extract ${{
     esac
 }}
 
+cmd create_new ${{
+    name="$1"
+    if expr "$1" : '.*/$' > /dev/null; then
+        mkdir -p "$name"
+    else
+        dirpath="$(dirname "$name")"
+        if ! [ -d "$dirpath" ]; then
+            echo "Directory $dirpath does not exist, create now [y/n]?"
+            read -r response
+            if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
+                mkdir -p "$dirpath"
+                touch "$name"
+                echo "Directory created and file touched: $name"
+            else
+                echo "Aborting"
+            fi
+        else
+            touch "$name"
+        fi
+    fi
+}}
+
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
     set -f
@@ -114,6 +136,7 @@ cmd zip ${{
 map zx push
 map zz push :zip<space>
 map zt push :tar<space>
+map a push :create_new<space>
 
 # Get disk usage info when pressing zd
 map zd %du -h $f
