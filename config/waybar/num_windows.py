@@ -41,6 +41,8 @@ try:
             or data.find("workspace>>") != -1
             or data.find("workspacev2>>") != -1
             or data.find("closewindow>>") != -1
+            or data.find("focusedmon>>") != -1
+            or data.find("focusedmonv2>>") != -1
         ):
             result = run_command("hyprctl -j activeworkspace | jq '.windows'")
             print(f"{json.dumps(result, indent=2)}", flush=True)

@@ -82,7 +82,7 @@ button:hover {
   color: #888888;
 }
 
-#workspaces button.active {
+#workspaces button.active.hosting-monitor {
   color: #ffffff;
   /* background-color: #64727D; */
   box-shadow: inset 0 -3px #ffffff;
