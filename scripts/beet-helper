@@ -1,0 +1,84 @@
+#!/usr/bin/bash
+
+get_current_song_path() {
+    # Get the currently playing file from MPD
+    local song_path
+    song_path=$(mpc --format "%file%" current)
+
+    # Ensure MPD music directory is correctly set
+    local music_dir
+    music_dir=$( awk -F '[ \t]+' '/^music_directory/ {print $2}' "$XDG_CONFIG_HOME/mpd/mpd.conf" | tr -d '"')
+
+    # Convert MPD path to full filesystem path
+    if [ -n "$song_path" ] && [ -n "$music_dir" ]; then
+        echo "$music_dir/$song_path"
+    else
+        echo "Error: Unable to determine song path" >&2
+        return 1
+    fi
+}
+
+use_dmenu=0
+if [[ "$1" == "--dmenu" ]]; then
+    use_dmenu=1
+    shift
+fi
+action="$1"
+
+
+valid_languages=( hin eng mar jap tel pan kan tam )
+
+
+update_language() {
+    local language
+    local filepath
+
+    filepath="$1"
+    language="$2"
+
+    local language_is_valid=0
+
+    for lang in "${valid_languages[@]}"; do
+        if [[ "$lang" == "$language" ]]; then
+            language_is_valid=1
+            beet modify -y path:"$filepath" language="$language"
+            break
+        fi
+    done
+
+    if [[ "$language_is_valid" -eq 0 ]]; then
+        echo "Invalid/Unknown language; Valid values are ${valid_languages[*]}" >&2
+        exit 1
+    fi
+
+}
+
+case "$action" in
+    "language")
+        language="$2"
+        song_path="$(get_current_song_path)" || exit 1
+        if [ -z "$language" ] && [ "$use_dmenu" -eq 1 ]; then
+            language=$(printf "%s\n" "${valid_languages[@]}" | rofi -dmenu) || exit 1
+        fi
+        if [ -z "$language" ]; then
+            language="$(beet list -f '$language' "$song_path")"
+            if [ -z "$language" ]; then
+                echo "???"
+            else
+                echo "$language"
+            fi
+        else
+            update_language "$song_path" "$language"
+        fi
+        ;;
+    "mbopen")
+        song_path="$(get_current_song_path)" || exit 1
+        track_id="$(beet list -f '$mb_trackid' path:"$song_path")"
+        xdg-open "https://musicbrainz.org/track/$track_id"
+        
+        ;;
+    *)
+        echo "Invalid command, print help"
+        ;;
+esac
+

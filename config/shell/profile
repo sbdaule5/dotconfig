@@ -1,4 +1,4 @@
-export PATH=~/.local/bin:~/.local/share/npm/bin:~/.local/share/pnpm:~/.local/share/cargo/bin:$PATH
+export PATH=~/.local/bin:~/.local/scripts:~/.local/share/npm/bin:~/.local/share/pnpm:~/.local/share/cargo/bin:$PATH
 export EDITOR=nvim
 export VISUAL="kitty -e nvim"
 export TERMINAL="alacritty"

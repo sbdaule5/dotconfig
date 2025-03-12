@@ -19,6 +19,7 @@
         // ],
         "modules-right": [
             "mpd",
+            "custom/mpd-lang",
             "mpris",
             "pulseaudio",
             "network",
@@ -61,6 +62,12 @@
             "tooltip-format": "MPD (connected)",
             "tooltip-format-disconnected": "MPD (disconnected)",
             "on-click": "mpc toggle",
+        },
+        "custom/mpd-lang": {
+            "exec": "~/.local/bin/scripts/beet-helper language",
+            "restart-interval": 10,
+            "format": "  {}",
+            "on-click": "~/.local/bin/scripts/beet-helper --dmenu language",
         },
         // Modules configuration
         "hyprland/workspaces": {
@@ -318,6 +325,7 @@
         // ],
         "modules-right": [
             "mpd",
+            "custom/mpd-lang",
             "mpris",
             "pulseaudio",
             "network",
@@ -573,6 +581,12 @@
             "tooltip-format": "MPD (connected)",
             "tooltip-format-disconnected": "MPD (disconnected)",
             "on-click": "mpc toggle",
+        },
+        "custom/mpd-lang": {
+            "exec": "~/.local/bin/scripts/beet-helper language",
+            "restart-interval": 10,
+            "format": "  {}",
+            "on-click": "~/.local/bin/scripts/beet-helper --dmenu language",
         },
         // "custom/media": {
         //     "format": "{icon} {}",
