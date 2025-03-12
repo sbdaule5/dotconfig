@@ -1,11 +1,11 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
 function fz1() {
     local lines
     lines=$(cat | fzf --filter="$1" --no-sort)
     if [ -z "$lines" ]; then
         return 1
-    elif [ $(wc -l <<< "$lines") -eq 1 ]; then
+    elif [[ "$(wc -l <<< "$lines")" -eq 1 ]]; then
         echo "$lines"
     else
         echo "$lines" | fzf --query="$1"
@@ -13,56 +13,56 @@ function fz1() {
 }
 
 function list() {
-    for line in ${config[@]}; do
-        echo $line
+    for line in "${config[@]}"; do
+        echo "$line"
     done
 }
 
-BASE="$HOME/projects/dotconfig/home/"
+BASE="/home/sbdaule/projects/000.dotconfig/"
 config=(
-    'alacritty:.config/alacritty/alacritty.toml'
-    'aliasrc:.config/shell/aliasrc'
+    'alacritty:config/alacritty/alacritty.toml'
+    'aliasrc:config/shell/aliasrc'
     'bash:.bashrc'
-    'config:.local/bin/config'
+    'config:scripts/config'
     'dwm-6.4:.local/src/dwm-6.4/'
-    'hyprland:.config/hypr/'
-    'i3status:.config/i3status/'
-    'i3wm:.config/i3/'
-    'iamb:.config/iamb/config.json'
-    'kitty:.config/kitty/kitty.conf'
-    'lf:.config/lf'
-    'mutt:.config/mutt/muttrc'
-    'ncmpcpp:.config/ncmpcpp'
-    'neovim:.config/nvim/'
-    'newsboat:.config/newsboat/'
-    'picom:.config/picom/picom.config'
-    'pistol:.config/pistol/pistol.conf'
-    'profile:.profile'
-    'ranger:.config/ranger'
-    'startdwm:.local/bin/startdwm'
-    'startup:.local/bin/startup.sh'
-    'swaync:.config/swaync/'
-    'tmux:.config/tmux/tmux.conf'
-    'qutebrowser:.config/qutebrowser/config.py'
-    'waybar:.config/waybar/'
-    'zathura:.config/zathura/zathurarc'
-    'zsh:.config/zsh/.zshrc'
+    'hyprland:config/hypr/'
+    'i3status:config/i3status/'
+    'i3wm:config/i3/'
+    'iamb:config/iamb/config.json'
+    'kitty:config/kitty/kitty.conf'
+    'lf:config/lf'
+    'mutt:config/mutt/'
+    'ncmpcpp:config/ncmpcpp'
+    'neovim:config/nvim/'
+    'newsboat:config/newsboat/'
+    'picom:config/picom/picomconfig'
+    'pistol:config/pistol/pistol.conf'
+    'profile:config/shell/profile'
+    'ranger:config/ranger'
+    'startdwm:scripts/startdwm'
+    'startup:scripts/startup.sh'
+    'swaync:config/swaync/'
+    'tmux:config/tmux/tmux.conf'
+    'qutebrowser:config/qutebrowser/config.py'
+    'waybar:config/waybar/'
+    'zathura:config/zathura/zathurarc'
+    'zsh:config/zsh/.zshrc'
 )
 
 if [ -z "$1" ]; then
-    selected=$(echo ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fzf)
+    selected=$(echo "${config[@]}" | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fzf)
 elif [ "$1" == "-l" ]; then
     list $config
     exit
 else
-    selected=$(echo ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fz1 "$1")
+    selected=$(echo "${config[@]}" | awk '{split($0, a, " ");for(b in a){ print $b;}}' | awk -F ':' '{print $1}' | fz1 "$1")
 fi
 
-file=$(echo -n ${config[@]} | awk '{split($0, a, " ");for(b in a){ print $b;}}'  | awk -F ':' -v val=$selected '{if($1==val){print $2}}')
+file=$(echo -n "${config[@]}" | awk '{split($0, a, " ");for(b in a){ print $b;}}'  | awk -F ':' -v val=$selected '{if($1==val){print $2}}')
 
 if [[ -n $file ]]
 then
-    cd "$BASE"
+    cd "$BASE" || exit 1
     nvim "$file"
 else
     echo "No such config"
