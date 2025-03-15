@@ -23,8 +23,8 @@
             "mpris",
             "pulseaudio",
             "network",
-            "cpu",
-            "memory",
+            // "cpu",
+            // "memory",
             // "temperature",
             "backlight",
             "keyboard-state",
@@ -254,11 +254,11 @@
             "format-source": "{volume}% ",
             "format-source-muted": "",
             "format-icons": {
-                "headphone": "",
-                "hands-free": "",
-                "headset": "",
-                "phone": "",
-                "portable": "",
+                "headphone": " ",
+                "hands-free": " ",
+                "headset": " ",
+                "phone": " ",
+                "portable": " ",
                 "car": "",
                 "default": [
                     "",
@@ -269,7 +269,7 @@
             "on-click": "pavucontrol"
         },
         "custom/num_windows": {
-            "exec": "/home/sbdaule/.config/waybar/num_windows.py",
+            "exec": "/home/sbdaule/.config/waybar/num_windows.py eDP-1",
             // "restart-interval": 10,
             "format": " {}"
         },
@@ -329,8 +329,8 @@
             "mpris",
             "pulseaudio",
             "network",
-            "cpu",
-            "memory",
+            // "cpu",
+            // "memory",
             // "temperature",
             "backlight",
             "keyboard-state",
@@ -531,7 +531,7 @@
             "on-click": "pavucontrol"
         },
         "custom/num_windows": {
-            "exec": "/home/sbdaule/.config/waybar/num_windows.py",
+            "exec": "/home/sbdaule/.config/waybar/num_windows.py HDMI-A-1",
             // "restart-interval": 10,
             "format": " {}"
         },

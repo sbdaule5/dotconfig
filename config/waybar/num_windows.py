@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 # hyprctl -j -r activeworkspace | jq '.windows'
+import argparse
 import json
 import os
 import socket
@@ -18,8 +19,15 @@ def run_command(command):
     return result
 
 
+parser = argparse.ArgumentParser()
+parser.add_argument("monitor", type=str, help="Monitor Name")
+args = parser.parse_args()
+
 socket_file = os.path.join(
-    os.getenv("XDG_RUNTIME_DIR", "/tmp"), "hypr/", os.getenv("HYPRLAND_INSTANCE_SIGNATURE", ""), ".socket2.sock"
+    os.getenv("XDG_RUNTIME_DIR", "/tmp"),
+    "hypr/",
+    os.getenv("HYPRLAND_INSTANCE_SIGNATURE", ""),
+    ".socket2.sock",
 )
 # print(socket_file)
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
@@ -44,7 +52,14 @@ try:
             or data.find("focusedmon>>") != -1
             or data.find("focusedmonv2>>") != -1
         ):
-            result = run_command("hyprctl -j activeworkspace | jq '.windows'")
+            visible_workspace = run_command(
+                f"hyprctl -j monitors | jq '.[] | if .name == \"{args.monitor}\""
+                " then .activeWorkspace.id else empty end'"
+            )
+            result = run_command(
+                f"hyprctl -j workspaces | jq '.[] | if .id == {visible_workspace} then .windows else empty end'"
+            )
+
             print(f"{json.dumps(result, indent=2)}", flush=True)
             # f = open("/tmp/tp.log", "w")
             # f.write(json.dumps(result, indent=2))
