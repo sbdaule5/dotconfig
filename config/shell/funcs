@@ -141,7 +141,7 @@ jqplay() {
 jqplayc() {
     cmd="$1"
     shift
-    tmpfile=$(mktemp 'tmp.XXXXXX.json')
+    tmpfile=$(mktemp '/tmp/tmp.XXXXXX.json')
     $cmd "$@" > "$tmpfile"
     jqplay "$tmpfile"
 }
