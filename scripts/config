@@ -39,6 +39,7 @@ config=(
     'pistol:config/pistol/pistol.conf'
     'profile:config/shell/profile'
     'ranger:config/ranger'
+    'shell:config/shell/'
     'startdwm:scripts/startdwm'
     'startup:scripts/startup.sh'
     'swaync:config/swaync/'
@@ -46,7 +47,7 @@ config=(
     'qutebrowser:config/qutebrowser/config.py'
     'waybar:config/waybar/'
     'zathura:config/zathura/zathurarc'
-    'zsh:config/zsh/.zshrc'
+    'zsh:config/zsh/'
 )
 
 if [ -z "$1" ]; then
