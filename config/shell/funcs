@@ -128,3 +128,20 @@ lfcd() {
 gr () {
     cd "$(git rev-parse --show-toplevel 2>/dev/null)"
 }
+
+jqplay() {
+    if [ "$1" = "-s" ]; then
+        shift
+        nvim +"JqPlayground $1";
+    else
+        nvim "$1" +"JqPlayground";
+    fi
+}
+
+jqplayc() {
+    cmd="$1"
+    shift
+    tmpfile=$(mktemp 'tmp.XXXXXX.json')
+    $cmd "$@" > "$tmpfile"
+    jqplay "$tmpfile"
+}
