@@ -150,6 +150,7 @@ unset __conda_setup
 ################################################################################
 #                             CONFIG FOR LOCAL SYSTEM
 ################################################################################
+# Local config will override global/general one
 if [ -f "$XDG_CONFIG_HOME/zsh/localrc" ]
 then
     source "$XDG_CONFIG_HOME/zsh/localrc"
