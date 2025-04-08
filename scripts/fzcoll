@@ -1,0 +1,9 @@
+#!/bin/bash
+output="$(echo '' | fzf --disabled --bind "change:reload(recoll -t -q {q} | tail -n +3 | sed 's/\t/|/g' || true)" \
+    --preview 'recoll-preview {} || echo "No preview available"' \
+    --height=100% --layout=reverse --border --preview-window=right:50%:wrap --with-nth={3} --delimiter="|" )"
+
+file=$(echo "$output" | awk -F"|" '{print $2}' | sed 's/\[file:\/\/\(.*\)\]/\1/')
+
+nvim --server /tmp/nvim-notepad --remote-send "<Esc>:e ${file}<CR>" "$file"
+
