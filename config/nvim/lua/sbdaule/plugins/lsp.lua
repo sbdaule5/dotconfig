@@ -30,6 +30,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
+      vim.diagnostic.config { virtual_text = true }
       vim.keymap.set('n', '<Leader>il', ':LspInfo<CR>')
       --  This function gets run when an LSP attaches to a particular buffer.
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -55,7 +56,19 @@ return {
           --  Similar to document symbols, except searches over your entire project.
           map('<leader>fS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
 
-          map('<leader>sd', vim.diagnostic.open_float, 'Show diagnostics')
+          -- map('<leader>sd', vim.diagnostic.open_float, 'Show diagnostics')
+          map('<leader>sd', function()
+            local opts = vim.diagnostic.config()
+            local new_opts = vim.tbl_deep_extend('force', opts, { virtual_lines = { current_line = true } })
+            vim.diagnostic.config(new_opts)
+
+            vim.api.nvim_create_autocmd('CursorMoved', {
+              once = true, -- remove the autocmd after it fires once
+              callback = function()
+                vim.diagnostic.config(opts)
+              end,
+            })
+          end, 'Show diagnostics using virtual lines')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
