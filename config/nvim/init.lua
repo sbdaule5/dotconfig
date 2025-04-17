@@ -126,7 +126,7 @@ require('lazy').setup({
 }, {
   dev = {
     path = '~/projects/011.nvim-plugins/',
-    pattterns = { 'gpg.nvim' },
+    pattterns = { 'gpg.nvim', 'data-playground.nvim' },
     fallback = false,
   },
   ui = {
