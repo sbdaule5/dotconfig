@@ -8,49 +8,51 @@
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
-	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi" \
-	ip="ip -color=auto"
+    ls="ls -hN --color=auto --group-directories-first" \
+    grep="grep --color=auto" \
+    diff="diff --color=auto" \
+    ccat="highlight --out-format=ansi" \
+    ip="ip -color=auto"
 
 # These common commands are just too long! Abbreviate them.
 alias \
-  lsa="ls -lA" \
-	:e="$EDITOR" \
-	v="$EDITOR" \
-	p="sudo pacman" \
-	z="zathura" \
-  ysy="yay -Ss " \
-  yiy="yay -Si " \
-  yfy="yay -F " \
-  cls="clear" \
-	py3="python3"\
-	py3nv="pyenv"\
-	g="git"
+    lsa="ls -lA" \
+    :e="$EDITOR" \
+    v="$EDITOR" \
+    p="sudo pacman" \
+    z="zathura" \
+    ysy="yay -Ss " \
+    yiy="yay -Si " \
+    yfy="yay -F " \
+    cls="clear" \
+    py3="python3"\
+    py3nv="pyenv"\
+    g="git"\
+    G="git"\
+    d="docker"
 
 # Alternate config path to cleanup home directory
 alias \
-  abook="abook --datafile '${XDG_DATA_HOME}/abook/addressbook' --config '${XDG_CONFIG_HOME}/abook/abookrc'" \
-  irssi="irssi --config=\"$XDG_CONFIG_HOME\"/irssi/config --home=\"$XDG_DATA_HOME\"/irssi" \
-	elinks="elinks --config-dir ${XDG_CONFIG_HOME}/elinks" \
-	irssi="irssi --home=${XDG_DATA_HOME}/irssi"\
-	arduino-cli="arduino-cli --config-file ${XDG_CONFIG_HOME}/arduino15/arduino-cli.yaml"\
-  ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
+    abook="abook --datafile '${XDG_DATA_HOME}/abook/addressbook' --config '${XDG_CONFIG_HOME}/abook/abookrc'" \
+    irssi="irssi --config=\"$XDG_CONFIG_HOME\"/irssi/config --home=\"$XDG_DATA_HOME\"/irssi" \
+    elinks="elinks --config-dir ${XDG_CONFIG_HOME}/elinks" \
+    irssi="irssi --home=${XDG_DATA_HOME}/irssi"\
+    arduino-cli="arduino-cli --config-file ${XDG_CONFIG_HOME}/arduino15/arduino-cli.yaml"\
+    ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
 
 # Alias the apps that do not adhere to xdg specifications to use the NO_XDG_HOME instead
 alias \
-  dart="HOME=$NO_XDG_HOME ~/project/dart" \
-  flutter="HOME=$NO_XDG_HOME flutter" \
+    dart="HOME=$NO_XDG_HOME ~/project/dart" \
+    flutter="HOME=$NO_XDG_HOME flutter" \
 
-alias lf="lfcd"
+    alias lf="lfcd"
 
 # Prohibited commands to fix habits
 # alias \
-# 	rm="notify-send -a 'No Dont' 'Use trash command instead'"
+    # 	rm="notify-send -a 'No Dont' 'Use trash command instead'"
 
 # Switching prompt style, not usefull currently
 # alias \
-#   prompt-short="prompt_style=short" \
-#   prompt-full="prompt_style=full" \
-#   prompt-switch="if [[ $prompt_style == "full" ]]; then prompt-short; else prompt-full; fi"
+    #   prompt-short="prompt_style=short" \
+    #   prompt-full="prompt_style=full" \
+    #   prompt-switch="if [[ $prompt_style == "full" ]]; then prompt-short; else prompt-full; fi"
