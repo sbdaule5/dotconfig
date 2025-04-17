@@ -104,6 +104,7 @@ return {
             ['<S-Tab>'] = 'Prev',
             ['q'] = 'Cancel',
             ['?'] = 'ShowHelp',
+            ['<Escape>'] = 'Cancel'
           },
         },
       },
