@@ -1,5 +1,4 @@
 local function format_title(str)
-
   if string.find(str, '%u') then
     return str
   end
@@ -14,7 +13,8 @@ local function title_to_filename(str)
 end
 
 local newquicknote = function()
-  local quicknotes_dir = vim.fs.joinpath(vim.fn.environ()['HOME'], 'notes/quicknotes')
+  local quicknotes_dir =
+    vim.fs.joinpath(vim.fn.environ()['HOME'], 'notes/quicknotes')
   vim.ui.input({ prompt = 'Title: ' }, function(title)
     local filename = ''
     if title and string.len(title) ~= 0 then
@@ -58,4 +58,9 @@ local newquicknote = function()
   end)
 end
 
-vim.keymap.set('n', '<leader>nq', newquicknote, { silent = true, desc = '[N]ew [Q]uicknote', noremap = true })
+vim.keymap.set(
+  'n',
+  '<leader>nq',
+  newquicknote,
+  { silent = true, desc = '[N]ew [Q]uicknote', noremap = true }
+)

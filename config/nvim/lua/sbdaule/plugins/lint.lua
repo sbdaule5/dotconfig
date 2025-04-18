@@ -58,4 +58,8 @@ return {
       })
     end,
   },
+  {
+    'nvim-lua/plenary.nvim',
+    lazy = false,
+  },
 }

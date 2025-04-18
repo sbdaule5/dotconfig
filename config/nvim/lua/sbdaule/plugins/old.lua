@@ -9,6 +9,7 @@ return {
   'tpope/vim-abolish',
   'svermeulen/vim-subversive',
   'airblade/vim-gitgutter',
+  'ron-rs/ron.vim',
   {
     'junegunn/vim-easy-align',
     config = function()
@@ -114,6 +115,7 @@ return {
   -- 'godlygeek/tabular',
   {
     'christoomey/vim-tmux-navigator',
+    enabled = false,
     cmd = {
       'TmuxNavigateLeft',
       'TmuxNavigateDown',
@@ -135,6 +137,7 @@ return {
       vim.keymap.set('t', '<M-k>', '<C-\\><C-n><M-k>', { remap = true, desc = 'Move focus to the upper window' })
     end,
   },
+
 
   -- 'David-Kunz/gen.nvim',
   -- 'bullets-vim/bullets.vim',
